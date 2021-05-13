@@ -2,7 +2,7 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Gameplay/Object Shooter")]
-public class ObjectShooter : MonoBehaviour
+public class ObjectShooter1 : MonoBehaviour
 {
 	[Header("Object creation")]
 	
@@ -56,7 +56,7 @@ public class ObjectShooter : MonoBehaviour
 			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
 			if(rigidbody2D != null)
 			{
-				rigidbody2D.AddForce(transform.right * shootSpeed, ForceMode2D.Impulse);
+				rigidbody2D.AddForce(actualBulletDirection * shootSpeed, ForceMode2D.Impulse);
 			}
 
 			// add a Bullet component if the prefab doesn't already have one, and assign the player ID
