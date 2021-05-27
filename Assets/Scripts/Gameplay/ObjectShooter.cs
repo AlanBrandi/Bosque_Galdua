@@ -4,6 +4,7 @@ using System.Collections;
 [AddComponentMenu("Playground/Gameplay/Object Shooter")]
 public class ObjectShooter : MonoBehaviour
 {
+	Animator MyAnimator;
 	[Header("Object creation")]
 	
 	public GameObject prefabToSpawn;
@@ -32,6 +33,7 @@ public class ObjectShooter : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		MyAnimator = GetComponentInParent<Animator>();
 		timeOfLastSpawn = -creationRate;
 
 		// Set the player number based on the GameObject tag
@@ -51,6 +53,7 @@ public class ObjectShooter : MonoBehaviour
 			newObject.transform.position = this.transform.position;
 			newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
 			newObject.tag = "Bullet";
+			MyAnimator.SetTrigger("Attack");
 
 			// push the created objects, but only if they have a Rigidbody2D
 			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
@@ -67,7 +70,10 @@ public class ObjectShooter : MonoBehaviour
 			}
 			b.playerId = playerNumber;
 
-
+			//if(Input.GetKeyUp(keyToPress))
+           // {
+		   //
+           // }
 
 			timeOfLastSpawn = Time.time;
 		}

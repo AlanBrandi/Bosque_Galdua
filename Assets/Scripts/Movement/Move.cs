@@ -5,6 +5,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Move : Physics2DObject
 {
+	Animator MyAnimator;
 	[Header("Input keys")]
 	public Enums.KeyGroups typeOfControl = Enums.KeyGroups.ArrowKeys;
 
@@ -22,6 +23,10 @@ public class Move : Physics2DObject
 	private float moveHorizontal;
 	private float moveVertical;
 
+	private void Start()
+	{
+		MyAnimator = GetComponent<Animator>();
+	}
 
 	// Update gets called every frame
 	void Update ()
@@ -50,11 +55,12 @@ public class Move : Physics2DObject
 		}
 			
 		movement = new Vector2(moveHorizontal, moveVertical);
+		MyAnimator.SetFloat("Speed", rigidbody2D.velocity.magnitude);
 
 
 		//rotate the GameObject towards the direction of movement
 		//the axis to look can be decided with the "axis" variable
-		if(orientToDirection)
+		if (orientToDirection)
 		{
 			if(movement.sqrMagnitude >= 0.01f)
 			{
