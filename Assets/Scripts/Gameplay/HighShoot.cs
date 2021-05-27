@@ -2,8 +2,9 @@
 using System.Collections;
 
 [AddComponentMenu("Playground/Gameplay/Object Shooter")]
-public class ObjectShooter1 : MonoBehaviour
+public class HighShoot : MonoBehaviour
 {
+	Animator MyAnimator;
 	[Header("Object creation")]
 	
 	public GameObject prefabToSpawn;
@@ -32,6 +33,7 @@ public class ObjectShooter1 : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		MyAnimator = GetComponentInParent<Animator>();
 		timeOfLastSpawn = -creationRate;
 
 		// Set the player number based on the GameObject tag
@@ -51,12 +53,13 @@ public class ObjectShooter1 : MonoBehaviour
 			newObject.transform.position = this.transform.position;
 			newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
 			newObject.tag = "Bullet";
+			MyAnimator.SetTrigger("Highattack");
 
 			// push the created objects, but only if they have a Rigidbody2D
 			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
 			if(rigidbody2D != null)
 			{
-				rigidbody2D.AddForce(actualBulletDirection * shootSpeed, ForceMode2D.Impulse);
+				rigidbody2D.AddForce(transform.right * shootSpeed, ForceMode2D.Impulse);
 			}
 
 			// add a Bullet component if the prefab doesn't already have one, and assign the player ID
@@ -67,7 +70,10 @@ public class ObjectShooter1 : MonoBehaviour
 			}
 			b.playerId = playerNumber;
 
-
+			//if(Input.GetKeyUp(keyToPress))
+           // {
+		   //
+           // }
 
 			timeOfLastSpawn = Time.time;
 		}

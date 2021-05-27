@@ -4,7 +4,8 @@ using System.Collections;
 [AddComponentMenu("Playground/Movement/Jump")]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Jump : Physics2DObject
-{	
+{
+	Animator MyAnimator;
 	[Header("Jump setup")]
 	// the key used to activate the push
 	public KeyCode key = KeyCode.Space;
@@ -22,8 +23,13 @@ public class Jump : Physics2DObject
 
 	private bool canJump = true;
 
-	// Read the input from the player
-	void Update()
+    private void Start()
+    {
+		MyAnimator = GetComponent<Animator>();
+    }
+
+    // Read the input from the player
+    void Update()
 	{
 		if(canJump
 			&& Input.GetKeyDown(key))
@@ -31,6 +37,7 @@ public class Jump : Physics2DObject
 			// Apply an instantaneous upwards force
 			rigidbody2D.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
 			canJump = !checkGround;
+			MyAnimator.SetBool("IsJumping", true);
 		}
 	}
 
@@ -40,6 +47,7 @@ public class Jump : Physics2DObject
 			&& collisionData.gameObject.CompareTag(groundTag))
 		{
 			canJump = true;
+			MyAnimator.SetBool("IsJumping", false);
 		}
 	}
 }
