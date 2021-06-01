@@ -51,7 +51,8 @@ public class ObjectShooter : MonoBehaviour
 
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
 			newObject.transform.position = this.transform.position;
-			newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
+			//newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
+			newObject.transform.rotation = transform.rotation;
 			newObject.tag = "Bullet";
 			MyAnimator.SetTrigger("Attack");
 
@@ -59,6 +60,7 @@ public class ObjectShooter : MonoBehaviour
 			Rigidbody2D rigidbody2D = newObject.GetComponent<Rigidbody2D>();
 			if(rigidbody2D != null)
 			{
+				print(transform.right);
 				rigidbody2D.AddForce(transform.right * shootSpeed, ForceMode2D.Impulse);
 			}
 
