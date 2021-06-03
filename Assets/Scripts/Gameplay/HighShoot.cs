@@ -52,7 +52,7 @@ public class HighShoot : MonoBehaviour
 			Vector2 actualBulletDirection = (relativeToRotation) ? (Vector2)(Quaternion.Euler(0, 0, transform.eulerAngles.z) * shootDirection) : shootDirection;
 
 			GameObject newObject = Instantiate<GameObject>(prefabToSpawn);
-			newObject.transform.position = player.transform.position;
+			newObject.transform.position = this.transform.position;
 			//newObject.transform.eulerAngles = new Vector3(0f, 0f, Utils.Angle(actualBulletDirection));
 			newObject.transform.rotation = transform.rotation;
 			newObject.tag = "Bullet";

@@ -16,6 +16,9 @@ public class Jump : Physics2DObject
 	[Header("Ground setup")]
 	//if the object collides with another object tagged as this, it can jump again
 	public string groundTag = "Ground";
+    public string groundTag1 = "Box [red]";
+	public string groundTag2 = "Box [blue]";
+	public string groundTag3 = "Box [green]";
 
 	//this determines if the script has to check for when the player touches the ground to enable him to jump again
 	//if not, the player can jump even while in the air
@@ -45,6 +48,24 @@ public class Jump : Physics2DObject
 	{
 		if(checkGround
 			&& collisionData.gameObject.CompareTag(groundTag))
+		{
+			canJump = true;
+			MyAnimator.SetBool("IsJumping", false);
+		}
+		if (checkGround
+			&& collisionData.gameObject.CompareTag(groundTag1))
+		{
+			canJump = true;
+			MyAnimator.SetBool("IsJumping", false);
+		}
+		if (checkGround
+			&& collisionData.gameObject.CompareTag(groundTag2))
+		{
+			canJump = true;
+			MyAnimator.SetBool("IsJumping", false);
+		}
+		if (checkGround
+			&& collisionData.gameObject.CompareTag(groundTag3))
 		{
 			canJump = true;
 			MyAnimator.SetBool("IsJumping", false);
