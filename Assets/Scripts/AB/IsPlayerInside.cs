@@ -5,19 +5,34 @@ using UnityEngine;
 public class IsPlayerInside : MonoBehaviour
 {
     Animator MyAnimator;
-    bool IsPlayerInside = false;
+    Transform MyTransform;
+    public Animator alavanca;
+    public Instanciararvore scriptarvore;
+    public bool playerinside = false; 
+    
 
     private void Start()
     {
-        MyAnimator = GetComponent<Animator>();
+        MyAnimator = GetComponentInParent<Animator>();
+        MyTransform = GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        if (scriptarvore.instanciou == true)
+        {
+            MyTransform.position = new Vector3(0, 700, 0);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            MyAnimator.SetBool("Playerinside", true);
-            IsPlayerInside = true;
+            print("player entrou");
+            alavanca.SetBool("IsLeverOn", true);
+            MyAnimator.SetBool("PlayerInside", true);
+            playerinside = true;
         }
     }
 }

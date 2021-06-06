@@ -16,7 +16,7 @@ public class HardLight2DEditor : MonoBehaviour
     }
 }
 
-[CustomPropertyDrawer (typeof (SortingLayerPopup))]
+//[CustomPropertyDrawer (typeof (SortingLayerPopup))]
 public class SortingLayerDrawer : PropertyDrawer
 {
     public override void OnGUI (Rect position, SerializedProperty property, GUIContent label)
