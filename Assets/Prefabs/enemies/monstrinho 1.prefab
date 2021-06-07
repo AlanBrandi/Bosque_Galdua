@@ -139,10 +139,11 @@ GameObject:
   - component: {fileID: 8829659343052178255}
   - component: {fileID: 8829659343052178248}
   - component: {fileID: 8829659343052178249}
-  - component: {fileID: 8829659343052178250}
   - component: {fileID: 8829659343052178242}
   - component: {fileID: 8829659343052178243}
   - component: {fileID: 8829659343052178252}
+  - component: {fileID: -2088748917585781015}
+  - component: {fileID: -2893395891733799371}
   m_Layer: 0
   m_Name: monstrinho 1
   m_TagString: Enemies
@@ -272,23 +273,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8829659343052178250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829659343052178251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4330d34abf50140d5bad3d3b0608cca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 0}
-  target: {fileID: 0}
-  speed: 0.5
-  lookAtTarget: 1
-  useSide: 1
 --- !u!114 &8829659343052178242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +324,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: 0
   deathEffect: {fileID: 963871224903422465, guid: e4d6aad6c730aae40b39ad939be0a5be, type: 3}
+--- !u!114 &-2088748917585781015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829659343052178251}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0027ecc622a19415e89fe29ca9261170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 0}
+  speed: 4
+  directionChangeInterval: 5
+  keepNearStartingPoint: 0
+  orientToDirection: 1
+  lookAxis: 1
+--- !u!114 &-2893395891733799371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829659343052178251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4330d34abf50140d5bad3d3b0608cca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody2D: {fileID: 0}
+  target: {fileID: 0}
+  speed: 1
+  lookAtTarget: 0
+  useSide: 0
