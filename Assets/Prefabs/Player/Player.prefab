@@ -652,7 +652,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 51.8851, y: -0.71019393}
+  position: {x: -20.017399, y: -0.519694}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -742,7 +742,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 486167045656039772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.27, y: -6.07, z: -0.7825912}
+  m_LocalPosition: {x: -2.22, y: -6.8, z: -0.7825912}
   m_LocalScale: {x: 0.97313076, y: 0.97313076, z: 0.14596963}
   m_Children:
   - {fileID: 1919034758}
@@ -775,9 +775,9 @@ GameObject:
   - component: {fileID: 4741376105057413794}
   - component: {fileID: 4741376105057413795}
   - component: {fileID: 304522399}
-  - component: {fileID: 4892630466244583718}
   - component: {fileID: 693714381}
   - component: {fileID: 693714382}
+  - component: {fileID: 80168652}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1080,19 +1080,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4892630466244583718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4741376105057413804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb970c45b40bb4652a8310660a03dfb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 3
 --- !u!114 &693714381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,6 +1116,20 @@ MonoBehaviour:
   happenOnlyOnce: 0
   filterByTag: 1
   filterTag: Enemies
+--- !u!114 &80168652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4741376105057413804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82078c5ac7d635f4db03bd261d3d52eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 0}
+  life: 3
 --- !u!1001 &337674923578097133
 PrefabInstance:
   m_ObjectHideFlags: 0

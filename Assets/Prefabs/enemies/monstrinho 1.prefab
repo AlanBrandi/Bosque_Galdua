@@ -60,7 +60,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 59.59455, y: 0.20203868}
+  position: {x: -16.247349, y: 48.843258}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -135,15 +135,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8829659343052178253}
-  - component: {fileID: 8829659343052178254}
   - component: {fileID: 8829659343052178255}
   - component: {fileID: 8829659343052178248}
   - component: {fileID: 8829659343052178249}
   - component: {fileID: 8829659343052178242}
-  - component: {fileID: 8829659343052178243}
   - component: {fileID: 8829659343052178252}
   - component: {fileID: -2088748917585781015}
-  - component: {fileID: -2893395891733799371}
+  - component: {fileID: 4153510529207897699}
   m_Layer: 0
   m_Name: monstrinho 1
   m_TagString: Enemies
@@ -166,25 +164,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8829659343052178254
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829659343052178251}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 39cabaa120fb8ec4ba0e70de0b2ac74b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &8829659343052178255
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -287,29 +266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyWhenActivated: 0
   healthChange: -1
---- !u!114 &8829659343052178243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8829659343052178251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810546aa5348745779a5772744036fd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 8829659343052178252}
-  useCustomActions: 0
-  customActions:
-    m_PersistentCalls:
-      m_Calls: []
-  happenOnlyOnce: 1
-  filterByTag: 1
-  filterTag: Bullet
-  frequency: 1
-  eventType: 0
 --- !u!114 &8829659343052178252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +287,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8829659343052178251}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0027ecc622a19415e89fe29ca9261170, type: 3}
   m_Name: 
@@ -339,23 +295,25 @@ MonoBehaviour:
   rigidbody2D: {fileID: 0}
   speed: 4
   directionChangeInterval: 5
-  keepNearStartingPoint: 0
+  keepNearStartingPoint: 1
   orientToDirection: 1
   lookAxis: 1
---- !u!114 &-2893395891733799371
-MonoBehaviour:
+--- !u!95 &4153510529207897699
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8829659343052178251}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4330d34abf50140d5bad3d3b0608cca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 0}
-  target: {fileID: 0}
-  speed: 1
-  lookAtTarget: 0
-  useSide: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb4170b10064f2d4e83f906a163f0a28, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

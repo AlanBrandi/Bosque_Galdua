@@ -132,8 +132,8 @@ public class UIScript : MonoBehaviour
 
 	public void SetHealth(int amount, int playerNumber)
 	{
-		playersHealth[playerNumber] = amount;
-		numberLabels[playerNumber].text = playersHealth[playerNumber].ToString();
+		//playersHealth[playerNumber] = amount;
+		//numberLabels[playerNumber].text = playersHealth[playerNumber].ToString();
 	}
 
 
