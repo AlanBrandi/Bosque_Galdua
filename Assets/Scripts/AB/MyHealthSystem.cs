@@ -5,27 +5,28 @@ using UnityEngine;
 public class MyHealthSystem : MonoBehaviour
 {
     public UiManager ui;
-    public int life = 3;
+    public int life = 15;
+    public GameObject player;
 
-    private void Start()
+    private void Update()
     {
-        life = 3;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Enemies"))
+        if(life <= 0)
         {
-            life = life - 1;
-            ui.SetLife(life);
+            Die();
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Dano(int dano)
     {
-        if (collision.CompareTag("Enemies"))
-        {
-            life = life - 1;
-            ui.SetLife(life);
-        }
+        life = life - dano;
+        ui.SetLife(life);
+    }
+    void Die()
+    {
+        player.GetComponent<Moving>().enabled = true;
+        player.GetComponent<PlayerAttack>().enabled = true;
+        player.GetComponent<HighAttack>().enabled = true;
+        player.GetComponent<Jumping>().enabled = true;
+        //animação de morrer
+        ui.SetLife(0);
     }
 }

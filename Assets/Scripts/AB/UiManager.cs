@@ -15,7 +15,7 @@ public class UiManager : MonoBehaviour
     public GameObject FX;
     public GameObject WinPanel;
     int score = 0;
-    public int Life = 3;
+    public int Life;
     public GameObject player;
     public IsBlueInside Blue;
     public IsGreenInside Green;
@@ -25,7 +25,7 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
        // txtScore.text = "0";
-        Life = 3;
+        Life = player.GetComponent<MyHealthSystem>().life;
     }
     //================================================================
     //helpers
@@ -48,12 +48,8 @@ public class UiManager : MonoBehaviour
 
         if (Life <= 0)
         {
-            Destroy(player.gameObject);
-            Instantiate(FX, player.transform.position, Quaternion.identity);
-
             HUD_UI.SetActive(false);
             DeathPanel.SetActive(true);
-
         }
     }
     public void MyLoadScene(string sceneName)

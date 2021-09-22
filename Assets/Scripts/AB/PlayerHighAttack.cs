@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerHighAttack : MonoBehaviour
 {
     public Animator MyAni;
+    public KeyCode LookUp;
+
     public LayerMask EnemyLayers;
     public KeyCode attackButton;
-    public KeyCode LookUp;
     public Transform AttackPoint;
     public float AttackRate = 2f;
     float NextAttackTime = 0f;
     public float AttackRange = 0.5f;
     public int AttackDamage = 5;
+
     public GameObject PlayerManager;
+
     private void Update()
     {
         if (Input.GetKey(LookUp))
