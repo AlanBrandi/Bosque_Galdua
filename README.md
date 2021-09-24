@@ -11,15 +11,24 @@
 - O guardião procura métodos de derrotar monstros que foram corrompidos pela maldição e limpar a floresta, trazendo sua vida e cor de volta
 ## Pitch de elevador:
 - Mario Bros. se mistura com Ori & the Blind Forest.
-## Game Flow
-
+## Game Flow:
+- **Artamus** começa sem ataques, e precisa achar uma forma de se defender para salvar sua floresta. Ao descansar nos dois primeiros pontos de salvamento, o personagem se recupera de suas lesões, reaprendendo a planar e dar pulo duplo, e depois começa a desbloquear os poderes dos animais que habitam a floresta ao purificá-los, adquirindo as bençãos que foram tirados dele, como se pendurar em paredes e dar investidas.
 ## Personagem e Controles:
 - Em Bosque Galdua, o Jogador toma o lugar de **Artamus**, um guardião da floresta que perdeu seus poderes depois de uma maldição cair sobre a floresta, enfraquecendo a vida selvagem nela. Artamus possui uma conexão com todos animais que habitam em seu bosque, podendo utilizar suas habilidades e alcançar novas áreas com a ajuda dos poderes recuperados após salvar o animal correspondente.
-# controles:
+# Controles:
 -  Por enquanto, o **Guardião** pode andar, pular, atacar com sua espada, planar e utilizar os poderes dos animais, sendo eles:
 -  pulo duplo.
 -  planar.
 -  mais habilidades vindo em breve.
+## Conceitos Principais de Gameplay e Recursos Exclusivos de Plataforma:
+-  Bosque Galdua se encaixa no gênero de plataforma de ação “metroidvania”. O jogador passa por cenários conectados uns aos outros que são possíveis revisitar mais tarde, com mais possibilidades de movimentação que o permitem explorar tais cenários mais profundamente. O USP do jogo encontra-se em seu estilo visual principalmente monocromático, que evolui cores ao avançar na história.
+-  O jogo não utiliza nenhum recurso exclusivo de qualquer plataforma.
+## Mundo do Jogo:
+- O jogo se passa em três cenários:
+- A floresta principal é cheia de árvores e arbustos e é aberta, possuindo muitas opções para futuros melhorias de movimentação.
+- As árvores gigantes no qual o personagem entra são ambientes maios claustrofóbicos e sem espaço, mas possuindo áreas secretas que são descobertas ao destruir uma parte de seu ambiente.
+- O subsolo também é claustrofóbico e passa a sensação de um “labirinto”, no qual o jogador consegue explorar o ambiente de uma maneira menos linear.
+- A floresta principal é o grande cenário da história do jogo, pois ela é o alvo do corrompimento. As árvores e o subsolo são o produto desse corrompimento. Todas as áreas são conectadas linearmente.
 ## Interface:
 - Ao entrar no jogo, o jogador se depara com a tela inicial, composta por três opções: Começar, Opções e Sair. O usuário pode acessá-las com o mouse ou *D-pad* do controle.
 Durante o jogo, o usuário poderá abrir o mapa para ver a área já explorada, composta por temas escuros com ambientação de floresta.
