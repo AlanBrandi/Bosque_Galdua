@@ -15,7 +15,7 @@
 - **Artamus** começa sem ataques, e precisa achar uma forma de se defender para salvar sua floresta. Ao descansar nos dois primeiros pontos de salvamento, o personagem se recupera de suas lesões, reaprendendo a planar e dar pulo duplo, e depois começa a desbloquear os poderes dos animais que habitam a floresta ao purificá-los, adquirindo as bençãos que foram tirados dele, como se pendurar em paredes e dar investidas.
 ## Personagem e Controles:
 - Em Bosque Galdua, o Jogador toma o lugar de **Artamus**, um guardião da floresta que perdeu seus poderes depois de uma maldição cair sobre a floresta, enfraquecendo a vida selvagem nela. Artamus possui uma conexão com todos animais que habitam em seu bosque, podendo utilizar suas habilidades e alcançar novas áreas com a ajuda dos poderes recuperados após salvar o animal correspondente.
-# Controles:
+## Controles:
 -  Por enquanto, o **Guardião** pode andar, pular, atacar com sua espada, planar e utilizar os poderes dos animais, sendo eles:
 -  pulo duplo.
 -  planar.
