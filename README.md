@@ -59,3 +59,33 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 - Conquistas: Conquistas desbloqueadas durante o jogo ao realizar um determinado objetivo.
 - Totens, Máscaras e colecionáveis: São fragmentos que podem ser visualizados dentro do jogo, como fora (menu), os mesmos contam as histórias por trás do jogo.
 
+# Bosque Galdua
+O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que fora corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso o jogo possui menu, gameplay, menu de morte e tela final.
+- Objetivo: Salvar a floresta que foi corrompida.
+- Gênero: Metroidvania.
+-  Andar: O player pode andar no eixo x utilizando as teclas A e D.
+- Pular: O player pode pular e se movimentar no eixo y utilizando a tecla Space.
+- Atacar: Como player você pode atacar tanto lateralmente quanto para cima utilizando para atacar lateralmente a tecla J, e para cima W + J.
+- Planar: Após se recuperar de seus machucados, o player, pode usando suas asas planar por um período limitado. Que depois de ter seu próximo estágio de recuperação ele pode planar até chegar ao chão. (Segurando o Space no ar)
+- Pulo-duplo: Ao usar sua asa recuperada ele pode dar um segundo pulo, em forma de *Dash*, utilizando a tecla Space. 
+- Benção: após receber a benção de algum animal ele ganha alguma habilidade especifica do mesmo, para adquirir basta salvar o animal que foi corrompido pelo **polu**.
+- Checkpoint(Ponto de ressurgimento): Ao entrar em um checkpoint ele recupera a vida e marca um **ponto de resurgimento**, além disso, restaura alguma habilidade única como, planar, pulo-duplo etc, para isso basta entrar como jogador na área demarcada.
+- Empurrar: Você como jogador pode empurrar caixas ou outros *props* para resolver enigmas.
+- Etc.
+### Diferencial: 
+O diferencial do Bosque Galdua em relação aos outros é justamente { insira dados técnicos que eu não sei quais são ] e também, o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
+### Público Alvo:
+Crianças maiores de 10 anos, adolescentes, jovens adultos e adultos que gostam do estilo Metroidvania junto de jogadores que gostaram do estilo de jogo monocromático como o Limbo.
+
+### Equipe:
+- 2x Programadores: Alan Brandi, Thomas Redekop.
+- 2x Ilustradoras: Ana Clara, Letícia Labarca.
+- 1x Level Design: Frederico Guilherme.
+
+## Cronograma:
+- Lançamento: Final do ano.
+
+## Objetivo de desenvolvimento sustentável da ONU:
+O objetivo utilizado no projeto, foi o objetivo quinze: Vida terrestre, visto que o a história do jogo tem por objetivo conscientizar o jogador da recuperação e uso sustentável de ecossistemas terrestres e de água doce, da gestão sustentável de todos os tipos de florestas, da detenção do desmatamento, da restauração das florestas e também, para evitar a extinção de espécies ameaçadas.
+
+
