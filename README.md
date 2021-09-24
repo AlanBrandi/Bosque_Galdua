@@ -1,3 +1,34 @@
+# BOSQUE GALDUA
+### Escrito por **NONAME STUDIO**
+### Para XBOX game pass e PC
+### Classificação: 12+
+### Lançamento: TBD
+
+## História do jogo:
+- Artamus Mentalis é um guardião da floresta que recebeu grandes poderes de um ser poderoso. Um dia, uma terrível maldição chamada **POLU** caiu sobre a floresta e Artamus perdeu seus poderes. Como ele recuperará seus poderes para salvar a floresta?
+## Gameplay:
+- Em Bosque Galdua, o jogador controla o guardião da floresta **Artamus** em busca de recuperar seus poderes e equipamentos para salvar a floresta. O jogador explora dois níveis: floresta e a árvore. Durante sua aventura, o jogador encontra Fragmentos de cor, que alteram o funcionamento dos níveis e permite caminhos novos. Os níveis duram cerca de cinco minutos, com planos de mais níveis lançando em (TBD).
+- O guardião procura métodos de derrotar monstros que foram corrompidos pela maldição e limpar a floresta, trazendo sua vida e cor de volta
+## Pitch de elevador:
+- Mario Bros. se mistura com Ori & the Blind Forest.
+## Game Flow
+
+## Personagem e Controles:
+- Em Bosque Galdua, o Jogador toma o lugar de **Artamus**, um guardião da floresta que perdeu seus poderes depois de uma maldição cair sobre a floresta, enfraquecendo a vida selvagem nela. Artamus possui uma conexão com todos animais que habitam em seu bosque, podendo utilizar suas habilidades e alcançar novas áreas com a ajuda dos poderes recuperados após salvar o animal correspondente.
+# controles:
+-  Por enquanto, o **Guardião** pode andar, pular, atacar com sua espada, planar e utilizar os poderes dos animais, sendo eles:
+-  pulo duplo.
+-  planar.
+-  mais habilidades vindo em breve.
+## Interface:
+- Ao entrar no jogo, o jogador se depara com a tela inicial, composta por três opções: Começar, Opções e Sair. O usuário pode acessá-las com o mouse ou *D-pad* do controle.
+Durante o jogo, o usuário poderá abrir o mapa para ver a área já explorada, composta por temas escuros com ambientação de floresta.
+# A Heads Up Display (HUD) apresenta:
+- A vida do jogador.
+- Local atual (ao entrar)
+- Objetivo atual.
+Ao tomar dano, a tela fica avermelhada, para indicar perigo. Cada ponto de vida equivale a dois ataques recebidos de inimigos.
+Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um seletor de poderes na HUD.
 ## Mecânicas:
 - Andar: O player pode andar no eixo x utilizando as teclas A e D.
 - Pular: O player pode pular e se movimentar no eixo y utilizando a tecla Space.
