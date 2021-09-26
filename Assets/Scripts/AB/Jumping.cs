@@ -33,7 +33,7 @@ public class Jumping : MonoBehaviour
             //MyAni.SetBool("IsJumping", true);
             isJumping = true;
             jumpTimeCounter = JumpTime;
-            MyRb.velocity = Vector2.up * jumpForce;
+            MyRb.AddForce(Vector2.up * jumpForce);
         }
         //----------------------------------------------------
 
@@ -41,7 +41,7 @@ public class Jumping : MonoBehaviour
         {
             if (jumpTimeCounter > 0)
             {
-                MyRb.velocity = Vector2.up * jumpForce;
+                MyRb.AddForce(Vector2.up * jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
