@@ -12,13 +12,9 @@ GameObject:
   - component: {fileID: 7171336253084902900}
   - component: {fileID: 7171336253084902903}
   - component: {fileID: 7171336253084902902}
-  - component: {fileID: 7171336253084902896}
-  - component: {fileID: 7171336253084902899}
-  - component: {fileID: 7171336253084902898}
-  - component: {fileID: 7800596220604967965}
-  - component: {fileID: 3712578375918031343}
-  - component: {fileID: 7304940062317024272}
-  m_Layer: 0
+  - component: {fileID: 1267975018}
+  - component: {fileID: 1267975020}
+  m_Layer: 11
   m_Name: barril 1
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -80,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ad5abd693307d4447a7002eff6c0c213, type: 3}
-  m_Color: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
+  m_Color: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,7 +123,7 @@ CircleCollider2D:
   m_Offset: {x: 0.19, y: 0}
   serializedVersion: 2
   m_Radius: 2.83
---- !u!114 &7171336253084902896
+--- !u!114 &1267975018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,12 +132,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7171336253084902905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fa3c260db47248a18ecb8112019040d, type: 3}
+  m_Script: {fileID: 11500000, guid: 63f29eaff95dae745891786dcbd5420b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyWhenActivated: 0
-  healthChange: -1
---- !u!114 &7171336253084902899
+  dano: 1
+  efeito: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+--- !u!114 &1267975020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,79 +146,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7171336253084902905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdab9334f9a2a4efe8c019b5d37595cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 190fb354903f79f48a329e347f52a035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 7171336253084902898}
-  useCustomActions: 0
-  customActions:
-    m_PersistentCalls:
-      m_Calls: []
-  happenOnlyOnce: 1
-  filterByTag: 1
-  filterTag: Player
---- !u!114 &7171336253084902898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171336253084902905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be840ffee03ed4abe9b3dc9b48f9cae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: 0
-  deathEffect: {fileID: 5576463398339883641, guid: 8b215292f56d69941865d004156861aa, type: 3}
---- !u!114 &7800596220604967965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171336253084902905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 810546aa5348745779a5772744036fd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 3712578375918031343}
-  useCustomActions: 0
-  customActions:
-    m_PersistentCalls:
-      m_Calls: []
-  happenOnlyOnce: 1
-  filterByTag: 1
-  filterTag: Bullet
-  frequency: 1
-  eventType: 0
---- !u!114 &3712578375918031343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171336253084902905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be840ffee03ed4abe9b3dc9b48f9cae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: 0
-  deathEffect: {fileID: 5576463398339883641, guid: 8b215292f56d69941865d004156861aa, type: 3}
---- !u!114 &7304940062317024272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171336253084902905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8862ea7b10c84421c9485c36f04335a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToDestruction: 5
+  maxHealth: 5
+  currentHealth: 3

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MyHealthSystem : MonoBehaviour
@@ -10,17 +8,19 @@ public class MyHealthSystem : MonoBehaviour
 
     private void Update()
     {
-        if(life <= 0)
+        if (life <= 0)
         {
             Die();
         }
     }
+
     public void Dano(int dano)
     {
         life = life - dano;
         ui.SetLife(life);
     }
-    void Die()
+
+    private void Die()
     {
         player.GetComponent<Moving>().enabled = true;
         player.GetComponent<PlayerAttack>().enabled = true;

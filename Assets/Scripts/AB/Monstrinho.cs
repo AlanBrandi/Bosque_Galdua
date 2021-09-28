@@ -1,22 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Monstrinho : SpawnerManager
 {
     public int dano = 5;
     public float moveSpeed = 5f;
-    GameObject Player;
-    MyHealthSystem PlayerHP;
-    Vector2 movement;
-    Rigidbody2D rb;
-
-
+    private GameObject Player;
+    private MyHealthSystem PlayerHP;
+    private Vector2 movement;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-       
+
         Player = GameObject.FindGameObjectWithTag("Player");
     }
 
