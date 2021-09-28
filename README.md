@@ -82,7 +82,7 @@ O jogo conta a história do guardião do Bosque Galdua, que tem a missão de res
 - Empurrar: Você como jogador pode empurrar caixas ou outros *props* para resolver enigmas.
 - Etc.
 ### Diferencial: 
-O diferencial do Bosque Galdua em relação aos outros é justamente { insira dados técnicos que eu não sei quais são ] e também, o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
+O diferencial do Bosque Galdua em relação aos outros é justamente a estética monocromática que ao decorrer do jogo, se ganha cor, além, de ser um metroidvania com práticas diferentes dos que já existem e também, o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
 ### Público Alvo:
 Crianças maiores de 10 anos, adolescentes, jovens adultos e adultos que gostam do estilo Metroidvania junto de jogadores que gostaram do estilo de jogo monocromático como o Limbo.
 
