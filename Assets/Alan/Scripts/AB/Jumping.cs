@@ -6,15 +6,17 @@ public class Jumping : MonoBehaviour
 {
     public Rigidbody2D MyRb;
     public KeyCode thiskey;
-    bool IsGrounded;
+    public bool IsGrounded;
     public Animator MyAni;
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatisground;
+    public LayerMask slopeground;
     public float jumpForce;
     float jumpTimeCounter;
     public float JumpTime;
-    bool isJumping = false;
+    public bool isJumping = false;
+    public Slope slop;
 
     private void Update()
     {
@@ -28,7 +30,7 @@ public class Jumping : MonoBehaviour
         }
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatisground);
-        if (IsGrounded == true && Input.GetKeyDown(thiskey))
+        if (IsGrounded == true && Input.GetKeyDown(thiskey) && slop.slopeDownAngle <= slop.maxSlopeAngle)
         {
             //MyAni.SetBool("IsJumping", true);
             isJumping = true;

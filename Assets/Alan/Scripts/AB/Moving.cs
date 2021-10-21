@@ -7,7 +7,7 @@ public class Moving : MonoBehaviour
     public Animator MyAnimator;
     public GameObject Player;
     public Rigidbody2D rb;
-    float hor;
+    public float hor;
     public float speed = 1;
     private void Update()
     {

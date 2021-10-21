@@ -506,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396712512219133163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.68, y: -8.93, z: 0}
+  m_LocalPosition: {x: 1.5, y: -8.93, z: 0}
   m_LocalScale: {x: 6.666666, y: 6.666666, z: 0}
   m_Children: []
   m_Father: {fileID: 4396712512728997859}
@@ -607,7 +607,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 40.4426, y: -0.22969392}
+  position: {x: 37.7526, y: -0.6296939}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 4396712513470232984}
   - component: {fileID: 4396712513470232985}
   - component: {fileID: 4396712513470232986}
+  - component: {fileID: 4396712512014042369}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -970,14 +971,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyRb: {fileID: 4396712511534776124}
   thiskey: 32
+  IsGrounded: 0
   MyAni: {fileID: 4396712511534776125}
   feetPos: {fileID: 4396712512219133162}
   checkRadius: 0.23
   whatisground:
     serializedVersion: 2
     m_Bits: 1024
+  slopeground:
+    serializedVersion: 2
+    m_Bits: 8
   jumpForce: 45
   JumpTime: 0.25
+  isJumping: 0
+  slop: {fileID: 4396712512014042369}
 --- !u!114 &4396712513470232983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +1000,7 @@ MonoBehaviour:
   MyAnimator: {fileID: 4396712511534776125}
   Player: {fileID: 4396712511534776126}
   rb: {fileID: 4396712511534776124}
+  hor: 0
   speed: 9
 --- !u!114 &4396712513470232984
 MonoBehaviour:
@@ -1053,6 +1061,34 @@ MonoBehaviour:
   AttackRange: 0.74
   AttackDamage: 5
   PlayerManager: {fileID: 4396712513470232987}
+--- !u!114 &4396712512014042369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396712513470232987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6049d5456fffdca46bafa768d89b5d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 4396712513470232982}
+  move: {fileID: 4396712513470232983}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  slopeground:
+    serializedVersion: 2
+    m_Bits: 8
+  feetPos: {fileID: 4396712512219133162}
+  maxSlopeAngle: 50
+  slopeCheckDistance: 1
+  checkRadius: 0.25
+  slopeDownAngle: 0
+  isOnSlope: 0
+  noFriction: {fileID: 6200000, guid: efff11c233bdffd45b9f2ef4c59a19ab, type: 2}
+  FullFriction: {fileID: 6200000, guid: b8eceed701f63f844923c7c2ea37fc96, type: 2}
 --- !u!1 &4396712513477637367
 GameObject:
   m_ObjectHideFlags: 0
