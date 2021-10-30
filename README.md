@@ -67,7 +67,7 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 ### Outros:
 - Conquistas: Conquistas desbloqueadas durante o jogo ao realizar um determinado objetivo.
 - Totens, Máscaras e colecionáveis: São fragmentos que podem ser visualizados dentro do jogo, como fora (menu), os mesmos contam as histórias por trás do jogo.
-###
+## -----------------------------------------------------------------------------------------
 # Bosque Galdua
 O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que fora corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso o jogo possui menu, gameplay, menu de morte e tela final.
 - Objetivo: Salvar a floresta que foi corrompida.
