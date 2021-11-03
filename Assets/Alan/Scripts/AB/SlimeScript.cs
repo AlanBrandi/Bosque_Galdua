@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class SlimeScript : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     public int dano = 5;
     public float speed = 5;
+    public SpriteRenderer SR_slime;
+    public BoxCollider2D Boxcollider;
+    public CircleCollider2D Circlecollider;
+
     GameObject Player;
-    BoxCollider2D Boxcollider;
-    CircleCollider2D Circlecollider;
-    SpriteRenderer SR_slime;
 
     private void Start()
     {
-        Boxcollider = this.GetComponent<BoxCollider2D>();
-        Circlecollider = this.GetComponent<CircleCollider2D>();
-        rb = this.GetComponent<Rigidbody2D>();
-        SR_slime = this.GetComponent<SpriteRenderer>();
         Invoke("Esquerda", 0);
     }
 
     //Moving
-    void Esquerda()
+    /*void Esquerda()
     {
         SR_slime.flipX = true;
         Vector2 direction = new Vector2(1, 0);
@@ -36,7 +33,7 @@ public class SlimeScript : MonoBehaviour
         rb.velocity = direction * speed;
         Invoke("Esquerda", 5);
     }
-
+    */
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -45,14 +42,12 @@ public class SlimeScript : MonoBehaviour
             Player.GetComponent<MyHealthSystem>().Dano(dano);
         }
     }
-    /*public void MudarColi()
+    public void MudarColi()
     {
-        Boxcollider.enabled = false;
         Circlecollider.enabled = true;
     }
     public void VoltarColi()
     {
         Circlecollider.enabled = false;
-        Boxcollider.enabled = true;
-    }*/
+    }
 }
