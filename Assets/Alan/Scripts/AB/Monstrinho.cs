@@ -22,7 +22,7 @@ public class Monstrinho : SpawnerManager
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         rb.rotation = angle;
         direction.Normalize();
-        rb.AddForce(direction);
+        rb.velocity = direction*moveSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
