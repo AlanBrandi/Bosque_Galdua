@@ -15,8 +15,10 @@ public class UiManager : MonoBehaviour
     public GameObject FX;
     public GameObject WinPanel;
     int score = 0;
+    Transform whereToAddEfecct;
     public int Life;
     public GameObject player;
+    public GameObject playerManager;
     public IsBlueInside Blue;
     public IsGreenInside Green;
     public IsRedInside Red;
@@ -25,8 +27,9 @@ public class UiManager : MonoBehaviour
     private void Start()
     {
        // txtScore.text = "0";
-        Life = player.GetComponent<MyHealthSystem>().life;
+        Life = playerManager.GetComponent<MyHealthSystem>().life;
     }
+
     //================================================================
     //helpers
     public void SetScore(int value)
@@ -44,7 +47,7 @@ public class UiManager : MonoBehaviour
     public void SetLife(int Life)
     {
         slider.value = Life;
-        Instantiate(HIT, player.transform.position, Quaternion.identity);
+        Instantiate(HIT, whereToAddEfecct.position, Quaternion.identity);
 
         if (Life <= 0)
         {
@@ -58,6 +61,7 @@ public class UiManager : MonoBehaviour
     }
     private void Update()
     {
+        whereToAddEfecct = player.transform;
         if (Blue.blueinside == true && Red.redinside == true && Green.greeninside == true)
         {
             FakeUi.SetActive(false);

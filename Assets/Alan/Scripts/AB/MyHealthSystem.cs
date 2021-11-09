@@ -4,7 +4,8 @@ public class MyHealthSystem : MonoBehaviour
 {
     public UiManager ui;
     public int life = 15;
-    public GameObject player;
+    public GameObject playerManager;
+    public Animator ani;
 
     private void Update()
     {
@@ -18,15 +19,16 @@ public class MyHealthSystem : MonoBehaviour
     {
         life = life - dano;
         ui.SetLife(life);
+        return;
     }
 
     private void Die()
     {
-        player.GetComponent<Moving>().enabled = true;
-        player.GetComponent<PlayerAttack>().enabled = true;
-        player.GetComponent<HighAttack>().enabled = true;
-        player.GetComponent<Jumping>().enabled = true;
-        //animação de morrer
+        playerManager.GetComponent<Moving>().enabled = false;
+        playerManager.GetComponent<PlayerAttack>().enabled = false;
+        playerManager.GetComponent<PlayerHighAttack>().enabled = false;
+        playerManager.GetComponent<Jumping>().enabled = false;
+        ani.SetFloat("Speed", 0);
         ui.SetLife(0);
     }
 }

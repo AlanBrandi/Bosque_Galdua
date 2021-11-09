@@ -32,9 +32,10 @@ public class PlayerAttack : MonoBehaviour
         MyAni.SetTrigger("Attack");
 
        Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
-
+        
         foreach(Collider2D enemy in HitEnemies)
         {
+            Debug.Log("SLIME TOMOU DANO");
             enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }
     }

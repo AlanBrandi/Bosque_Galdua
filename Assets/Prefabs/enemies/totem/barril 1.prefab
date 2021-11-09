@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7171336253084902902}
   - component: {fileID: 1267975018}
   - component: {fileID: 1267975020}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: barril 1
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f29eaff95dae745891786dcbd5420b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dano: 1
-  efeito: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
+  dano: 5
+  efeito: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
 --- !u!114 &1267975020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 3
+  fxDie: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  fxHit: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  whereToAddEffect: {fileID: 7171336253084902901}

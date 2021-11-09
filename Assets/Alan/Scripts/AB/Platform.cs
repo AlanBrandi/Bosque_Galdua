@@ -27,5 +27,5 @@ public class Platform : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
-}
+    }
 }

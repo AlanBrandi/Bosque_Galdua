@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 932692803341958768}
   - component: {fileID: 6374293215791848656}
   - component: {fileID: 4988866373823431777}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Light2D - Fill (Drawn on top) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4153510529207897699}
   - component: {fileID: 1915300270624458334}
   - component: {fileID: 3509156615733673167}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: monstrinho 1
   m_TagString: Enemies
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -300,3 +300,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   currentHealth: 0
+  fxDie: {fileID: 963871224903422465, guid: e4d6aad6c730aae40b39ad939be0a5be, type: 3}
+  fxHit: {fileID: 963871224903422465, guid: e4d6aad6c730aae40b39ad939be0a5be, type: 3}
+  whereToAddEffect: {fileID: 8829659343052178253}

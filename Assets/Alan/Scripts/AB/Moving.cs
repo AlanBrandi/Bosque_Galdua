@@ -9,7 +9,9 @@ public class Moving : MonoBehaviour
     public Rigidbody2D rb;
     public float hor;
     public float speed = 1;
-    private void Update()
+
+    
+    private void FixedUpdate()
     {
         hor = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(hor * speed, rb.velocity.y);

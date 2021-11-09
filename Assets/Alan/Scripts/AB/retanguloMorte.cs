@@ -9,7 +9,7 @@ public class retanguloMorte : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Ui.Life = 0;
+            Ui.SetLife(0);
         }
     }
 }
