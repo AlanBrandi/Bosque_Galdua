@@ -14,7 +14,7 @@
 ## Game Flow:
 - **Artamus** começa com uma espada, e precisa resolver puzzles básicos para avançar nos níveis.
 ## Personagem e Controles:
-![Artamus](https://i.ibb.co/ZB13mRz/Artamus-Small.png)
+- ![Artamus](https://i.ibb.co/ZB13mRz/Artamus-Small.png)
 - Em Bosque Galdua, o Jogador toma o lugar de **Artamus**, um guardião da floresta que perdeu seus poderes depois de uma maldição cair sobre a floresta, enfraquecendo a vida selvagem nela.
 ## Controles:
 -  Por enquanto, o **Guardião** pode andar, pular e atacar com sua espada, tanto para os lados quanto para cima.
@@ -42,14 +42,14 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 ## Power-Ups:
 - O jogo não possui power-ups.
 ## Inimigos:
-![Slime](https://i.ibb.co/vxBbQ7V/Slime.png)
+- ![Slime](https://i.ibb.co/vxBbQ7V/Slime.png)
 - Slime: Um pequeno *slime* que se move de forma lateral dando pequeno pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
-![Totens](https://i.ibb.co/7SNc9kY/Totem-Small.png)
+- ![Totens](https://i.ibb.co/7SNc9kY/Totem-Small.png)
 - Totens: São grandes estatuas que protegiam a floresta, que agora foram corrompidas, e com isso, ataca nosso player jogando barris no mesmo.
-![Monstrinho](https://i.ibb.co/MgS232L/Teeth-Monster.png)
+- ![Monstrinho](https://i.ibb.co/MgS232L/Teeth-Monster.png)
 - Monstrinho: São monstros furiosos com dentes extremamente afiados que voam em direção ao player, são agressivos e nascem através de um grande ninho.
 ## Bosses:
-![Scathe](https://i.ibb.co/93BcTLr/Boss.png)
+- ![Scathe](https://i.ibb.co/93BcTLr/Boss.png)
 - Scathe: Um mostro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
 ## Bônus material:
 - O jogo não possui material bônus.
