@@ -122,7 +122,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396712511534776126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -704,7 +704,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: -7.1274, y: -3.1396937}
+  position: {x: -23.000793, y: -0.46082056}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -1078,8 +1078,8 @@ MonoBehaviour:
   slopeground:
     serializedVersion: 2
     m_Bits: 8
-  jumpForce: 45
-  JumpTime: 0.25
+  jumpForce: 400
+  JumpTime: 0.1
   isJumping: 0
   slop: {fileID: 4396712512014042369}
 --- !u!114 &4396712513470232983
@@ -1114,9 +1114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
-  life: 3
-  playerManager: {fileID: 0}
-  ani: {fileID: 0}
+  life: 15
+  playerManager: {fileID: 4396712513470232987}
+  ani: {fileID: 4396712511534776125}
 --- !u!114 &4396712513470232985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   MyAni: {fileID: 4396712511534776125}
   EnemyLayers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4096
   attackButton: 106
   AttackPoint: {fileID: 4396712511763348141}
   AttackRate: 1.2
@@ -1154,7 +1154,7 @@ MonoBehaviour:
   LookUp: 119
   EnemyLayers:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4096
   attackButton: 106
   AttackPoint: {fileID: 4396712511547478104}
   AttackRate: 2
