@@ -44,7 +44,7 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 ## Inimigos:
 - ![Slime](https://i.ibb.co/grkqNRG/Slime2.png)
 - Slime: Um pequeno *slime* que se move de forma lateral dando pequeno pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
-- ![Totens](https://i.ibb.co/7SNc9kY/Totem-Small.png)
+- ![Totens](https://i.ibb.co/1GFNJty/Totem-Super-Small.png)
 - Totens: São grandes estatuas que protegiam a floresta, que agora foram corrompidas, e com isso, ataca nosso player jogando barris no mesmo.
 - ![Monstrinho](https://i.ibb.co/MgS232L/Teeth-Monster.png)
 - Monstrinho: São monstros furiosos com dentes extremamente afiados que voam em direção ao player, são agressivos e nascem através de um grande ninho.
