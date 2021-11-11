@@ -42,7 +42,6 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 ## Power-Ups:
 - O jogo não possui power-ups.
 ## Inimigos:
-- ![Slime](https://i.ibb.co/vxBbQ7V/Slime.png)
 - ![Slime](https://i.ibb.co/grkqNRG/Slime2.png)
 - Slime: Um pequeno *slime* que se move de forma lateral dando pequeno pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
 - ![Totens](https://i.ibb.co/7SNc9kY/Totem-Small.png)
