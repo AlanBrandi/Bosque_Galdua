@@ -28,7 +28,7 @@ public class Moving : MonoBehaviour
 
         MyAnimator.SetFloat("Speed", rb.velocity.magnitude);
 
-        float randomPitch = Random.Range(0.8f, 1.2f);
+        float randomPitch = Random.Range(0.8f, 1.5f);
         footstep.pitch = randomPitch;
 
         if (rb.velocity.x !=0 && godpleasehelpme.IsGrounded == true)
