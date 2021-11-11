@@ -14,7 +14,7 @@
 ## Game Flow:
 - **Artamus** começa com uma espada, e precisa resolver puzzles básicos para avançar nos níveis.
 ## Personagem e Controles:
-![Isso é uma imagem](https://drive.google.com/file/d/1UOn9s0tvRvJ35m1jG_bVy3dT1rsecaF1/view)
+![Artamus](https://ibb.co/gW2PStj)
 - Em Bosque Galdua, o Jogador toma o lugar de **Artamus**, um guardião da floresta que perdeu seus poderes depois de uma maldição cair sobre a floresta, enfraquecendo a vida selvagem nela.
 ## Controles:
 -  Por enquanto, o **Guardião** pode andar, pular e atacar com sua espada, tanto para os lados quanto para cima.
