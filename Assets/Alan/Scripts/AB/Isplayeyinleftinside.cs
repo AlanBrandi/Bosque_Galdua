@@ -14,11 +14,10 @@ public class Isplayeyinleftinside : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             alavanca.SetBool("IsAlavancaAtivada", true);
-            print("alavanca");
             Keycardtree = true;
             Destroy(luz_vermelha);
             luz_verde.SetActive(true);
-            BigTreeEntrance.SetBool("IsKeycardOn", true);
+            BigTreeEntrance.SetTrigger("Open");
         }
     }
 }

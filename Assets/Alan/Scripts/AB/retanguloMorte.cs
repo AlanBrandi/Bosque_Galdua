@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class retanguloMorte : MonoBehaviour
 {
-    public UiManager Ui;
+    public MyHealthSystem healthSystemPlayer;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Ui.SetLife(0);
+            healthSystemPlayer.Die();
         }
     }
 }

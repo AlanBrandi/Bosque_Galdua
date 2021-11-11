@@ -22,13 +22,14 @@ public class MyHealthSystem : MonoBehaviour
         return;
     }
 
-    private void Die()
+    public void Die()
     {
         playerManager.GetComponent<Moving>().enabled = false;
         playerManager.GetComponent<PlayerAttack>().enabled = false;
         playerManager.GetComponent<PlayerHighAttack>().enabled = false;
         playerManager.GetComponent<Jumping>().enabled = false;
-        ani.SetFloat("Speed", 0);
+        Destroy(this.gameObject);
         ui.SetLife(0);
+
     }
 }
