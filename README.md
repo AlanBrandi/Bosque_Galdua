@@ -46,10 +46,12 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 - Slime: Um pequeno *slime* que se move de forma lateral dando pequeno pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
 - ![Totens](https://i.ibb.co/1GFNJty/Totem-Super-Small.png)
 - Totens: São grandes estatuas que protegiam a floresta, que agora foram corrompidas, e com isso, ataca nosso player jogando barris no mesmo.
-- ![Monstrinho](https://i.ibb.co/MgS232L/Teeth-Monster.png)
+- ![Monstrinho](https://i.ibb.co/rpvM5Ts/Mini-Monster.png)
 - Monstrinho: São monstros furiosos com dentes extremamente afiados que voam em direção ao player, são agressivos e nascem através de um grande ninho.
+- ![Spawner](https://i.ibb.co/QPRQdzg/Mini-Spawner.png)
+- Spawner: Casa dos monstrinhos, de onde eles surgem e vão atrás do player.
 ## Bosses:
-- ![Scathe](https://i.ibb.co/93BcTLr/Boss.png)
+- ![Scathe](https://i.ibb.co/sb9MFgf/MiniBoss.png)
 - Scathe: Um mostro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
 ## Bônus material:
 - O jogo não possui material bônus.
