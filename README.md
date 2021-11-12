@@ -36,7 +36,7 @@
 - Local atual (ao entrar)
 - Objetivo atual.
 Ao tomar dano, a tela fica avermelhada, para indicar perigo. Cada ponto de vida equivale a dois ataques recebidos de inimigos.
-Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um seletor de poderes na HUD.
+Planos de adicionar uma barra de ''mana'' para usar poderes, também um seletor de poderes na HUD.
 ## Mecânicas:
 - Andar: O player pode andar no eixo x utilizando as teclas A e D.
 - Pular: O player pode pular e se movimentar no eixo y utilizando a tecla Space.
@@ -46,21 +46,21 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 - O jogo não possui power-ups.
 ## Inimigos:
 - ![Slime](https://i.ibb.co/grkqNRG/Slime2.png)
-- Slime: Um pequeno *slime* que se move de forma lateral dando pequeno pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
+- Slime: Um pequeno *slime* que se move de forma lateral dando pequenos pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
 - ![Totens](https://i.ibb.co/1GFNJty/Totem-Super-Small.png)
-- Totens: São grandes estatuas que protegiam a floresta, que agora foram corrompidas, e com isso, ataca nosso player jogando barris no mesmo.
+- Totens: São grandes estátuas que protegiam a floresta, que agora foram corrompidas e com isso, ataca nosso player jogando barris no mesmo.
 - ![Monstrinho](https://i.ibb.co/rpvM5Ts/Mini-Monster.png)
 - Monstrinho: São monstros furiosos com dentes extremamente afiados que voam em direção ao player, são agressivos e nascem através de um grande ninho.
 - ![Spawner](https://i.ibb.co/QPRQdzg/Mini-Spawner.png)
 - Spawner: Casa dos monstrinhos, de onde eles surgem e vão atrás do player.
 ## Bosses:
 - ![Scathe](https://i.ibb.co/sb9MFgf/MiniBoss.png)
-- Scathe: Um mostro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
+- Scathe: Um monstro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
 ## Bônus material:
 - O jogo não possui material bônus.
 ## --------------------------------------------------------------------------------------
 # Bosque Galdua
-O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso o jogo possui menu, gameplay, menu de morte e tela final.
+O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso, o jogo possui menu, gameplay, menu de morte e tela final.
 - Objetivo: Salvar a floresta que foi corrompida.
 - Gênero: Plataforma de Ação.
 -  Andar: O player pode andar no eixo x utilizando as teclas A e D.
