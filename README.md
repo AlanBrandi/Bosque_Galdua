@@ -23,9 +23,12 @@
 -  O jogo não utiliza nenhum recurso exclusivo de qualquer plataforma.
 ## Mundo do Jogo:
 - O jogo se passa em dois cenários:
+- ![Floresta](https://i.ibb.co/S0LTB0x/Floresta.png)
 - A floresta principal é cheia de árvores e gramíneas.
-- A árvore gigantes no qual o personagem entra é um ambientes mais claustrofóbicos e sem espaço, mas possuindo áreas secretas que são descobertas ao destruir uma parte de seu ambiente.
+- ![Árvore](https://i.ibb.co/59qbgFT/rvore2.png)
+- A árvore gigante no qual o personagem entra é um ambientes mais claustrofóbicos e sem espaço, mas possuindo áreas secretas que são descobertas ao destruir uma parte de seu ambiente.
 - A floresta principal é o grande cenário da história do jogo, pois ela é o alvo do corrompimento. As árvores e o subsolo são o produto desse corrompimento. Todas as áreas são conectadas linearmente.
+- ![Fluxo](https://i.ibb.co/Nrzjcxt/Fluxo2.png)
 ## Interface:
 - Ao entrar no jogo, o jogador se depara com a tela inicial, composta por três opções: Começar, Opções e Sair. O usuário pode acessá-las com o mouse, apenas.
 # O Heads Up Display (HUD) apresenta:
@@ -55,7 +58,7 @@ Planos de adicionar uma barra de ‘’maná’’ para usar poderes, também um
 - Scathe: Um mostro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
 ## Bônus material:
 - O jogo não possui material bônus.
-## -----------------------------------------------------------------------------------------
+## --------------------------------------------------------------------------------------
 # Bosque Galdua
 O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso o jogo possui menu, gameplay, menu de morte e tela final.
 - Objetivo: Salvar a floresta que foi corrompida.
@@ -67,7 +70,7 @@ O jogo conta a história do guardião do Bosque Galdua, que tem a missão de res
 ### Diferencial: 
 O diferencial do Bosque Galdua em relação aos outros é justamente a estética monocromática e o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
 ### Público Alvo:
-Crianças maiores de 10 anos, adolescentes, jovens adultos e adultos que gostam do estilo Metroidvania junto de jogadores que gostaram do estilo de jogo monocromático como o Limbo.
+Crianças maiores de 12 anos, adolescentes, jovens adultos e adultos que gostam do estilo Metroidvania junto de jogadores que gostaram do estilo de jogo monocromático como o Limbo.
 
 ### Equipe:
 - 2x Programadores: Alan Brandi, Thomas Redekop.
