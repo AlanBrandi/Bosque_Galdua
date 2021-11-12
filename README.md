@@ -27,8 +27,8 @@
 - A floresta principal é cheia de árvores e gramíneas.
 - ![Árvore](https://i.ibb.co/59qbgFT/rvore2.png)
 - A árvore gigante no qual o personagem entra é um ambientes mais claustrofóbicos e sem espaço, mas possuindo áreas secretas que são descobertas ao destruir uma parte de seu ambiente.
+- ![Fluxo](https://i.ibb.co/kJYTJSV/Fluxo1.png)
 - A floresta principal é o grande cenário da história do jogo, pois ela é o alvo do corrompimento. As árvores e o subsolo são o produto desse corrompimento. Todas as áreas são conectadas linearmente.
-- ![Fluxo](https://i.ibb.co/Nrzjcxt/Fluxo2.png)
 ## Interface:
 - Ao entrar no jogo, o jogador se depara com a tela inicial, composta por três opções: Começar, Opções e Sair. O usuário pode acessá-las com o mouse, apenas.
 # O Heads Up Display (HUD) apresenta:
