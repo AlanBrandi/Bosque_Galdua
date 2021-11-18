@@ -9,6 +9,7 @@ public class Monstrinho : SpawnerManager
     private Vector2 movement;
     private Rigidbody2D rb;
             EnemiesScript enemy;
+    AudioSource enemy3;
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class Monstrinho : SpawnerManager
 
         enemy = GetComponent<EnemiesScript>();
 
+        enemy3 = GetComponent<AudioSource>();
+        enemy3.Play();
     }
 
     private void Update()

@@ -17,6 +17,7 @@ public class Jumping : MonoBehaviour
     public float JumpTime;
     public bool isJumping = false;
     public Slope slop;
+    public AudioSource jumpSound;
 
     private void Update()
     {
@@ -41,6 +42,7 @@ public class Jumping : MonoBehaviour
 
         if (Input.GetKey(thiskey) && isJumping == true)
         {
+            jumpSound.Play();
             if (jumpTimeCounter > 0)
             {
                 MyRb.AddForce(Vector2.up * jumpForce);
