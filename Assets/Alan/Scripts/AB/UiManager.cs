@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
+    public GameData_SO GameData;
     public TMP_Text txtScore;
     public Slider slider;
     public GameObject DeathPanel;
@@ -26,8 +27,8 @@ public class UiManager : MonoBehaviour
     //================================================================
     private void Start()
     {
-       // txtScore.text = "0";
-        Life = playerManager.GetComponent<MyHealthSystem>().life;
+        // txtScore.text = "0";
+        Life = GameData.lives;
     }
 
     //================================================================
