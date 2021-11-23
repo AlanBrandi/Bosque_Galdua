@@ -58,6 +58,11 @@ Planos de adicionar uma barra de ''mana'' para usar poderes, também um seletor 
 - Scathe: Um monstro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
 ## Bônus material:
 - O jogo não possui material bônus.
+## Créditos extras:
+- Músicas:
+- Efeitos:
+- Sons de espada - artisticdude [Link](https://opengameart.org/content/rpg-sound-pack)
+- Monstrinho - jorickhoofd [Link](https://freesound.org/people/jorickhoofd/sounds/160045/)
 ## --------------------------------------------------------------------------------------
 # Bosque Galdua
 O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso, o jogo possui menu, gameplay, menu de morte e tela final.
