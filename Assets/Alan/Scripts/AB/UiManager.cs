@@ -29,6 +29,7 @@ public class UiManager : MonoBehaviour
     {
         // txtScore.text = "0";
         Life = GameData.lives;
+        slider.value = GameData.lives;
     }
 
     //================================================================
@@ -47,7 +48,7 @@ public class UiManager : MonoBehaviour
      
     public void SetLife(int Life)
     {
-        slider.value = Life;
+        slider.value = GameData.lives;
         Instantiate(HIT, whereToAddEfecct.position, Quaternion.identity);
 
         if (Life <= 0)
