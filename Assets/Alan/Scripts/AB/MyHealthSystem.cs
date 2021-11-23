@@ -3,13 +3,17 @@ using UnityEngine;
 public class MyHealthSystem : MonoBehaviour
 {
     public UiManager ui;
-    public int life = 15;
+    public GameData_SO GameData;
     public GameObject playerManager;
     public Animator ani;
 
+    private void Start()
+    {
+       
+    }
     private void Update()
     {
-        if (life <= 0)
+        if (GameData.lives <= 0)
         {
             Die();
         }
@@ -17,8 +21,8 @@ public class MyHealthSystem : MonoBehaviour
 
     public void Dano(int dano)
     {
-        life = life - dano;
-        ui.SetLife(life);
+        GameData.lives = GameData.lives - dano;
+        ui.SetLife(GameData.lives);
         return;
     }
 

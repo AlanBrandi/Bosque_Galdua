@@ -18,6 +18,7 @@ public class Jumping : MonoBehaviour
     public bool isJumping = false;
     public Slope slop;
     public AudioSource jumpSound;
+    public AudioSource LandSound;
 
     private void Update()
     {
@@ -31,6 +32,7 @@ public class Jumping : MonoBehaviour
         }
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatisground);
+
         if (IsGrounded == true && Input.GetKeyDown(thiskey) && slop.slopeDownAngle <= slop.maxSlopeAngle)
         {
             //MyAni.SetBool("IsJumping", true);
@@ -49,7 +51,7 @@ public class Jumping : MonoBehaviour
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
-            {
+            { 
                 isJumping = false;
             }
         }
