@@ -5,7 +5,7 @@
 ### Lançamento: TBD
 
 ## História do jogo:
-- Artamus Mentalis é um guardião da floresta que recebeu grandes poderes de um ser poderoso. Um dia, uma terrível maldição chamada **POLU** caiu sobre a floresta e Artamus perdeu seus poderes. Como ele recuperará seus poderes para salvar a floresta?
+- Artamus é um guardião da floresta que recebeu grandes poderes de um ser poderoso. Um dia, uma terrível maldição chamada **POLU** caiu sobre a floresta e Artamus perdeu seus poderes. Como ele recuperará seus poderes para salvar a floresta?
 ## Gameplay:
 - Em Bosque Galdua, o jogador controla o guardião da floresta **Artamus**, que possui uma espada. O jogador explora dois níveis: a floresta e a árvore. Os níveis duram cerca de um minuto.
 - O guardião procura métodos de derrotar monstros que foram corrompidos pela maldição e limpar a floresta, trazendo sua vida e cor de volta
