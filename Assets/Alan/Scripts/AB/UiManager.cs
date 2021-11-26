@@ -50,6 +50,9 @@ public class UiManager : MonoBehaviour
     {
         slider.value = GameData.lives;
         Instantiate(HIT, whereToAddEfecct.position, Quaternion.identity);
+        AudioSource hitSFX = HIT.GetComponent<AudioSource>();
+        float randomPitch = Random.Range(0.8f, 1.4f);
+        hitSFX.pitch = randomPitch;
 
         if (Life <= 0)
         {

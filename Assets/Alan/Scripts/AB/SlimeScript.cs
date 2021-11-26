@@ -11,9 +11,19 @@ public class SlimeScript : MonoBehaviour
     public BoxCollider2D Boxcollider;
     public CircleCollider2D Circlecollider;
     public MyHealthSystem healthSystem;
+    AudioSource slimeSounds;
 
-    
+    private void Awake()
+    {
+        slimeSounds = GetComponent<AudioSource>();
+        slimeSounds.Play();
+    }
 
+    private void Update()
+    {
+        float randomPitch = Random.Range(0.8f, 1.2f);
+        slimeSounds.pitch = randomPitch;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
 

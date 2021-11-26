@@ -421,7 +421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.2199707, y: 0.08996582}
+  m_AnchoredPosition: {x: -1.2199707, y: -3.114624}
   m_SizeDelta: {x: 812.36, y: 472.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6216164415047213283
@@ -522,7 +522,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 2022407291
   m_SortingOrder: 3471
   m_TargetDisplay: 0
 --- !u!114 &884552475005593254
@@ -577,10 +577,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae5060040d61dc46b2b8dc49a5a3916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameData: {fileID: 11400000, guid: af4326fd48ef82a45899ff50f0e0a553, type: 2}
   txtScore: {fileID: 0}
   slider: {fileID: 1338782851}
   DeathPanel: {fileID: 884552475737690752}
-  HIT: {fileID: 963871224903422465, guid: e4d6aad6c730aae40b39ad939be0a5be, type: 3}
+  HIT: {fileID: 963871224903422465, guid: e140044d38a383c45adcfa61cbe98af7, type: 3}
   HUD_UI: {fileID: 7567252457838182470}
   FX: {fileID: 100004, guid: 757df604761b8ef42831192c70ee1099, type: 3}
   WinPanel: {fileID: 7501504887838097269}
@@ -1231,9 +1232,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'escale a grande estrutura
-
-'
+  m_text: para prosseguir
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45998618e73ac2d4fb76b3907fc027fd, type: 2}
   m_sharedMaterial: {fileID: 7774668265824515567, guid: 45998618e73ac2d4fb76b3907fc027fd, type: 2}
@@ -1515,7 +1514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chegue ao topo
+  m_text: Resolva o enigma
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45998618e73ac2d4fb76b3907fc027fd, type: 2}
   m_sharedMaterial: {fileID: 7774668265824515567, guid: 45998618e73ac2d4fb76b3907fc027fd, type: 2}
