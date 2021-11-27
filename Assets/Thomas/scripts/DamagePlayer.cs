@@ -6,11 +6,15 @@ public class DamagePlayer : MonoBehaviour
     public int dano;
     public GameObject efeito;
     MyHealthSystem health;
+    AudioSource audioSource;
+    public AudioClip barrel_impact;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         health = MyHealthSystem.FindObjectOfType<MyHealthSystem>();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = barrel_impact;
         Destroy(gameObject, 5f);
     }
 
@@ -22,7 +26,9 @@ public class DamagePlayer : MonoBehaviour
             Instantiate(efeito, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+        if (collision.relativeVelocity.magnitude > 10)
+        {
+            audioSource.PlayOneShot(barrel_impact, collision.relativeVelocity.magnitude/10);
+        }
     }
-
-   
 }

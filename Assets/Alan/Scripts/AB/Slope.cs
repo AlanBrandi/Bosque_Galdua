@@ -83,11 +83,11 @@ public class Slope : MonoBehaviour
 
             if(slopeDownAngle != 0 || slopeDownAngle != slopeDownAngleOld)
             {
-                isOnSlope = true;
+                isOnSlope = false;
             }
             else
             {
-                isOnSlope = false;
+                isOnSlope = true;
             }
 
             slopeDownAngleOld = slopeDownAngle;

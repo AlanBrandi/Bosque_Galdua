@@ -9,10 +9,15 @@ public class SpawnBarrel : MonoBehaviour
     public float SpawnRate = 2f;
     private float NextSpawn;
     private Transform where;
+    AudioSource barrelLand;
 
-    private void Start()
+    private void Awake()
     {
         where = this.GetComponent<Transform>();
+    }
+    void Start()
+    {
+        barrelLand = GetComponent<AudioSource>();
     }
 
     private void Update()
