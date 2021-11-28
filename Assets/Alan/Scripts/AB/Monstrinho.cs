@@ -22,7 +22,8 @@ public class Monstrinho : SpawnerManager
         enemy = GetComponent<EnemiesScript>();
 
         enemy3 = GetComponent<AudioSource>();
-        enemy3.Play();
+
+        InvokeRepeating("ConstantSound", 0f, 0.3f);
     }
 
     private void Update()
@@ -41,7 +42,13 @@ public class Monstrinho : SpawnerManager
             PlayerHP.Dano(dano);
             enemy.TakeDamage(enemy.maxHealth);
             Destroy(this.gameObject);
-
         }
+    }
+
+    void ConstantSound()
+    {
+        float randomPitch = Random.Range(0.9f, 1f);
+        enemy3.pitch = randomPitch;
+        enemy3.Play();
     }
 }

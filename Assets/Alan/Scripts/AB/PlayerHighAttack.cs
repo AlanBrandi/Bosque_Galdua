@@ -17,6 +17,15 @@ public class PlayerHighAttack : MonoBehaviour
 
     public GameObject PlayerManager;
 
+    //Sound
+    AudioSource playerManager;
+    AudioClip attackSound;
+
+    private void Start()
+    {
+        playerManager = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (Input.GetKey(LookUp))
@@ -26,7 +35,15 @@ public class PlayerHighAttack : MonoBehaviour
             {
                 if (Input.GetKeyDown(attackButton))
                 {
-                    Attack();
+                    //Sound settings
+                    int i = Random.Range(1, 3);
+                    float randomPitch = Random.Range(.9f, 1.1f);
+                    playerManager.pitch = randomPitch;
+                    attackSound = Resources.Load("sword_swing_" + i) as AudioClip;
+                    playerManager.PlayOneShot(attackSound);
+
+                    MyAni.SetTrigger("Highattack");
+                    Invoke("Attack", .3f);
                     NextAttackTime = Time.time + 1f / AttackRate;
                 }
             }
@@ -41,8 +58,6 @@ public class PlayerHighAttack : MonoBehaviour
 
     void Attack()
     {
-        MyAni.SetTrigger("Highattack");
-
         Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
 
         foreach (Collider2D enemy in HitEnemies)

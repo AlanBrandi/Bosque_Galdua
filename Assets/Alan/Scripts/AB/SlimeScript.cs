@@ -29,7 +29,7 @@ public class SlimeScript : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("BATEU ");
+            Debug.Log("Slime deu dano em player.");
             healthSystem.Dano(dano);
         }
     }

@@ -9,9 +9,14 @@ public class Moving : MonoBehaviour
     public Rigidbody2D rb;
     public float hor;
     public float speed = 1;
-    bool isMoving = false;
+    internal bool isMoving = false;
     public AudioSource footstep;
-    public Jumping godpleasehelpme;
+    Jumping jumpScript;
+
+    private void Start()
+    {
+        jumpScript = GetComponent<Jumping>();
+    }
     private void FixedUpdate()
     {
         hor = Input.GetAxisRaw("Horizontal");
@@ -31,7 +36,7 @@ public class Moving : MonoBehaviour
         float randomPitch = Random.Range(0.8f, 1.5f);
         footstep.pitch = randomPitch;
 
-        if (rb.velocity.x !=0 && godpleasehelpme.IsGrounded == true)
+        if (rb.velocity.x !=0 && jumpScript.IsGrounded == true)
         {
             isMoving = true;
         }
