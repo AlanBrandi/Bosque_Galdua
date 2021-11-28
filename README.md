@@ -60,8 +60,8 @@ Planos de adicionar uma barra de ''mana'' para usar poderes, também um seletor 
 - O jogo não possui material bônus.
 ## Créditos extras:
 - Músicas:
+- Awakening - Steffen Daum [Link](https://www.youtube.com/watch?v=gjSNbiowp38)
 - Name of the Night - Uppbeat - [Link](https://uppbeat.io/t/kisnou/name-of-the-night) (License code: KAZNNKGMEBM8OYRP)
-- 
 - Efeitos:
 - Personagem andando e pulando- [Link](https://www.fesliyanstudios.com)
 - Personagem tomando dano - passAirmangrace - [Link](https://freesound.org/people/passAirmangrace/sounds/340861/)
