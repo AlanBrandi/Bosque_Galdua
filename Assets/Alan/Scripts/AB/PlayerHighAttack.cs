@@ -10,41 +10,29 @@ public class PlayerHighAttack : MonoBehaviour
     public LayerMask EnemyLayers;
     public KeyCode attackButton;
     public Transform AttackPoint;
-    public float AttackRate = 2f;
-    float NextAttackTime = 0f;
+    internal float NextAttackTime = 0f;
     public float AttackRange = 0.5f;
     public int AttackDamage = 5;
+    PlayerAttack playerAttack;
 
     public GameObject PlayerManager;
-
-    //Sound
-    AudioSource playerManager;
-    AudioClip attackSound;
-
     private void Start()
     {
-        playerManager = GetComponent<AudioSource>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
-
     private void Update()
     {
         if (Input.GetKey(LookUp))
         {
             PlayerManager.GetComponent<PlayerAttack>().enabled = false;
-            if (Time.time >= NextAttackTime)
+            if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
                 if (Input.GetKeyDown(attackButton))
                 {
-                    //Sound settings
-                    int i = Random.Range(1, 3);
-                    float randomPitch = Random.Range(.9f, 1.1f);
-                    playerManager.pitch = randomPitch;
-                    attackSound = Resources.Load("sword_swing_" + i) as AudioClip;
-                    playerManager.PlayOneShot(attackSound);
-
+                    StartCoroutine(playerAttack.attackSoundAndDelay());
                     MyAni.SetTrigger("Highattack");
-                    Invoke("Attack", .3f);
-                    NextAttackTime = Time.time + 1f / AttackRate;
+                    InvokeRepeating("Attack", .3f, .016f);
+                    StartCoroutine(attackActiveHigh());
                 }
             }
 
@@ -55,23 +43,28 @@ public class PlayerHighAttack : MonoBehaviour
         }
 
     }
-
     void Attack()
     {
         Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
 
         foreach (Collider2D enemy in HitEnemies)
         {
+            Debug.Log("Inimigo tomou dano por ataque de cima.");
             enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+            StartCoroutine(playerAttack.attackCooldown());
         }
     }
-
-    private void OnDrawGizmosSelected()
+        private void OnDrawGizmosSelected()
     {
         if (AttackPoint == null)
         {
             return;
         }
         Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
+    }
+    IEnumerator attackActiveHigh()
+    {
+        yield return new WaitForSecondsRealtime(.4f);
+        CancelInvoke("Attack");
     }
 }

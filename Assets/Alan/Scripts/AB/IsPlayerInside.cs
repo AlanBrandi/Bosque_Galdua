@@ -4,34 +4,26 @@ using UnityEngine;
 
 public class IsPlayerInside : MonoBehaviour
 {
-    Animator MyAnimator;
     Transform MyTransform;
-    public Animator alavanca;
-    public Instanciararvore scriptarvore;
-    public bool playerinside = false; 
+    Animator lever;
+    public Transform spawnLocation;
+    public GameObject spawnGO;
+    bool playerinside = false;
     
 
     private void Start()
     {
-        MyAnimator = GetComponentInParent<Animator>();
+        lever = GetComponent<Animator>();
         MyTransform = GetComponent<Transform>();
-    }
 
-    private void Update()
-    {
-        if (scriptarvore.instanciou == true)
-        {
-            MyTransform.position = new Vector3(0, 700, 0);
-        }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && playerinside == false)
         {
             print("player entrou");
-            alavanca.SetBool("IsLeverOn", true);
-            MyAnimator.SetBool("PlayerInside", true);
+            Instantiate(spawnGO, spawnLocation.position, Quaternion.identity);
+            lever.SetBool("IsLeverOn", true);
             playerinside = true;
         }
     }

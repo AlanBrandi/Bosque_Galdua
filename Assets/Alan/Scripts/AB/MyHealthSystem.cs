@@ -6,11 +6,6 @@ public class MyHealthSystem : MonoBehaviour
     public GameData_SO GameData;
     public GameObject playerManager;
     public Animator ani;
-
-    private void Start()
-    {
-       
-    }
     private void Update()
     {
         if (GameData.lives <= 0)

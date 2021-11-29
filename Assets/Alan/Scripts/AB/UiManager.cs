@@ -23,7 +23,6 @@ public class UiManager : MonoBehaviour
     public IsBlueInside Blue;
     public IsGreenInside Green;
     public IsRedInside Red;
-    public GameObject FakeUi;
     //================================================================
     private void Start()
     {
@@ -69,7 +68,6 @@ public class UiManager : MonoBehaviour
         whereToAddEfecct = player.transform;
         if (Blue.blueinside == true && Red.redinside == true && Green.greeninside == true)
         {
-            FakeUi.SetActive(false);
             HUD_UI.SetActive(false);
             WinPanel.SetActive(true);
         }

@@ -13,7 +13,7 @@ public class SpawnBarrel : MonoBehaviour
 
     private void Awake()
     {
-        where = this.GetComponent<Transform>();
+        where = GetComponent<Transform>();
     }
     void Start()
     {
