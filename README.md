@@ -60,9 +60,17 @@ Planos de adicionar uma barra de ''mana'' para usar poderes, também um seletor 
 - O jogo não possui material bônus.
 ## Créditos extras:
 - Músicas:
+- Awakening - Steffen Daum [Link](https://www.youtube.com/watch?v=gjSNbiowp38)
+- Name of the Night - Uppbeat - [Link](https://uppbeat.io/t/kisnou/name-of-the-night) (License code: KAZNNKGMEBM8OYRP)
 - Efeitos:
-- Sons de espada - artisticdude [Link](https://opengameart.org/content/rpg-sound-pack)
+- Personagem andando e pulando- [Link](https://www.fesliyanstudios.com)
+- Personagem tomando dano - passAirmangrace - [Link](https://freesound.org/people/passAirmangrace/sounds/340861/)
+- Slime pulando - artisticdude - [Link](https://opengameart.org/content/rpg-sound-pack)
+- Morte do totem - rafaelzimrp - [Link](https://freesound.org/people/rafaelzimrp/sounds/570855/)
 - Monstrinho - jorickhoofd [Link](https://freesound.org/people/jorickhoofd/sounds/160045/)
+- Monstrinho morrendo - Rickplayer - [Link](https://freesound.org/people/Rickplayer/sounds/530486/)
+- Plataforma, invocação e impacto do barril, impacto do tronco, sons de ataque da espada e sons de slime morrendo - [Link](https://youtube.com/c/AudioLibrarySoundEffects)
+- Barril quebrando - kevinkace - [Link](https://freesound.org/people/kevinkace/sounds/66772/)
 ## --------------------------------------------------------------------------------------
 # Bosque Galdua
 O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso, o jogo possui menu, gameplay, menu de morte e tela final.
@@ -79,7 +87,7 @@ Crianças maiores de 12 anos, adolescentes, jovens adultos e adultos que gostam 
 
 ### Equipe:
 - 2x Programadores: Alan Brandi, Thomas Redekop.
-- 2x Ilustradoras: Ana Clara, Letícia Labarca.
+- 2x Ex-Ilustradoras: Ana Clara, Letícia Labarca.
 - 1x Level Design: Frederico Guilherme.
 
 ## Cronograma:
