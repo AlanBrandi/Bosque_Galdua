@@ -15,6 +15,7 @@ public class Moving : MonoBehaviour
 
     private void Start()
     {
+        footstep.pitch = 1;
         jumpScript = GetComponent<Jumping>();
     }
     private void FixedUpdate()
