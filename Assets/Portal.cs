@@ -11,7 +11,6 @@ public class Portal : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            UiManager.MyLoadScene("Tree");
             levelChanger.FadeToLevel(levelName);
         }
     }
