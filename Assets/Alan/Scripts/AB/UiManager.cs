@@ -59,6 +59,10 @@ public class UiManager : MonoBehaviour
             DeathPanel.SetActive(true);
         }
     }
+    public void FadeOut(Animator fade)
+    {
+        fade.SetTrigger("FadeOut");
+    }
     public void MyLoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
