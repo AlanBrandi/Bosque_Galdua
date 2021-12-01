@@ -5,7 +5,9 @@ public class MyHealthSystem : MonoBehaviour
     public UiManager ui;
     public GameData_SO GameData;
     public GameObject playerManager;
+    public SpriteRenderer Player;
     public Animator ani;
+    public GameObject Hit;
     private void Update()
     {
         if (GameData.lives <= 0)
@@ -18,6 +20,8 @@ public class MyHealthSystem : MonoBehaviour
     {
         GameData.lives = GameData.lives - dano;
         ui.SetLife(GameData.lives);
+        Hit.SetActive(true);
+        Invoke("Desligarhit", 1);
         return;
     }
 
@@ -30,5 +34,9 @@ public class MyHealthSystem : MonoBehaviour
         Destroy(this.gameObject);
         ui.SetLife(0);
 
+    }
+    public void Desligarhit()
+    {
+        Hit.SetActive(false);
     }
 }

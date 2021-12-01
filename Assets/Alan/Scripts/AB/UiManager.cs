@@ -16,6 +16,7 @@ public class UiManager : MonoBehaviour
     public GameObject FX;
     public GameObject WinPanel;
     int score = 0;
+    public GameObject creditosPanel;
     Transform whereToAddEfecct;
     public int Life;
     public GameObject player;
@@ -23,12 +24,22 @@ public class UiManager : MonoBehaviour
     public IsBlueInside Blue;
     public IsGreenInside Green;
     public IsRedInside Red;
+    Scene CurrentScene;
+
     //================================================================
     private void Start()
     {
+        CurrentScene = SceneManager.GetActiveScene();
         // txtScore.text = "0";
         Life = GameData.lives;
         slider.value = GameData.lives;
+        if (whereToAddEfecct == null)
+        {
+            if(player != null) 
+            {
+                whereToAddEfecct = player.transform;
+            }
+        }
     }
 
     //================================================================
@@ -61,11 +72,41 @@ public class UiManager : MonoBehaviour
     }
     public void MyLoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        if (SceneManager.GetSceneByName(sceneName) == CurrentScene)
+        {
+            GameData.lives = 15;
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+      
     }
+
+    public void Creditos()
+    {
+        creditosPanel.SetActive(true);
+    }
+    public void Sairreditos()
+    {
+        creditosPanel.SetActive(false);
+    }
+
     private void Update()
     {
-        whereToAddEfecct = player.transform;
+        if(whereToAddEfecct == null)
+        {
+            whereToAddEfecct = this.transform;
+        }
+        if(player == null)
+        {
+            whereToAddEfecct = this.transform;
+        }
+        else
+        {
+            whereToAddEfecct = player.transform;
+        }
         if (Blue.blueinside == true && Red.redinside == true && Green.greeninside == true)
         {
             HUD_UI.SetActive(false);

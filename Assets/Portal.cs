@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            UiManager.MyLoadScene("Arvore");
+            UiManager.MyLoadScene("Tree");
         }
     }
 }
