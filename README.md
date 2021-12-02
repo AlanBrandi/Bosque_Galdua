@@ -1,6 +1,6 @@
 # BOSQUE GALDUA
 ### Escrito por **NONAME STUDIO**
-### Para XBOX game pass e PC
+### Para PC
 ### Classificação: 12+
 ### Lançamento: TBD
 
