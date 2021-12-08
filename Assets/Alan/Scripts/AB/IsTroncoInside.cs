@@ -6,30 +6,29 @@ using UnityEngine.UI;
 
 public class IsTroncoInside : MonoBehaviour
 {
-    public GameObject LadoErrado;
-    bool troncoInside = false;
-   
+    GameObject WrongSide;
+    Animator WSAnim;
+
+    private void Start()
+    {
+        WrongSide = GameObject.Find("WrongSide");
+        WSAnim = WrongSide.GetComponent<Animator>();
+        WrongSide.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Tronco"))
         {
             Debug.Log("Tronco entrou");
-            troncoInside = true;
-        }
-    }
-   
-    private void Update()
-    {
-        if(troncoInside == true)
-        {
-            LadoErrado.SetActive(true);
-            Invoke("Saiu", 3);
+            WrongSide.SetActive(true);
+            WSAnim.SetTrigger("LogOn");
+            Invoke(nameof(LogOff), 3);
         }
     }
 
-    void Saiu()
+    void LogOff()
     {
-        troncoInside = false;
-        LadoErrado.SetActive(false);
+        WrongSide.SetActive(false);
     }
 }

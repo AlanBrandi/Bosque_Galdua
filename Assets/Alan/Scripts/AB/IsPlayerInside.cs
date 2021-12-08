@@ -10,7 +10,7 @@ public class IsPlayerInside : MonoBehaviour
     Animator lever;
     public Transform spawnLocation;
     public GameObject spawnGO;
-    bool playerinside = false;
+    bool actionExec = false;
 
     public TMP_Text TopText;
     public TMP_Text DownText;
@@ -23,21 +23,17 @@ public class IsPlayerInside : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && playerinside == false)
+        if (actionExec == false)
         {
-            print("player entrou");
-            Instantiate(spawnGO, spawnLocation.position, Quaternion.identity);
-            lever.SetBool("IsLeverOn", true);
-            playerinside = true;
-        }
-    }
-
-    private void Update()
-    {
-        if(playerinside == true)
-        {
-            TopText.text = "Procure a outra Alanvanca";
-            DownText.text = "Use o tronco para subir";
+            if (collision.CompareTag("Player"))
+            {
+                print("player entrou");
+                Instantiate(spawnGO, spawnLocation.position, Quaternion.identity);
+                lever.SetBool("IsLeverOn", true);
+                TopText.text = "Procure a outra Alanvanca";
+                DownText.text = "Use o tronco para subir";
+                actionExec = true;
+            }
         }
     }
 }

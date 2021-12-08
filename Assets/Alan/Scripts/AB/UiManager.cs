@@ -17,6 +17,8 @@ public class UiManager : MonoBehaviour
     public GameObject WinPanel;
     int score = 0;
     public GameObject creditosPanel;
+    public GameObject settingsPanel;
+    public GameObject pauseMenuUI;
     Transform whereToAddEfecct;
     public int Life;
     public GameObject player;
@@ -24,6 +26,7 @@ public class UiManager : MonoBehaviour
     public IsBlueInside Blue;
     public IsGreenInside Green;
     public IsRedInside Red;
+    public static bool GameIsPaused = false;
     Scene CurrentScene;
 
     //================================================================
@@ -88,15 +91,6 @@ public class UiManager : MonoBehaviour
       
     }
 
-    public void Creditos()
-    {
-        creditosPanel.SetActive(true);
-    }
-    public void Sairreditos()
-    {
-        creditosPanel.SetActive(false);
-    }
-
     private void Update()
     {
         if(whereToAddEfecct == null)
@@ -115,6 +109,54 @@ public class UiManager : MonoBehaviour
         {
             HUD_UI.SetActive(false);
             WinPanel.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameIsPaused == true && settingsPanel.activeInHierarchy == false)
+            {
+                Resume();
+            }
+            else if (GameIsPaused == true && settingsPanel.activeInHierarchy == true)
+            {
+                ToggleSettings();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        GameIsPaused = false;
+    }
+
+    private void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+        GameIsPaused = true;
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void ToggleSettings()
+    {
+        if (settingsPanel.activeInHierarchy == false)
+        {
+            settingsPanel.SetActive(true);
+        }
+        else
+        {
+            settingsPanel.SetActive(false);
         }
     }
 }

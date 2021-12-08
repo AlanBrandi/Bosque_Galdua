@@ -29,10 +29,10 @@ public class PlayerHighAttack : MonoBehaviour
             {
                 if (Input.GetKeyDown(attackButton))
                 {
-                    StartCoroutine(playerAttack.attackSoundAndDelay());
+                    playerAttack.AttackSoundAndDelay();
                     MyAni.SetTrigger("Highattack");
-                    InvokeRepeating("Attack", .3f, .016f);
-                    StartCoroutine(attackActiveHigh());
+                    InvokeRepeating(nameof(Attack), .3f, .016f);
+                    Invoke(nameof(AttackCooldown), .7f);
                 }
             }
 
@@ -51,20 +51,20 @@ public class PlayerHighAttack : MonoBehaviour
         {
             Debug.Log("Inimigo tomou dano por ataque de cima.");
             enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
-            StartCoroutine(playerAttack.attackCooldown());
+            AttackCooldown();
         }
     }
-        private void OnDrawGizmosSelected()
+    void AttackCooldown()
     {
+        CancelInvoke(nameof(Attack));
+    }
+    private void OnDrawGizmosSelected()
+    {
+
         if (AttackPoint == null)
         {
             return;
         }
         Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
-    }
-    IEnumerator attackActiveHigh()
-    {
-        yield return new WaitForSecondsRealtime(.4f);
-        CancelInvoke("Attack");
     }
 }

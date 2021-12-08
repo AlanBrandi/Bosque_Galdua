@@ -28,7 +28,10 @@ public class DamagePlayer : MonoBehaviour
         }
         if (collision.relativeVelocity.magnitude > 10)
         {
-            audioSource.PlayOneShot(barrelImpact, collision.relativeVelocity.magnitude/10);
+            if (gameObject != null)
+            {
+                    audioSource.PlayOneShot(barrelImpact, collision.relativeVelocity.magnitude / 10);
+            }
         }
     }
 }

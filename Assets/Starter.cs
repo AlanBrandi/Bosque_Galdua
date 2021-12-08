@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FPSLimiter : MonoBehaviour
+public class Starter : MonoBehaviour
 {
     public GameData_SO gameData;
+    public SettingsPanel settingsPanel;
     Scene sceneName;
-    string forest = "Forest";
+    readonly string forest = "Forest";
     void Awake()
     {
         sceneName = SceneManager.GetActiveScene();
@@ -17,5 +18,11 @@ public class FPSLimiter : MonoBehaviour
         }
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
         Application.targetFrameRate = 60;
+    }
+    private void Start()
+    {
+        settingsPanel.slider[0].value = PlayerPrefs.GetFloat("MasterVol", 1);
+        settingsPanel.slider[1].value = PlayerPrefs.GetFloat("MusicVol", 1);
+        settingsPanel.slider[2].value = PlayerPrefs.GetFloat("SFXVol", 1);
     }
 }

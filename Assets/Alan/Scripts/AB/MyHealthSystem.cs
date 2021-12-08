@@ -7,7 +7,14 @@ public class MyHealthSystem : MonoBehaviour
     public GameObject playerManager;
     public SpriteRenderer Player;
     public Animator ani;
-    public GameObject Hit;
+    GameObject Hit;
+    Animator HitAnim;
+    private void Start()
+    {
+        Hit = GameObject.Find("HitHUD");
+        HitAnim = Hit.GetComponent<Animator>();
+        Hit.SetActive(false);
+    }
     private void Update()
     {
         if (GameData.lives <= 0)
@@ -18,10 +25,11 @@ public class MyHealthSystem : MonoBehaviour
 
     public void Dano(int dano)
     {
-        GameData.lives = GameData.lives - dano;
+        GameData.lives -= dano;
         ui.SetLife(GameData.lives);
         Hit.SetActive(true);
-        Invoke("Desligarhit", 1);
+        HitAnim.SetTrigger("PlayerHit");
+        Invoke(nameof(DisableHit), 1);
         return;
     }
 
@@ -33,9 +41,9 @@ public class MyHealthSystem : MonoBehaviour
         playerManager.GetComponent<Jumping>().enabled = false;
         Destroy(this.gameObject);
         ui.SetLife(0);
-
     }
-    public void Desligarhit()
+
+    void DisableHit()
     {
         Hit.SetActive(false);
     }

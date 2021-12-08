@@ -4,25 +4,43 @@ using UnityEngine;
 
 public class SlimeScript : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    //Rigidbody2D rb;
     public int dano = 5;
     public float speed = 5;
-    public SpriteRenderer SR_slime;
-    public BoxCollider2D Boxcollider;
-    public CircleCollider2D Circlecollider;
+    SpriteRenderer enemySprite;
+    //public BoxCollider2D Boxcollider;
+    //public CircleCollider2D Circlecollider;
+    public Transform startPos, pos1;
     public MyHealthSystem healthSystem;
     AudioSource slimeSounds;
+    Vector3 nextPos;
 
     private void Awake()
     {
+        enemySprite = GetComponent<SpriteRenderer>();
+        nextPos = startPos.position;
         slimeSounds = GetComponent<AudioSource>();
-        slimeSounds.Play();
+    }
+    private void FixedUpdate()
+    {
+        if (transform.position == startPos.position)
+        {
+            nextPos = pos1.position;
+            enemySprite.flipX = false;
+        }
+        if (transform.position == pos1.position)
+        {
+            nextPos = startPos.position;
+            enemySprite.flipX = true;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
 
-    private void Update()
+    public void slimeSound()
     {
         float randomPitch = Random.Range(0.8f, 1.2f);
         slimeSounds.pitch = randomPitch;
+        slimeSounds.Play();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

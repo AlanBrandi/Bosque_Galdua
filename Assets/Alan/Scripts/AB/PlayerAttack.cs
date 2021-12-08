@@ -35,24 +35,24 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false)
             {
-                StartCoroutine(attackSoundAndDelay());
+                AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .2f, .016f);
-                StartCoroutine(attackActiveJumping());
+                Invoke(nameof(AttackCooldown), .5f);
             }
             else if (Input.GetKeyDown(attackButton) && moving.isMoving == true)
             {
-                StartCoroutine(attackSoundAndDelay());
+                AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
-                StartCoroutine(attackActiveMoving());
+                Invoke(nameof(AttackCooldown), .599f);
             }
             else if (Input.GetKeyDown(attackButton))
             {
-                StartCoroutine(attackSoundAndDelay());
+                AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .183f, .016f);
-                StartCoroutine(attackActive());
+                Invoke(nameof(AttackCooldown), .483f);
             }
         }
 
@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 Debug.Log("Inimigo tomou dano por ataque pulando.");
                 enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
-                StartCoroutine(attackCooldown());
+                AttackCooldown();
             }
         }
         else
@@ -79,7 +79,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 Debug.Log("Inimigo tomou dano.");
                 enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
-                StartCoroutine(attackCooldown());
+                AttackCooldown();
             }
         }
     }
@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(AttackPoint.position, AttackRange);
         Gizmos.DrawWireSphere(JumpingAttackPoint.position, JumpingAttackRange);
     }
-    public IEnumerator attackSoundAndDelay()
+    public void AttackSoundAndDelay()
     {
         //Sound settings
         int i = Random.Range(1, 3);
@@ -102,27 +102,9 @@ public class PlayerAttack : MonoBehaviour
         attackSound = Resources.Load("sword_swing_" + i) as AudioClip;
         swordSounds.PlayOneShot(attackSound);
         NextAttackTime = Time.time + 1f / AttackRate;
-        yield return new WaitForSecondsRealtime(.0f);
     }
-    IEnumerator attackActiveJumping()
+    void AttackCooldown()
     {
-        yield return new WaitForSecondsRealtime(.3f);
-        CancelInvoke("Attack");
-    }
-    IEnumerator attackActiveMoving()
-    {
-        yield return new WaitForSecondsRealtime(.383f);
-        CancelInvoke("Attack");
-    }
-    IEnumerator attackActive()
-    {
-        yield return new WaitForSecondsRealtime(.3f);
-        CancelInvoke("Attack");
-    }
-
-    public IEnumerator attackCooldown()
-    {
-        CancelInvoke("Attack");
-        yield return new WaitForSecondsRealtime(0f);
+        CancelInvoke(nameof(Attack));
     }
 }

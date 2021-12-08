@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public Transform pos1, pos2;
+    public Transform startPos, pos1;
     public float speed;
-    public Transform startPos;
     public Transform parent;
     public GameObject player;
     public Transform managert;
+    public float waitTime = 1;
 
     Vector3 nextPos;
 
@@ -17,21 +17,18 @@ public class Platform : MonoBehaviour
     {
         nextPos = startPos.position;
     }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if(transform.position == pos1.position)
-        {
-            nextPos = pos2.position;
-        }
-        if (transform.position == pos2.position)
+        if (transform.position == startPos.position)
         {
             nextPos = pos1.position;
         }
-
+        else if (transform.position == pos1.position)
+        {
+            nextPos = startPos.position;
+        }
         transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))

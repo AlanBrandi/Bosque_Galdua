@@ -6,44 +6,37 @@ using UnityEngine.UI;
 
 public class Isplayeyinleftinside : MonoBehaviour
 {
-    public Animator BigTreeEntrance;
+    GameObject BTG;
+    Animator BTGAnim;
+    AudioSource BTGAudio;
     Animator lever;
-    public GameObject luz_vermelha;
-    public GameObject luz_verde;
+    bool actionExec = false;
     public bool Keycardtree = false;
-    bool PlayerInside = false;
-
     public TMP_Text TopText;
     public TMP_Text DownText;
 
     private void Start()
     {
+        BTG = GameObject.Find("BigTreeGate");
+        BTGAnim = BTG.GetComponent<Animator>();
+        BTGAudio = BTG.GetComponent<AudioSource>();
         lever = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (actionExec == false)
         {
-            lever.SetBool("IsLeverOn", true);
-            Keycardtree = true;
-            Destroy(luz_vermelha);
-            StartCoroutine(ChangeLight());
-            PlayerInside = true;
-            IEnumerator ChangeLight()
+            if (collision.CompareTag("Player"))
             {
-                yield return new WaitForSecondsRealtime(.3f);
-                luz_verde.SetActive(true);
-                BigTreeEntrance.SetTrigger("Open");
-            }
-        }
-    }
+                lever.SetBool("IsLeverOnSpecial", true);
+                Keycardtree = true;
+                TopText.text = "Siga sua aventura";
+                DownText.text = "Ache a entrada";
+                BTGAnim.SetTrigger("Open");
+                BTGAudio.Play();
+                actionExec = true;
 
-    private void Update()
-    {
-        if(PlayerInside == true)
-        {
-            TopText.text = "Siga sua aventura";
-            DownText.text = "Ache a entrada";
+            }
         }
     }
 }
