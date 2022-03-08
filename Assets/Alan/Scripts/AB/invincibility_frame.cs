@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class invincibility_frame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+   float Time = 4;
+   public MyHealthSystem HealtySystem;
+
+    private void Update()
     {
-        
+        if(HealtySystem.PlayerTomouDano == true)
+        {
+            DesligarColisão();
+        }
+        else
+        {
+            HealtySystem.PlayerTomouDano = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void DesligarColisão()
     {
-        
+        Physics.IgnoreLayerCollision(0, 12, true);
+        Invoke("LigarColisão", Time);
+    }
+    void LigarColisão()
+    {
+        Physics.IgnoreLayerCollision(0, 12, false);
+        HealtySystem.PlayerTomouDano = false;
     }
 }

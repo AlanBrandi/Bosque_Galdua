@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RetanguloMorte : MonoBehaviour
+public class retanguloMorte : MonoBehaviour
 {
     MyHealthSystem healthSystemPlayer;
     GameObject playerManager;

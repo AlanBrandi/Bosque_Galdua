@@ -7,6 +7,9 @@ public class MyHealthSystem : MonoBehaviour
     public GameObject playerManager;
     public SpriteRenderer Player;
     public Animator ani;
+    public float Time_frame = 1;
+    public bool PlayerTomouDano = false;
+
     GameObject Hit;
     Animator HitAnim;
     private void Start()
@@ -25,12 +28,20 @@ public class MyHealthSystem : MonoBehaviour
 
     public void Dano(int dano)
     {
-        GameData.lives -= dano;
-        ui.SetLife(GameData.lives);
-        Hit.SetActive(true);
-        HitAnim.SetTrigger("PlayerHit");
-        Invoke(nameof(DisableHit), 1);
-        return;
+        if(PlayerTomouDano == true)
+        {
+            Invoke("TomouDanofalso", Time_frame);
+        }
+        else if (PlayerTomouDano == false)
+        {
+            GameData.lives -= dano;
+            ui.SetLife(GameData.lives);
+            Hit.SetActive(true);
+            HitAnim.SetTrigger("PlayerHit");
+            PlayerTomouDano = true;
+            Invoke(nameof(DisableHit), 1);
+            return;
+        }
     }
 
     public void Die()
@@ -43,6 +54,11 @@ public class MyHealthSystem : MonoBehaviour
         ui.SetLife(0);
     }
 
+    void TomouDanofalso()
+    {
+
+        PlayerTomouDano = false;
+    }
     void DisableHit()
     {
         Hit.SetActive(false);
