@@ -4,6 +4,7 @@ public class MyHealthSystem : MonoBehaviour
 {
     public Material HitMaterial;
     public Material DefautMaterial;
+    GameObject PlayerGO;
 
     public UiManager ui;
     public GameData_SO GameData;
@@ -26,6 +27,7 @@ public class MyHealthSystem : MonoBehaviour
     Animator HitAnim;
     private void Start()
     {
+        PlayerGO = GameObject.Find("Player");
         Hit = GameObject.Find("HitHUD");
         HitAnim = Hit.GetComponent<Animator>();
         Hit.SetActive(false);
@@ -82,6 +84,7 @@ public class MyHealthSystem : MonoBehaviour
         playerManager.GetComponent<PlayerAttack>().enabled = false;
         playerManager.GetComponent<PlayerHighAttack>().enabled = false;
         playerManager.GetComponent<Jumping>().enabled = false;
+        Destroy(PlayerGO);
         Destroy(this.gameObject);
         ui.SetLife(0);
     }

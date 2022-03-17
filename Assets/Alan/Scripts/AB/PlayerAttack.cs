@@ -15,12 +15,15 @@ public class PlayerAttack : MonoBehaviour
     Moving moving;
     Jumping jumping;
     PlayerHighAttack playerHighAttack;
+
+    ObjectScript objectScript;
     //Sound
     AudioSource swordSounds;
     AudioClip attackSound;
 
     private void Start()
     {
+        objectScript = GetComponent<ObjectScript>();
         moving = GetComponent<Moving>();
         jumping = GetComponent<Jumping>();
         AudioSource[] audios = GetComponentsInChildren<AudioSource>();
@@ -31,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
+        if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime && objectScript.HitObjeto == false)
         {
             if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false)
             {
