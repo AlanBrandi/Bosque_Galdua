@@ -40,22 +40,22 @@ public class PlayerAttack : MonoBehaviour
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
-                InvokeRepeating(nameof(Attack), .2f, .016f);
-                Invoke(nameof(AttackCooldown), .5f);
+                InvokeRepeating(nameof(Attack), .064f, .016f);
+                Invoke(nameof(AttackCooldown), .16f);
             }
             else if (Input.GetKeyDown(attackButton) && moving.isMoving == true)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
-                Invoke(nameof(AttackCooldown), .599f);
+                Invoke(nameof(AttackCooldown), .368f);
             }
             else if (Input.GetKeyDown(attackButton))
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
-                InvokeRepeating(nameof(Attack), .183f, .016f);
-                Invoke(nameof(AttackCooldown), .483f);
+                InvokeRepeating(nameof(Attack), .096f, .016f);
+                Invoke(nameof(AttackCooldown), .176f);
             }
         }
 
