@@ -31,8 +31,8 @@ public class PlayerHighAttack : MonoBehaviour
                 {
                     playerAttack.AttackSoundAndDelay();
                     MyAni.SetTrigger("Highattack");
-                    InvokeRepeating(nameof(Attack), .3f, .016f);
-                    Invoke(nameof(AttackCooldown), .7f);
+                    InvokeRepeating(nameof(Attack), .128f, .016f);
+                    Invoke(nameof(AttackCooldown), .288f);
                 }
             }
 
