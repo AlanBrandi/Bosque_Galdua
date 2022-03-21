@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-
     GameObject grabDetect;
     GameObject boxHolder;
     LayerMask ObjectLayer;
@@ -14,6 +13,7 @@ public class ObjectScript : MonoBehaviour
 
     Rigidbody2D objectRB;
 
+    public Animator PlayerAni;
     public float force = 5;
     public bool HitObjeto = false;
     public bool pegou = false;
@@ -24,7 +24,7 @@ public class ObjectScript : MonoBehaviour
         boxHolder = GameObject.Find("GrabHolder");
         ObjectLayer = LayerMask.GetMask("ObjectLayer");
     }
-
+   
     private void Update()
     {
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.transform.position, Vector2.right * transform.rotation.y, rayDist, ObjectLayer);
@@ -37,6 +37,7 @@ public class ObjectScript : MonoBehaviour
                 grabCheck.collider.gameObject.transform.SetParent(boxHolder.transform.parent);
                 grabCheck.collider.gameObject.transform.position = boxHolder.transform.position;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                PlayerAni.SetBool("Holding",true);
                 pegou = true;
                 pegouNum++;
             }
@@ -45,8 +46,9 @@ public class ObjectScript : MonoBehaviour
                 grabCheck.collider.gameObject.transform.parent = null;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 pegou=false;
+                PlayerAni.SetBool("Holding", false);
                 //fazer ele jogar o obj
-                objectRB= grabCheck.collider.GetComponent<Rigidbody2D>();
+                objectRB = grabCheck.collider.GetComponent<Rigidbody2D>();
                 objectRB.AddForce( boxHolder.transform.right * force);
                 objectRB.AddForce(boxHolder.transform.up * 5);
                 HitObjeto = false;
