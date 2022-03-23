@@ -6,6 +6,7 @@ public class Jumping : MonoBehaviour
 {
     public Rigidbody2D MyRb;
     public KeyCode thiskey;
+    public KeyCode DownPlatform;
     public bool IsGrounded;
     public Animator MyAni;
     public Transform feetPos;
@@ -19,6 +20,7 @@ public class Jumping : MonoBehaviour
     public Slope slop;
     public AudioSource jumpSound;
     public AudioSource LandSound;
+    public PlatformEffector2D Platform;
 
     private void Update()
     {
@@ -61,5 +63,6 @@ public class Jumping : MonoBehaviour
         {
             isJumping = false;
         }
+
     }
 }
