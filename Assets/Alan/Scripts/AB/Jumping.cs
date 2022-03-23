@@ -19,12 +19,34 @@ public class Jumping : MonoBehaviour
     public Slope slop;
     public AudioSource jumpSound;
     public AudioSource LandSound;
+    public Rigidbody2D rb;
+    public float glindSpeed;
+    public float initialGravityScale;
+
+
+    private void Start()
+    {
+        initialGravityScale = rb.gravityScale;
+    }
 
     private void Update()
     {
+        
+
+        if (IsGrounded == false && Input.GetKey(thiskey) && rb.velocity.y <= 0)
+        {
+            rb.gravityScale = 0;
+            rb.velocity = new Vector2(rb.velocity.x, y: -glindSpeed);
+        }
+        else
+        {
+            rb.gravityScale = initialGravityScale;
+        }
+
         if (IsGrounded == true)
         {
             MyAni.SetBool("IsJumping", false);
+            rb.gravityScale = initialGravityScale;
         }
         else
         {
