@@ -22,6 +22,14 @@ public class Jumping : MonoBehaviour
     public Rigidbody2D rb;
     public float glindSpeed;
     public float initialGravityScale;
+    public bool isTouchingFront;
+    public Transform frontCheck;
+    public bool wallSliding;
+    public float wallSlidingSpeed;
+    bool wallJumping;
+    public float XjumpWallForce;
+    public float YjumpWallForce;
+    public float wallJumpTime;
 
 
     private void Start()
@@ -33,7 +41,7 @@ public class Jumping : MonoBehaviour
     {
         
 
-        if (IsGrounded == false && Input.GetKey(thiskey) && rb.velocity.y <= 0)
+        if (IsGrounded == false && wallSliding == false && Input.GetKey(thiskey) && rb.velocity.y <= 0)
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, y: -glindSpeed);
@@ -64,6 +72,35 @@ public class Jumping : MonoBehaviour
         }
         //----------------------------------------------------
 
+        float input = Input.GetAxisRaw("Horizontal");
+
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatisground);
+
+        if(isTouchingFront == true && IsGrounded == false && input != 0)
+        {
+            wallSliding = true;
+        }
+        else
+        {
+            wallSliding = false;
+        }
+
+        if (wallSliding)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) && wallSliding == true)
+        {
+            wallJumping = true;
+            Invoke("SetWallJumpingToFalse", wallJumpTime);
+        }
+        if (wallJumping == true)
+        {
+            rb.velocity = new Vector2(XjumpWallForce * -input, YjumpWallForce);
+        }
+       
+
         if (Input.GetKey(thiskey) && isJumping == true)
         {
             jumpSound.Play();
@@ -83,5 +120,10 @@ public class Jumping : MonoBehaviour
         {
             isJumping = false;
         }
+        
+    }
+    void SetWallJumpingToFalse()
+    {
+        wallJumping = false;
     }
 }
