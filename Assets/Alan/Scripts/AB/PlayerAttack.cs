@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime && objectScript.HitObjeto == false)
+        if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime && objectScript.HitObjeto == false && objectScript.pegou == true)
         {
             if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false)
             {
@@ -43,14 +43,14 @@ public class PlayerAttack : MonoBehaviour
                 InvokeRepeating(nameof(Attack), .064f, .016f);
                 Invoke(nameof(AttackCooldown), .16f);
             }
-            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true)
+            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true && objectScript.pegou == true)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
                 Invoke(nameof(AttackCooldown), .368f);
             }
-            else if (Input.GetKeyDown(attackButton))
+            else if (Input.GetKeyDown(attackButton) && objectScript.pegou == true)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
