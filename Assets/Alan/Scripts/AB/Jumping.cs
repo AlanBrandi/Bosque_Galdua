@@ -20,7 +20,7 @@ public class Jumping : MonoBehaviour
     public Slope slop;
     public AudioSource jumpSound;
     public AudioSource LandSound;
-<<<<<<< HEAD
+//<<<<<<< HEAD
     public Rigidbody2D rb;
     public float glindSpeed;
     public float initialGravityScale;
@@ -38,9 +38,9 @@ public class Jumping : MonoBehaviour
     {
         initialGravityScale = rb.gravityScale;
     }
-=======
+//=======
     public PlatformEffector2D Platform;
->>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
+//>>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
 
     private void Update()
     {
@@ -125,14 +125,14 @@ public class Jumping : MonoBehaviour
         {
             isJumping = false;
         }
-<<<<<<< HEAD
+//<<<<<<< HEAD
         
     }
     void SetWallJumpingToFalse()
     {
         wallJumping = false;
-=======
+//=======
 
->>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
+//>>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
     }
 }
