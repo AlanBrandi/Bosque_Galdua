@@ -4,13 +4,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(TrailRenderer))]
 public class MakeItAObject : MonoBehaviour
 {
     #region BasicComponents
     GameObject MyGOB;
     GameObject Player;
     ObjectScript objectScript;
-
 
     private void Awake()
     {

@@ -50,7 +50,7 @@ public class ObjectScript : MonoBehaviour
                 //fazer ele jogar o obj
                 objectRB = grabCheck.collider.GetComponent<Rigidbody2D>();
                 objectRB.AddForce( boxHolder.transform.right * force);
-                objectRB.AddForce(boxHolder.transform.up * 5);
+                objectRB.AddForce(boxHolder.transform.up * 10);
                 HitObjeto = false;
             }
         }

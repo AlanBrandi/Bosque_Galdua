@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PolygonCollider2D))]
+[RequireComponent(typeof(TrailRenderer))]
 public class MakeItAHardObject : MonoBehaviour
 {
     #region BasicComponents
