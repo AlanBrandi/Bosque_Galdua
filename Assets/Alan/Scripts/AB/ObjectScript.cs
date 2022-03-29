@@ -13,7 +13,7 @@ public class ObjectScript : MonoBehaviour
 
     Rigidbody2D objectRB;
 
-   // public Animator PlayerAni;
+    public Animator PlayerAni;
     public float force = 5;
     public bool HitObjeto = false;
     public bool pegou = false;
@@ -38,7 +38,7 @@ public class ObjectScript : MonoBehaviour
                 grabCheck.collider.gameObject.transform.SetParent(boxHolder.transform.parent);
                 grabCheck.collider.gameObject.transform.position = boxHolder.transform.position;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
-               // PlayerAni.SetBool("Holding",true);
+                PlayerAni.SetBool("Holding",true);
                 pegou = true;
                 pegouNum = pegouNum + 1;
             }
@@ -47,7 +47,7 @@ public class ObjectScript : MonoBehaviour
                 grabCheck.collider.gameObject.transform.parent = null;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 
-                //PlayerAni.SetBool("Holding", false);
+                PlayerAni.SetBool("Holding", false);
                 //fazer ele jogar o obj
                 objectRB = grabCheck.collider.GetComponent<Rigidbody2D>();
                 objectRB.AddForce( boxHolder.transform.right * force);
