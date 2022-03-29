@@ -88,18 +88,15 @@ O diferencial do Bosque Galdua em relação aos outros é justamente a estética
 ### Público Alvo:
 Crianças maiores de 12 anos, adolescentes, jovens adultos e adultos que gostam de jogos plataforma junto de jogadores que gostaram do estilo de jogos com tons de cinza como Limbo.
 ### Classificação Indicativa
-Bosque Galdua é livre para todas as idades.
-
+Bosque Galdua é classificado para maiores de 12 anos devido à violência cartunizada.
 ### Equipe:
 - 2x Programadores: Alan Brandi, Thiago Carvalho.
 - 1x Animador: Thomas Redekop.
 - 1x Ilustradora: Ana Clara.
 - 1x Level Designer: Frederico Guilherme.
-
 ## Cronograma:
 - A NONAME busca desenvolver o jogo dentro de 20 semanas, produzindo e refatorando-o através de uma separação de fases que serão trabalhadas em diferentes semanas.
 - ![Cronograma](https://i.ibb.co/Kb5f52Y/unknown.png)
 - Lançamento: Julho de 2022.
-
 ## Objetivo de desenvolvimento sustentável da ONU:
 O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a história do jogo tem por objetivo conscientizar o jogador da recuperação e uso sustentável de ecossistemas terrestres e de água doce, da gestão sustentável de todos os tipos de florestas, da detenção do desmatamento, da restauração das florestas e também, para evitar a extinção de espécies ameaçadas.
