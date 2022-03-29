@@ -39,7 +39,6 @@ public class Jumping : MonoBehaviour
         initialGravityScale = rb.gravityScale;
     }
 //=======
-    public PlatformEffector2D Platform;
 //>>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
 
     private void Update()

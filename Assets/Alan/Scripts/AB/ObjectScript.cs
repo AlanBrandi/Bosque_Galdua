@@ -46,13 +46,14 @@ public class ObjectScript : MonoBehaviour
             {
                 grabCheck.collider.gameObject.transform.parent = null;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
-                pegou=false;
+                
                 //PlayerAni.SetBool("Holding", false);
                 //fazer ele jogar o obj
                 objectRB = grabCheck.collider.GetComponent<Rigidbody2D>();
                 objectRB.AddForce( boxHolder.transform.right * force);
                 objectRB.AddForce(boxHolder.transform.up * 10);
                 HitObjeto = false;
+                pegou = false;
             }
         }
         else if (grabCheck.collider == null)
