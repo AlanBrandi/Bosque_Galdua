@@ -73,25 +73,30 @@ Planos de adicionar uma barra de ''mana'' para usar poderes, também um seletor 
 - Barril quebrando - kevinkace - [Link](https://freesound.org/people/kevinkace/sounds/66772/)
 ## --------------------------------------------------------------------------------------
 # Bosque Galdua
-O jogo conta a história do guardião do Bosque Galdua, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Além disso, o jogo possui menu, gameplay, menu de morte e tela final.
+O jogo conta a história do guardião do Bosque Galdua, Artamus, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Por parte de gameplay o jogo possui menu principal, gameplay, menu de morte e tela final.
 - Objetivo: Salvar a floresta que foi corrompida.
 - Gênero: Plataforma de Ação.
--  Andar: O player pode andar no eixo x utilizando as teclas A e D.
-- Pular: O player pode pular e se movimentar no eixo y utilizando a tecla Space.
+- Andar: O player pode andar no eixo x utilizando as teclas A e D.
+- Pular: O player pode pular e se movimentar no eixo y utilizando a tecla Spaço, tendo sua altura variada de acordo com o tempo que a tecla ficou apertada.
 - Atacar: Como player você pode atacar tanto lateralmente quanto para cima utilizando para atacar lateralmente a tecla J, e para cima W + J.
 - Empurrar: Você como jogador pode empurrar caixas ou outros *props* para resolver enigmas.
+- Escalar e deslizar paredes: Após adquirir o poder, o jogador consegue escalar pareder utilizando a tecla espaço enquanto desliza por uma.
+- Planar: Após adquirir o poder, o jogador consegue planar ao segurar a tecla espaço.
+- Pulo-duplo: Após adquirir o poder, o jogador consegue pular uma vez a mais após sair do chão.
 ### Diferencial: 
 O diferencial do Bosque Galdua em relação aos outros é justamente a estética monocromática e o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
 ### Público Alvo:
-Crianças maiores de 12 anos, adolescentes, jovens adultos e adultos que gostam do estilo Metroidvania junto de jogadores que gostaram do estilo de jogo monocromático como o Limbo.
-
+Crianças maiores de 12 anos, adolescentes, jovens adultos e adultos que gostam de jogos plataforma junto de jogadores que gostaram do estilo de jogos com tons de cinza como Limbo.
+### Classificação Indicativa
+Bosque Galdua é classificado para maiores de 12 anos devido à violência cartunizada.
 ### Equipe:
-- 2x Programadores: Alan Brandi, Thomas Redekop.
-- 2x Ex-Ilustradoras: Ana Clara, Letícia Labarca.
-- 1x Level Design: Frederico Guilherme.
-
+- 2x Programadores: Alan Brandi, Thiago Carvalho.
+- 1x Animador: Thomas Redekop.
+- 1x Ilustradora: Ana Clara.
+- 1x Level Designer: Frederico Guilherme.
 ## Cronograma:
-- Lançamento: Final do ano.
-
+- A NONAME busca desenvolver o jogo dentro de 20 semanas, produzindo e refatorando-o através de uma separação de fases que serão trabalhadas em diferentes semanas.
+- ![Cronograma](https://i.ibb.co/Kb5f52Y/unknown.png)
+- Lançamento: Julho de 2022.
 ## Objetivo de desenvolvimento sustentável da ONU:
-O objetivo utilizado no projeto, foi o objetivo quinze: Vida terrestre, visto que o a história do jogo tem por objetivo conscientizar o jogador da recuperação e uso sustentável de ecossistemas terrestres e de água doce, da gestão sustentável de todos os tipos de florestas, da detenção do desmatamento, da restauração das florestas e também, para evitar a extinção de espécies ameaçadas.
+O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a história do jogo tem por objetivo conscientizar o jogador da recuperação e uso sustentável de ecossistemas terrestres e de água doce, da gestão sustentável de todos os tipos de florestas, da detenção do desmatamento, da restauração das florestas e também, para evitar a extinção de espécies ameaçadas.

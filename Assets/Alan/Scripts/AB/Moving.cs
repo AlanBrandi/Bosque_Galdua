@@ -12,6 +12,7 @@ public class Moving : MonoBehaviour
     internal bool isMoving = false;
     public AudioSource footstep;
     Jumping jumpScript;
+    public bool canMove = true;
 
     private void Start()
     {
@@ -20,17 +21,7 @@ public class Moving : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        hor = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(hor * speed, rb.velocity.y);
-
-        if(hor > 0)
-        {
-            Player.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (hor < 0)
-        {
-            Player.transform.rotation = Quaternion.Euler(0, -180, 0);
-        }
+        Move();
 
         MyAnimator.SetFloat("Speed", rb.velocity.magnitude);
 
@@ -55,5 +46,31 @@ public class Moving : MonoBehaviour
         {
             footstep.Stop();
         }
+
+        
+    }
+    public void Move()
+    {
+        if (canMove)
+        {
+            hor = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(hor * speed, rb.velocity.y);
+
+            if (hor > 0)
+            {
+                Player.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            }
+            else if (hor < 0)
+            {
+                Player.transform.rotation = Quaternion.Euler(0, -180, 0);
+
+            }
+        }
+    }
+
+    public void stopMove()
+    {
+        canMove = false;
     }
 }

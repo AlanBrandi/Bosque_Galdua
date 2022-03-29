@@ -31,6 +31,7 @@ public class DialogueSystem : MonoBehaviour
         playerManager.GetComponent<PlayerAttack>().enabled = false;
         playerManager.GetComponent<PlayerHighAttack>().enabled = false;
         playerManager.GetComponent<Jumping>().enabled = false;
+        playerManager.GetComponent<Slope>().enabled = false;
 
     }
 
@@ -58,10 +59,11 @@ public class DialogueSystem : MonoBehaviour
             playerManager.GetComponent<PlayerAttack>().enabled = true;
             playerManager.GetComponent<PlayerHighAttack>().enabled = true;
             playerManager.GetComponent<Jumping>().enabled = true;
+            playerManager.GetComponent<Slope>().enabled = true;
+         
             activateMessage = 0;
         }
     }
-
 
     private void Update()
     {

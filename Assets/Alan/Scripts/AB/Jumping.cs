@@ -20,24 +20,9 @@ public class Jumping : MonoBehaviour
     public Slope slop;
     public AudioSource jumpSound;
     public AudioSource LandSound;
-//<<<<<<< HEAD
-    public Rigidbody2D rb;
-    public float glindSpeed;
-    public float initialGravityScale;
-    public bool isTouchingFront;
-    public Transform frontCheck;
-    public bool wallSliding;
-    public float wallSlidingSpeed;
-    bool wallJumping;
-    public float XjumpWallForce;
-    public float YjumpWallForce;
-    public float wallJumpTime;
 
 
-    private void Start()
-    {
-        initialGravityScale = rb.gravityScale;
-    }
+
 //=======
 //>>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
 
@@ -45,20 +30,12 @@ public class Jumping : MonoBehaviour
     {
         
 
-        if (IsGrounded == false && wallSliding == false && Input.GetKey(thiskey) && rb.velocity.y <= 0)
-        {
-            rb.gravityScale = 0;
-            rb.velocity = new Vector2(rb.velocity.x, y: -glindSpeed);
-        }
-        else
-        {
-            rb.gravityScale = initialGravityScale;
-        }
+
 
         if (IsGrounded == true)
         {
             MyAni.SetBool("IsJumping", false);
-            rb.gravityScale = initialGravityScale;
+            
         }
         else
         {
@@ -76,33 +53,7 @@ public class Jumping : MonoBehaviour
         }
         //----------------------------------------------------
 
-        float input = Input.GetAxisRaw("Horizontal");
-
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatisground);
-
-        if(isTouchingFront == true && IsGrounded == false && input != 0)
-        {
-            wallSliding = true;
-        }
-        else
-        {
-            wallSliding = false;
-        }
-
-        if (wallSliding)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space) && wallSliding == true)
-        {
-            wallJumping = true;
-            Invoke("SetWallJumpingToFalse", wallJumpTime);
-        }
-        if (wallJumping == true)
-        {
-            rb.velocity = new Vector2(XjumpWallForce * -input, YjumpWallForce);
-        }
+       
        
 
         if (Input.GetKey(thiskey) && isJumping == true)
@@ -127,11 +78,5 @@ public class Jumping : MonoBehaviour
 //<<<<<<< HEAD
         
     }
-    void SetWallJumpingToFalse()
-    {
-        wallJumping = false;
-//=======
 
-//>>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
-    }
 }
