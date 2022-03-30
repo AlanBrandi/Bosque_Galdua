@@ -54,5 +54,6 @@ public class MakeItAObject : MonoBehaviour
         Instantiate(ExplodeFx, MyGOB.transform.position, Quaternion.identity);
         Destroy(MyGOB);
         objectScript.pegouNum = 0;
+        objectScript.pegou = false;
     }
 }

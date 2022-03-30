@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        objectScript = GetComponent<ObjectScript>();
+        objectScript = this.GetComponent<ObjectScript>();
         moving = GetComponent<Moving>();
         jumping = GetComponent<Jumping>();
         AudioSource[] audios = GetComponentsInChildren<AudioSource>();
@@ -34,23 +34,23 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime && objectScript.HitObjeto == false && objectScript.pegou == true)
+        if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
         {
-            if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false)
+            if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false && objectScript.HitObjeto == false && objectScript.pegou == false)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .064f, .016f);
                 Invoke(nameof(AttackCooldown), .16f);
             }
-            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true && objectScript.pegou == true)
+            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true && objectScript.HitObjeto == false && objectScript.pegou == false)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
                 Invoke(nameof(AttackCooldown), .368f);
             }
-            else if (Input.GetKeyDown(attackButton) && objectScript.pegou == true)
+            else if (Input.GetKeyDown(attackButton) && objectScript.HitObjeto == false && objectScript.pegou == false)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (jumping.IsGrounded == false)
+        if (jumping.IsGrounded == false && objectScript.HitObjeto == false && objectScript.pegou != true)
         {
             Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(JumpingAttackPoint.position, JumpingAttackRange, EnemyLayers);
 
