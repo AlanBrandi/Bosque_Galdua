@@ -68,10 +68,10 @@ public class ObjectScript : MonoBehaviour
                 HitObjeto = false;
             }
         }
-        void PegouFalse()
-        {
-            pegou = false;
-        }
         #endregion
+    }
+    void PegouFalse()
+    {
+        pegou = false;
     }
 }
