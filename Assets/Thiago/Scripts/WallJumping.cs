@@ -5,7 +5,8 @@ using UnityEngine;
 public class WallJumping : MonoBehaviour
 {
     public float checkRadius;
-    public LayerMask whatisground;
+    public LayerMask whatIsGround;
+    public LayerMask whatIsWall;
     public bool IsGrounded;
     public Rigidbody2D rb;
     public GameObject player;
@@ -30,9 +31,9 @@ public class WallJumping : MonoBehaviour
     {
         input = Input.GetAxisRaw("Horizontal");
 
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatisground);
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatIsWall);
 
-        IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatisground);
+        IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         if (isTouchingFront && !IsGrounded && rb.velocity.y < 0 && input != 0)
         {
