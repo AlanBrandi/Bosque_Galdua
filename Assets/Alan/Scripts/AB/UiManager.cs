@@ -23,9 +23,9 @@ public class UiManager : MonoBehaviour
     public int Life;
     public GameObject player;
     public GameObject playerManager;
-    public IsBlueInside Blue;
-    public IsGreenInside Green;
-    public IsRedInside Red;
+    //public IsBlueInside Blue;
+    //public IsGreenInside Green;
+    //public IsRedInside Red;
     public static bool GameIsPaused = false;
     Scene CurrentScene;
 
@@ -105,11 +105,11 @@ public class UiManager : MonoBehaviour
         {
             whereToAddEfecct = player.transform;
         }
-        if (Blue.blueinside == true && Red.redinside == true && Green.greeninside == true)
-        {
-            HUD_UI.SetActive(false);
-            WinPanel.SetActive(true);
-        }
+        //if (Blue.blueinside == true && Red.redinside == true && Green.greeninside == true)
+        //{
+        //    HUD_UI.SetActive(false);
+        //    WinPanel.SetActive(true);
+        //}
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused == true && settingsPanel.activeInHierarchy == false)

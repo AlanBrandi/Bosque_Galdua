@@ -7,6 +7,7 @@ public class PointPatrol : MonoBehaviour
     public float speed = 5;
     public GameObject[] points;
     int index = 0;
+    EnemyGFX enemyGFX;
 
     Vector2 targetPosition;
     Vector3 direction;
@@ -17,6 +18,8 @@ public class PointPatrol : MonoBehaviour
 
     private void Start()
     {
+        enemyGFX = GetComponentInChildren<EnemyGFX>();
+        enemyGFX.Rotate();
         InvokeRepeating("ChangePoint", 0, 3);
     }
 
@@ -30,17 +33,11 @@ public class PointPatrol : MonoBehaviour
 
         if (Vector2.Distance(targetPosition, transform.position) > 0.5f)
             transform.position += velocity;
-        Rotate();
-    }
-
-    void Rotate()
-    {
-        float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
     void ChangePoint()
     {
+        enemyGFX.Rotate();
         index++;
         if (index >= points.Length)
         {

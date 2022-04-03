@@ -1,45 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 public enum EnumEnemyState
 {
     PATROL,
-    IDLE,
-    PURSUE
+    SEEKER,
 }
 
 public class EnemyGuardian : MonoBehaviour
 {
+    AIDestinationSetter aiDS;
     Animator animator;
     PointPatrol patrol;
-    Pursuit pursue;
+    AIPath seeker;
     public float aggroRange = 5;
     float playerDistance;
     public Transform player;
     public EnumEnemyState state;
+    bool animIsDone = false;
 
     private void Start()
     {
+        InvokeRepeating(nameof(UpdatePath), 0, 1f);
+        aiDS = GetComponent<AIDestinationSetter>();
         patrol = GetComponent<PointPatrol>();
-        pursue = GetComponent<Pursuit>();
-        animator = GetComponent<Animator>();
-        animator.SetTrigger("Patrol");
+        seeker = GetComponent<AIPath>();
+        animator = GetComponentInChildren<Animator>();
         state = EnumEnemyState.PATROL;
     }
 
     private void Update()
     {
+        GraphNode node1 = AstarPath.active.GetNearest(this.transform.position).node;
+        GraphNode node2 = AstarPath.active.GetNearest(aiDS.target.position, NNConstraint.Default).node;
         playerDistance = Vector2.Distance(transform.position, player.position);
         switch (state)
         {
             case EnumEnemyState.PATROL:
-                if (playerDistance < aggroRange)
+                if (playerDistance < aggroRange && PathUtilities.IsPathPossible(node1, node2) == true)
                 {
-                    ChangeState(EnumEnemyState.PURSUE);
+                    ChangeState(EnumEnemyState.SEEKER);
                 }
                 break;
-            case EnumEnemyState.PURSUE:
-                if (playerDistance > aggroRange * 4)
+            case EnumEnemyState.SEEKER:
+                if (playerDistance > aggroRange * 4 || PathUtilities.IsPathPossible(node1, node2) == false)
                 {
                     ChangeState(EnumEnemyState.PATROL);
                 }
@@ -47,22 +52,43 @@ public class EnemyGuardian : MonoBehaviour
         }
     }
 
+    void UpdatePath()
+    {
+        AstarPath.active.Scan();
+    }
+
     void ChangeState(EnumEnemyState newState)
     {
+        CancelInvoke(nameof(UpdatePath));
         patrol.enabled = false;
-        pursue.enabled = false;
+        seeker.enabled = false;
         switch(newState)
         {
             case EnumEnemyState.PATROL:
-                animator.SetBool("Patrol", true);
-                patrol.enabled = true;
+                animator.SetTrigger("Patrol");
+                Invoke(nameof(TransitionDone), 1.2f);
                 break;
-            case EnumEnemyState.PURSUE:
+            case EnumEnemyState.SEEKER:
                 animator.SetTrigger("Pursuit");
-                pursue.enabled= true;
+                Invoke(nameof(TransitionDone), 1.2f);
                 break;
         }
         state = newState;
+    }
+
+    void TransitionDone()
+    {
+        if (state == EnumEnemyState.PATROL)
+        {
+            patrol.enabled = true;
+            animator.SetTrigger("Patrol");
+        }
+        else if (state == EnumEnemyState.SEEKER)
+        {
+            seeker.enabled = true;
+            animator.SetTrigger("Pursuit");
+        }
+        InvokeRepeating(nameof(UpdatePath), 0, 1f);
     }
 }
 
