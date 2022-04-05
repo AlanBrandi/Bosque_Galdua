@@ -11,6 +11,9 @@ public class MakeItAObject : MonoBehaviour
     GameObject MyGOB;
     GameObject Player;
     ObjectScript objectScript;
+    //public GameObject HitFx;
+    public GameObject ExplodeFx;
+    public int AttackDamage;
 
     private void Awake()
     {
@@ -26,10 +29,14 @@ public class MakeItAObject : MonoBehaviour
     }
     #endregion
 
-    //public GameObject HitFx;
-    public GameObject ExplodeFx;
-    public int AttackDamage;
+    #region Update
+    private void Update()
+    {
+        
+    }
+    #endregion
 
+    #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Enemies" && objectScript.pegou != true)
@@ -44,16 +51,17 @@ public class MakeItAObject : MonoBehaviour
         if (collision.collider.tag != "Player" && Player.GetComponent<ObjectScript>().pegou == false && objectScript.pegouNum > 0)
         {
             Destruir();
-            //dar dano no bixo
         }
     }
+    #endregion
 
+    #region Métodos
     void Destruir()
     {
-       // Instantiate(HitFx, positionHit, Quaternion.identity);
         Instantiate(ExplodeFx, MyGOB.transform.position, Quaternion.identity);
         Destroy(MyGOB);
         objectScript.pegouNum = 0;
         objectScript.pegou = false;
     }
+    #endregion
 }

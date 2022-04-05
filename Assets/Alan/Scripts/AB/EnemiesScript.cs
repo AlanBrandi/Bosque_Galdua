@@ -11,16 +11,14 @@ public class EnemiesScript : MonoBehaviour
     public GameObject fxHit;
     public Transform whereToAddEffect;
     Transform customWhereToAdd;
-    GameObject hsgo;
-    MyHealthSystem myHealthSystem;
+    GameObject Player;
+    public MyHealthSystem myHealthSystem;
     
     //public GameObject monster;
     void Start()
     {
-        hsgo = GameObject.FindWithTag("PlayerManager");
-        myHealthSystem = hsgo.GetComponent<MyHealthSystem>();
+        Player = GameObject.FindWithTag("PlayerManager");
         currentHealth = maxHealth;
-        // monster = this.GetComponent<GameObject>();
     }
     
     public void TakeDamage(int damage)
