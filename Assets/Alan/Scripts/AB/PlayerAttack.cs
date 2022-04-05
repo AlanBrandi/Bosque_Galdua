@@ -36,21 +36,21 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
         {
-            if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false && objectScript.HitObjeto == false && objectScript.pegou == false)
+            if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false && objectScript.pegou == false)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .064f, .016f);
                 Invoke(nameof(AttackCooldown), .16f);
             }
-            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true && objectScript.HitObjeto == false && objectScript.pegou == false)
+            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true && objectScript.pegou == false)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
                 Invoke(nameof(AttackCooldown), .368f);
             }
-            else if (Input.GetKeyDown(attackButton) && objectScript.HitObjeto == false && objectScript.pegou == false)
+            else if (Input.GetKeyDown(attackButton) && objectScript.pegou == false)
             {
                 AttackSoundAndDelay();
                 MyAni.SetTrigger("Attack");

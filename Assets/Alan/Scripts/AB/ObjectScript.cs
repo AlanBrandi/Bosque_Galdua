@@ -14,8 +14,8 @@ public class ObjectScript : MonoBehaviour
     public bool HitObjeto = false;
     LayerMask ObjectLayer;
 
-    public float AttackRate = 2f;
-    public float NextAttackTime = 0f;
+    public float attackRate = 2f;
+    public float NextattackTime = 0f;
 
     GameObject boxHolder;
     GameObject grabDetect;
@@ -39,7 +39,7 @@ public class ObjectScript : MonoBehaviour
         if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
         {
             HitObjeto = true;
-            if (Time.time >= NextAttackTime && Time.time >= NextAttackTime)
+            if (Time.time >= NextattackTime && Time.time >= NextattackTime)
             {
                 if (Input.GetKeyDown(KeyCode.J) && pegou == false)
                 {
@@ -49,7 +49,7 @@ public class ObjectScript : MonoBehaviour
                     PlayerAni.SetBool("Holding", true);
                     pegou = true;
                     pegouNum = pegouNum + 1;
-                    NextAttackTime = Time.time + 1f / AttackRate;
+                    NextattackTime = Time.time + 1f / attackRate;
                 }
                 else if (Input.GetKeyDown(KeyCode.J) && pegou == true)
                 {
@@ -68,8 +68,8 @@ public class ObjectScript : MonoBehaviour
                 HitObjeto = false;
             }
         }
-        #endregion
     }
+        #endregion
     void PegouFalse()
     {
         pegou = false;
