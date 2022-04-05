@@ -22,7 +22,6 @@ public class EnemyGuardian : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(UpdatePath), 0, 1f);
         aiDS = GetComponent<AIDestinationSetter>();
         patrol = GetComponent<PointPatrol>();
         seeker = GetComponent<AIPath>();
@@ -66,11 +65,11 @@ public class EnemyGuardian : MonoBehaviour
         {
             case EnumEnemyState.PATROL:
                 animator.SetTrigger("Patrol");
-                Invoke(nameof(TransitionDone), 1.2f);
+                Invoke(nameof(TransitionDone), 1f);
                 break;
             case EnumEnemyState.SEEKER:
                 animator.SetTrigger("Pursuit");
-                Invoke(nameof(TransitionDone), 1.2f);
+                Invoke(nameof(TransitionDone), 1f);
                 break;
         }
         state = newState;
@@ -87,8 +86,8 @@ public class EnemyGuardian : MonoBehaviour
         {
             seeker.enabled = true;
             animator.SetTrigger("Pursuit");
+            InvokeRepeating(nameof(UpdatePath), 0, 1f);
         }
-        InvokeRepeating(nameof(UpdatePath), 0, 1f);
     }
 }
 
