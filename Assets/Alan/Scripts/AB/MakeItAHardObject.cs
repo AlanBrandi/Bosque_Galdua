@@ -33,13 +33,9 @@ public class MakeItAHardObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemies" && objectScript.pegou != true)
+        if(collision.collider.tag == "Enemies" && objectScript.pegou == true)
         {
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
-        }
-        else if(collision.collider.tag == "Enemies" && objectScript.pegou == true)
-        {
-            Destruir();
         }
 
        /* if (collision.collider.tag != "Player" && Player.GetComponent<ObjectScript>().pegou == false && objectScript.pegouNum > 0)

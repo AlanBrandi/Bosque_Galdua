@@ -6,9 +6,14 @@ public class IsBoxInside : MonoBehaviour
 {
     public Door door;
     IsBoxInside isBoxInside;
+    SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
+    AudioSource audioSource;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         isBoxInside = GetComponent<IsBoxInside>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +21,8 @@ public class IsBoxInside : MonoBehaviour
         {
             Debug.Log("Box colidiu com botão");
             door.Open();
+            spriteRenderer.sprite = newSprite;
+            audioSource.Play();
             Destroy(isBoxInside);
         }
     }

@@ -18,7 +18,7 @@ public class EnemyGuardian : MonoBehaviour
     float playerDistance;
     public Transform player;
     public EnumEnemyState state;
-    bool animIsDone = false;
+    bool transitionHappening = false;
 
     private void Start()
     {
@@ -37,13 +37,13 @@ public class EnemyGuardian : MonoBehaviour
         switch (state)
         {
             case EnumEnemyState.PATROL:
-                if (playerDistance < aggroRange && PathUtilities.IsPathPossible(node1, node2) == true)
+                if (playerDistance < aggroRange && PathUtilities.IsPathPossible(node1, node2) == true && transitionHappening == false)
                 {
                     ChangeState(EnumEnemyState.SEEKER);
                 }
                 break;
             case EnumEnemyState.SEEKER:
-                if (playerDistance > aggroRange * 4 || PathUtilities.IsPathPossible(node1, node2) == false)
+                if (playerDistance > aggroRange * 4 && transitionHappening == false || PathUtilities.IsPathPossible(node1, node2) == false && transitionHappening == false)
                 {
                     ChangeState(EnumEnemyState.PATROL);
                 }
@@ -65,13 +65,14 @@ public class EnemyGuardian : MonoBehaviour
         {
             case EnumEnemyState.PATROL:
                 animator.SetTrigger("Patrol");
-                Invoke(nameof(TransitionDone), 1f);
+                Invoke(nameof(TransitionDone), 1.1f);
                 break;
             case EnumEnemyState.SEEKER:
                 animator.SetTrigger("Pursuit");
-                Invoke(nameof(TransitionDone), 1f);
+                Invoke(nameof(TransitionDone), 1.1f);
                 break;
         }
+        transitionHappening = true;
         state = newState;
     }
 
@@ -79,15 +80,16 @@ public class EnemyGuardian : MonoBehaviour
     {
         if (state == EnumEnemyState.PATROL)
         {
-            patrol.enabled = true;
             animator.SetTrigger("Patrol");
+            patrol.enabled = true;
         }
         else if (state == EnumEnemyState.SEEKER)
         {
-            seeker.enabled = true;
             animator.SetTrigger("Pursuit");
+            seeker.enabled = true;
             InvokeRepeating(nameof(UpdatePath), 0, 1f);
         }
+        transitionHappening = false;
     }
 }
 
