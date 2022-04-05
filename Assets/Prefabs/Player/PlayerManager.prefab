@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3223151281985417661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrabDetect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134318667390719947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134318667569167678}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HighAttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5134318667631940187}
   - component: {fileID: 2063429669842514280}
   - component: {fileID: 8810308728882803358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -474,7 +474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134318667742419738}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134318667970271628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MyFeetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668091041026}
   - component: {fileID: 5134318668091041029}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,8 +623,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668139455530}
   - component: {fileID: 5134318668139455533}
-  m_Layer: 0
-  m_Name: sword-silhouette-256x256_0 (1)
+  m_Layer: 7
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,7 +683,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 85c46a3b403ab764998ea1e53bff0441, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -705,7 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668150617336}
   - component: {fileID: 5134318668150617339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668588918831}
   - component: {fileID: 5134318668588918830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668600619957}
   - component: {fileID: 5134318668600619956}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right_foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 5134318668710914899}
   - component: {fileID: 5134318668710914896}
   - component: {fileID: 5134318668710914897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light2D - Fill (Drawn on top)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 51.4006, y: -0.1706939}
+  position: {x: 3.9586, y: -0.4716939}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -1077,7 +1077,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668815822617}
   - component: {fileID: 5134318668815822616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sujo (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,12 +1165,12 @@ GameObject:
   - component: {fileID: 5134318668887889148}
   - component: {fileID: 5134318668176205927}
   - component: {fileID: 912059393886503143}
-  - component: {fileID: 2414869864261524532}
   - component: {fileID: 8810308728792953901}
   - component: {fileID: 8810308728792953906}
+  - component: {fileID: 360822803}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: PlayerManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1221,7 +1221,6 @@ MonoBehaviour:
   slop: {fileID: 5134318668176205927}
   jumpSound: {fileID: 8810308729834431461}
   LandSound: {fileID: 0}
-  Platform: {fileID: 0}
 --- !u!114 &5134318668887889137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1260,7 +1259,7 @@ MonoBehaviour:
   playerManager: {fileID: 5134318668887889149}
   Player: {fileID: 5134318667631940191}
   ani: {fileID: 5134318667631940187}
-  Time_frame: 1
+  Time_frame: 2
   PlayerTomouDano: 0
   Head: {fileID: 5134318668091041029}
   Right_hand: {fileID: 5134318669164748731}
@@ -1367,34 +1366,7 @@ MonoBehaviour:
   initialGravityScale: 1
   wallSliding: 0
   IsGrounded: 0
-  MyAni: {fileID: 0}
---- !u!114 &2414869864261524532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134318668887889149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f4e8a9879069a4f8bd40bd520fdb6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  checkRadius: 5
-  whatisground:
-    serializedVersion: 2
-    m_Bits: 2048
-  IsGrounded: 0
-  rb: {fileID: 5134318667631940186}
-  player: {fileID: 5134318667631940184}
-  isTouchingFront: 0
-  frontCheck: {fileID: 8810308730062808993}
-  feetPos: {fileID: 5134318667970271628}
-  wallSliding: 0
-  wallSlidingSpeed: 0.1
-  wallJumpDirection: {x: 5, y: 1}
-  wallJumpForce: 50
-  input: 1
+  MyAni: {fileID: 5134318667631940187}
 --- !u!50 &8810308728792953901
 Rigidbody2D:
   serializedVersion: 4
@@ -1403,7 +1375,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5134318668887889149}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1428,11 +1400,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a315b9c03704df498ac3ba4aba2a148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDist: 5
-  force: 2000
-  HitObjeto: 0
+  rayDist: 2
+  force: 5000
   pegou: 0
+  HitObjeto: 0
+  attackRate: 2
+  NextattackTime: 0
+  PlayerAni: {fileID: 5134318667631940187}
   pegouNum: 0
+--- !u!114 &360822803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318668887889149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4e8a9879069a4f8bd40bd520fdb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 0.2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 2048
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 32768
+  IsGrounded: 0
+  rb: {fileID: 5134318667631940186}
+  player: {fileID: 5134318667631940184}
+  isTouchingFront: 0
+  frontCheck: {fileID: 8810308730062808993}
+  feetPos: {fileID: 5134318667970271628}
+  wallSliding: 0
+  wallSlidingSpeed: 2
+  wallJumpDirection: {x: 2.3, y: 4}
+  wallJumpForce: 10
+  input: 0
 --- !u!1 &5134318668893198737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668893198736}
   - component: {fileID: 5134318668893198739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1524,7 +1529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318668896013444}
   - component: {fileID: 5134318668896013447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sujo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1606,7 +1611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5134318669164748728}
   - component: {fileID: 5134318669164748731}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Right_Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1688,7 +1693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8951065953890323579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GrabHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1725,7 @@ GameObject:
   - component: {fileID: 8810308728915510208}
   - component: {fileID: 8810308728915510222}
   - component: {fileID: 8810308728915510209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AudioListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1771,7 +1776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8810308729834431460}
   - component: {fileID: 8810308729834431461}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1897,7 +1902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8810308729900145447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JumpingAttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1927,7 +1932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8810308730062808993}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FrontCheck
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}

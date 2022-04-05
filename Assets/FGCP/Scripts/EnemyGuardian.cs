@@ -16,12 +16,13 @@ public class EnemyGuardian : MonoBehaviour
     AIPath seeker;
     public float aggroRange = 5;
     float playerDistance;
-    public Transform player;
+    GameObject player;
     public EnumEnemyState state;
     bool transitionHappening = false;
 
     private void Start()
     {
+        player = GameObject.FindWithTag("Player");
         aiDS = GetComponent<AIDestinationSetter>();
         patrol = GetComponent<PointPatrol>();
         seeker = GetComponent<AIPath>();
@@ -33,7 +34,7 @@ public class EnemyGuardian : MonoBehaviour
     {
         GraphNode node1 = AstarPath.active.GetNearest(this.transform.position).node;
         GraphNode node2 = AstarPath.active.GetNearest(aiDS.target.position, NNConstraint.Default).node;
-        playerDistance = Vector2.Distance(transform.position, player.position);
+        playerDistance = Vector2.Distance(transform.position, player.transform.position);
         switch (state)
         {
             case EnumEnemyState.PATROL:

@@ -11,13 +11,14 @@ public class EnemiesScript : MonoBehaviour
     public GameObject fxHit;
     public Transform whereToAddEffect;
     Transform customWhereToAdd;
-    GameObject Player;
-    public MyHealthSystem myHealthSystem;
+    GameObject hsgo;
+    MyHealthSystem myHealthSystem;
     
     //public GameObject monster;
     void Start()
     {
-        Player = GameObject.FindWithTag("PlayerManager");
+        hsgo = GameObject.FindWithTag("PlayerManager");
+        myHealthSystem = hsgo.GetComponent<MyHealthSystem>();
         currentHealth = maxHealth;
     }
     
@@ -45,7 +46,7 @@ public class EnemiesScript : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("Slime deu dano em player.");
+            Debug.Log("Inimigo deu dano em player.");
             myHealthSystem.Dano(dano);
         }
     }
