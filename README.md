@@ -1,5 +1,5 @@
 # Bosque Galdua
-O jogo conta a história do guardião do Bosque Galdua, Artamus, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Por parte de gameplay o jogo possui menu principal, gameplay, menu de morte e tela final.
+O jogo conta a história do guardião do Bosque Galdua, Artamus, que tem a missão de restaurar o bosque, que foi corrompido por uma maldição, perdendo sua cor e desfigurando sua fauna e flora. Por parte da jogabilidade o jogo possui menu principal, gameplay por fases lineares, menu de morte e tela final.
 - Objetivo: Salvar a floresta que foi corrompida.
 - Gênero: Plataforma de Ação.
 - Andar: O player pode andar no eixo x utilizando as teclas A e D.
@@ -10,7 +10,9 @@ O jogo conta a história do guardião do Bosque Galdua, Artamus, que tem a miss�
 - Planar: Após adquirir o poder, o jogador consegue planar ao segurar a tecla espaço.
 - Pulo-duplo: Após adquirir o poder, o jogador consegue pular uma vez a mais após sair do chão.
 ### Diferencial: 
-O diferencial do Bosque Galdua em relação aos outros é justamente a estética monocromática e o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
+- O diferencial do Bosque Galdua em relação aos outros é justamente a estética monocromática e o fato de tudo ser meticulosamente pensado na conscientização das pessoas, cada detalhe da história e da jogabilidade tem o objetivo de fazer a mensagem do jogo ultrapassar o mundo virtual, e ser aplicável no mundo real.
+### Plataformas de Lançamento:
+- O jogo será lançado para PC através da Steam.
 ### Público Alvo:
 Crianças maiores de 12 anos, adolescentes, jovens adultos e adultos que gostam de jogos plataforma junto de jogadores que gostaram do estilo de jogos com tons de cinza como Limbo.
 ### Classificação Indicativa
@@ -42,13 +44,15 @@ O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a hist�
 - Super Mario Bros. monocromático com golpes.
 ## Game Flow:
 - **Artamus** começa sem espada, encontra uma após fugir e derrotar inimigos utilizando objetos do cenário, e precisa resolver puzzles básicos e derrotar mais inimigos para avançar nos níveis.
+- Na imagem abaixo, é demonstrado o atual fluxo de telas do jogo.
+- ![Screen Flow](https://i.ibb.co/DwMX7rb/Flow.png)
 ## Personagem e Controles:
 - ![Artamus](https://i.ibb.co/ZB13mRz/Artamus-Small.png)
 - Em Bosque Galdua, o Jogador toma o lugar de **Artamus**, um guardião da floresta que perdeu seus poderes depois de uma maldição cair sobre a floresta, enfraquecendo e corrompendo a vida selvagem nela.
 ## Controles:
--  Por enquanto, o **Guardião** pode andar, pular e atacar com sua espada, tanto para os lados quanto para cima.
+-  Por enquanto, o **Guardião** pode andar utilizando as teclas A e D, pular utilizando a tecla espaço e atacar com sua espada utilizando a tecla J, tanto para os lados quanto para cima. Também é possível planar ao segurar a tecla espaço após deixar de pular, deslizar e pular em paredes ao encostar em uma e apertar espaço, respectivamente, e agarrar e jogar objetos específicos utilizando o mesmo botão de ataque.
 ## Conceitos Principais de Gameplay e Recursos Exclusivos de Plataforma:
--  Bosque Galdua se encaixa no gênero de plataforma de ação. O jogador passa por cenários lineares conectados entre-si. O USP do jogo encontra-se em seu estilo visual principalmente monocromático.
+-  Bosque Galdua se encaixa no gênero de plataforma de ação. O jogador passa por cenários lineares conectados entre-si. O charme do jogo encontra-se em seu estilo visual principalmente monocromático.
 -  O jogo não utiliza nenhum recurso exclusivo de qualquer plataforma.
 ## Mundo do Jogo:
 - O jogo se passa em sete cenários:
@@ -61,8 +65,6 @@ O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a hist�
 - A segunda árvore, na qual o nível de corrupção é menor se comparado ao seu ambiente, sendo uma área mais pacífica.
 - A grande arena, o ponto principal de corrupção aonde o personagem principal luta contra o chefe final.
 - Os arredores da floresta, local onde o personagem termina sua aventura e acaba de vez com a fonte da corrupção.
-- (Fluxo antigo - necessita atualizar)
-- ![Fluxo](https://i.ibb.co/kJYTJSV/Fluxo1.png)
 - A floresta principal é o grande cenário da história do jogo, pois ela é o alvo do corrompimento. As árvores e o subsolo são o produto desse corrompimento. Todas as áreas são conectadas linearmente.
 ## Interface:
 - Ao entrar no jogo, o jogador se depara com a tela inicial, composta por quatro opções: Começar, Opções, Créditos e Sair. O usuário pode acessá-las com o mouse, apenas.
@@ -85,16 +87,17 @@ O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a hist�
 - ![Slime](https://i.ibb.co/grkqNRG/Slime2.png)
 - Slime: Um pequeno *slime* que se move de forma lateral dando pequenos pulos, ele não ataca o player, mas se acaso o player toque no pequeno ser, o mesmo irá tomar um determinado dano.
 - ![Totens](https://i.ibb.co/1GFNJty/Totem-Super-Small.png)
-- Totens: São grandes estátuas que protegiam a floresta, que agora foram corrompidas e com isso, ataca nosso player jogando barris no mesmo.
-- ![Monstrinho](https://i.ibb.co/rpvM5Ts/Mini-Monster.png)
+- Totens: São grandes estátuas que protegiam a floresta que, agora corrompidas, atacam tudo que vier em sua frente jogando barris.
+- ![Guardião e Monstrinho](https://i.ibb.co/rpvM5Ts/Mini-Monster.png)
+- Guardião: São monstros criados como mecânismos da própria floresta para defende-lá. Entretanto, devido a corrupção, começaram a atacar os próprios nativos que antes defendiam. Eles são passivos até que o jogador entre no alcance deles, e ficam passivos de novo ao de distanciarem.
 - Monstrinho: São monstros furiosos com dentes extremamente afiados que voam em direção ao player, são agressivos e nascem através de um grande ninho.
 - ![Spawner](https://i.ibb.co/QPRQdzg/Mini-Spawner.png)
 - Spawner: Casa dos monstrinhos, de onde eles surgem e vão atrás do player.
 ## Bosses:
 - ![Scathe](https://i.ibb.co/sb9MFgf/MiniBoss.png)
 - Scathe: Um monstro colossal feito de **polu** que possui uma fúria enorme e destrói tudo pela frente, com uma enorme fenda em formato de X no rosto.
-## Bônus material:
-- O jogo não possui material bônus.
+## Material bônus:
+- O jogo possui cutscenes para adicionar à história do jogo em momentos importantes e marcantes. As cutscenes são feitas utilizando o próprio animador da Unity.
 ## Créditos extras:
 - Músicas:
 - Awakening - Steffen Daum [Link](https://www.youtube.com/watch?v=gjSNbiowp38)
@@ -108,4 +111,4 @@ O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a hist�
 - Monstrinho morrendo - Rickplayer - [Link](https://freesound.org/people/Rickplayer/sounds/530486/)
 - Plataforma, invocação e impacto do barril, impacto do tronco, sons de ataque da espada e sons de slime morrendo - [Link](https://youtube.com/c/AudioLibrarySoundEffects)
 - Barril quebrando - kevinkace - [Link](https://freesound.org/people/kevinkace/sounds/66772/)
-- Todos os efeitos são de propriedade de Jean Moreo - JMO Cartoon FX free - [Link](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-free-109565#publisher)
+- Todos os efeitos gráficos são de propriedade de Jean Moreo - JMO Cartoon FX free - [Link](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-free-109565#publisher)
