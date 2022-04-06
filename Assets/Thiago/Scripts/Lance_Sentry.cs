@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class Lance_Sentry : MonoBehaviour
 {
-    public Transform player;
-    public float attackPlayerSpeed;
+    public Transform Player;
+    public float dashEnemySpeed;
     Vector2 playerPosition;
     Rigidbody2D enemyRb;
-    bool facingRight = true; 
+    bool facingRight = true;
+    PatrolFlyEnemy patrol;
+    public float groundCheckRadius;
+    public LayerMask groundCheckLayer;
+    public Transform groundCheck;
+    public bool isTouchingGround;
 
     private void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
+        patrol = GetComponent<PatrolFlyEnemy>();
     }
     private void Update()
     {
+        isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundCheckLayer);
         if (Input.GetKeyDown(KeyCode.E))
         {
-            AttackPlayer();
+            DashOnPlayer();
         }
+           
+
+
+       
         FlipsTowardsPlayer();
 
         
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
     }
 
     void Flip()
@@ -41,24 +57,27 @@ public class Lance_Sentry : MonoBehaviour
         
     }
 
-    void AttackPlayer()
+    void DashOnPlayer()
     {
-        playerPosition = player.position - transform.position;
+
+        playerPosition = Player.position - transform.position;
+        
         playerPosition.Normalize();
-        enemyRb.velocity = playerPosition * attackPlayerSpeed;
+        
+        
+        
+
     }
     void FlipsTowardsPlayer()
     {
-        float playerDirection = player.position.x - transform.position.x;
+        float playerDirection = Player.position.x - transform.position.x;
 
         if (playerDirection < 0 && facingRight)
         {
-            facingRight = true;
             Flip();
         }
         else if(playerDirection > 0 && !facingRight)
         {
-            facingRight = false;
             Flip();
         }
     }
