@@ -14,6 +14,10 @@ public class Lance_Sentry : MonoBehaviour
     public LayerMask groundCheckLayer;
     public Transform groundCheck;
     public bool isTouchingGround;
+    public GameObject bullet;
+    public Transform bulletPos;
+    Quaternion rotationSpear;
+    float playerDirection;
 
     private void Start()
     {
@@ -57,28 +61,57 @@ public class Lance_Sentry : MonoBehaviour
         
     }
 
-    void DashOnPlayer()
+    public void DashOnPlayer()
     {
 
         playerPosition = Player.position - transform.position;
         
         playerPosition.Normalize();
+
+        enemyRb.velocity = playerPosition * dashEnemySpeed;
         
         
         
 
     }
+    public void ThrowSpear()
+    {
+        playerDirection = Player.position.x - transform.position.x;
+        if(playerDirection > 0)
+        {
+            Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 0, 0));
+        }
+        else if(playerDirection < 0)
+        {
+            Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 180, 0));
+        }
+    }
+        
     void FlipsTowardsPlayer()
     {
-        float playerDirection = Player.position.x - transform.position.x;
+        playerDirection = Player.position.x - transform.position.x;
 
         if (playerDirection < 0 && facingRight)
         {
+             
             Flip();
         }
         else if(playerDirection > 0 && !facingRight)
         {
             Flip();
+        }
+    }
+
+    public void RandomState()
+    {
+        int randomState = Random.Range(0, 2);
+        if(randomState == 0)
+        {
+            DashOnPlayer();
+        }
+        else if(randomState == 1)
+        {
+            ThrowSpear();
         }
     }
 }
