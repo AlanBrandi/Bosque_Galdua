@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lance_Sentry : MonoBehaviour
 {
-    public Transform Player;
+    public GameObject Player;
     public float dashEnemySpeed;
     Vector2 playerPosition;
     Rigidbody2D enemyRb;
@@ -64,7 +64,7 @@ public class Lance_Sentry : MonoBehaviour
     public void DashOnPlayer()
     {
 
-        playerPosition = Player.position - transform.position;
+        playerPosition = Player.transform.position - transform.position;
         
         playerPosition.Normalize();
 
@@ -76,7 +76,7 @@ public class Lance_Sentry : MonoBehaviour
     }
     public void ThrowSpear()
     {
-        playerDirection = Player.position.x - transform.position.x;
+        playerDirection = Player.transform.position.x - transform.position.x;
         if(playerDirection > 0)
         {
             Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 0, 0));
@@ -89,7 +89,7 @@ public class Lance_Sentry : MonoBehaviour
         
     void FlipsTowardsPlayer()
     {
-        playerDirection = Player.position.x - transform.position.x;
+        playerDirection = Player.transform.position.x - transform.position.x;
 
         if (playerDirection < 0 && facingRight)
         {

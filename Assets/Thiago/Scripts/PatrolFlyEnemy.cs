@@ -11,7 +11,7 @@ public class PatrolFlyEnemy : MonoBehaviour
     private float waiTime;
     public float startWaitTime;
     Rigidbody2D enemyRb;
-    public Transform Player;
+    public GameObject Player;
     int cont = 0;
     Lance_Sentry attackScript;
 
@@ -55,7 +55,7 @@ public class PatrolFlyEnemy : MonoBehaviour
     }
     public void Move()
     {
-        float distanceFromPlayerup = Vector2.Distance(Player.position, transform.position);
+        float distanceFromPlayerup = Vector2.Distance(Player.transform.position, transform.position);
         if(distanceFromPlayerup < lineOfSite)
         {
             transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
