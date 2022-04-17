@@ -99,7 +99,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134318668555645573}
-  - component: {fileID: 5134318667631940191}
   - component: {fileID: 5134318667631940186}
   - component: {fileID: 5134318667631940188}
   - component: {fileID: 5134318667631940189}
@@ -140,57 +139,6 @@ Transform:
   m_Father: {fileID: 5134318667658363780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5134318667631940191
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134318667631940184}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 8.29, y: 10.66}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!50 &5134318667631940186
 Rigidbody2D:
   serializedVersion: 4
@@ -1001,7 +949,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 3.9586, y: -0.4716939}
+  position: {x: -25.791132, y: 0.13591719}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -1253,11 +1201,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitMaterial: {fileID: 2100000, guid: d27362b483b80724bbab89d14acb6c2a, type: 2}
-  DefautMaterial: {fileID: 2100000, guid: c3a3d85d0868fc042b61b7bf90b6582c, type: 2}
+  DefautMaterial: {fileID: 0}
   ui: {fileID: 0}
   GameData: {fileID: 11400000, guid: af4326fd48ef82a45899ff50f0e0a553, type: 2}
   playerManager: {fileID: 5134318668887889149}
-  Player: {fileID: 5134318667631940191}
+  Player: {fileID: 0}
   ani: {fileID: 5134318667631940187}
   Time_frame: 2
   PlayerTomouDano: 0
