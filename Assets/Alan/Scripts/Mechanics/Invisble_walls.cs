@@ -5,6 +5,7 @@ using UnityEngine;
 public class Invisble_walls : MonoBehaviour
 {
     public SpriteRenderer[] SR = new SpriteRenderer[1];
+    public bool isBackground = true;
     public float colorAlpha = .7f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +13,14 @@ public class Invisble_walls : MonoBehaviour
         {
             foreach (SpriteRenderer sr in SR)
             {
-                sr.color= new Color(1f, 1f, 1f, colorAlpha);
+                if (isBackground)
+                {
+                    sr.color = new Color(1f, 1f, 1f, colorAlpha);
+                }
+                else
+                {
+                    sr.color= new Color(0f, 0f, 0f, colorAlpha);
+                }
             }
         }
     }
@@ -22,7 +30,14 @@ public class Invisble_walls : MonoBehaviour
         {
             foreach (SpriteRenderer sr in SR)
             {
-                sr.color = new Color(1f, 1f, 1f, 1f);
+                if (isBackground)
+                {
+                    sr.color = new Color(1f, 1f, 1f, 1f);
+                }
+                else
+                {
+                    sr.color = new Color(0f, 0f, 0f, 1f);
+                }
             }
         }
     }
