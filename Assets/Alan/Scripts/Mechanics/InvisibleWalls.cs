@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invisble_walls : MonoBehaviour
+public class InvisibleWalls : MonoBehaviour
 {
     public SpriteRenderer[] SR = new SpriteRenderer[1];
     public bool isBackground = true;
