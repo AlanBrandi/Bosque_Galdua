@@ -11,6 +11,7 @@ public class ObjectScript : MonoBehaviour
     public float rayDist = 2;
     public float force = 5;
     public bool pegou = false;
+    public bool jogou = false;
     public bool HitObjeto = false;
     LayerMask ObjectLayer;
 
@@ -48,12 +49,12 @@ public class ObjectScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.J) && pegou == false)
                 {
+                    pegou = true;
                     grabCheck.collider.gameObject.transform.SetParent(boxHolder.transform.parent);
                     grabCheck.collider.gameObject.transform.position = boxHolder.transform.position;
                     grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                     ObjectPoly.enabled = false;
                     PlayerAni.SetBool("Holding", true);
-                    pegou = true;
                     pegouNum = pegouNum + 1;
                     NextattackTime = Time.time + 1f / attackRate;
                 }
@@ -65,6 +66,7 @@ public class ObjectScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.J) && pegou == true)
         {
+            jogou = true;
             ObjectPoly.enabled = true;
             Debug.Log("Entrou no jogar objeto");
             objectGO.transform.parent = null;

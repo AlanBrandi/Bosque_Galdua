@@ -41,7 +41,7 @@ public class MakeItAHardObject : MonoBehaviour
     #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Enemies" && objectScript.pegou == false)
+        if(collision.collider.tag == "Enemies" && objectScript.jogou == true)
         {
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }
