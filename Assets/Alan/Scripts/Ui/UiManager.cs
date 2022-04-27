@@ -100,10 +100,11 @@ public class UiManager : MonoBehaviour
     public void SetLife(int Life)
     {
         slider.value = GameData.lives;
-        Instantiate(HIT, whereToAddEfecct.position, Quaternion.identity);
         AudioSource hitSFX = HIT.GetComponent<AudioSource>();
         float randomPitch = Random.Range(0.8f, 1.4f);
         hitSFX.pitch = randomPitch;
+        Instantiate(HIT, whereToAddEfecct.position, Quaternion.identity);
+        hitSFX.pitch = 1;
 
         if (Life <= 0)
         {
