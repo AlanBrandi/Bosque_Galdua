@@ -11,6 +11,7 @@ public class MakeItAHardObject : MonoBehaviour
     GameObject MyGOB;
     GameObject Player;
     ObjectScript objectScript;
+    AudioSource audioSource; public AudioClip clip;
     public GameObject ExplodeFx;
     public int AttackDamage;
 
@@ -18,6 +19,7 @@ public class MakeItAHardObject : MonoBehaviour
     private void Awake()
     {
         MyGOB = this.gameObject;
+        audioSource = GetComponent<AudioSource>();
         Player = GameObject.Find("PlayerManager");
         objectScript = Player.GetComponent<ObjectScript>();
     }
@@ -42,6 +44,15 @@ public class MakeItAHardObject : MonoBehaviour
         if(collision.collider.tag == "Enemies" && objectScript.pegou == false)
         {
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+        }
+        Debug.Log(collision.relativeVelocity.magnitude);
+        if (collision.relativeVelocity.magnitude > 20)
+        {
+            if (gameObject != null)
+            {
+                audioSource.pitch = collision.relativeVelocity.magnitude/30;                
+                audioSource.PlayOneShot(clip, (collision.relativeVelocity.magnitude / 30));
+            }
         }
     }
     #endregion
