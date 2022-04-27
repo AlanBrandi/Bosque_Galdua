@@ -7,8 +7,8 @@ public class MyHealthSystem : MonoBehaviour
     public Material DefautMaterial;
 
     public UiManager ui;
-    public GameData_SO GameData;
-    public GameObject playerManager;
+    GameData_SO gameData;
+    GameObject playerManager;
     public Animator ani;
     public float Time_frame = 1;
     public bool PlayerTomouDano = false;
@@ -26,19 +26,20 @@ public class MyHealthSystem : MonoBehaviour
     Animator HitAnim;
     private void Start()
     {
+        gameData = Resources.Load("PlayerLives") as GameData_SO;
+        playerManager = GameObject.FindGameObjectWithTag("PlayerManager");
         Hit = GameObject.Find("HitHUD");
         HitAnim = Hit.GetComponent<Animator>();
         Hit.SetActive(false);
     }
     private void Update()
     {
-        if (GameData.lives <= 0)
+        if (gameData.lives <= 0)
         {
             Die();
         }
         if (Blink == true)
         {
-            PiscarOn();
         }
         else
         {
@@ -52,26 +53,29 @@ public class MyHealthSystem : MonoBehaviour
         {
             Invoke("TomouDanofalso", Time_frame);
         }
-        else */if (PlayerTomouDano == false)
+        else */
+        if (PlayerTomouDano == false)
         {
-            GameData.lives -= dano;
-            ui.SetLife(GameData.lives);
+            gameData.lives -= dano;
+            ui.SetLife(gameData.lives);
             Hit.SetActive(true);
             HitAnim.SetTrigger("PlayerHit");
             PlayerTomouDano = true;
             Blink = true;
 
             //---------FICAR TRANSPARENTE-------------
-            
+
             Head.color = new Color(1, 1, 1, .7f);
             Right_hand.color = new Color(1, 1, 1, .7f);
             Left_hand.color = new Color(1, 1, 1, .7f);
             Right_foot.color = new Color(1, 1, 1, .7f);
             Left_foot.color = new Color(1, 1, 1, .7f);
             Sword.color = new Color(1, 1, 1, .7f);
-       
+
             Invoke(nameof(DisableHit), 1);
+            PiscarOn();
             Invoke("TomouDanofalso", Time_frame);
+
             return;
         }
     }
@@ -88,16 +92,16 @@ public class MyHealthSystem : MonoBehaviour
 
     void TomouDanofalso()
     {
-        
+
         Head.color = new Color(1, 1, 1, 1);
         Right_hand.color = new Color(1, 1, 1, 1);
         Left_hand.color = new Color(1, 1, 1, 1);
         Right_foot.color = new Color(1, 1, 1, 1);
         Left_foot.color = new Color(1, 1, 1, 1);
         Sword.color = new Color(1, 1, 1, 1);
-        
+
         //-----------------------------------
-        
+
         Head.material = DefautMaterial;
         Right_hand.material = DefautMaterial;
         Left_hand.material = DefautMaterial;
@@ -116,7 +120,7 @@ public class MyHealthSystem : MonoBehaviour
 
     void PiscarOn()
     {
-        if(Blink == false)
+        if (Blink == false)
         {
             Head.color = new Color(1, 1, 1, 1);
             Right_hand.color = new Color(1, 1, 1, 1);
@@ -138,24 +142,26 @@ public class MyHealthSystem : MonoBehaviour
         }
         else
         {
+            Debug.Log("Branco");
             Head.material = HitMaterial;
             Right_hand.material = HitMaterial;
             Left_hand.material = HitMaterial;
             Right_foot.material = HitMaterial;
             Left_foot.material = HitMaterial;
             Sword.material = HitMaterial;
-            Invoke("PiscarOff", 0.1f);
+            Invoke("PiscarOff", 5f * Time.deltaTime);
         }
     }
     void PiscarOff()
     {
+        Debug.Log("Preto");
         Head.material = DefautMaterial;
         Right_hand.material = DefautMaterial;
         Left_hand.material = DefautMaterial;
         Right_foot.material = DefautMaterial;
         Left_foot.material = DefautMaterial;
         Sword.material = DefautMaterial;
-        Invoke("PiscarOn", 0.1f);
+        Invoke("PiscarOn", 5f * Time.deltaTime);
     }
 
 }

@@ -14,7 +14,7 @@ public class Jumping : MonoBehaviour
     public LayerMask whatisground;
     public LayerMask slopeground;
     public float jumpForce;
-    float jumpTimeCounter;
+    double jumpTimeCounter;
     public float JumpTime;
     public bool isJumping = false;
     public Slope slop;
@@ -55,14 +55,17 @@ public class Jumping : MonoBehaviour
 
        
        
+        if (Input.GetKeyDown(thiskey) && isJumping == true)
+        {
+            jumpSound.Play();
+        }
 
         if (Input.GetKey(thiskey) && isJumping == true)
         {
-            jumpSound.Play();
             if (jumpTimeCounter > 0)
             {
                 MyRb.AddForce(Vector2.up * jumpForce);
-                jumpTimeCounter -= Time.deltaTime;
+                jumpTimeCounter -= Time.fixedDeltaTime;
             }
             else
             { 

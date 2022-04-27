@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Starter : MonoBehaviour
 {
-    public GameData_SO gameData;
+    GameData_SO gameData;
     public SettingsPanel settingsPanel;
     Scene sceneName;
     readonly string forest = "Forest";
     void Awake()
     {
+        gameData = Resources.Load("PlayerLives") as GameData_SO;
         sceneName = SceneManager.GetActiveScene();
         if (sceneName.name == forest)
         {
