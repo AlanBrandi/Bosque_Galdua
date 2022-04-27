@@ -9,7 +9,7 @@ public class UiManager : MonoBehaviour
 {
     int score = 0;
     GameObject sliderHP;
-    GameObject DeathPanel;
+    GameObject gameOver;
     GameObject HUD_UI;
     GameObject WinPanel;
     GameObject settingsPanel;
@@ -30,7 +30,8 @@ public class UiManager : MonoBehaviour
    
     private void Start()
     {
-        DeathPanel = GameObject.Find("DeathPanel");
+        gameOver = GameObject.Find("GameOver");
+        gameOver.SetActive(false);
         HUD_UI = GameObject.Find("Health_QuestUi");
         sliderHP = GameObject.Find("SliderHP");
         slider = sliderHP.GetComponent<Slider>();
@@ -107,7 +108,7 @@ public class UiManager : MonoBehaviour
         if (Life <= 0)
         {
             HUD_UI.SetActive(false);
-            DeathPanel.SetActive(true);
+            gameOver.SetActive(true);
         }
     }
     public void FadeOut(Animator fade)
@@ -140,13 +141,14 @@ public class UiManager : MonoBehaviour
     private void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0;
         AudioListener.pause = true;
         GameIsPaused = true;
     }
 
     public void LoadMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }
 

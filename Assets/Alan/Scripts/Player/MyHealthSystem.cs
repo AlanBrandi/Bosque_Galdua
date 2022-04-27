@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class MyHealthSystem : MonoBehaviour
 {
+    GameObject PlayerGO;
     public Material HitMaterial;
     public Material DefautMaterial;
-    GameObject PlayerGO;
 
     public UiManager ui;
     public GameData_SO GameData;
     public GameObject playerManager;
-    public SpriteRenderer Player;
     public Animator ani;
     public float Time_frame = 1;
     public bool PlayerTomouDano = false;
@@ -27,7 +26,6 @@ public class MyHealthSystem : MonoBehaviour
     Animator HitAnim;
     private void Start()
     {
-        PlayerGO = GameObject.Find("Player");
         Hit = GameObject.Find("HitHUD");
         HitAnim = Hit.GetComponent<Animator>();
         Hit.SetActive(false);
@@ -40,7 +38,7 @@ public class MyHealthSystem : MonoBehaviour
         }
         if (Blink == true)
         {
-            Invoke("PiscarOn",0);
+            PiscarOn();
         }
         else
         {
@@ -50,11 +48,11 @@ public class MyHealthSystem : MonoBehaviour
 
     public void Dano(int dano)
     {
-        if(PlayerTomouDano == true)
+        /*if(PlayerTomouDano == true)
         {
             Invoke("TomouDanofalso", Time_frame);
         }
-        else if (PlayerTomouDano == false)
+        else */if (PlayerTomouDano == false)
         {
             GameData.lives -= dano;
             ui.SetLife(GameData.lives);
@@ -84,8 +82,7 @@ public class MyHealthSystem : MonoBehaviour
         playerManager.GetComponent<PlayerAttack>().enabled = false;
         playerManager.GetComponent<PlayerHighAttack>().enabled = false;
         playerManager.GetComponent<Jumping>().enabled = false;
-        Destroy(PlayerGO);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         ui.SetLife(0);
     }
 
