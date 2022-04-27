@@ -39,6 +39,10 @@ public class ObjectScript : MonoBehaviour
     { 
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.transform.position, grabDetect.transform.right, rayDist, ObjectLayer);
         Debug.DrawRay(grabDetect.transform.position, grabDetect.transform.right * rayDist, Color.green);
+        if(pegou == false)
+        {
+            PlayerAni.SetBool("Holding", false);
+        }
 
         if (grabCheck.collider != null && grabCheck.collider.tag == "Object" && pegou == false)
         {
@@ -50,11 +54,12 @@ public class ObjectScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.J) && pegou == false)
                 {
                     pegou = true;
+                    jogou = false;
                     grabCheck.collider.gameObject.transform.SetParent(boxHolder.transform.parent);
                     grabCheck.collider.gameObject.transform.position = boxHolder.transform.position;
                     grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                     ObjectPoly.enabled = false;
-                    PlayerAni.SetBool("Holding", true);
+                    
                     pegouNum = pegouNum + 1;
                     NextattackTime = Time.time + 1f / attackRate;
                 }

@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (jumping.IsGrounded == false && objectScript.HitObjeto == false && objectScript.pegou != true)
+        if (jumping.IsGrounded == false)
         {
             Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(JumpingAttackPoint.position, JumpingAttackRange, EnemyLayers);
 
