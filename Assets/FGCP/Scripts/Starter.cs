@@ -18,7 +18,7 @@ public class Starter : MonoBehaviour
             gameData.lives = 15;
         }
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 0;
     }
     private void Start()
     {
