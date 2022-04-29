@@ -11,10 +11,11 @@ public class Boss : MonoBehaviour
     public Transform fireGroundPos;
     public Transform shockwavePos;
     public float attackrate;
-    public float attackrate2;
     int randomState = 0;
     public acidSpawn acid;
     float nextAttack = 0f;
+    public float acidRate;
+    float nextAcid = 0;
 
 
     private void Start()
@@ -26,11 +27,17 @@ public class Boss : MonoBehaviour
     {
         if(Time.time > nextAttack)
         {
-           
+          
                 nextAttack = Time.time + attackrate;
                 RandomState();
                       
-        }        
+        }
+        if (Time.time > nextAcid && randomState == 3)
+        {
+
+            nextAcid = Time.time + acidRate;
+            acidRain();
+        }
     }
 
     public void summon()
@@ -51,7 +58,7 @@ public class Boss : MonoBehaviour
 
     public void acidRain()
     {
-        Debug.Log("ACID RAIN");
+        
        
         acid.acidWave();
         acid.acidgo = true;
@@ -78,6 +85,7 @@ public class Boss : MonoBehaviour
         }
         else if (randomState == 3)
         {
+            Debug.Log("ACID RAIN");
             acidRain();
         }
     }

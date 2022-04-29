@@ -9,7 +9,7 @@ public class Jumping : MonoBehaviour
     public KeyCode DownPlatform;
     public bool IsGrounded;
     Animator animator;
-    Transform feetPos;
+    public Transform feetPos;
     public float checkRadius;
     LayerMask groundLayer;
     public float jumpForce;
