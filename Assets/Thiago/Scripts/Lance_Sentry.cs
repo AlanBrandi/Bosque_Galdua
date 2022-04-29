@@ -31,9 +31,6 @@ public class Lance_Sentry : MonoBehaviour
         {
             DashOnPlayer();
         }
-           
-
-
        
         FlipsTowardsPlayer();
 
