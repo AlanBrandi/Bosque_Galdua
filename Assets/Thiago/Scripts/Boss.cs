@@ -15,7 +15,7 @@ public class Boss : MonoBehaviour
     int randomState = 0;
     public acidSpawn acid;
     float nextAttack = 0f;
-    
+
 
     private void Start()
     {
@@ -25,13 +25,10 @@ public class Boss : MonoBehaviour
     private void Update()
     {
         if(Time.time > nextAttack)
-        {           
+        {
+           
                 nextAttack = Time.time + attackrate;
                 RandomState();
-            if(randomState == 3)
-            {
-                acid.acidWave();
-            }
                       
         }        
     }
@@ -57,7 +54,7 @@ public class Boss : MonoBehaviour
         Debug.Log("ACID RAIN");
        
         acid.acidWave();
-        
+        acid.acidgo = true;
        
     }
     public void lazer()
@@ -79,6 +76,9 @@ public class Boss : MonoBehaviour
         {
             fireGroundAttack();
         }
-        
+        else if (randomState == 3)
+        {
+            acidRain();
+        }
     }
 }
