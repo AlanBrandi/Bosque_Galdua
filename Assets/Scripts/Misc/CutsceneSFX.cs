@@ -5,16 +5,16 @@ using UnityEngine;
 public class CutsceneSFX : MonoBehaviour
 {
     AudioSource audioSource;
-    LevelChanger levelChanger;
 
     private void Start()
     {
-        levelChanger = GameObject.FindObjectOfType<LevelChanger>();
         audioSource = GetComponent<AudioSource>();
     }
     void PlaySound(AudioClip clip)
     {
         //audioSource.PlayClipAtPoint(clip, new Vector3(0, 0, 0));
+        float randomPitch = Random.Range(0.8f, 1.5f);
+        audioSource.pitch = randomPitch;
         audioSource.clip = clip;
         audioSource.Play();
     }

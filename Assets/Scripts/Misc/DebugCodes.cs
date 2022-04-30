@@ -9,7 +9,7 @@ public class DebugCodes : MonoBehaviour
     float timeDif;
     List<string> patterns = new List<string> { "ShiftH" };
 
-    public TMP_Text fpsText;
+    TMP_Text fpsText;
     public float deltaTime;
     GameObject FPS;
     GameObject player;
@@ -18,6 +18,7 @@ public class DebugCodes : MonoBehaviour
 
     private void Awake()
     {
+        fpsText = GameObject.Find("FPS").GetComponent<TMP_Text>();
         player = GameObject.FindGameObjectWithTag("Player");
         audioSource = GetComponent<AudioSource>();
         timeDif = maxTimeDif;

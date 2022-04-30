@@ -4,16 +4,18 @@ public class MyHealthSystem : MonoBehaviour
 {
     GameObject PlayerGO;
     GameObject playerManager;
+    public Material DefautMaterial;
+    public Material HitMaterial;
     public float Time_frame = 1;
     float remainingIF;
     public bool PlayerTomouDano = false;
 
-    public SpriteRenderer Head;
-    public SpriteRenderer Right_hand;
-    public SpriteRenderer Left_hand;
-    public SpriteRenderer Right_foot;
-    public SpriteRenderer Sword;
-    public SpriteRenderer Left_foot;
+    SpriteRenderer Head;
+    SpriteRenderer RightHand;
+    SpriteRenderer LeftHand;
+    SpriteRenderer RightFoot;
+    SpriteRenderer LeftFoot;
+    SpriteRenderer Sword;
 
     bool Blink = false;
 
@@ -23,6 +25,12 @@ public class MyHealthSystem : MonoBehaviour
     {
         playerManager = GameObject.FindGameObjectWithTag("PlayerManager");
         Hit = GameObject.Find("HitHUD");
+        Head = GameObject.Find("Head").GetComponent<SpriteRenderer>();
+        RightHand = GameObject.Find("RightHand").GetComponent<SpriteRenderer>();
+        LeftHand = GameObject.Find("LeftHand").GetComponent<SpriteRenderer>();
+        RightFoot = GameObject.Find("RightHand").GetComponent<SpriteRenderer>();
+        LeftFoot = GameObject.Find("LeftFoot").GetComponent<SpriteRenderer>();
+        Sword = GameObject.Find("Sword").GetComponent<SpriteRenderer>();
         hitAnim = Hit.GetComponentInChildren<Animator>();
         Hit.SetActive(false);
     }
@@ -59,10 +67,10 @@ public class MyHealthSystem : MonoBehaviour
             //---------FICAR TRANSPARENTE-------------
 
             Head.color = new Color(1, 1, 1, .7f);
-            Right_hand.color = new Color(1, 1, 1, .7f);
-            Left_hand.color = new Color(1, 1, 1, .7f);
-            Right_foot.color = new Color(1, 1, 1, .7f);
-            Left_foot.color = new Color(1, 1, 1, .7f);
+            RightHand.color = new Color(1, 1, 1, .7f);
+            LeftHand.color = new Color(1, 1, 1, .7f);
+            RightFoot.color = new Color(1, 1, 1, .7f);
+            LeftFoot.color = new Color(1, 1, 1, .7f);
             Sword.color = new Color(1, 1, 1, .7f);
 
             Invoke(nameof(DisableHit), 1);
@@ -85,10 +93,10 @@ public class MyHealthSystem : MonoBehaviour
     {
 
         Head.color = new Color(1, 1, 1, 1);
-        Right_hand.color = new Color(1, 1, 1, 1);
-        Left_hand.color = new Color(1, 1, 1, 1);
-        Right_foot.color = new Color(1, 1, 1, 1);
-        Left_foot.color = new Color(1, 1, 1, 1);
+        RightHand.color = new Color(1, 1, 1, 1);
+        LeftHand.color = new Color(1, 1, 1, 1);
+        RightFoot.color = new Color(1, 1, 1, 1);
+        LeftFoot.color = new Color(1, 1, 1, 1);
         Sword.color = new Color(1, 1, 1, 1);
         Blink = false;
         PlayerTomouDano = false;
@@ -102,51 +110,51 @@ public class MyHealthSystem : MonoBehaviour
         if (Blink == false)
         {
             Head.color = new Color(1, 1, 1, 1);
-            Right_hand.color = new Color(1, 1, 1, 1);
-            Left_hand.color = new Color(1, 1, 1, 1);
-            Right_foot.color = new Color(1, 1, 1, 1);
-            Left_foot.color = new Color(1, 1, 1, 1);
+            RightHand.color = new Color(1, 1, 1, 1);
+            LeftHand.color = new Color(1, 1, 1, 1);
+            RightFoot.color = new Color(1, 1, 1, 1);
+            LeftFoot.color = new Color(1, 1, 1, 1);
             Sword.color = new Color(1, 1, 1, 1);
         }
         else
         {
             // Cor
-            /*Head.material = HitMaterial;
-            Right_hand.material = HitMaterial;
-            Left_hand.material = HitMaterial;
-            Right_foot.material = HitMaterial;
-            Left_foot.material = HitMaterial;
-            Sword.material = HitMaterial;*/
+            Head.material = HitMaterial;
+            RightHand.material = HitMaterial;
+            LeftHand.material = HitMaterial;
+            RightFoot.material = HitMaterial;
+            LeftFoot.material = HitMaterial;
+            Sword.material = HitMaterial;
             //Transparente
-            Head.color = new Color(1, 1, 1, .3f);
+            /*Head.color = new Color(1, 1, 1, .3f);
             Right_hand.color = new Color(1, 1, 1, .3f);
             Left_hand.color = new Color(1, 1, 1, .3f);
             Right_foot.color = new Color(1, 1, 1, .3f);
             Left_foot.color = new Color(1, 1, 1, .3f);
-            Sword.color = new Color(1, 1, 1, .3f);
+            Sword.color = new Color(1, 1, 1, .3f);*/
             remainingIF -= .075f;
-            Invoke("PiscarOff", (5/remainingIF) * Time.fixedDeltaTime);
+            Invoke("PiscarOff", (5 / remainingIF) * Time.fixedDeltaTime);
         }
     }
     void PiscarOff()
     {
         //Cor
-        /*Head.material = DefautMaterial;
-        Right_hand.material = DefautMaterial;
-        Left_hand.material = DefautMaterial;
-        Right_foot.material = DefautMaterial;
-        Left_foot.material = DefautMaterial;
-        Sword.material = DefautMaterial;*/
+        Head.material = DefautMaterial;
+        RightHand.material = DefautMaterial;
+        LeftHand.material = DefautMaterial;
+        RightFoot.material = DefautMaterial;
+        LeftFoot.material = DefautMaterial;
+        Sword.material = DefautMaterial;
 
         //Transparente
-        Head.color = new Color(1, 1, 1, 1);
+        /*Head.color = new Color(1, 1, 1, 1);
         Right_hand.color = new Color(1, 1, 1, 1);
         Left_hand.color = new Color(1, 1, 1, 1);
         Right_foot.color = new Color(1, 1, 1, 1);
         Left_foot.color = new Color(1, 1, 1, 1);
-        Sword.color = new Color(1, 1, 1, 1);
+        Sword.color = new Color(1, 1, 1, 1);*/
 
         remainingIF -= .075f;
-        Invoke("PiscarOn", (5/remainingIF) * Time.fixedDeltaTime);
+        Invoke("PiscarOn", (5 / remainingIF) * Time.fixedDeltaTime);
     }
 }

@@ -6,8 +6,8 @@ public class Planar : MonoBehaviour
 {
     public KeyCode thiskey;
     Rigidbody2D rb;
-    public Transform feetPos;
-    public Transform frontCheck;
+    Transform feetPos;
+    Transform frontCheck;
     public float checkRadius;
     LayerMask groundLayer;
     public bool isTouchingFront;
@@ -20,6 +20,8 @@ public class Planar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        frontCheck = GameObject.Find("FrontCheck").transform;
+        feetPos = GameObject.Find("FeetPos").transform;
         animator = GetComponentInChildren<Animator>();
         groundLayer = LayerMask.GetMask("Ground");
         rb = GetComponentInChildren<Rigidbody2D>();

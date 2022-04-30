@@ -6,13 +6,13 @@ public class WallJumping : MonoBehaviour
 {
     public float checkRadius;
     LayerMask groundLayer;
-    public LayerMask whatIsWall;
+    LayerMask wallLayer;
     public bool IsGrounded;
     Rigidbody2D rb;
     GameObject player;
     public bool isTouchingFront;
-    public Transform frontCheck;
-    public Transform feetPos;
+    Transform frontCheck;
+    Transform feetPos;
     public bool wallSliding;
     public float wallSlidingSpeed;
     //bool wallJumping; Not currently being used
@@ -23,6 +23,9 @@ public class WallJumping : MonoBehaviour
 
     private void Start()
     {
+        wallLayer = LayerMask.GetMask("Wall");
+        frontCheck = GameObject.Find("FrontCheck").transform;
+        feetPos = GameObject.Find("FeetPos").transform;
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         groundLayer = LayerMask.GetMask("Ground");
@@ -34,7 +37,7 @@ public class WallJumping : MonoBehaviour
     {
         input = Input.GetAxisRaw("Horizontal");
 
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatIsWall);
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, wallLayer);
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
 

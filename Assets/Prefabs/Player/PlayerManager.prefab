@@ -522,7 +522,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -6287787046888575383, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -604,9 +604,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 85c46a3b403ab764998ea1e53bff0441, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 5134318668150617336}
   - component: {fileID: 5134318668150617339}
   m_Layer: 7
-  m_Name: Left_foot
+  m_Name: LeftFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,7 +686,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -4709456396536258026, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -709,7 +709,7 @@ GameObject:
   - component: {fileID: 5134318668588918831}
   - component: {fileID: 5134318668588918830}
   m_Layer: 7
-  m_Name: Left_Hand
+  m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -768,7 +768,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2311659948842064771, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 5134318668600619957}
   - component: {fileID: 5134318668600619956}
   m_Layer: 7
-  m_Name: Right_foot
+  m_Name: RightFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,7 +850,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -1182821291677670348, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -911,18 +911,18 @@ MonoBehaviour:
   Color: {r: 1, g: 1, b: 1, a: 1}
   Intensity: 1.37
   SortingLayer: Default
-  SortingOrder: 0
+  SortingOrder: 6
   filteringSettings:
     useLayerMask: 1
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 4294967295
   optimizationSettings:
     CalculateOnlyOnce: 1
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 15.691099, y: 3.1203063}
+  position: {x: 4.0211, y: -0.4896939}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -934,7 +934,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 4294967295
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -986,7 +986,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5134318668815822822
 GameObject:
@@ -1125,10 +1125,8 @@ MonoBehaviour:
   thiskey: 32
   DownPlatform: 115
   IsGrounded: 0
+  feetPos: {fileID: 5134318667970271628}
   checkRadius: 0.23
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2048
   jumpForce: 400
   JumpTime: 0.1
   isJumping: 0
@@ -1161,14 +1159,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82078c5ac7d635f4db03bd261d3d52eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefautMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  HitMaterial: {fileID: 2100000, guid: d27362b483b80724bbab89d14acb6c2a, type: 2}
   Time_frame: 1.5
   PlayerTomouDano: 0
-  Head: {fileID: 5134318668091041029}
-  Right_hand: {fileID: 5134318669164748731}
-  Left_hand: {fileID: 5134318668588918830}
-  Right_foot: {fileID: 5134318668600619956}
-  Sword: {fileID: 5134318668139455533}
-  Left_foot: {fileID: 5134318668150617339}
 --- !u!114 &5134318668887889151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1221,7 +1215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6049d5456fffdca46bafa768d89b5d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  feetPos: {fileID: 5134318667970271628}
   maxSlopeAngle: 90
   slopeCheckDistance: 1
   checkRadius: 0.25
@@ -1263,15 +1256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkRadius: 0.2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 2048
   whatIsWall:
     serializedVersion: 2
     m_Bits: 32768
   IsGrounded: 0
-  rb: {fileID: 5134318667631940186}
-  player: {fileID: 5134318667631940184}
   isTouchingFront: 0
   frontCheck: {fileID: 8810308730062808993}
   feetPos: {fileID: 5134318667970271628}
@@ -1471,7 +1459,7 @@ GameObject:
   - component: {fileID: 5134318669164748728}
   - component: {fileID: 5134318669164748731}
   m_Layer: 7
-  m_Name: Right_Hand
+  m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1531,7 +1519,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7364682651488144517, guid: 09f33d9497f891d4bab8a3356adb1ac2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

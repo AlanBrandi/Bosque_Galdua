@@ -8,10 +8,8 @@ public class Slope : MonoBehaviour
     Moving move;
 
     LayerMask groundLayer;
-    public Transform feetPos;
-    CapsuleCollider2D cc;
+    Transform feetPos;
 
-    Vector2 ColidderSize;
     Vector2 checkPos;
     Vector2 slopeNormalPerp;
 
@@ -34,12 +32,11 @@ public class Slope : MonoBehaviour
     
     private void Start()
     {
+        feetPos = GameObject.Find("FeetPos").transform;
         groundLayer = LayerMask.GetMask("Ground");
         jump = GetComponent<Jumping>();
         move = GetComponent<Moving>();
         rb = GetComponentInChildren<Rigidbody2D>();
-        cc = GetComponentInChildren<CapsuleCollider2D>();
-        ColidderSize = cc.size;
     }
     
     private void FixedUpdate()
