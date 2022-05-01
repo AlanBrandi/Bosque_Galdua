@@ -10,7 +10,7 @@ public class MakeItAObject : MonoBehaviour
     #region BasicComponents
     GameObject MyGOB;
     GameObject Player;
-    ObjectScript objectScript;
+    HoldAndThrow holdAndThrow;
     //public GameObject HitFx;
     public GameObject ExplodeFx;
     public int AttackDamage;
@@ -19,7 +19,7 @@ public class MakeItAObject : MonoBehaviour
     {
         MyGOB = this.gameObject;
         Player = GameObject.Find("PlayerManager");
-        objectScript = Player.GetComponent<ObjectScript>();
+        holdAndThrow = Player.GetComponent<HoldAndThrow>();
     }
     private void Start()
     {
@@ -29,26 +29,25 @@ public class MakeItAObject : MonoBehaviour
     }
     #endregion
 
-    #region Update
-    private void Update()
-    {
-        
-    }
-    #endregion
-
     #region Collision
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemies" && objectScript.pegou != true)
+        if (collision.collider.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
         {
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }
-        else if(collision.collider.tag == "Enemies" && objectScript.pegou == true)
+        else if(collision.collider.tag == "Enemies" && holdAndThrow.Estado == "Segurando")
         {
             Destruir();
         }
-
-        if (collision.collider.tag != "Player" && Player.GetComponent<ObjectScript>().pegou == false && objectScript.pegouNum > 0)
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
+        {
+            collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+        }
+        else if (collision.tag == "Enemies" && holdAndThrow.Estado == "Segurando")
         {
             Destruir();
         }
@@ -60,8 +59,6 @@ public class MakeItAObject : MonoBehaviour
     {
         Instantiate(ExplodeFx, MyGOB.transform.position, Quaternion.identity);
         Destroy(MyGOB);
-        objectScript.pegouNum = 0;
-        objectScript.pegou = false;
     }
     #endregion
 }

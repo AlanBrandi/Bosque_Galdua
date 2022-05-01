@@ -13,10 +13,11 @@ public class HoldAndThrow : MonoBehaviour
     LayerMask ObjectLayer;
     public string Estado = "Normal";
 
-    public float force = 5;
+    public float force = 7000;
     public float attackRate = 2f;
     public float NextattackTime = 0f;
 
+    Animator PlayerAni;
 
     #endregion
 
@@ -30,6 +31,7 @@ public class HoldAndThrow : MonoBehaviour
     #region Start
     private void Start()
     {
+        PlayerAni = GameObject.Find("Player").gameObject.GetComponent<Animator>();
         grabDetect = GameObject.Find("GrabDetect");
         boxHolder = GameObject.Find("GrabHolder");
         ObjectLayer = LayerMask.GetMask("ObjectLayer");
@@ -89,9 +91,8 @@ public class HoldAndThrow : MonoBehaviour
                     objectGO.GetComponent<Transform>().SetParent(boxHolder.transform);
                     objectGO.GetComponent<Transform>().position = boxHolder.transform.position;
                     objectGO.GetComponent<Rigidbody2D>().isKinematic = true;
-                    ObjectPoly.enabled = false;
-                    /*animação
-                    PlayerAni.SetBool("Holding", true);*/
+
+                    PlayerAni.SetBool("Holding", true);
                     NextattackTime = Time.time + 1f / attackRate;
                 }
                 break;
@@ -104,12 +105,11 @@ public class HoldAndThrow : MonoBehaviour
         ObjectPoly.enabled = true;
         objectGO.transform.parent = null;
         objectGO.GetComponent<Rigidbody2D>().isKinematic = false;
-        objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * 7000);
+        objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
         objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
         Estado = "Normal";
-        
-        //animação
-        //PlayerAni.SetBool("Holding", false);
+
+        PlayerAni.SetBool("Holding", false);
     }
     #endregion
 }

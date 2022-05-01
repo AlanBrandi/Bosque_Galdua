@@ -10,8 +10,9 @@ public class MakeItAHardObject : MonoBehaviour
     #region BasicComponents
     GameObject MyGOB;
     GameObject Player;
-    ObjectScript objectScript;
-    AudioSource audioSource; public AudioClip clip;
+    HoldAndThrow holdAndThrow;
+    AudioSource audioSource; 
+    public AudioClip clip;
     public GameObject ExplodeFx;
     public int AttackDamage;
 
@@ -21,7 +22,7 @@ public class MakeItAHardObject : MonoBehaviour
         MyGOB = this.gameObject;
         audioSource = GetComponent<AudioSource>();
         Player = GameObject.Find("PlayerManager");
-        objectScript = Player.GetComponent<ObjectScript>();
+        holdAndThrow = Player.GetComponent<HoldAndThrow>();
     }
     private void Start()
     {
@@ -30,22 +31,22 @@ public class MakeItAHardObject : MonoBehaviour
         MyGOB.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Extrapolate;
     }
     #endregion
-
-    #region Update
-    private void Update()
-    {
-       
-    }
-    #endregion
-
     #region Collision
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
+        {
+            collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Enemies" && objectScript.jogou == true)
+        if (collision.collider.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
         {
+
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }
-       // Debug.Log(collision.relativeVelocity.magnitude);
+        // Debug.Log(collision.relativeVelocity.magnitude);
         if (collision.relativeVelocity.magnitude > 20)
         {
             if (gameObject != null)
