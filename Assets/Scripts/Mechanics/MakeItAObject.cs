@@ -11,6 +11,7 @@ public class MakeItAObject : MonoBehaviour
     GameObject MyGOB;
     GameObject Player;
     HoldAndThrow holdAndThrow;
+    public int QtdCaiu = 0;
     //public GameObject HitFx;
     public GameObject ExplodeFx;
     public int AttackDamage;
@@ -40,10 +41,11 @@ public class MakeItAObject : MonoBehaviour
         {
             Destruir();
         }
-        else if (collision.collider.tag == "Ground")
+        else if (collision.collider.tag != "Player" && QtdCaiu > 0)
         {
             Destruir();
         }
+        QtdCaiu = QtdCaiu + 1;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,10 +57,11 @@ public class MakeItAObject : MonoBehaviour
         {
             Destruir();
         }
-        else if (collision.tag == "Ground")
+        else if(collision.tag != "Player" && QtdCaiu > 0)
         {
             Destruir();
         }
+        QtdCaiu = QtdCaiu + 1;
     }
     #endregion
 
