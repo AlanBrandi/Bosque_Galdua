@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     Moving moving;
     Jumping jumping;
     PlayerHighAttack playerHighAttack;
+    HoldAndThrow holdAndThrow;
 
     //Sound
     AudioSource swordSounds;
@@ -22,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        holdAndThrow = FindObjectOfType<HoldAndThrow>();
         animator = GetComponentInChildren<Animator>();
         moving = GetComponent<Moving>();
         jumping = GetComponent<Jumping>();
@@ -35,21 +37,21 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
         {
-            if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false)
+            if (Input.GetKeyDown(attackButton) && jumping.IsGrounded == false && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .064f, .016f);
                 Invoke(nameof(AttackCooldown), .16f);
             }
-            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true)
+            else if (Input.GetKeyDown(attackButton) && moving.isMoving == true && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
                 Invoke(nameof(AttackCooldown), .368f);
             }
-            else if (Input.GetKeyDown(attackButton))
+            else if (Input.GetKeyDown(attackButton) && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");

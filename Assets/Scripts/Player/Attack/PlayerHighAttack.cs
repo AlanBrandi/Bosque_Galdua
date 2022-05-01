@@ -14,8 +14,10 @@ public class PlayerHighAttack : MonoBehaviour
     public float AttackRange = 0.5f;
     public int AttackDamage = 5;
     PlayerAttack playerAttack;
+    HoldAndThrow holdAndThrow;
     private void Start()
     {
+        holdAndThrow = FindObjectOfType<HoldAndThrow>();
         animator = GetComponentInChildren<Animator>();
         playerAttack = GetComponent<PlayerAttack>();
         EnemyLayers = playerAttack.EnemyLayers;
@@ -27,7 +29,7 @@ public class PlayerHighAttack : MonoBehaviour
             playerAttack.enabled = false;
             if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
-                if (Input.GetKeyDown(attackButton))
+                if (Input.GetKeyDown(attackButton) && holdAndThrow.Estado != "Segurando")
                 {
                     playerAttack.AttackSoundAndDelay();
                     animator.SetTrigger("Highattack");
