@@ -45,7 +45,7 @@ public class MakeItAHardObject : MonoBehaviour
         {
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }
-        Debug.Log(collision.relativeVelocity.magnitude);
+       // Debug.Log(collision.relativeVelocity.magnitude);
         if (collision.relativeVelocity.magnitude > 20)
         {
             if (gameObject != null)

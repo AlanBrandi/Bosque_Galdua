@@ -16,6 +16,8 @@ public class HoldAndThrow : MonoBehaviour
     public float force = 5;
     public float attackRate = 2f;
     public float NextattackTime = 0f;
+
+
     #endregion
 
     #region Variáveis do objeto
@@ -46,15 +48,16 @@ public class HoldAndThrow : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.J) && Estado != "Segurando")
             {
-               Situação("Segurando");
-            }
-
+                Situação("Segurando");
+;           }
         }
-       /* if (Estado == "Segurando")
+        if (Time.time >= NextattackTime && Time.time >= NextattackTime)
         {
-            Situação("Segurando");
-        }
-       */
+            if (Estado == "Segurando" && Input.GetKeyDown(KeyCode.J))
+            {
+                Jogar();
+            }
+        } 
     }
     #endregion
 
@@ -83,35 +86,30 @@ public class HoldAndThrow : MonoBehaviour
         {
             case "Segurar":
                 {
-
-                    objectGO.GetComponent<Transform>().SetParent(boxHolder.transform.parent);
+                    objectGO.GetComponent<Transform>().SetParent(boxHolder.transform);
                     objectGO.GetComponent<Transform>().position = boxHolder.transform.position;
                     objectGO.GetComponent<Rigidbody2D>().isKinematic = true;
                     ObjectPoly.enabled = false;
-                    //animação
-                    //PlayerAni.SetBool("Holding", true);
-                    if (Input.GetKeyDown(KeyCode.J))
-                    {
-                        ActSituação("Jogar");
-                    }
-                }
-                break;
-
-            case "Jogar":
-                {
-
-                    ObjectPoly.enabled = true;
-                    objectGO.transform.parent = null;
-                    objectGO.GetComponent<Rigidbody2D>().isKinematic = false;
-                    objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
-                    objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 10);
-                    //animação
-                    //PlayerAni.SetBool("Holding", false);
-
-                   // NextattackTime = Time.time + 1f / attackRate;
+                    /*animação
+                    PlayerAni.SetBool("Holding", true);*/
+                    NextattackTime = Time.time + 1f / attackRate;
                 }
                 break;
         }
    }
+
+    void Jogar()
+    {
+        Debug.Log("Entrou em jogar");
+        ObjectPoly.enabled = true;
+        objectGO.transform.parent = null;
+        objectGO.GetComponent<Rigidbody2D>().isKinematic = false;
+        objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * 7000);
+        objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
+        Estado = "Normal";
+        
+        //animação
+        //PlayerAni.SetBool("Holding", false);
+    }
     #endregion
 }
