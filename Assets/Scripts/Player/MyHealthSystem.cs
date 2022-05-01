@@ -86,7 +86,7 @@ public class MyHealthSystem : MonoBehaviour
         playerManager.GetComponent<PlayerAttack>().enabled = false;
         playerManager.GetComponent<PlayerHighAttack>().enabled = false;
         playerManager.GetComponent<Jumping>().enabled = false;
-        Destroy(gameObject);
+        playerManager.SetActive(false);
         GameManager.Instance.DecreaseLife(0);
     }
     void TomouDanofalso()
