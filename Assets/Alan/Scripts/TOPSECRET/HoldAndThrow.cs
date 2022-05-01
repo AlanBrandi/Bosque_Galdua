@@ -24,6 +24,7 @@ public class HoldAndThrow : MonoBehaviour
     #region Variáveis do objeto
 
     GameObject objectGO;
+    GameObject FixedGO;
     PolygonCollider2D ObjectPoly;
 
     #endregion
@@ -46,7 +47,6 @@ public class HoldAndThrow : MonoBehaviour
         if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
         {
             objectGO = grabCheck.collider.gameObject;
-            ObjectPoly = grabCheck.collider.gameObject.GetComponent<PolygonCollider2D>();
 
             if (Input.GetKeyDown(KeyCode.J) && Estado != "Segurando")
             {
@@ -88,10 +88,11 @@ public class HoldAndThrow : MonoBehaviour
         {
             case "Segurar":
                 {
+                    FixedGO = objectGO;
                     objectGO.GetComponent<Transform>().SetParent(boxHolder.transform);
                     objectGO.GetComponent<Transform>().position = boxHolder.transform.position;
                     objectGO.GetComponent<Rigidbody2D>().isKinematic = true;
-                    ObjectPoly.enabled = false;
+                    objectGO.GetComponent<PolygonCollider2D>().enabled = false;
 
                     PlayerAni.SetBool("Holding", true);
                     NextattackTime = Time.time + 1f / attackRate;
@@ -103,11 +104,11 @@ public class HoldAndThrow : MonoBehaviour
     void Jogar()
     {
         Debug.Log("Entrou em jogar");
-        ObjectPoly.enabled = true;
-        objectGO.transform.parent = null;
-        objectGO.GetComponent<Rigidbody2D>().isKinematic = false;
-        objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
-        objectGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
+        FixedGO.GetComponent<PolygonCollider2D>().enabled = true;
+        FixedGO.transform.parent = null;
+        FixedGO.GetComponent<Rigidbody2D>().isKinematic = false;
+        FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
+        FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
         Estado = "Normal";
 
         PlayerAni.SetBool("Holding", false);
