@@ -40,6 +40,10 @@ public class MakeItAObject : MonoBehaviour
         {
             Destruir();
         }
+        else if (collision.collider.tag == "Ground")
+        {
+            Destruir();
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -48,6 +52,10 @@ public class MakeItAObject : MonoBehaviour
             collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }
         else if (collision.tag == "Enemies" && holdAndThrow.Estado == "Segurando")
+        {
+            Destruir();
+        }
+        else if (collision.tag == "Ground")
         {
             Destruir();
         }
