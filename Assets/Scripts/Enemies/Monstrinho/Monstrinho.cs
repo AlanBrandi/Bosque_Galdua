@@ -28,11 +28,14 @@ public class Monstrinho : SpawnerManager
 
     private void Update()
     {
-        Vector3 direction = Player.transform.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        direction.Normalize();
-        rb.velocity = direction*moveSpeed;
+        if (Player != null)
+        {
+            Vector3 direction = Player.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+            direction.Normalize();
+            rb.velocity = direction * moveSpeed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

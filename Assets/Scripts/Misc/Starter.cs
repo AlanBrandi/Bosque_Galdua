@@ -12,6 +12,9 @@ public class Starter : MonoBehaviour
     {
         settingsPanel = GameObject.FindObjectOfType<SettingsPanel>();
         sceneName = SceneManager.GetActiveScene();
+        settingsPanel.slider[0].value = PlayerPrefs.GetFloat("MasterVol", 1);
+        settingsPanel.slider[1].value = PlayerPrefs.GetFloat("MusicVol", 1);
+        settingsPanel.slider[2].value = PlayerPrefs.GetFloat("SFXVol", 1);
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
         Application.targetFrameRate = 0;
     }
@@ -21,8 +24,5 @@ public class Starter : MonoBehaviour
         {
             GameManager.Instance.SetLife(6);
         }
-        settingsPanel.slider[0].value = PlayerPrefs.GetFloat("MasterVol", 1);
-        settingsPanel.slider[1].value = PlayerPrefs.GetFloat("MusicVol", 1);
-        settingsPanel.slider[2].value = PlayerPrefs.GetFloat("SFXVol", 1);
     }
 }
