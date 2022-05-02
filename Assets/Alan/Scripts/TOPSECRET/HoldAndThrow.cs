@@ -109,14 +109,9 @@ public class HoldAndThrow : MonoBehaviour
         FixedGO.GetComponent<Rigidbody2D>().isKinematic = false;
         FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
         FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
-        Invoke("EstadoNormal", .400f);
+        Estado = "Normal";
 
         PlayerAni.SetBool("Holding", false);
-    }
-
-    void EstadoNormal()
-    {
-        Estado = "Normal";
     }
     #endregion
 }
