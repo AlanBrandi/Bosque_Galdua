@@ -6,7 +6,6 @@ public class InvisibleWalls : MonoBehaviour
 {
     public SpriteRenderer[] SR = new SpriteRenderer[1];
     List<float> originalAlpha = new List<float>();
-    public bool isTransitioning;
     bool isT = true;
     //float[] originalAlpha;
     public bool isBackground = true;
@@ -23,29 +22,34 @@ public class InvisibleWalls : MonoBehaviour
             originalAlpha[i] = 
         }*/
     }
-    private void Update()
+
+
+    
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log(colorAlpha);
+        if (collision.CompareTag("Player") )
+        {
+            StopAllCoroutines();
+            StartCoroutine(IncreaseAlpha());
+        }
     }
 
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            isTransitioning = true;
+            StopAllCoroutines();
             StartCoroutine(LowerAlpha());
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            StartCoroutine(IncreaseAlpha());
-        }
-    }
+
+
+
     IEnumerator LowerAlpha()
     {
-        
+
+
             foreach (SpriteRenderer sr in SR)
             {
                 while (sr.color.a > colorAlpha)
@@ -60,25 +64,24 @@ public class InvisibleWalls : MonoBehaviour
                         sr.color = new Color(0f, 0f, 0f, (sr.color.a - .01f));
                         Debug.Log("ForegroundL");
                     }
-                    
+
                     yield return new WaitForSeconds(.005f);
 
-                    
-                }
-                
-            }
 
-            StopAllCoroutines();
+                }
+
+            }
         
     }
 
     IEnumerator IncreaseAlpha()
     {
-        
+
             foreach (SpriteRenderer sr in SR)
             {
                 for (int i = 0; i < SR.Length; i++)
                 {
+                    
                     while (sr.color.a < originalAlpha[i])
                     {
                         if (isBackground && sr.color.a < originalAlpha[i])
@@ -93,15 +96,14 @@ public class InvisibleWalls : MonoBehaviour
                             sr.color = new Color(0f, 0f, 0f, (sr.color.a + .01f));
                             Debug.Log(originalAlpha[i]);
                         }
+
                         yield return new WaitForSeconds(.005f);
-                        if (sr.color.a == 225)
-                        {
-                            isTransitioning = true;
-                        }
+                       
                     }
+
                 }
+
                 Debug.Log("EVazou");
-                StopAllCoroutines();
             }
         
     }
