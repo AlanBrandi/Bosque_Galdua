@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//Ele ataca depois de jogar o objeto.
 
 public class HoldAndThrow : MonoBehaviour
 {
@@ -109,9 +109,13 @@ public class HoldAndThrow : MonoBehaviour
         FixedGO.GetComponent<Rigidbody2D>().isKinematic = false;
         FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
         FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
-        Estado = "Normal";
+        Invoke("EstadoNormal", 0 * Time.fixedDeltaTime);
 
         PlayerAni.SetBool("Holding", false);
+    }
+    void EstadoNormal()
+    {
+        Estado = "Normal";
     }
     #endregion
 }
