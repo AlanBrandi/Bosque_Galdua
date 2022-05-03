@@ -25,7 +25,7 @@ public class EnemiesScript : MonoBehaviour
         currentHealth -= damage;
 
         Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
-        Debug.Log("damage!");
+        Debug.Log("Damage!");
 
         if (currentHealth <= 0)
         {
