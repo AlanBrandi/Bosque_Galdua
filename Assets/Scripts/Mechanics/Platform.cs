@@ -4,36 +4,41 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public Transform startPos, pos1;
+    //public Transform startPos, pos1;
     public float speed;
-    public Transform parent;
-    public GameObject player;
-    public Transform managert;
+    //Transform parent;
+    Transform[] transforms;
+    GameObject player;
+    Transform managert;
     public float waitTime = 1;
 
     Vector3 nextPos;
 
     void Start()
     {
-        nextPos = startPos.position;
+        transforms = GetComponentsInChildren<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        managert = GameObject.FindGameObjectWithTag("PlayerManager").transform;
+        nextPos = transforms[2].position;
     }
     private void FixedUpdate()
     {
-        if (transform.position == startPos.position)
+        if (transforms[1].transform.position == transforms[2].position)
         {
-            nextPos = pos1.position;
+            nextPos = transforms[3].position;
         }
-        else if (transform.position == pos1.position)
+        else if (transforms[1].transform.position == transforms[3].position)
         {
-            nextPos = startPos.position;
+            nextPos = transforms[2].position;
         }
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+        transforms[1].transform.position = Vector3.MoveTowards(transforms[1].transform.position, nextPos, speed * Time.fixedDeltaTime);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Oi");
         if (collision.collider.CompareTag("Player"))
         {
-            player.transform.SetParent(parent);
+            player.transform.SetParent(transforms[0]);
         }
     }
 
