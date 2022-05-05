@@ -699,9 +699,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1449204770}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 15
+  m_MaxValue: 6
   m_WholeNumbers: 1
-  m_Value: 15
+  m_Value: 6
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1909,7 +1909,7 @@ GameObject:
   - component: {fileID: 884552475005593255}
   - component: {fileID: 884552475005593248}
   m_Layer: 5
-  m_Name: uimanager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2013,7 +2013,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae5060040d61dc46b2b8dc49a5a3916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Life: 3
   HIT: {fileID: 2663130785398527268, guid: 5195c72f3b696754590eb04ce0e876ad, type: 3}
   FX: {fileID: 100004, guid: 757df604761b8ef42831192c70ee1099, type: 3}
   creditosPanel: {fileID: 0}
@@ -2620,10 +2619,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 884552475005593248}
-        m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: MyLoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
+        m_MethodName: RestartFade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

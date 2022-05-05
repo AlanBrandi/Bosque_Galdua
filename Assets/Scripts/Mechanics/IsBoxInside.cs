@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class IsBoxInside : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class IsBoxInside : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     AudioSource audioSource;
+    Light2D light2D;
     private void Start()
     {
+        light2D = GetComponentInChildren<Light2D>();
         audioSource = GetComponent<AudioSource>();
         isBoxInside = GetComponent<IsBoxInside>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -22,6 +25,7 @@ public class IsBoxInside : MonoBehaviour
             Debug.Log("Box colidiu com botão");
             door.Open();
             spriteRenderer.sprite = newSprite;
+            light2D.color = Color.green;
             audioSource.Play();
             Destroy(isBoxInside);
         }
