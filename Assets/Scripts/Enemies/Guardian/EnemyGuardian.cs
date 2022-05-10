@@ -19,15 +19,21 @@ public class EnemyGuardian : MonoBehaviour
     GameObject player;
     public EnumEnemyState state;
     bool transitionHappening = false;
+    Transform EnemyTranform;
+   public float LastPos;
+   
 
     private void Start()
     {
+        EnemyTranform = this.transform;
+        LastPos = EnemyTranform.position.x;
         player = GameObject.FindWithTag("Player");
         aiDS = GetComponent<AIDestinationSetter>();
         patrol = GetComponent<PointPatrol>();
         seeker = GetComponent<AIPath>();
         animator = GetComponentInChildren<Animator>();
         state = EnumEnemyState.PATROL;
+        InvokeRepeating("CheckPos", 0.01f, .5f);
     }
 
     private void Update()
@@ -94,6 +100,11 @@ public class EnemyGuardian : MonoBehaviour
             InvokeRepeating(nameof(UpdatePath), 0, 1f);
         }
         transitionHappening = false;
+    }
+
+ void CheckPos()
+    {
+        LastPos = EnemyTranform.position.x;
     }
 }
 
