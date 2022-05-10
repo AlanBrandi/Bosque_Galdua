@@ -4,37 +4,28 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    GameObject target;
-    public float speedUp;
-    public float speed;
-    Rigidbody2D rb;
+    public float bombSpeed;
+    public Vector2 direction;
+    public float splashRange;
 
-    private void Awake()
-    {
-        
-
-    }
     private void Start()
     {
-
-        StartCoroutine(bomb());
         
+        GetComponent<Rigidbody2D>().AddForce(direction * bombSpeed, ForceMode2D.Impulse);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(splashRange > 0)
+        {
+            var hitcollider = Physics2D.OverlapCircleAll(transform.position, splashRange);
+        }
+
         if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }
     }
-    IEnumerator bomb()
-    {
-        var direction = -transform.right + Vector3.up;
-        GetComponent<Rigidbody2D>().AddForce(direction * speedUp, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.1f);
-
-        GetComponent<Rigidbody2D>().AddForce((target.transform.position - transform.position) * speed, ForceMode2D.Impulse);
-    }
 }
