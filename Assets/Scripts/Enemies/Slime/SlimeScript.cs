@@ -11,12 +11,13 @@ public class SlimeScript : MonoBehaviour
     //public BoxCollider2D Boxcollider;
     //public CircleCollider2D Circlecollider;
     public Transform startPos, pos1;
-    public MyHealthSystem healthSystem;
+    MyHealthSystem healthSystem;
     AudioSource slimeSounds;
     Vector3 nextPos;
 
     private void Awake()
     {
+        healthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         enemySprite = GetComponent<SpriteRenderer>();
         nextPos = startPos.position;
         slimeSounds = GetComponent<AudioSource>();

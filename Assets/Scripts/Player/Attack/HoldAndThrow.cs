@@ -89,8 +89,8 @@ public class HoldAndThrow : MonoBehaviour
             case "Segurar":
                 {
                     FixedGO = objectGO;
-                    objectGO.GetComponent<Transform>().SetParent(boxHolder.transform);
-                    objectGO.GetComponent<Transform>().position = boxHolder.transform.position;
+                    objectGO.transform.SetParent(boxHolder.transform);
+                    objectGO.transform.position = boxHolder.transform.position;
                     objectGO.GetComponent<Rigidbody2D>().isKinematic = true;
                     objectGO.GetComponent<PolygonCollider2D>().enabled = false;
 
