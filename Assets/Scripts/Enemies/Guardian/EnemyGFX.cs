@@ -5,24 +5,27 @@ using Pathfinding;
 
 public class EnemyGFX : MonoBehaviour
 {
-    AIPath aiPath;
+    public PointPatrol pointPatrol;
     AudioSource audioSource;
-    float PointPosition;
+    public float PointPosition;
     public bool facingRight = true;
-    GameObject Player;
+    public Transform Player;
+    public Transform EnemyGfxGO;
+    public EnemyGuardian enemy;
 
     private void Start()
-    {
-        Player = GameObject.Find("Player");
+    {        
         audioSource = GetComponent<AudioSource>();
-        aiPath = GetComponentInParent<AIPath>();
     }
     private void Update()
     {
-        
+        if (enemy.state == EnumEnemyState.SEEKER)
+        {
+            FlipsTowardsPoint();
+        }
     }
 
-   
+
     void PlaySound(float pitch)
     {
         audioSource.pitch = pitch;
@@ -31,30 +34,47 @@ public class EnemyGFX : MonoBehaviour
 
     void Flip()
     {
-        if (facingRight)
+        if (facingRight == true)
         {
-            this.transform.rotation = Quaternion.Euler(0, 180, 0);
+            if (transform.rotation.y == 180)
+            {
+                this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                this.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            
             facingRight = false;
+            pointPatrol.facingRight = false;
 
         }
-        else if (!facingRight)
+        else if (facingRight == false)
         {
-            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            if(transform.rotation.y == 0)
+            {
+                this.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            
             facingRight = true;
+            pointPatrol.facingRight = true;
         }
 
     }
     void FlipsTowardsPoint()
     {
-        PointPosition = (Player.transform.position.x - transform.position.x);
-        if (PointPosition < 0 && facingRight)
+        
+        PointPosition = Player.position.x - EnemyGfxGO.position.x;
+        if (PointPosition < 0 && facingRight == true)
         {
-            Debug.Log("VAI PRA ESQUERDA");
             Flip();
         }
-        else if (PointPosition > 0 && !facingRight)
+        else if (PointPosition > 0 && facingRight == false)
         {
-            Debug.Log("VAI PRA DIREITA");
             Flip();
         }
     }

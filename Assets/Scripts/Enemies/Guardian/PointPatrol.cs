@@ -7,8 +7,8 @@ public class PointPatrol : MonoBehaviour
     public float speed = 5;
     public GameObject[] points;
     int index = 0;
-    EnemyGFX enemyGFX;
-    GameObject EnemyGfxGO;
+    public EnemyGFX enemyGFX;
+    public Transform EnemyGfxGO;
     public bool facingRight = true;
     Vector2 targetPosition;
     Vector3 direction;
@@ -17,10 +17,11 @@ public class PointPatrol : MonoBehaviour
     Vector3 steering_velocity;
     public float mass = 10;
     float PointPosition;
+    
 
     private void Start()
     {
-        EnemyGfxGO = GameObject.Find("GuardianGFX");
+        EnemyGfxGO = GetComponent<Transform>();
         enemyGFX = GetComponentInChildren<EnemyGFX>();
         InvokeRepeating("ChangePoint", 0, 3);
     }
@@ -36,7 +37,7 @@ public class PointPatrol : MonoBehaviour
         if (Vector2.Distance(targetPosition, transform.position) > 0.5f)
             transform.position += velocity;
         FlipsTowardsPoint();
-        Debug.Log(targetPosition.x);
+     
     }
    
     void ChangePoint()
@@ -47,35 +48,50 @@ public class PointPatrol : MonoBehaviour
             index = 0;
         }
         targetPosition = points[index].transform.position;
-       // PointPosition = points[index].transform.position.x;
     }
 
     void Flip()
     {
-        if (facingRight)
+        if (facingRight == true)
         {
-            EnemyGfxGO.GetComponent<Transform>().rotation = Quaternion.Euler(0, 180, 0);
+            if (enemyGFX.transform.rotation.y == 180)
+            {
+                enemyGFX.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                enemyGFX.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+
             facingRight = false;
+            enemyGFX.facingRight = false;
+            
 
         }
-        else if (!facingRight)
+        else if (facingRight == false)
         {
-            EnemyGfxGO.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, 0);
-            facingRight = true;
-        }
+            if (enemyGFX.transform.rotation.y == 0)
+            {
+                enemyGFX.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else
+            {
+                enemyGFX.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
 
+            facingRight = true;
+            enemyGFX.facingRight = true;
+        }
     }
     void FlipsTowardsPoint()
     {
-        PointPosition = targetPosition.x - EnemyGfxGO.transform.position.x;
+        PointPosition = targetPosition.x - EnemyGfxGO.position.x;
         if (PointPosition < 0 && facingRight)
         {
-            Debug.Log("VAI PRA ESQUERDA");
             Flip();
         }
         else if (PointPosition > 0 && !facingRight)
         {
-            Debug.Log("VAI PRA DIREITA");
             Flip();
         }
     }
