@@ -19,7 +19,7 @@ public class EnemyGFX : MonoBehaviour
     }
     private void Update()
     {
-        FlipsTowardsPoint();
+        
     }
 
    
