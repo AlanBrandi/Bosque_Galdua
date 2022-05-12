@@ -19,28 +19,23 @@ public class EnemyGuardian : MonoBehaviour
     GameObject player;
     public EnumEnemyState state;
     bool transitionHappening = false;
-    Transform EnemyTranform;
-   public float LastPos;
    
 
     private void Start()
     {
-        EnemyTranform = this.transform;
-        LastPos = EnemyTranform.position.x;
         player = GameObject.FindWithTag("Player");
         aiDS = GetComponent<AIDestinationSetter>();
         patrol = GetComponent<PointPatrol>();
         seeker = GetComponent<AIPath>();
         animator = GetComponentInChildren<Animator>();
         state = EnumEnemyState.PATROL;
-        InvokeRepeating("CheckPos", 0.01f, .5f);
     }
 
     private void Update()
     {
         if (player != null)
         {
-            GraphNode node1 = AstarPath.active.GetNearest(this.transform.position).node;
+            GraphNode node1 = AstarPath.active.GetNearest(transform.position).node;
             GraphNode node2 = AstarPath.active.GetNearest(aiDS.target.position, NNConstraint.Default).node;
             playerDistance = Vector2.Distance(transform.position, player.transform.position);
             switch (state)
@@ -100,11 +95,6 @@ public class EnemyGuardian : MonoBehaviour
             InvokeRepeating(nameof(UpdatePath), 0, 1f);
         }
         transitionHappening = false;
-    }
-
- void CheckPos()
-    {
-        LastPos = EnemyTranform.position.x;
     }
 }
 

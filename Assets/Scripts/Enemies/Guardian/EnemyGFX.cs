@@ -1,30 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class EnemyGFX : MonoBehaviour
 {
-    public PointPatrol pointPatrol;
+    PointPatrol pointPatrol;
     AudioSource audioSource;
-    public float PointPosition;
+    float pointPosition;
     public bool facingRight = true;
-    public Transform Player;
-    public Transform EnemyGfxGO;
-    public EnemyGuardian enemy;
+    Transform player;
+    EnemyGuardian enemy;
 
     private void Start()
-    {        
+    {
+        pointPatrol = GetComponentInParent<PointPatrol>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy = GetComponentInParent<EnemyGuardian>();
         audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
         if (enemy.state == EnumEnemyState.SEEKER)
         {
-            FlipsTowardsPoint();
+            Flip('s');
         }
     }
-
 
     void PlaySound(float pitch)
     {
@@ -32,50 +30,37 @@ public class EnemyGFX : MonoBehaviour
         audioSource.Play();
     }
 
-    void Flip()
+    public void Flip(char mode)
     {
-        if (facingRight == true)
+        if (mode == 's')
         {
-            if (transform.rotation.y == 180)
+            pointPosition = player.position.x - transform.position.x;
+            if (pointPosition < 0 && facingRight == true || pointPosition > 0 && facingRight == false)
             {
-                this.transform.rotation = Quaternion.Euler(0, 0, 0);
+                Flip('n');
             }
-            else
+        }
+        else if (mode == 'p')
+        {
+            pointPosition = pointPatrol.targetPosition.x - transform.position.x;
+            if (pointPosition < 0 && facingRight)
             {
-                this.transform.rotation = Quaternion.Euler(0, 180, 0);
+                Flip('n');
             }
-            
+            else if (pointPosition > 0 && !facingRight)
+            {
+                Flip('n');
+            }
+        }
+        else if (facingRight == true)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
             facingRight = false;
-            pointPatrol.facingRight = false;
-
         }
         else if (facingRight == false)
         {
-            if(transform.rotation.y == 0)
-            {
-                this.transform.rotation = Quaternion.Euler(0, 180, 0);
-            }
-            else
-            {
-                this.transform.rotation = Quaternion.Euler(0, 0, 0);
-            }
-            
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             facingRight = true;
-            pointPatrol.facingRight = true;
-        }
-
-    }
-    void FlipsTowardsPoint()
-    {
-        
-        PointPosition = Player.position.x - EnemyGfxGO.position.x;
-        if (PointPosition < 0 && facingRight == true)
-        {
-            Flip();
-        }
-        else if (PointPosition > 0 && facingRight == false)
-        {
-            Flip();
         }
     }
 }

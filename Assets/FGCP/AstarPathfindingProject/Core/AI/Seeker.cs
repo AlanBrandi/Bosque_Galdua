@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.IO;
 #if UNITY_5_5_OR_NEWER
 using UnityEngine.Profiling;
 #endif
@@ -169,6 +170,7 @@ namespace Pathfinding {
 		/// See: pathCallback
 		/// </summary>
 		public Path GetCurrentPath () {
+
 			return path;
 		}
 
