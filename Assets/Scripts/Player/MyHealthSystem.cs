@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MyHealthSystem : MonoBehaviour
+public class MyHealthSystem : MonoBehaviour, IDataPersistence
 {
     GameObject PlayerGO;
     GameObject playerManager;
@@ -9,6 +9,8 @@ public class MyHealthSystem : MonoBehaviour
     public float Time_frame = 1;
     float remainingIF;
     public bool PlayerTomouDano = false;
+
+    GameData_SO gd;
 
     SpriteRenderer Head;
     SpriteRenderer RightHand;
@@ -36,6 +38,7 @@ public class MyHealthSystem : MonoBehaviour
     }
     private void Update()
     {
+
         if (GameManager.Instance.playerLives.lives <= 0)
         {
             Die();
@@ -156,5 +159,15 @@ public class MyHealthSystem : MonoBehaviour
 
         remainingIF -= .075f;
         Invoke("PiscarOn", (5 / remainingIF) * Time.fixedDeltaTime);
+    }
+
+    public void LoadData(GameData data)
+    {
+        GameManager.Instance.playerLives.lives = data.lives;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.lives = GameManager.Instance.playerLives.lives;
     }
 }
