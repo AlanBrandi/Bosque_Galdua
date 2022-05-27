@@ -25,7 +25,7 @@ Bosque Galdua é classificado para maiores de 12 anos devido à violência cartu
 ## Cronograma:
 - A NONAME busca desenvolver o jogo dentro de 20 semanas, produzindo e refatorando-o através de uma separação de fases que serão trabalhadas em diferentes semanas.
 - ![Cronograma](https://i.ibb.co/Kb5f52Y/unknown.png)
-- Lançamento: Julho de 2022.
+- Lançamento: final de 2022.
 ## Objetivo de desenvolvimento sustentável da ONU:
 O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a história do jogo tem por objetivo conscientizar o jogador da recuperação e uso sustentável de ecossistemas terrestres e de água doce, da gestão sustentável de todos os tipos de florestas, da detenção do desmatamento, da restauração das florestas e também, para evitar a extinção de espécies ameaçadas.
 ## --------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ O objetivo utilizado no projeto é o quinze: Vida terrestre, visto que o a hist�
 ### Escrito por **NONAME STUDIO**
 ### Para PC
 ### Classificação: 12+
-### Lançamento: Julho de 2022.
+### Lançamento: final de 2022.
 
 ## História do jogo:
 - Artamus é um guardião da floresta que recebeu grandes poderes de um ser poderoso. Um dia, uma terrível maldição chamada **POLU** caiu sobre a floresta e Artamus perdeu seus poderes. Como ele recuperará seus poderes para salvar a floresta?
