@@ -26,7 +26,7 @@ public class WallJumping : MonoBehaviour
         wallLayer = LayerMask.GetMask("Wall");
         frontCheck = GameObject.Find("FrontCheck").transform;
         feetPos = GameObject.Find("FeetPos").transform;
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInChildren<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         groundLayer = LayerMask.GetMask("Ground");
         moveScript = GetComponent<Moving>();
