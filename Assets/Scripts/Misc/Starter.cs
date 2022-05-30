@@ -20,6 +20,7 @@ public class Starter : MonoBehaviour
     }
     private void Start()
     {
+        GameManager.Instance.SetLife(GameManager.Instance.playerLives.lives);
         if (sceneName.name == tutorial)
         {
             GameManager.Instance.SetLife(6);

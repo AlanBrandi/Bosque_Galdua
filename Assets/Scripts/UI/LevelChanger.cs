@@ -12,7 +12,7 @@ public class LevelChanger : MonoBehaviour
 
     private void Start()
     {
-        uiManager = GameObject.FindObjectOfType<UIManager>().GetComponent<UIManager>();
+        uiManager = GameObject.FindObjectOfType<UIManager>();
         currentScene = SceneManager.GetActiveScene();
         animator = GetComponent<Animator>();
     }

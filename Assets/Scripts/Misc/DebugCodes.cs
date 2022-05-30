@@ -7,7 +7,7 @@ public class DebugCodes : MonoBehaviour
     public string buffer;
     float maxTimeDif = 1;
     float timeDif;
-    List<string> patterns = new List<string> { "ShiftH" };
+    List<string> patterns = new List<string> { "ShiftH", "ShiftD" };
 
     TMP_Text fpsText;
     public float deltaTime;
@@ -40,6 +40,10 @@ public class DebugCodes : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.H))
             {
                 AddToBuffer("H");
+            }
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                AddToBuffer("D");
             }
         }
         else if (Input.GetKeyDown(KeyCode.F3))
@@ -87,6 +91,13 @@ public class DebugCodes : MonoBehaviour
             Debug.Log("+1 Health");
             audioSource.Play();
             GameManager.Instance.IncreaseLife(1);
+            buffer = "";
+        }
+        if (buffer.EndsWith(patterns[1]))
+        {
+            Debug.Log("-3 Health");
+            audioSource.Play();
+            GameManager.Instance.DecreaseLife(3);
             buffer = "";
         }
     }

@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,10 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9919aa87207304ebc5c0b00545a8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombSpeed: 0
+  bomb: {fileID: 0}
+  speed: 0
+  dashSpeed: 0
   projectile: {fileID: 4730612502163547742, guid: d2526a18990bc5147927de849fe64c91, type: 3}
   ProjectilePos: {fileID: 5644273321495289546}
   attackrate: 2
+  bombRate: 0
+  player: {fileID: 0}
 --- !u!70 &5644273321167473689
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
