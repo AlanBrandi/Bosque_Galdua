@@ -5,6 +5,7 @@ using UnityEngine;
 public class CutsceneSFX : MonoBehaviour
 {
     AudioSource audioSource;
+    public LevelChanger level;
 
     private void Start()
     {
@@ -17,5 +18,9 @@ public class CutsceneSFX : MonoBehaviour
         audioSource.pitch = randomPitch;
         audioSource.clip = clip;
         audioSource.Play();
+    }
+    void ChangeLevel(string levelname)
+    {
+        level.FadeToLevel(levelname);
     }
 }
