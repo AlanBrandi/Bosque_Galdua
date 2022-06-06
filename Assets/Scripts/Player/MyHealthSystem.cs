@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MyHealthSystem : MonoBehaviour, IDataPersistence
@@ -9,6 +10,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
     public float Time_frame = 1;
     float remainingIF;
     public bool PlayerTomouDano = false;
+
 
     GameData_SO gd;
 
@@ -170,4 +172,5 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
     {
         data.lives = GameManager.Instance.playerLives.lives;
     }
+    
 }
