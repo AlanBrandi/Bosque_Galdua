@@ -8,7 +8,7 @@ public class Monstrinho : SpawnerManager
     public MyHealthSystem PlayerHP;
     private Vector2 movement;
     private Rigidbody2D rb;
-            EnemiesScript enemy;
+    EnemiesScript enemy;
     AudioSource enemy3;
 
     private void Start()
