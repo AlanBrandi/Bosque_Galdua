@@ -76,7 +76,7 @@ public class PlayerAttack : MonoBehaviour
             }
             foreach(Collider2D boss in HitEnemies)
             {
-                boss.GetComponent<Boss>().TakeDamage(AttackDamage);
+                boss.GetComponent<Boss>().takeDamageBySword(AttackDamage);
             }
         }
         else
@@ -91,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
             }
             foreach (Collider2D boss in HitEnemies)
             {
-                boss.GetComponent<Boss>().TakeDamage(AttackDamage);
+                boss.GetComponent<Boss>().takeDamageBySword(AttackDamage);
             }
         }
     }

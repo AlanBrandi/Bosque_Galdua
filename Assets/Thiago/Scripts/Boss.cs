@@ -27,23 +27,30 @@ public class Boss : MonoBehaviour
     float nextAcid = 0;
     public Animator anim;
     public bool IsIdle = true;
+    public bool IsSlamAttack = true;
     int chooseStatee;
+    public int idleNumber;
 
     public MyHealthSystem PlayerHP;
 
     int contS = 0;
     int contA = 0;
     int contL = 0;
+    int contSlam;
+
+    
 
 
     private void Start()
     {
-        acid = acid.GetComponent<acidSpawn>();
         anim = this.GetComponent<Animator>();
+        idleNumber = Animator.StringToHash("BossIdle");
+        
     }
 
     private void Update()
     {
+        
         healthBar.value = currentHealth;
         if (Time.time > nextAttack)
         {
@@ -56,7 +63,7 @@ public class Boss : MonoBehaviour
             }
             else if(contL >= 2)
             {
-                chooseStatee = 0;
+                chooseStatee = 3;
                 chooseState();
             }
             else if(contS >= 2)
@@ -64,7 +71,12 @@ public class Boss : MonoBehaviour
                 chooseStatee = 1;
                 chooseState();
             }
-            else if(contA < 2 && contL < 2 && contS < 2)
+            else if(contSlam >= 2)
+            {
+                chooseStatee = 0;
+                chooseState();
+            }
+            else if(contA < 2 && contL < 2 && contS < 2 && contSlam < 2)
             {
                 RandomState();
             }
@@ -75,11 +87,15 @@ public class Boss : MonoBehaviour
         {
 
             nextAcid = Time.time + acidRate;
-            acidRain();
+            
         }
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(5);
+            TakeDamageByItem(5);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            takeDamageBySword(5);
         }
     }
 
@@ -110,12 +126,11 @@ public class Boss : MonoBehaviour
         Instantiate(FireAttack, fireGroundPos.transform.position, Quaternion.identity);
     }
 
-    public void acidRain()
+    public void Slam()
     {
-        
-       
-        acid.acidWave();
-        acid.acidgo = true;
+
+
+        anim.SetTrigger("SlamAttack");
        
     }
     public void laser()
@@ -124,15 +139,19 @@ public class Boss : MonoBehaviour
         anim.SetTrigger("Laser");
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamageByItem(int damage)
     {
-        
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle"))
+        {
             currentHealth -= damage;
             if (currentHealth > 0)
             {
                 anim.SetTrigger("Hurt");
             }
-            Debug.Log("Damage!");
+
+        }
+        
+            
         
         
 
@@ -142,13 +161,30 @@ public class Boss : MonoBehaviour
         }
 
     }
+    public void takeDamageBySword(int damage)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam"))
+        {
+            currentHealth -= damage;
+            if (currentHealth > 0)
+            {
+                anim.SetTrigger("HurtSlam");
+            }
+        }
+
+        if (currentHealth <= 0)
+        {
+            anim.SetTrigger("Die");
+        }
+    }
     public void RandomState()
     {
         IsIdle = false;
-        randomState = Random.Range(0, 3);
+        randomState = Random.Range(0, 4);
         if (randomState == 0)
         {
             contS++;
+            contSlam = 0;
             contA = 0;
             contL = 0;
             attackrate = 10;
@@ -157,18 +193,29 @@ public class Boss : MonoBehaviour
         else if (randomState == 1)
         {
             contA++;
+            contSlam = 0;
             contS = 0;
             contL = 0;
-            attackrate = 10;
+            attackrate = 8.5f;
             shockWaveAnim();
         }
         else if (randomState == 2)
         {
             contL++;
+            contSlam = 0;
             contS = 0;
             contA = 0;
-            attackrate = 5;
+            attackrate = 5.5f;
             laser();
+        }
+        else if (randomState == 3)
+        {
+            contSlam++;
+            contA = 0;
+            contL = 0;
+            contS = 0;
+            attackrate = 24;
+            Slam();
         }
 
         
@@ -176,10 +223,11 @@ public class Boss : MonoBehaviour
     }
     public void chooseState()
     {
-        
+
         if (chooseStatee == 0)
         {
             contS++;
+            contSlam = 0;
             contA = 0;
             contL = 0;
             attackrate = 10;
@@ -188,18 +236,29 @@ public class Boss : MonoBehaviour
         else if (chooseStatee == 1)
         {
             contA++;
+            contSlam = 0;
             contS = 0;
             contL = 0;
-            attackrate = 10;
+            attackrate = 8.5f;
             shockWaveAnim();
         }
         else if (chooseStatee == 2)
         {
             contL++;
+            contSlam = 0;
             contS = 0;
             contA = 0;
             attackrate = 5;
             laser();
+        }
+        else if (chooseStatee == 3)
+        {
+            contSlam++;
+            contA = 0;
+            contL = 0;
+            contS = 0;
+            attackrate = 24;
+            Slam();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
