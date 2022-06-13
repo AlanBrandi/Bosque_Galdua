@@ -74,10 +74,6 @@ public class PlayerAttack : MonoBehaviour
                 enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
                 AttackCooldown();
             }
-            foreach(Collider2D boss in HitEnemies)
-            {
-                boss.GetComponent<Boss>().TakeDamage(AttackDamage);
-            }
         }
         else
         {
@@ -88,10 +84,6 @@ public class PlayerAttack : MonoBehaviour
                 Debug.Log("Inimigo tomou dano.");
                 enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
                 AttackCooldown();
-            }
-            foreach (Collider2D boss in HitEnemies)
-            {
-                boss.GetComponent<Boss>().TakeDamage(AttackDamage);
             }
         }
     }

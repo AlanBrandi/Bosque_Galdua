@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class ShockWaveAttack : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    Rigidbody rb;
     public float waveSpeed;
     public float selfDestoyTime;
-    
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
         rb.velocity = new Vector3(-waveSpeed, 0, 0);
-        //rb.AddForce(Vector2.left * waveSpeed);
         Destroy(this.gameObject, selfDestoyTime);
     }
 }
