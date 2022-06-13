@@ -4,15 +4,11 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameData_New", menuName = "GameData")]
 
-public class GameData_SO : ScriptableObject, ISerializationCallbackReceiver, ISaveable
+public class GameData_SO : ScriptableObject, ISerializationCallbackReceiver
 {
-    public int lives = 6, maxLives;
+    public int lives = 6;
 
-<<<<<<< Updated upstream
 
-=======
-    
->>>>>>> Stashed changes
     public void OnAfterDeserialize()
     {
         lives = 6;
@@ -21,34 +17,7 @@ public class GameData_SO : ScriptableObject, ISerializationCallbackReceiver, ISa
     public void OnBeforeSerialize()
     {
     }
-<<<<<<< Updated upstream
     
 
     
-=======
-
-    public object saveState()
-    {
-        return new saveData()
-        {
-            lives = this.lives,
-            maxLives = this.maxLives
-        };
-    }
-
-    public void loadState(object state)
-    {
-        var saveData = (saveData)state;
-        lives = saveData.lives;
-        maxLives = saveData.maxLives;
-    }
-
-    [SerializeField]
-    private struct saveData
-    {
-
-        public int lives;
-        public int maxLives;
-    }
->>>>>>> Stashed changes
 }
