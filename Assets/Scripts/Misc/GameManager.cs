@@ -59,5 +59,7 @@ public class GameManager : MonoBehaviour
         playerLives.lives -= i;
         uimanager.DecreaseLife(i);
     }
+
+    
     #endregion
 }

@@ -1,7 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+<<<<<<< Updated upstream
 public class MyHealthSystem : MonoBehaviour, IDataPersistence
+=======
+public class MyHealthSystem : MonoBehaviour, ISaveable
+>>>>>>> Stashed changes
 {
     GameObject PlayerGO;
     GameObject playerManager;
@@ -27,6 +31,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
     Animator hitAnim;
     private void Start()
     {
+        GameManager.Instance.playerLives.lives = GameManager.Instance.playerLives.maxLives;
         playerManager = GameObject.FindGameObjectWithTag("PlayerManager");
         Hit = GameObject.Find("HitHUD");
         Head = GameObject.Find("Head").GetComponent<SpriteRenderer>();
@@ -163,6 +168,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
         Invoke("PiscarOn", (5 / remainingIF) * Time.fixedDeltaTime);
     }
 
+<<<<<<< Updated upstream
     public void LoadData(GameData data)
     {
         GameManager.Instance.playerLives.lives = data.lives;
@@ -174,3 +180,29 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
     }
     
 }
+=======
+    public object saveState()
+    {
+        return new saveData()
+        {
+            lives = GameManager.Instance.playerLives.lives,
+            maxLives = GameManager.Instance.playerLives.maxLives
+        };
+    }
+
+    public void loadState(object state)
+    {
+        var saveData = (saveData)state;
+        GameManager.Instance.playerLives.lives = saveData.lives;
+        GameManager.Instance.playerLives.maxLives = saveData.maxLives;
+    }
+
+    [SerializeField]
+    private struct saveData
+    {
+
+        public int lives;
+        public int maxLives;
+    }
+}
+>>>>>>> Stashed changes
