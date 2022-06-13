@@ -15,13 +15,14 @@ public class EnemiesScript : MonoBehaviour
     public float knockbackForce;
     public float knockbackForceUp;
     public bool knockbacked;
-    public Rigidbody2D rb;
+    Rigidbody2D rb;
 
     //public GameObject monster;
     void Start()
     {
         myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         currentHealth = maxHealth;
+        rb = GetComponent<Rigidbody2D>();
     }
     
     public void TakeDamage(int damage)
