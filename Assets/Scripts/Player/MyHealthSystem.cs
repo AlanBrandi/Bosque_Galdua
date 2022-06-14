@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class MyHealthSystem : MonoBehaviour, IDataPersistence
@@ -10,7 +9,6 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
     public float Time_frame = 1;
     float remainingIF;
     public bool PlayerTomouDano = false;
-
 
     GameData_SO gd;
 
@@ -34,13 +32,12 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
         LeftHand = GameObject.Find("LeftHand").GetComponent<SpriteRenderer>();
         RightFoot = GameObject.Find("RightHand").GetComponent<SpriteRenderer>();
         LeftFoot = GameObject.Find("LeftFoot").GetComponent<SpriteRenderer>();
-        Sword = GameObject.Find("Sword").GetComponent<SpriteRenderer>();
+        //Sword = GameObject.Find("Sword").GetComponent<SpriteRenderer>();
         hitAnim = Hit.GetComponentInChildren<Animator>();
         Hit.SetActive(false);
     }
     private void Update()
     {
-
         if (GameManager.Instance.playerLives.lives <= 0)
         {
             Die();
@@ -76,7 +73,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
             LeftHand.color = new Color(1, 1, 1, .7f);
             RightFoot.color = new Color(1, 1, 1, .7f);
             LeftFoot.color = new Color(1, 1, 1, .7f);
-            Sword.color = new Color(1, 1, 1, .7f);
+            //Sword.color = new Color(1, 1, 1, .7f);
 
             Invoke(nameof(DisableHit), 1);
             PiscarOn();
@@ -102,7 +99,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
         LeftHand.color = new Color(1, 1, 1, 1);
         RightFoot.color = new Color(1, 1, 1, 1);
         LeftFoot.color = new Color(1, 1, 1, 1);
-        Sword.color = new Color(1, 1, 1, 1);
+        //Sword.color = new Color(1, 1, 1, 1);
         Blink = false;
         PlayerTomouDano = false;
     }
@@ -119,7 +116,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
             LeftHand.color = new Color(1, 1, 1, 1);
             RightFoot.color = new Color(1, 1, 1, 1);
             LeftFoot.color = new Color(1, 1, 1, 1);
-            Sword.color = new Color(1, 1, 1, 1);
+            //Sword.color = new Color(1, 1, 1, 1);
         }
         else
         {
@@ -129,7 +126,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
             LeftHand.material = HitMaterial;
             RightFoot.material = HitMaterial;
             LeftFoot.material = HitMaterial;
-            Sword.material = HitMaterial;
+            //Sword.material = HitMaterial;
             //Transparente
             /*Head.color = new Color(1, 1, 1, .3f);
             Right_hand.color = new Color(1, 1, 1, .3f);
@@ -149,7 +146,7 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
         LeftHand.material = DefautMaterial;
         RightFoot.material = DefautMaterial;
         LeftFoot.material = DefautMaterial;
-        Sword.material = DefautMaterial;
+        //Sword.material = DefautMaterial;
 
         //Transparente
         /*Head.color = new Color(1, 1, 1, 1);
@@ -172,5 +169,4 @@ public class MyHealthSystem : MonoBehaviour, IDataPersistence
     {
         data.lives = GameManager.Instance.playerLives.lives;
     }
-    
 }

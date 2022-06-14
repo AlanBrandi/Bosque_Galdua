@@ -13,7 +13,7 @@ public class Monstrinho : SpawnerManager
 
     private void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -44,7 +44,6 @@ public class Monstrinho : SpawnerManager
         {
             PlayerHP.Dano(dano);
             enemy.TakeDamage(enemy.maxHealth);
-            Destroy(this.gameObject);
         }
     }
 
