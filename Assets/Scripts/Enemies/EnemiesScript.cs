@@ -7,6 +7,7 @@ public class EnemiesScript : MonoBehaviour
     public int maxHealth = 20;
     public int dano;
     public int currentHealth;
+    public int BosscurrentHealth;
     public GameObject fxDie;
     public GameObject fxHit;
     public Transform whereToAddEffect;
@@ -16,6 +17,7 @@ public class EnemiesScript : MonoBehaviour
     public float knockbackForceUp;
     public bool knockbacked;
     Rigidbody2D rb;
+    public Boss boss;
 
     //public GameObject monster;
     void Start()
@@ -24,7 +26,19 @@ public class EnemiesScript : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
     }
-    
+    private void Update()
+    {
+        boss.healthBar.value = BosscurrentHealth;
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            TakeDamageByItem(5);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            takeDamageBySword(5);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         knockback();
@@ -83,6 +97,39 @@ public class EnemiesScript : MonoBehaviour
     }
 
 
+    public void TakeDamageByItem(int damage)
+    {
+        if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle"))
+        {
+            BosscurrentHealth -= damage;
+            if (BosscurrentHealth > 0)
+            {
+                boss.anim.SetTrigger("Hurt");
+            }
 
+        }
+
+        if (BosscurrentHealth <= 0)
+        {
+            boss.anim.SetTrigger("Die");
+        }
+
+    }
+    public void takeDamageBySword(int damage)
+    {
+        if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam"))
+        {
+            BosscurrentHealth -= damage;
+            if (BosscurrentHealth > 0)
+            {
+                boss.anim.SetTrigger("HurtSlam");
+            }
+        }
+
+        if (BosscurrentHealth <= 0)
+        {
+            boss.anim.SetTrigger("Die");
+        }
+    }
 
 }

@@ -31,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
         swordSounds = audios[0];
         playerHighAttack = GetComponent<PlayerHighAttack>();
         attackSound = Resources.Load("sword_swing_1") as AudioClip;
+        animator.SetBool("HasSword", true);
     }
 
     private void Update()
@@ -71,13 +72,16 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in HitEnemies)
             {
                 Debug.Log("Inimigo tomou dano por ataque pulando.");
-                enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                
+                    enemy.GetComponent<EnemiesScript>().takeDamageBySword(5);
+                
+                    enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                
+                
+                
                 AttackCooldown();
             }
-            foreach(Collider2D boss in HitEnemies)
-            {
-                boss.GetComponent<Boss>().takeDamageBySword(AttackDamage);
-            }
+            
         }
         else
         {
@@ -86,13 +90,14 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in HitEnemies)
             {
                 Debug.Log("Inimigo tomou dano.");
-                enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                
+                    enemy.GetComponent<EnemiesScript>().takeDamageBySword(5);
+                
+                    enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                
                 AttackCooldown();
             }
-            foreach (Collider2D boss in HitEnemies)
-            {
-                boss.GetComponent<Boss>().takeDamageBySword(AttackDamage);
-            }
+            
         }
     }
 

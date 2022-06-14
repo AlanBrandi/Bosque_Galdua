@@ -14,20 +14,29 @@ public class Monstrinho : SpawnerManager
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        
 
         Player = GameObject.FindGameObjectWithTag("Player");
+        
 
         PlayerHP = MyHealthSystem.FindObjectOfType<MyHealthSystem>();
+        
 
         enemy = GetComponent<EnemiesScript>();
+        
 
         enemy3 = GetComponent<AudioSource>();
+        
 
         InvokeRepeating("ConstantSound", 0f, 0.3f);
+
+        
+        
     }
 
     private void Update()
     {
+        
         if (Player != null)
         {
             Vector3 direction = Player.transform.position - transform.position;

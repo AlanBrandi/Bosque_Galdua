@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
 
     
     public Slider healthBar;
-    public int currentHealth;
+    
 
     GameObject FireAttack;
     public GameObject shockWaveAttack;
@@ -51,7 +51,7 @@ public class Boss : MonoBehaviour
     private void Update()
     {
         
-        healthBar.value = currentHealth;
+        
         if (Time.time > nextAttack)
         {
           
@@ -89,14 +89,7 @@ public class Boss : MonoBehaviour
             nextAcid = Time.time + acidRate;
             
         }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamageByItem(5);
-        }
-        else if (Input.GetKeyDown(KeyCode.Z))
-        {
-            takeDamageBySword(5);
-        }
+        
     }
 
     public void summonAnim()
@@ -139,44 +132,7 @@ public class Boss : MonoBehaviour
         anim.SetTrigger("Laser");
     }
 
-    public void TakeDamageByItem(int damage)
-    {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle"))
-        {
-            currentHealth -= damage;
-            if (currentHealth > 0)
-            {
-                anim.SetTrigger("Hurt");
-            }
-
-        }
-        
-            
-        
-        
-
-        if (currentHealth <= 0)
-        {
-            anim.SetTrigger("Die");
-        }
-
-    }
-    public void takeDamageBySword(int damage)
-    {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam"))
-        {
-            currentHealth -= damage;
-            if (currentHealth > 0)
-            {
-                anim.SetTrigger("HurtSlam");
-            }
-        }
-
-        if (currentHealth <= 0)
-        {
-            anim.SetTrigger("Die");
-        }
-    }
+    
     public void RandomState()
     {
         IsIdle = false;
@@ -214,7 +170,7 @@ public class Boss : MonoBehaviour
             contA = 0;
             contL = 0;
             contS = 0;
-            attackrate = 24;
+            attackrate = 10;
             Slam();
         }
 
@@ -257,7 +213,7 @@ public class Boss : MonoBehaviour
             contA = 0;
             contL = 0;
             contS = 0;
-            attackrate = 24;
+            attackrate = 10;
             Slam();
         }
     }
