@@ -7,7 +7,7 @@ public class DebugCodes : MonoBehaviour
     public string buffer;
     float maxTimeDif = 1;
     float timeDif;
-    List<string> patterns = new List<string> { "ShiftH", "ShiftD" };
+    List<string> patterns = new List<string> { "ShiftH", "ShiftD", "ShiftK" };
 
     TMP_Text fpsText;
     public float deltaTime;
@@ -44,6 +44,10 @@ public class DebugCodes : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 AddToBuffer("D");
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                AddToBuffer("K");
             }
         }
         else if (Input.GetKeyDown(KeyCode.F3))
@@ -88,9 +92,9 @@ public class DebugCodes : MonoBehaviour
     {
         if (buffer.EndsWith(patterns[0]))
         {
-            Debug.Log("+1 Health");
+            Debug.Log("+2 Health");
             audioSource.Play();
-            GameManager.Instance.IncreaseLife(1);
+            GameManager.Instance.IncreaseLife(2);
             buffer = "";
         }
         if (buffer.EndsWith(patterns[1]))
@@ -98,6 +102,18 @@ public class DebugCodes : MonoBehaviour
             Debug.Log("-3 Health");
             audioSource.Play();
             GameManager.Instance.DecreaseLife(3);
+            buffer = "";
+        }
+        if (buffer.EndsWith(patterns[2]))
+        {
+            Debug.Log("Killing all enemies");
+            audioSource.Play();
+            List<EnemiesScript> tmpEnemies= new List<EnemiesScript>();
+            tmpEnemies.AddRange(GameObject.FindObjectsOfType<EnemiesScript>());
+            foreach (EnemiesScript enemies in tmpEnemies)
+            {
+                enemies.TakeDamage(100);
+            }
             buffer = "";
         }
     }

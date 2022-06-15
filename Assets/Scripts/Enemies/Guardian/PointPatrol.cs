@@ -25,6 +25,7 @@ public class PointPatrol : MonoBehaviour
         {
             enemyGFX.facingRight = true;
         }
+        enemyGFX.Flip('p');
     }
 
     private void Update()

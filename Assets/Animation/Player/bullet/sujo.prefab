@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8140185662304666771}
   - component: {fileID: 8140185662304666770}
   - component: {fileID: 8140185662304666773}
-  - component: {fileID: 8140185662304666772}
-  - component: {fileID: 8140185662304666775}
   m_Layer: 0
   m_Name: sujo
   m_TagString: Bullet
@@ -53,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,30 +373,3 @@ PolygonCollider2D:
       - {x: -0.42822263, y: -8.804257}
       - {x: -0.17128906, y: -8.547324}
       - {x: 0.20554686, y: -8.13623}
---- !u!114 &8140185662304666772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140185662304666774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1914f09080a649cb99752c8009b73be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quem: 
-  playerId: 0
---- !u!114 &8140185662304666775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8140185662304666774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8862ea7b10c84421c9485c36f04335a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToDestruction: 0.5

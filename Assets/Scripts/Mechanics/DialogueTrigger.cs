@@ -14,16 +14,11 @@ public class DialogueTrigger : MonoBehaviour
     public void StartDialogue()
     {
         FindObjectOfType<DialogueSystem>().OpenDialogue(messages, npcs);
-        
-
     }
     private void Update()
     {
-
         if(Input.GetKeyDown(KeyCode.E) && playerInRange == true)
         {
-
-
             triggerbox.SetActive(false);
             messagebox.SetActive(true);
             StartDialogue();
@@ -38,9 +33,7 @@ public class DialogueTrigger : MonoBehaviour
             triggerbox.SetActive(false);
             messagebox.SetActive(false);
             playerInRange = false;
-        }
-        
-            
+        }    
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,9 +42,7 @@ public class DialogueTrigger : MonoBehaviour
             triggerbox.SetActive(true);
             playerInRange = true;
         }
-        
     }
-    
 }
  
 
