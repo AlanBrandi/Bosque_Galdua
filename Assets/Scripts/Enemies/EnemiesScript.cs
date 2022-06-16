@@ -99,15 +99,14 @@ public class EnemiesScript : MonoBehaviour
 
     public void TakeDamageByItem(int damage)
     {
-        if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle"))
-        {
+        
             BosscurrentHealth -= damage;
             if (BosscurrentHealth > 0)
             {
                 boss.anim.SetTrigger("Hurt");
             }
 
-        }
+        
 
         if (BosscurrentHealth <= 0)
         {

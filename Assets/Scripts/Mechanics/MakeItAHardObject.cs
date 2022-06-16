@@ -37,6 +37,8 @@ public class MakeItAHardObject : MonoBehaviour
         if (collision.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
         {
             collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+            collision.GetComponent<EnemiesScript>().TakeDamageByItem(AttackDamage);
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -45,6 +47,7 @@ public class MakeItAHardObject : MonoBehaviour
         {
 
             collision.collider.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+            collision.collider.GetComponent<EnemiesScript>().TakeDamageByItem(AttackDamage);
         }
         // Debug.Log(collision.relativeVelocity.magnitude);
         if (collision.relativeVelocity.magnitude > 20)
