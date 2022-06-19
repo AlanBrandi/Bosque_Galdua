@@ -48,7 +48,7 @@ public class Jumping : MonoBehaviour
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
 
-        if (IsGrounded == true && (Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && slope.slopeDownAngle <= slope.maxSlopeAngle)
+        if (IsGrounded == true && Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick") && slope.slopeDownAngle <= slope.maxSlopeAngle)
         {
             //MyAni.SetBool("IsJumping", true);
             isJumping = true;
@@ -59,12 +59,12 @@ public class Jumping : MonoBehaviour
 
        
        
-        if ((Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && isJumping == true)
+        if (Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick") && isJumping == true)
         {
             jumpSound.Play();
         }
 
-        if ((Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && isJumping == true)
+        if (Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick") && isJumping == true)
         {
             if (jumpTimeCounter > 0)
             {
