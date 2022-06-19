@@ -46,7 +46,7 @@ public class Planar : MonoBehaviour
             wallSliding = false;
         }
 
-        if (IsGrounded == false && wallSliding == false && Input.GetKey(thiskey) && rb.velocity.y <= 0)
+        if (IsGrounded == false && wallSliding == false && Input.GetKey(thiskey) || Input.GetButtonUp("JumpJoystick") && rb.velocity.y <= 0)
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, y: -glindSpeed);
