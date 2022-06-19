@@ -24,12 +24,13 @@ public class PlayerHighAttack : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(LookUp))
+      
+        if (Input.GetKey(LookUp) || Input.GetAxisRaw("VerticalJoystick") > 0)
         {
             playerAttack.enabled = false;
             if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
-                if (Input.GetKeyDown(attackButton) && holdAndThrow.Estado != "Segurando")
+                if (Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick") && holdAndThrow.Estado != "Segurando")
                 {
                     playerAttack.AttackSoundAndDelay();
                     animator.SetTrigger("Highattack");
@@ -39,7 +40,7 @@ public class PlayerHighAttack : MonoBehaviour
             }
 
         }
-        else if (Input.GetKeyUp(LookUp))
+        else if (Input.GetKeyUp(LookUp) || Input.GetAxisRaw("VerticalJoystick") <= 0)
         {
             playerAttack.enabled = true;
         }
