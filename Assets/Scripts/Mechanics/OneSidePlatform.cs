@@ -16,7 +16,7 @@ public class OneSidePlatform : MonoBehaviour
    
     private void Update()
     {
-        if(groundCheck.IsGrounded == true && Input.GetKeyDown(downKey) || Input.GetAxisRaw("VerticalJoystick") < 0)
+        if(groundCheck.IsGrounded == true && (Input.GetKeyDown(downKey) || Input.GetAxisRaw("VerticalJoystick") < 0))
         {
             foreach (PlatformEffector2D plats in Platforms)
             {

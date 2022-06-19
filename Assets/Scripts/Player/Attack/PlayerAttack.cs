@@ -38,21 +38,21 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
         {
-            if (Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick") && jumping.IsGrounded == false && holdAndThrow.Estado != "Segurando")
+            if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && jumping.IsGrounded == false && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .064f, .016f);
                 Invoke(nameof(AttackCooldown), .16f);
             }
-            else if (Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick") && moving.isMoving == true && holdAndThrow.Estado != "Segurando")
+            else if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && moving.isMoving == true && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");
                 InvokeRepeating(nameof(Attack), .216f, .016f);
                 Invoke(nameof(AttackCooldown), .368f);
             }
-            else if (Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick") && holdAndThrow.Estado != "Segurando")
+            else if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");

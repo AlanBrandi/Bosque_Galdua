@@ -30,7 +30,7 @@ public class PlayerHighAttack : MonoBehaviour
             playerAttack.enabled = false;
             if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
-                if (Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick") && holdAndThrow.Estado != "Segurando")
+                if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && holdAndThrow.Estado != "Segurando")
                 {
                     playerAttack.AttackSoundAndDelay();
                     animator.SetTrigger("Highattack");
