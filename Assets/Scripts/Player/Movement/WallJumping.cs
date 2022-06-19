@@ -56,7 +56,7 @@ public class WallJumping : MonoBehaviour
         }
 
         
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonUp("JumpJoystick") && wallSliding)
+        if (Input.GetKeyDown(KeyCode.Space) && wallSliding || Input.GetButtonUp("JumpJoystick") && wallSliding)
         {
             Vector2 force = new Vector2(wallJumpForce * wallJumpDirection.x * -input, wallJumpForce * wallJumpDirection.y);
 
