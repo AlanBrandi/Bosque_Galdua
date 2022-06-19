@@ -5,11 +5,15 @@ using UnityEngine;
 public class DropItem : MonoBehaviour
 {
     public GameObject item;
+    public EnemiesScript enemy;
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (enemy.currentHealth <= 0)
         {
             Instantiate(item, transform.position, Quaternion.identity);
         }
     }
+    
 }

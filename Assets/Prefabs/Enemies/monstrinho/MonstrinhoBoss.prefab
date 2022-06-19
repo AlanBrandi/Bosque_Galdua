@@ -377,14 +377,12 @@ MonoBehaviour:
   maxHealth: 5
   dano: 2
   currentHealth: 0
-  BosscurrentHealth: 0
   fxDie: {fileID: 5135255555956319502, guid: 93adf26a939b6634e88297664ab1bbc6, type: 3}
   fxHit: {fileID: 5135255555956319502, guid: 93adf26a939b6634e88297664ab1bbc6, type: 3}
   whereToAddEffect: {fileID: 8829659343052178253}
   knockbackForce: 0
   knockbackForceUp: 0
   knockbacked: 0
-  boss: {fileID: 0}
 --- !u!82 &-2546340485845920353
 AudioSource:
   m_ObjectHideFlags: 0
@@ -511,4 +509,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19827554ce473be4d81c4c95b1619282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 4707257306692207, guid: 555d7cd6351c7714f9064675a11c40e2, type: 3}
+  item: {fileID: 4707257306692207, guid: 2c05e50c7d5ae3e4298b74b9714033bd, type: 3}
+  enemy: {fileID: 3509156615733673167}

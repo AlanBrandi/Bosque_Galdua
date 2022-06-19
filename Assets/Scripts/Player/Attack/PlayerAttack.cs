@@ -72,13 +72,19 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in HitEnemies)
             {
                 Debug.Log("Inimigo tomou dano por ataque pulando.");
-                
-                    enemy.GetComponent<EnemiesScript>().takeDamageBySword(5);
-                
+
+                if (enemy.tag == "Enemies")
+                {
+
                     enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
-                
-                
-                
+                }
+                else if (enemy.tag == "Boss")
+                {
+                    enemy.GetComponent<BossScript>().takeDamageBySword(5);
+                }
+
+
+
                 AttackCooldown();
             }
             
@@ -90,10 +96,18 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in HitEnemies)
             {
                 Debug.Log("Inimigo tomou dano.");
-                
-                    enemy.GetComponent<EnemiesScript>().takeDamageBySword(5);
-                
+                if(enemy.tag == "Enemies")
+                {
+                    
                     enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                }
+                else if(enemy.tag == "Boss")
+                {
+                    enemy.GetComponent<BossScript>().takeDamageBySword(5);
+                }
+                    
+                
+                    
                 
                 AttackCooldown();
             }

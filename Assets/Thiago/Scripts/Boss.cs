@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
 
     
     public Slider healthBar;
-    
+    public ScreenShakeController screenShake;
 
     GameObject FireAttack;
     public GameObject shockWaveAttack;
@@ -21,13 +21,13 @@ public class Boss : MonoBehaviour
     public Transform shockwavePos;
     public float attackrate;
     int randomState = 0;
-     acidSpawn acid;
+    public bool CanTakeDamage = true;
+     
     float nextAttack = 0f;
-    public float acidRate;
-    float nextAcid = 0;
+
+    public BossScript bossScript;
     public Animator anim;
-    public bool IsIdle = true;
-    public bool IsSlamAttack = true;
+
     int chooseStatee;
     public int idleNumber;
 
@@ -54,8 +54,9 @@ public class Boss : MonoBehaviour
         
         if (Time.time > nextAttack)
         {
-          
-                nextAttack = Time.time + attackrate;
+            bossScript.dano = 2;
+
+            nextAttack = Time.time + attackrate;
             if(contA >= 2)
             {
                 chooseStatee = 2;
@@ -83,19 +84,15 @@ public class Boss : MonoBehaviour
                 
                       
         }
-        if (Time.time > nextAcid && randomState == 3)
-        {
-
-            nextAcid = Time.time + acidRate;
-            
-        }
+        
         
     }
-
+    
     public void summonAnim()
     {
         Debug.Log("SUMMON ATTACK");
         anim.SetTrigger("Summon");
+        
     }
     public void summon()
     {
@@ -121,8 +118,7 @@ public class Boss : MonoBehaviour
 
     public void Slam()
     {
-
-
+        
         anim.SetTrigger("SlamAttack");
        
     }
@@ -132,10 +128,30 @@ public class Boss : MonoBehaviour
         anim.SetTrigger("Laser");
     }
 
-    
+    public void shake1()
+    {
+        screenShake.startShake(.5f, 1f);
+    }
+    public void shake2()
+    {
+        screenShake.startShake(1f, 3f);
+        CanTakeDamage = false;
+        Invoke("CanTakeDamageTrue", 10);
+        
+    }
+    public void CanTakeDamageTrue()
+    {
+        CanTakeDamage = true;
+    }
+    public void SetDamage()
+    {
+        bossScript.dano = 4;
+    }
+
+
     public void RandomState()
     {
-        IsIdle = false;
+        
         randomState = Random.Range(0, 4);
         if (randomState == 0)
         {

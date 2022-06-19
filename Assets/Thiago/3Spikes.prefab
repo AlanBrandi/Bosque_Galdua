@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7156620913577430349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150920548425600249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190fb354903f79f48a329e347f52a035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  dano: 2
+  currentHealth: 4539
+  fxDie: {fileID: 0}
+  fxHit: {fileID: 0}
+  whereToAddEffect: {fileID: 0}
+  knockbackForce: 0
+  knockbackForceUp: 0
+  knockbacked: 0
+--- !u!114 &2653813353836804458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150920549494107677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190fb354903f79f48a329e347f52a035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  dano: 2
+  currentHealth: 2095
+  fxDie: {fileID: 0}
+  fxHit: {fileID: 0}
+  whereToAddEffect: {fileID: 0}
+  knockbackForce: 0
+  knockbackForceUp: 0
+  knockbacked: 0
+--- !u!114 &5065400882531291523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4150920550036555306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190fb354903f79f48a329e347f52a035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 20
+  dano: 2
+  currentHealth: 2666
+  fxDie: {fileID: 0}
+  fxHit: {fileID: 0}
+  whereToAddEffect: {fileID: 0}
+  knockbackForce: 0
+  knockbackForceUp: 0
+  knockbacked: 0
 --- !u!1 &6646497650134394077
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,6 +103,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3760414225731416320}
     m_Modifications:
+    - target: {fileID: 375711363807127364, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4799605023977047388, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
       propertyPath: m_Name
       value: spike02
@@ -102,6 +169,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+--- !u!1 &4150920548425600249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4799605023977047388, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+  m_PrefabInstance: {fileID: 8863250539858758053}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2750913993086918078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6714201683813651483, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
@@ -176,6 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+--- !u!1 &4150920549494107677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4799605023977047388, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+  m_PrefabInstance: {fileID: 8863250540925168449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2750913994153328474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6714201683813651483, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
@@ -250,6 +327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+--- !u!1 &4150920550036555306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4799605023977047388, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
+  m_PrefabInstance: {fileID: 8863250541469844342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2750913993623443309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6714201683813651483, guid: 34a0eac338af94942b80721e13a482ee, type: 3}
