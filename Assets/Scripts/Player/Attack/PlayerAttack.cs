@@ -80,7 +80,7 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else if (enemy.tag == "Boss")
                 {
-                    enemy.GetComponent<BossScript>().takeDamageBySword(5);
+                    enemy.GetComponent<BossScript>().takeDamageBySword(10);
                 }
 
 
@@ -103,7 +103,7 @@ public class PlayerAttack : MonoBehaviour
                 }
                 else if(enemy.tag == "Boss")
                 {
-                    enemy.GetComponent<BossScript>().takeDamageBySword(5);
+                    enemy.GetComponent<BossScript>().takeDamageBySword(10);
                 }
                     
                 
