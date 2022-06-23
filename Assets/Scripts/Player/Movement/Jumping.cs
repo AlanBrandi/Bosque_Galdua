@@ -27,7 +27,7 @@ public class Jumping : MonoBehaviour
 
     private void Start()
     {
-       // groundLayer = LayerMask.GetMask("Ground");
+        //groundLayer = LayerMask.GetMask("Ground");
         animator = GetComponentInChildren<Animator>();
         feetPos = GameObject.Find("FeetPos").transform;
         slope = GetComponent<Slope>();
