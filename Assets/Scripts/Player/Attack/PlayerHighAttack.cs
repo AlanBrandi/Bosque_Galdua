@@ -15,8 +15,10 @@ public class PlayerHighAttack : MonoBehaviour
     public int AttackDamage = 5;
     PlayerAttack playerAttack;
     HoldAndThrow holdAndThrow;
+    Jumping jumping;
     private void Start()
     {
+        jumping = GetComponent<Jumping>();
         holdAndThrow = FindObjectOfType<HoldAndThrow>();
         animator = GetComponentInChildren<Animator>();
         playerAttack = GetComponent<PlayerAttack>();
@@ -30,7 +32,7 @@ public class PlayerHighAttack : MonoBehaviour
             playerAttack.enabled = false;
             if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
-                if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && holdAndThrow.Estado != "Segurando")
+                if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && holdAndThrow.Estado != "Segurando" && jumping.IsGrounded)
                 {
                     playerAttack.AttackSoundAndDelay();
                     animator.SetTrigger("Highattack");
