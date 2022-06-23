@@ -11,7 +11,7 @@ public class Jumping : MonoBehaviour
     Animator animator;
     Transform feetPos;
     public float checkRadius;
-    LayerMask groundLayer;
+    public LayerMask groundLayer;
     public float jumpForce;
     double jumpTimeCounter;
     public float JumpTime;
@@ -27,7 +27,7 @@ public class Jumping : MonoBehaviour
 
     private void Start()
     {
-        groundLayer = LayerMask.GetMask("Ground");
+       // groundLayer = LayerMask.GetMask("Ground");
         animator = GetComponentInChildren<Animator>();
         feetPos = GameObject.Find("FeetPos").transform;
         slope = GetComponent<Slope>();
