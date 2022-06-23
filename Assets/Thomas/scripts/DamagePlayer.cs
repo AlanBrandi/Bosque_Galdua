@@ -15,7 +15,8 @@ public class DamagePlayer : MonoBehaviour
         health = MyHealthSystem.FindObjectOfType<MyHealthSystem>();
         audioSource = GetComponent<AudioSource>();
         barrelImpact = Resources.Load("barrel_impact") as AudioClip;
-        Destroy(gameObject, 5f);
+       // Destroy(gameObject, 6f);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,6 +33,14 @@ public class DamagePlayer : MonoBehaviour
             {
                     audioSource.PlayOneShot(barrelImpact, collision.relativeVelocity.magnitude / 10);
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Object"))
+        {
+            Instantiate(efeito, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
