@@ -76,10 +76,6 @@ public class HoldAndThrow : MonoBehaviour
                 {
                     Estado = "Segurando";
                     ActSituação("Segurar");
-                    foreach(Rigidbody2D box in Boxes)
-                    {
-                        box.bodyType = RigidbodyType2D.Static;
-                    }
                 }
                 break;
 
@@ -120,11 +116,6 @@ public class HoldAndThrow : MonoBehaviour
         Invoke("EstadoNormal", 0 * Time.fixedDeltaTime);
 
         PlayerAni.SetBool("Holding", false);
-
-        foreach (Rigidbody2D box in Boxes)
-        {
-            box.bodyType = RigidbodyType2D.Dynamic;
-        }
     }
     void EstadoNormal()
     {
