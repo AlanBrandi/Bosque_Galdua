@@ -86,10 +86,6 @@ public class HoldAndThrow : MonoBehaviour
             case "Normal":
                 {
                     Estado = "Normal";
-                    foreach (Rigidbody2D box in Boxes)
-                    {
-                        box.isKinematic = false;
-                    }
                 }
                 break;
         }
@@ -124,6 +120,11 @@ public class HoldAndThrow : MonoBehaviour
         Invoke("EstadoNormal", 0 * Time.fixedDeltaTime);
 
         PlayerAni.SetBool("Holding", false);
+
+        foreach (Rigidbody2D box in Boxes)
+        {
+            box.isKinematic = false;
+        }
     }
     void EstadoNormal()
     {
