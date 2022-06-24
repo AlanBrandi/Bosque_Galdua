@@ -29,6 +29,10 @@ public class HoldAndThrow : MonoBehaviour
 
     #endregion
 
+    #region Variáveis Caixas
+    public  List<Rigidbody2D> Boxes;
+    #endregion
+
     #region Start
     private void Start()
     {
@@ -72,12 +76,20 @@ public class HoldAndThrow : MonoBehaviour
                 {
                     Estado = "Segurando";
                     ActSituação("Segurar");
+                    foreach(Rigidbody2D box in Boxes)
+                    {
+                        box.isKinematic = true;
+                    }
                 }
                 break;
 
             case "Normal":
                 {
                     Estado = "Normal";
+                    foreach (Rigidbody2D box in Boxes)
+                    {
+                        box.isKinematic = false;
+                    }
                 }
                 break;
         }
