@@ -27,6 +27,11 @@ public class DamagePlayer : MonoBehaviour
             Instantiate(efeito, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+        else if (collision.collider.CompareTag("Object"))
+        {
+            Instantiate(efeito, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
         if (collision.relativeVelocity.magnitude > 10)
         {
             if (gameObject != null)
