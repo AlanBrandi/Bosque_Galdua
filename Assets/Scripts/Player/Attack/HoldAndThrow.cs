@@ -123,7 +123,7 @@ public class HoldAndThrow : MonoBehaviour
 
         foreach (Rigidbody2D box in Boxes)
         {
-            box.bodyType = RigidbodyType2D.Static;
+            box.bodyType = RigidbodyType2D.Dynamic;
         }
     }
     void EstadoNormal()
