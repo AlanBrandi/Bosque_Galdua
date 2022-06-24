@@ -48,7 +48,7 @@ public class Jumping : MonoBehaviour
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
 
-        if ((IsGrounded == true && Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && slope.slopeDownAngle <= slope.maxSlopeAngle)
+        if ((IsGrounded == true && Input.GetKeyDown(thiskey) || IsGrounded == true && Input.GetButtonDown("JumpJoystick")) && slope.slopeDownAngle <= slope.maxSlopeAngle)
         {
             //MyAni.SetBool("IsJumping", true);
             isJumping = true;
