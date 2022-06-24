@@ -8,14 +8,13 @@ public class PlayerAnimaionController : MonoBehaviour
 
     Animator PlayerAnimator;
     GameObject boxDetect;
-    LayerMask ObjectLayer;
+    public LayerMask ObjectLayer;
 
 
     private void Start()
     {
         PlayerAnimator = GetComponentInChildren<Animator>();
         boxDetect = GameObject.Find("BoxDetect");
-        ObjectLayer = LayerMask.GetMask("Ground");
     }
 
     private void Update()
@@ -23,7 +22,7 @@ public class PlayerAnimaionController : MonoBehaviour
         RaycastHit2D grabCheck = Physics2D.Raycast(boxDetect.transform.position, boxDetect.transform.right, rayDist, ObjectLayer);
         Debug.DrawRay(boxDetect.transform.position, boxDetect.transform.right * rayDist, Color.yellow);
 
-        if (grabCheck.collider != null && grabCheck.collider.tag == "Box")
+        if (grabCheck.collider != null && !PlayerAnimator.GetBool("IsJumping"))
         {
             PlayerAnimator.SetBool("IsPushing", true);
         }

@@ -44,10 +44,12 @@ public class WallJumping : MonoBehaviour
         if (isTouchingFront && !IsGrounded && rb.velocity.y < 0 && input != 0)
         {
             wallSliding = true;
+            player.GetComponent<Animator>().SetBool("IsSliding", true);
         }
         else
         {
             wallSliding = false;
+            player.GetComponent<Animator>().SetBool("IsSliding", false);
         }
 
         if (wallSliding)
