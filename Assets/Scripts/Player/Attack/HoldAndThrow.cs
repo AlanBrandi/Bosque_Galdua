@@ -32,7 +32,7 @@ public class HoldAndThrow : MonoBehaviour
     #region Start
     private void Start()
     {
-        PlayerAni = GameObject.Find("Player").gameObject.GetComponent<Animator>();
+        PlayerAni = GetComponentInChildren<Animator>();
         grabDetect = GameObject.Find("GrabDetect");
         boxHolder = GameObject.Find("GrabHolder");
         ObjectLayer = LayerMask.GetMask("ObjectLayer");

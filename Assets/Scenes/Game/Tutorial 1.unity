@@ -25016,6 +25016,24 @@ MonoBehaviour:
   - {fileID: 0}
   isBackground: 0
   colorAlpha: 0.5
+--- !u!1 &1782229831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5134318668887889149, guid: 594b0585fbc8ecf4b8547d824a0eed35, type: 3}
+  m_PrefabInstance: {fileID: 1795089257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1782229833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782229831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6be94a470fc2224185da6cae747f98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayDist: 0.2
 --- !u!1001 &1795089257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25023,6 +25041,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3699747485088444612, guid: 594b0585fbc8ecf4b8547d824a0eed35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.64
+      objectReference: {fileID: 0}
     - target: {fileID: 5134318667658363780, guid: 594b0585fbc8ecf4b8547d824a0eed35, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -25071,6 +25093,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 641577954}
+    - target: {fileID: 5134318668887889136, guid: 594b0585fbc8ecf4b8547d824a0eed35, type: 3}
+      propertyPath: jumpForce
+      value: 1250
+      objectReference: {fileID: 0}
     - target: {fileID: 5134318668887889136, guid: 594b0585fbc8ecf4b8547d824a0eed35, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 18432
