@@ -78,7 +78,7 @@ public class HoldAndThrow : MonoBehaviour
                     ActSituação("Segurar");
                     foreach(Rigidbody2D box in Boxes)
                     {
-                        box.isKinematic = true;
+                        box.bodyType = RigidbodyType2D.Static;
                     }
                 }
                 break;
@@ -123,7 +123,7 @@ public class HoldAndThrow : MonoBehaviour
 
         foreach (Rigidbody2D box in Boxes)
         {
-            box.isKinematic = false;
+            box.bodyType = RigidbodyType2D.Static;
         }
     }
     void EstadoNormal()
