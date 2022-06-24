@@ -20,12 +20,19 @@ public class PointPatrol : MonoBehaviour
     private void Start()
     {
         enemyGFX = GetComponentInChildren<EnemyGFX>();
-        InvokeRepeating("ChangePoint", 0, repeatRate);
         if (transform.rotation.y == 0)
         {
             enemyGFX.facingRight = true;
         }
+    }
+    private void OnEnable()
+    {
+        InvokeRepeating("ChangePoint", 0, repeatRate);
         enemyGFX.Flip('p');
+    }
+    private void OnDisable()
+    {
+        CancelInvoke(nameof(ChangePoint));
     }
 
     private void Update()

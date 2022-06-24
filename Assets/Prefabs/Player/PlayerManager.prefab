@@ -47,7 +47,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeOpacity: 0.01
   m_ApplyToSortingLayers: 8fa3fe28000000007b7c8b78
   m_LightCookieSprite: {fileID: 0}
@@ -258,7 +258,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: efff11c233bdffd45b9f2ef4c59a19ab, type: 2}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -1193,6 +1193,7 @@ GameObject:
   - component: {fileID: 360822803}
   - component: {fileID: 5297405400254710610}
   - component: {fileID: 231244433}
+  - component: {fileID: 630981601}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: PlayerManager
@@ -1233,7 +1234,7 @@ MonoBehaviour:
   checkRadius: 0.23
   groundLayer:
     serializedVersion: 2
-    m_Bits: 18432
+    m_Bits: 2048
   jumpForce: 2380
   JumpTime: 0.1
   isJumping: 0
@@ -1277,7 +1278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5134318668887889149}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20085ce4a52415f43ac3f0c03d94f9dd, type: 3}
   m_Name: 
@@ -1300,7 +1301,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5134318668887889149}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51286c59f16186543b4c05fc57a1c1c8, type: 3}
   m_Name: 
@@ -1398,6 +1399,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDist: 0.2
+  ObjectLayer:
+    serializedVersion: 2
+    m_Bits: 34816
+--- !u!114 &630981601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318668887889149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6be94a470fc2224185da6cae747f98e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayDist: 0
   ObjectLayer:
     serializedVersion: 2
     m_Bits: 34816
