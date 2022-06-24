@@ -63,7 +63,7 @@ public class Jumping : MonoBehaviour
         {
             jumpSound.Play();
         }
-
+        /*
         if ((Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && isJumping == true)
         {
             if (jumpTimeCounter > 0)
@@ -76,7 +76,7 @@ public class Jumping : MonoBehaviour
                 isJumping = false;
             }
         }
-
+        */
         //----------------------------------------------------
         if (Input.GetKeyUp(thiskey) || Input.GetButtonUp("JumpJoystick"))
         {
