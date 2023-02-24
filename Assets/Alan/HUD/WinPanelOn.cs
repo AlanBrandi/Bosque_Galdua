@@ -10,15 +10,55 @@ public class WinPanelOn : MonoBehaviour
     public IsRedInside isRedInside;
     public List<GameObject> HUDPanels;
 
+    //-------------------------------
+
+    [SerializeField] GameObject redGen;
+    [SerializeField] GameObject greenGen;
+    [SerializeField] GameObject blueGen;
+    [SerializeField] GameObject normalGate;
+    [SerializeField] GameObject openingGate;
+    [SerializeField] GameObject triggerGate;
+    [SerializeField] PlayerPass playerPass;
+
+    private void Start()
+    {
+        normalGate.SetActive(true);
+    }
     private void Update()
     {
-        if(isBlueInside.blueinside == true && isGreenInside.greeninside == true && isRedInside.redinside == true)
+        if(isRedInside.redinside)
         {
-           foreach (GameObject Panels in HUDPanels)
-           {
-                Panels.SetActive(false);
-           }
-           WinPanel.SetActive(true);
+            redGen.SetActive(true);
+            //ativar sprite + fx com vermelho + sound
         }
+        if (isGreenInside.greeninside)
+        {
+            greenGen.SetActive(true);
+            //ativar sprite + fx com verde + sound
+        }
+        if (isBlueInside.blueinside)
+        {
+            blueGen.SetActive(true);
+            //ativar sprite + fx com blue + sound
+        }
+
+        if (isBlueInside.blueinside == true && isGreenInside.greeninside == true && isRedInside.redinside == true)
+        {
+            normalGate.SetActive(false);
+            if (playerPass.playerPassed)
+            {
+                PlayerPass();
+            }
+        }
+    }
+
+    void PlayerPass()
+    {
+        openingGate.SetActive(true);
+        Invoke("ExitOn", 3);
+    }
+    void ExitOn()
+    {
+        triggerGate.SetActive(true);
     }
 }
