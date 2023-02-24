@@ -55,7 +55,7 @@ public class WinPanelOn : MonoBehaviour
     void PlayerPass()
     {
         openingGate.SetActive(true);
-        Invoke("ExitOn", 3);
+        Invoke("ExitOn", 2);
     }
     void ExitOn()
     {
