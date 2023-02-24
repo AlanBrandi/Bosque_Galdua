@@ -8,6 +8,7 @@ public class Laser : MonoBehaviour
     public Transform laserFirePoint;
     public LineRenderer m_lineRenderer;
     Transform m_transform;
+    public MyHealthSystem PlayerHP;
 
     private void Awake() 
     {
@@ -34,5 +35,13 @@ public class Laser : MonoBehaviour
     {
         m_lineRenderer.SetPosition(0, startpos);
         m_lineRenderer.SetPosition(1, endpos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            PlayerHP.Dano(2);
+        }
     }
 }
