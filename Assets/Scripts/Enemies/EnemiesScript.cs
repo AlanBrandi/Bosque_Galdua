@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class EnemiesScript : MonoBehaviour
 {
     public int maxHealth = 20;
@@ -17,6 +18,7 @@ public class EnemiesScript : MonoBehaviour
     public bool knockbacked;
     Rigidbody2D rb;
     public ScreenShakeController screenShake;
+    Scene sceneName;
 
     //public GameObject monster;
     void Start()
@@ -42,8 +44,11 @@ public class EnemiesScript : MonoBehaviour
     }
     void Die()
     {
-        screenShake.startShake(.2f, 0.5f);
-        Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
+        if(sceneName.name == "BossLevel")
+        {
+            screenShake.startShake(.2f, 0.5f);
+            Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
+        }
         Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
         Destroy(gameObject);
     }
