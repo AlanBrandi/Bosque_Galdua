@@ -146,7 +146,7 @@ public class Boss : MonoBehaviour
     public void RandomState()
     {
         
-        randomState = Random.Range(0, 3);
+        randomState = Random.Range(0, 4);
         if (randomState == 0)
         {
 
@@ -156,7 +156,7 @@ public class Boss : MonoBehaviour
         else if (randomState == 1)
         {
 
-            attackrate = 5.0f;
+            attackrate = 4.0f;
             shockWaveAnim();
         }
         else if (randomState == 2)
@@ -165,15 +165,23 @@ public class Boss : MonoBehaviour
             attackrate = 10;
             Slam();
         }
+        else if (randomState == 3)
+        {
+
+            attackrate = 4.0f;
+            laser();
+            
+        }
 
 
-        
+
 
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        Debug.Log("NUIXNSOUXNC");
+        if (collision.CompareTag("PlayerManager"))
         {
             PlayerHP.Dano(2);
             
