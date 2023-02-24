@@ -27,22 +27,19 @@ public class Boss : MonoBehaviour
 
     public BossScript bossScript;
     public Animator anim;
+    public bool canStart;
 
     int chooseStatee;
     public int idleNumber;
 
     public MyHealthSystem PlayerHP;
 
-    int contS = 0;
-    int contA = 0;
-    int contL = 0;
-    int contSlam;
-
     
 
 
     private void Start()
     {
+        healthBar.gameObject.SetActive(false);
         anim = this.GetComponent<Animator>();
         idleNumber = Animator.StringToHash("BossIdle");
         
@@ -50,42 +47,31 @@ public class Boss : MonoBehaviour
 
     private void Update()
     {
-        
-        
-        if (Time.time > nextAttack)
+        anim.SetFloat("BossLife", bossScript.BosscurrentHealth);
+        if (canStart)
         {
-            bossScript.dano = 2;
+            spawnHealthBar();
 
-            nextAttack = Time.time + attackrate;
-            if(contA >= 2)
+
+            if (Time.time > nextAttack)
             {
-                chooseStatee = 2;
-                chooseState();
-            }
-            else if(contL >= 2)
-            {
-                chooseStatee = 3;
-                chooseState();
-            }
-            else if(contS >= 2)
-            {
-                chooseStatee = 1;
-                chooseState();
-            }
-            else if(contSlam >= 2)
-            {
-                chooseStatee = 0;
-                chooseState();
-            }
-            else if(contA < 2 && contL < 2 && contS < 2 && contSlam < 2)
-            {
-                RandomState();
-            }
+                bossScript.dano = 2;
+
+                nextAttack = Time.time + attackrate;
+
+                    RandomState();
                 
-                      
+
+
+            }
         }
         
         
+    }
+
+    public void spawnHealthBar()
+    {
+        healthBar.gameObject.SetActive(true);
     }
     
     public void summonAnim()
@@ -126,6 +112,7 @@ public class Boss : MonoBehaviour
     {
         Debug.Log("LAZER ATTACK");
         anim.SetTrigger("Laser");
+        
     }
 
     public void shake1()
@@ -135,13 +122,15 @@ public class Boss : MonoBehaviour
     public void shake2()
     {
         screenShake.startShake(1f, 3f);
-        CanTakeDamage = false;
-        Invoke("CanTakeDamageTrue", 10);
-        
+        Invoke("CanTakeDamageFalse", 0.4f);
     }
     public void CanTakeDamageTrue()
     {
         CanTakeDamage = true;
+    }
+    public void CanTakeDamageFalse()
+    {
+        CanTakeDamage = false;
     }
     public void SetDamage()
     {
@@ -152,87 +141,31 @@ public class Boss : MonoBehaviour
     public void RandomState()
     {
         
-        randomState = Random.Range(0, 4);
+        randomState = Random.Range(0, 3);
         if (randomState == 0)
         {
-            contS++;
-            contSlam = 0;
-            contA = 0;
-            contL = 0;
+
             attackrate = 10;
             summonAnim();
         }
         else if (randomState == 1)
         {
-            contA++;
-            contSlam = 0;
-            contS = 0;
-            contL = 0;
-            attackrate = 8.5f;
+
+            attackrate = 5.0f;
             shockWaveAnim();
         }
         else if (randomState == 2)
         {
-            contL++;
-            contSlam = 0;
-            contS = 0;
-            contA = 0;
-            attackrate = 5.5f;
-            laser();
-        }
-        else if (randomState == 3)
-        {
-            contSlam++;
-            contA = 0;
-            contL = 0;
-            contS = 0;
+
             attackrate = 10;
             Slam();
         }
+
 
         
 
     }
-    public void chooseState()
-    {
-
-        if (chooseStatee == 0)
-        {
-            contS++;
-            contSlam = 0;
-            contA = 0;
-            contL = 0;
-            attackrate = 10;
-            summonAnim();
-        }
-        else if (chooseStatee == 1)
-        {
-            contA++;
-            contSlam = 0;
-            contS = 0;
-            contL = 0;
-            attackrate = 8.5f;
-            shockWaveAnim();
-        }
-        else if (chooseStatee == 2)
-        {
-            contL++;
-            contSlam = 0;
-            contS = 0;
-            contA = 0;
-            attackrate = 5;
-            laser();
-        }
-        else if (chooseStatee == 3)
-        {
-            contSlam++;
-            contA = 0;
-            contL = 0;
-            contS = 0;
-            attackrate = 10;
-            Slam();
-        }
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

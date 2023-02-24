@@ -12,7 +12,7 @@ public class DropItem : MonoBehaviour
     {
         if (enemy.currentHealth <= 0)
         {
-            Instantiate(item, transform.position, Quaternion.identity);
+           // Instantiate(item, transform.position, Quaternion.identity);
         }
     }
     

@@ -26,6 +26,7 @@ public class BossScript: MonoBehaviour
     private void Update()
     {
         boss.healthBar.value = BosscurrentHealth;
+
         
     }
 
@@ -44,14 +45,14 @@ public class BossScript: MonoBehaviour
     {
         boss.shake1();
             BosscurrentHealth -= damage;
-            if (BosscurrentHealth > 16)
+            if (BosscurrentHealth > 10)
             {
                 boss.anim.SetTrigger("Hurt");
             }
 
         
 
-        if (BosscurrentHealth <= 16)
+        if (BosscurrentHealth <= 10)
         {
             boss.anim.SetTrigger("Die");
         }
@@ -63,13 +64,13 @@ public class BossScript: MonoBehaviour
         {
             boss.shake1();
             BosscurrentHealth -= damage;
-            if (BosscurrentHealth > 16)
+            if (BosscurrentHealth > 10)
             {
                 boss.anim.SetTrigger("HurtSlam");
             }
         }
 
-        if (BosscurrentHealth <= 16)
+        if (BosscurrentHealth <= 10)
         {
             boss.anim.SetTrigger("Die");
         }
