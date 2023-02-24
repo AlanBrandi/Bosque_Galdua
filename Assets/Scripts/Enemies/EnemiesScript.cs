@@ -8,6 +8,7 @@ public class EnemiesScript : MonoBehaviour
     public int currentHealth;
     public GameObject fxDie;
     public GameObject fxHit;
+    public GameObject barril;
     public Transform whereToAddEffect;
     Transform customWhereToAdd;
     MyHealthSystem myHealthSystem;
@@ -15,6 +16,7 @@ public class EnemiesScript : MonoBehaviour
     public float knockbackForceUp;
     public bool knockbacked;
     Rigidbody2D rb;
+    public ScreenShakeController screenShake;
 
     //public GameObject monster;
     void Start()
@@ -22,6 +24,7 @@ public class EnemiesScript : MonoBehaviour
         myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
     }
 
     public void TakeDamage(int damage)
@@ -32,12 +35,15 @@ public class EnemiesScript : MonoBehaviour
         Debug.Log("Damage!");
         if (currentHealth <= 0)
         {
+
             Die();
         }
 
     }
     void Die()
     {
+        screenShake.startShake(.2f, 0.5f);
+        Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
         Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
         Destroy(gameObject);
     }
