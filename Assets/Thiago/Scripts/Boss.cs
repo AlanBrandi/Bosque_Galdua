@@ -64,9 +64,7 @@ public class Boss : MonoBehaviour
 
 
             }
-        }
-        
-        
+        }               
     }
 
     public void spawnHealthBar()
@@ -77,10 +75,17 @@ public class Boss : MonoBehaviour
     public void summonAnim()
     {
         Debug.Log("SUMMON ATTACK");
-        anim.SetTrigger("Summon");
-        
+
+            anim.SetTrigger("Summon");
+
     }
-    public void summon()
+
+    public void summonFase1()
+    {
+        Instantiate(summonAttack1, summonAttackPos.transform.position, Quaternion.identity);
+        summonAttack.transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+    public void summonFase2()
     {
         Instantiate(summonAttack1, summonAttackPos.transform.position, Quaternion.identity);
         Instantiate(summonAttack, summonAttackPos1.transform.position, Quaternion.identity);
