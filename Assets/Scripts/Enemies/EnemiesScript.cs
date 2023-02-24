@@ -18,17 +18,21 @@ public class EnemiesScript : MonoBehaviour
     public bool knockbacked;
     Rigidbody2D rb;
     public ScreenShakeController screenShake;
-    Scene sceneName;
+
 
     //public GameObject monster;
     void Start()
     {
+        
         myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        
+    }
+    private void Update()
+    {
         screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
     }
-
     public void TakeDamage(int damage)
     {
         knockback();
@@ -44,11 +48,17 @@ public class EnemiesScript : MonoBehaviour
     }
     void Die()
     {
-        if(sceneName.name == "BossLevel")
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        screenShake.startShake(.2f, 0.5f);
+        if(sceneName == "BossLevel")
         {
-            screenShake.startShake(.2f, 0.5f);
             Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
         }
+        
+            
+        
         Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
         Destroy(gameObject);
     }
