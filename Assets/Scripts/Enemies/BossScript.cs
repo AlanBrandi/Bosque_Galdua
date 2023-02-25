@@ -17,6 +17,11 @@ public class BossScript: MonoBehaviour
     Rigidbody2D rb;
     public Boss boss;
 
+    public SimpleFlash flash;
+    public SimpleFlash flash2;
+    public SimpleFlash flash3;
+    public Transform whereToAddEffect;
+    public GameObject fxHit;
     //public GameObject monster;
     void Start()
     {
@@ -47,7 +52,11 @@ public class BossScript: MonoBehaviour
             BosscurrentHealth -= damage;
             if (BosscurrentHealth > 10)
             {
-                boss.anim.SetTrigger("Hurt");
+            flash.Flash();
+            flash2.Flash();
+            flash3.Flash();
+            Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
+            boss.anim.SetTrigger("Hurt");
             }
 
         
@@ -60,12 +69,16 @@ public class BossScript: MonoBehaviour
     }
     public void takeDamageBySword(int damage)
     {
-        if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam"))
+        if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam") || boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam2"))
         {
             boss.shake1();
             BosscurrentHealth -= damage;
             if (BosscurrentHealth > 10)
             {
+                flash.Flash();
+                flash2.Flash();
+                flash3.Flash();
+                Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
                 boss.anim.SetTrigger("HurtSlam");
             }
         }
@@ -75,5 +88,5 @@ public class BossScript: MonoBehaviour
             boss.anim.SetTrigger("Die");
         }
     }
-
+    
 }

@@ -34,15 +34,16 @@ public class Boss : MonoBehaviour
 
     public MyHealthSystem PlayerHP;
 
-    
+    int shock;
+    int slam;
+    int summon;
 
-
+    public DetectPlayer playerDetection;
     private void Start()
     {
         healthBar.gameObject.SetActive(false);
         anim = this.GetComponent<Animator>();
-        idleNumber = Animator.StringToHash("BossIdle");
-        
+        idleNumber = Animator.StringToHash("BossIdle");        
     }
 
     private void Update()
@@ -52,7 +53,6 @@ public class Boss : MonoBehaviour
         {
             spawnHealthBar();
 
-
             if (Time.time > nextAttack)
             {
                 bossScript.dano = 2;
@@ -60,9 +60,6 @@ public class Boss : MonoBehaviour
                 nextAttack = Time.time + attackrate;
 
                     RandomState();
-                
-
-
             }
         }               
     }
@@ -74,8 +71,8 @@ public class Boss : MonoBehaviour
     
     public void summonAnim()
     {
-        Debug.Log("SUMMON ATTACK");
 
+        Debug.Log("SUMMON");
             anim.SetTrigger("Summon");
 
     }
@@ -94,7 +91,7 @@ public class Boss : MonoBehaviour
     }
     public void shockWaveAnim()
     {
-        Debug.Log("SHOCK WAVE ATTACK");   
+        Debug.Log("SHOCK");
         anim.SetTrigger("AttackWave");
     }
     public void shockWave()
@@ -109,7 +106,7 @@ public class Boss : MonoBehaviour
 
     public void Slam()
     {
-        
+        Debug.Log("SLAM");
         anim.SetTrigger("SlamAttack");
        
     }
@@ -145,48 +142,102 @@ public class Boss : MonoBehaviour
 
     public void RandomState()
     {
-        
-        randomState = Random.Range(0, 4);
-        if (randomState == 0)
+        if (playerDetection.playerIsHere)
+        {
+            //attackrate = 5.0f;
+        }
+        else
         {
 
-            attackrate = 10;
-            summonAnim();
+
+            randomState = Random.Range(0, 3);
+            if (randomState == 0)
+            {
+
+                attackrate = 5.0f;
+                if (summon > 2)
+                {
+                    shock = 0;
+                    summon = 0;
+                    Slam();
+                    slam++;
+                }
+                else
+                {
+                    shock = 0;
+                    slam = 0;
+                    summonAnim();
+                    summon++;
+                }
+
+
+            }
+            else if (randomState == 1)
+            {
+
+                attackrate = 3.0f;
+                if (shock > 2)
+                {
+                    summon = 0;
+                    shock = 0;
+                    Slam();
+                    slam++;
+                }
+                else
+                {
+                    summon = 0;
+                    slam = 0;
+                    shockWaveAnim();
+                    shock++;
+                }
+
+            }
+            else if (randomState == 2)
+            {
+
+                attackrate = 5.0f;
+                if (slam > 2)
+                {
+                    int randomState2 = Random.Range(0, 2);
+                    if (randomState2 == 0)
+                    {
+                        shock = 0;
+                        slam = 0;
+                        summonAnim();
+                        summon++;
+                    }
+                    else
+                    {
+                        summon = 0;
+                        slam = 0;
+                        shockWaveAnim();
+                        shock++;
+                    }
+                }
+                else
+                {
+                    summon = 0;
+                    shock = 0;
+                    Slam();
+                    slam++;
+                }
+
+            }
+            else if (randomState == 3)
+            {
+
+                //attackrate = 4.0f;
+                //laser();
+
+            }
         }
-        else if (randomState == 1)
-        {
-
-            attackrate = 4.0f;
-            shockWaveAnim();
-        }
-        else if (randomState == 2)
-        {
-
-            attackrate = 10;
-            Slam();
-        }
-        else if (randomState == 3)
-        {
-
-            attackrate = 4.0f;
-            laser();
-            
-        }
-
-
-
-
     }
     
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("NUIXNSOUXNC");
+    {       
         if (collision.CompareTag("PlayerManager"))
         {
-            PlayerHP.Dano(2);
-            
-            
+            PlayerHP.Dano(2);                        
         }
     }
-
 }
