@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 5134318667631940186}
   - component: {fileID: 5134318667631940189}
   - component: {fileID: 5134318667631940187}
+  - component: {fileID: 7316663297266569825}
   - component: {fileID: 2063429669842514280}
   - component: {fileID: 8810308728882803358}
   m_Layer: 7
@@ -297,6 +298,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7316663297266569825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318667631940184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286678286fba8f149a350d31c0d46f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep: {fileID: 8810308728882803358}
+  clips:
+  - {fileID: 8300000, guid: 3a7a2e45e5764ae4db5812e2f7bfff8c, type: 3}
+  - {fileID: 8300000, guid: 5d08fa93df951524c8660998e498a3fe, type: 3}
+  - {fileID: 8300000, guid: 4e623c0cd207a67469ba7a76b071776f, type: 3}
 --- !u!82 &2063429669842514280
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1253,7 +1271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hor: 0
   speed: 9
-  footstep: {fileID: 8810308728882803358}
   canMove: 1
 --- !u!114 &5134318668887889150
 MonoBehaviour:
@@ -1386,6 +1403,7 @@ MonoBehaviour:
   force: 7000
   attackRate: 2
   NextattackTime: 0
+  Boxes: []
 --- !u!114 &231244433
 MonoBehaviour:
   m_ObjectHideFlags: 0
