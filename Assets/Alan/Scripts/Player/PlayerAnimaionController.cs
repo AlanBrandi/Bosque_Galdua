@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class PlayerAnimaionController : MonoBehaviour
 {
-    public float rayDist;
+    [SerializeField] float rayDist;
 
-    Animator PlayerAnimator;
+    Animator playerAnimator;
     GameObject boxDetect;
-    public LayerMask ObjectLayer;
+    [SerializeField] LayerMask objectLayer;
 
 
     private void Start()
     {
-        PlayerAnimator = GetComponentInChildren<Animator>();
+        playerAnimator = GetComponentInChildren<Animator>();
         boxDetect = GameObject.Find("BoxDetect");
     }
 
     private void Update()
     {
-        RaycastHit2D grabCheck = Physics2D.Raycast(boxDetect.transform.position, boxDetect.transform.right, rayDist, ObjectLayer);
+        RaycastHit2D grabCheck = Physics2D.Raycast(boxDetect.transform.position, boxDetect.transform.right, rayDist, objectLayer);
         Debug.DrawRay(boxDetect.transform.position, boxDetect.transform.right * rayDist, Color.yellow);
 
-        if (grabCheck.collider != null && !PlayerAnimator.GetBool("IsJumping"))
+        if (grabCheck.collider != null && !playerAnimator.GetBool("IsJumping"))
         {
-            PlayerAnimator.SetBool("IsPushing", true);
+            playerAnimator.SetBool("IsPushing", true);
         }
         else
         {
-            PlayerAnimator.SetBool("IsPushing", false);
+            playerAnimator.SetBool("IsPushing", false);
         }
     }
 }
