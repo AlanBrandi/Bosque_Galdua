@@ -30,7 +30,7 @@ public class IsPlayerInside : MonoBehaviour
                 print("player entrou");
                 Instantiate(spawnGO, spawnLocation.position, Quaternion.identity);
                 lever.SetBool("IsLeverOn", true);
-                TopText.text = "Procure a outra Alanvanca";
+                TopText.text = "Procure a outra Alavanca";
                 DownText.text = "Use o tronco para subir";
                 actionExec = true;
             }
