@@ -6,7 +6,6 @@ public class PlayerHighAttack : MonoBehaviour
 {
     Animator animator;
     public KeyCode LookUp;
-
     LayerMask EnemyLayers;
     public KeyCode attackButton;
     public Transform AttackPoint;
@@ -26,7 +25,6 @@ public class PlayerHighAttack : MonoBehaviour
     }
     private void Update()
     {
-      
         if (Input.GetKey(LookUp) || Input.GetAxisRaw("VerticalJoystick") > 0)
         {
             playerAttack.enabled = false;
@@ -40,18 +38,15 @@ public class PlayerHighAttack : MonoBehaviour
                     Invoke(nameof(AttackCooldown), .288f);
                 }
             }
-
         }
         else if (Input.GetKeyUp(LookUp) || Input.GetAxisRaw("VerticalJoystick") <= 0)
         {
             playerAttack.enabled = true;
         }
-
     }
     void Attack()
     {
         Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, EnemyLayers);
-
         foreach (Collider2D enemy in HitEnemies)
         {
             Debug.Log("Inimigo tomou dano por ataque de cima.");
@@ -65,7 +60,6 @@ public class PlayerHighAttack : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-
         if (AttackPoint == null)
         {
             return;
