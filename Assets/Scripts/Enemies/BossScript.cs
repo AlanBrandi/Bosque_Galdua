@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BossScript: MonoBehaviour
+public class BossScript : MonoBehaviour
 {
     public int maxHealth = 20;
     public int dano;
 
-    
-    
+
+
     public int BosscurrentHealth;
-    
-    
+
+
     MyHealthSystem myHealthSystem;
-    
+
     Rigidbody2D rb;
     public Boss boss;
 
@@ -25,17 +23,17 @@ public class BossScript: MonoBehaviour
     //public GameObject monster;
     void Start()
     {
-        myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();       
+        myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
         boss.healthBar.value = BosscurrentHealth;
 
-        
+
     }
 
-  
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player") && dano > 0 && boss.CanTakeDamage)
@@ -45,21 +43,30 @@ public class BossScript: MonoBehaviour
         }
     }
 
-  
+
     public void TakeDamageByItem(int damage)
     {
         boss.shake1();
-            BosscurrentHealth -= damage;
-            if (BosscurrentHealth > 10)
+        BosscurrentHealth -= damage;
+        flash.Flash();
+        flash2.Flash();
+        flash3.Flash();
+        Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
+        if (BosscurrentHealth > 10)
+        {
+            
+            if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam") || boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam2"))
             {
-            flash.Flash();
-            flash2.Flash();
-            flash3.Flash();
-            Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
-            boss.anim.SetTrigger("Hurt");
+                boss.anim.SetTrigger("HurtSlam");
+            }
+            else
+            {
+                boss.anim.SetTrigger("Hurt");
             }
 
-        
+        }
+
+
 
         if (BosscurrentHealth <= 10)
         {
@@ -73,20 +80,23 @@ public class BossScript: MonoBehaviour
         {
             boss.shake1();
             BosscurrentHealth -= damage;
+            flash.Flash();
+            flash2.Flash();
+            flash3.Flash();
+            Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
             if (BosscurrentHealth > 10)
             {
-                flash.Flash();
-                flash2.Flash();
-                flash3.Flash();
-                Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
+                
                 boss.anim.SetTrigger("HurtSlam");
             }
         }
 
         if (BosscurrentHealth <= 10)
         {
+            boss.shake2();
+            Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
             boss.anim.SetTrigger("Die");
         }
     }
-    
+
 }
