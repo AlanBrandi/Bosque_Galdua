@@ -35,7 +35,6 @@ public class Isplayeyinleftinside : MonoBehaviour
                 BTGAnim.SetTrigger("Open");
                 BTGAudio.Play();
                 actionExec = true;
-
             }
         }
     }
