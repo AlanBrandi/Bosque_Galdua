@@ -7,6 +7,7 @@ public class CheckCam : MonoBehaviour
 {
     public int targetCamera;
     public Boss boss;
+    public GameObject bossGo;
 
     private void Update()
     {
@@ -20,6 +21,7 @@ public class CheckCam : MonoBehaviour
             if (targetCamera == 1)
             {
                 boss.canStart = true;
+                bossGo.SetActive(true);
             }
         }
     }

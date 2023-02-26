@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
 
-    
+
     public Slider healthBar;
     public ScreenShakeController screenShake;
 
@@ -22,7 +20,8 @@ public class Boss : MonoBehaviour
     public float attackrate;
     int randomState = 0;
     public bool CanTakeDamage = true;
-     
+    public BossSfx sfx;
+
     float nextAttack = 0f;
 
     public BossScript bossScript;
@@ -43,7 +42,7 @@ public class Boss : MonoBehaviour
     {
         healthBar.gameObject.SetActive(false);
         anim = this.GetComponent<Animator>();
-        idleNumber = Animator.StringToHash("BossIdle");        
+        idleNumber = Animator.StringToHash("BossIdle");
     }
 
     private void Update()
@@ -59,21 +58,21 @@ public class Boss : MonoBehaviour
 
                 nextAttack = Time.time + attackrate;
 
-                    RandomState();
+                RandomState();
             }
-        }               
+        }
     }
 
     public void spawnHealthBar()
     {
         healthBar.gameObject.SetActive(true);
     }
-    
+
     public void summonAnim()
     {
 
         Debug.Log("SUMMON");
-            anim.SetTrigger("Summon");
+        anim.SetTrigger("Summon");
 
     }
 
@@ -108,13 +107,13 @@ public class Boss : MonoBehaviour
     {
         Debug.Log("SLAM");
         anim.SetTrigger("SlamAttack");
-       
+
     }
     public void laser()
     {
         Debug.Log("LAZER ATTACK");
         anim.SetTrigger("Laser");
-        
+
     }
 
     public void shake1()
@@ -150,7 +149,7 @@ public class Boss : MonoBehaviour
         {
 
 
-            randomState = Random.Range(0, 3);
+            randomState = Random.Range(0, 4);
             if (randomState == 0)
             {
 
@@ -169,8 +168,6 @@ public class Boss : MonoBehaviour
                     summonAnim();
                     summon++;
                 }
-
-
             }
             else if (randomState == 1)
             {
@@ -226,18 +223,51 @@ public class Boss : MonoBehaviour
             else if (randomState == 3)
             {
 
-                //attackrate = 4.0f;
-                //laser();
+                attackrate = 4.0f;
+                laser();
 
             }
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
-    {       
+    {
         if (collision.CompareTag("PlayerManager"))
         {
-            PlayerHP.Dano(2);                        
+            PlayerHP.Dano(2);
         }
+    }
+
+    public void dyingSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.bossDying);
+    }
+    public void aisingSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.raisingArm);
+    }
+    public void attackWaveSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.bossAttackWave);
+    }
+    public void attackSlamSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.bossAttackSlam);
+    }
+    public void summonSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.bossSummon);
+    }
+    public void laserSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.laser);
+    }
+    public void takeHitSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.takeHit);
+    }
+    public void spawnSfx()
+    {
+        sfx.audio.PlayOneShot(sfx.spawn);
     }
 }
