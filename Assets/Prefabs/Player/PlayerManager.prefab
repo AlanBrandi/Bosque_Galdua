@@ -1044,7 +1044,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: 113.3311, y: -0.4896939}
+  position: {x: 4.0211, y: -0.58069396}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -1211,7 +1211,6 @@ GameObject:
   - component: {fileID: 360822803}
   - component: {fileID: 5297405400254710610}
   - component: {fileID: 231244433}
-  - component: {fileID: 630981601}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: PlayerManager
@@ -1417,23 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDist: 0.2
-  ObjectLayer:
-    serializedVersion: 2
-    m_Bits: 34816
---- !u!114 &630981601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134318668887889149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6be94a470fc2224185da6cae747f98e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayDist: 0
-  ObjectLayer:
+  objectLayer:
     serializedVersion: 2
     m_Bits: 34816
 --- !u!1 &5134318668893198737
