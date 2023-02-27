@@ -8,20 +8,28 @@ public class ChangeAnimation : MonoBehaviour
     [SerializeField] Animator playerAmimantion;
     [SerializeField] GameObject player;
     [SerializeField] CinemachineVirtualCamera camera;
+    CameraZoomOut scriptZoomOut;
 
     private void Start()
     {
-       // camera.m_Lens.FieldOfView = 50;
+        scriptZoomOut = GetComponent<CameraZoomOut>();
+        scriptZoomOut.enabled = false;
+        camera.m_Lens.FieldOfView = 40;
         player.SetActive(false);
         playerAmimantion.SetBool("IsScene1", false);
         playerAmimantion.SetBool("IsScene2", true);
-        Invoke("ChangeToGameplay", 8);
+        Invoke("ChangeToGameplay", 7f);
+        Invoke("ZoomOut", 6.5f);
+
     }
 
     void ChangeToGameplay()
     {
         playerAmimantion.gameObject.SetActive(false);
         player.SetActive(true);
-       // camera.m_Lens.FieldOfView = 60;
+    }
+    void ZoomOut()
+    {
+        scriptZoomOut.enabled = true;
     }
 }
