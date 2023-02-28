@@ -143,7 +143,8 @@ public class Boss : MonoBehaviour
     {
         if (playerDetection.playerIsHere)
         {
-            //attackrate = 5.0f;
+            Debug.Log("PLATFORMSPIN");
+            anim.SetTrigger("PlatformSpin");
         }
         else
         {
