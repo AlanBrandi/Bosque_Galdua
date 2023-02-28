@@ -5,7 +5,10 @@ using UnityEngine;
 public class IsGreenInside : MonoBehaviour
 {
     public bool greeninside = false;
-    
+    public Rigidbody2D ridg;
+    public Collider2D col;
+    public GameObject obj;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,14 +16,13 @@ public class IsGreenInside : MonoBehaviour
         {
             greeninside = true;
             print("green entrou");
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Box [green]"))
-        {
-            greeninside = false;
-            print("green saiu");
+
+            collision.transform.localPosition = new Vector2(0.018f, 0.091f);
+            collision.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            obj.layer = LayerMask.NameToLayer("Water");
+            ridg.bodyType = RigidbodyType2D.Static;
+            col.isTrigger = true;
+
         }
     }
 }
