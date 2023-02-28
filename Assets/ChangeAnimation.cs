@@ -9,6 +9,7 @@ public class ChangeAnimation : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] CinemachineVirtualCamera camera;
     CameraZoomOut scriptZoomOut;
+    public GameObject preBossMusic;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class ChangeAnimation : MonoBehaviour
     {
         playerAmimantion.gameObject.SetActive(false);
         player.SetActive(true);
+        preBossMusic.SetActive(true);
     }
     void ZoomOut()
     {

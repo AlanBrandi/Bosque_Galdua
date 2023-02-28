@@ -20,6 +20,8 @@ public class BossScript : MonoBehaviour
     public SimpleFlash flash3;
     public Transform whereToAddEffect;
     public GameObject fxHit;
+    public GameObject endMusic;
+    public GameObject postMusic;
     //public GameObject monster;
     void Start()
     {
@@ -70,6 +72,10 @@ public class BossScript : MonoBehaviour
 
         if (BosscurrentHealth <= 10)
         {
+            endMusic.SetActive(false);
+            postMusic.SetActive(true);
+            boss.shake2();
+            Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
             boss.anim.SetTrigger("Die");
         }
 
@@ -95,6 +101,8 @@ public class BossScript : MonoBehaviour
         {
             boss.shake2();
             Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
+            endMusic.SetActive(false);
+            postMusic.SetActive(true);
             boss.anim.SetTrigger("Die");
         }
     }
