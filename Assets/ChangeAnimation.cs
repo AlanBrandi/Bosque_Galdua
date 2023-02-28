@@ -17,8 +17,8 @@ public class ChangeAnimation : MonoBehaviour
         scriptZoomOut.enabled = false;
         camera.m_Lens.FieldOfView = 40;
         player.SetActive(false);
-        playerAmimantion.SetBool("IsScene1", false);
-        playerAmimantion.SetBool("IsScene2", true);
+       // playerAmimantion.SetBool("IsScene1", false);
+       // playerAmimantion.SetBool("IsScene2", true);
         Invoke("ChangeToGameplay", 7f);
         Invoke("ZoomOut", 6.5f);
 
