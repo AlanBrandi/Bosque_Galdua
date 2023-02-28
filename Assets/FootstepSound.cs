@@ -16,7 +16,7 @@ public class FootstepSound : MonoBehaviour
     {
         RaycastHit2D floorHit = Physics2D.Raycast(transform.position, -Vector2.up, 10, layerMask);
         Debug.DrawRay(transform.position, -Vector2.up *10, Color.red);
-        Debug.Log(floorHit.collider.tag);
+        //Debug.Log(floorHit.collider.tag);
         if (floorHit.collider != null)
         {
             switch (floorHit.collider.tag)

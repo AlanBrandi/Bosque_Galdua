@@ -103,6 +103,7 @@ public class DebugCodes : MonoBehaviour
             audioSource.Play();
             GameManager.Instance.DecreaseLife(3);
             buffer = "";
+            
         }
         if (buffer.EndsWith(patterns[2]))
         {

@@ -8,12 +8,11 @@ public class LevelChanger : MonoBehaviour
     Animator animator;
     string levelToLoad;
     Scene currentScene;
-    UIManager uiManager;
+    UIManager UIManager;
 
     private void Start()
     {
-        uiManager = GameObject.FindObjectOfType<UIManager>();
-        currentScene = SceneManager.GetActiveScene();
+        UIManager = GameObject.FindObjectOfType<UIManager>();
         animator = GetComponent<Animator>();
     }
 
@@ -26,6 +25,7 @@ public class LevelChanger : MonoBehaviour
     public void RestartFade()
     {
         GameManager.Instance.SetLife(6);
+        currentScene = SceneManager.GetActiveScene();
         levelToLoad = currentScene.name;
         animator.SetTrigger("FadeOut");
     }

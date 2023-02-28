@@ -17,9 +17,9 @@ public class Starter : MonoBehaviour
     }
     private void Start()
     {
-        settingsPanel.slider[0].value = PlayerPrefs.GetFloat("MasterVol", 1);
-        settingsPanel.slider[1].value = PlayerPrefs.GetFloat("MusicVol", 1);
-        settingsPanel.slider[2].value = PlayerPrefs.GetFloat("SFXVol", 1);
+        settingsPanel.slider[0].GetComponent<SetVolume>().SetLevel(PlayerPrefs.GetFloat("MasterVol", 1));
+        settingsPanel.slider[1].GetComponent<SetVolume>().SetLevel(PlayerPrefs.GetFloat("MusicVol", 1));
+        settingsPanel.slider[2].GetComponent<SetVolume>().SetLevel(PlayerPrefs.GetFloat("SFXVol", 1));
         GameManager.Instance.SetLife(GameManager.Instance.playerLives.lives);
         if (sceneName.name == tutorial)
         {
