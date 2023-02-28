@@ -42,8 +42,11 @@ public class MakeItAHardObjectBoss : MonoBehaviour
         }
         else if(collision.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
         {
-            collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
-            Destroy(gameObject);
+            if(GetComponent<Rigidbody2D>().velocity.magnitude != 0)
+            {
+                collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                Destroy(gameObject);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
