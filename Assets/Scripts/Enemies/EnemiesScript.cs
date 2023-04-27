@@ -19,11 +19,12 @@ public class EnemiesScript : MonoBehaviour
     Rigidbody2D rb;
     public ScreenShakeController screenShake;
 
+    public SimpleFlash flash;
+
 
     //public GameObject monster;
     void Start()
     {
-        
         myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
@@ -35,9 +36,14 @@ public class EnemiesScript : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        knockback();
         currentHealth -= damage;
         Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
+        if(flash != null)
+        {
+            flash.Flash();
+            screenShake.startShake(.35f, 0.5f);
+        }
+        
         Debug.Log("Damage!");
         if (currentHealth <= 0)
         {
@@ -51,7 +57,7 @@ public class EnemiesScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        screenShake.startShake(.2f, 0.5f);
+        screenShake.startShake(.5f, 0.7f);
         if(sceneName == "BossLevel")
         {
             Instantiate(barril, whereToAddEffect.position, Quaternion.identity);

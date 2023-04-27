@@ -42,5 +42,6 @@ public class ScreenShakeController : MonoBehaviour
         shakeFadeTime = power / lenght;
 
         shakeRotation = power * rotationMultiplier;
+        Debug.Log("Shake");
     }
 }
