@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5644273321167473685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -100.97, y: -1.91, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 0.054301, y: 0.054301, z: 0.054301}
   m_Children:
   - {fileID: 5644273321495289546}
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2492326725041195192, guid: ff3500c6bbf27024397b10e23af266af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e08ef7beba2ab24883df3a0ccb780a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9919aa87207304ebc5c0b00545a8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bomb: {fileID: 0}
+  bomb: {fileID: -8755106334960829829, guid: d2526a18990bc5147927de849fe64c91, type: 3}
   speed: 0
   dashSpeed: 0
   projectile: {fileID: 4730612502163547742, guid: d2526a18990bc5147927de849fe64c91, type: 3}
@@ -119,8 +119,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012817383, y: -0.01281786}
-  m_Size: {x: 1.4362183, y: 2.1540174}
+  m_Offset: {x: 0.13698937, y: 0.3183444}
+  m_Size: {x: 10.79139, y: 17.55308}
   m_Direction: 0
 --- !u!50 &5644273321167473686
 Rigidbody2D:
