@@ -1,25 +1,28 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WallJumping : MonoBehaviour
 {
-    public float checkRadius;
-    LayerMask groundLayer;
-    LayerMask wallLayer;
-    public bool IsGrounded;
-    Rigidbody2D rb;
-    GameObject player;
-    public bool isTouchingFront;
-    Transform frontCheck;
-    Transform feetPos;
-    public bool wallSliding;
-    public float wallSlidingSpeed;
-    //bool wallJumping; Not currently being used
-    public Vector2 wallJumpDirection;
-    public float wallJumpForce;
-    Moving moveScript;
-    public float input;
+    [SerializeField] private float checkRadius;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private Transform frontCheck;
+    [SerializeField] private Transform feetPos;
+    [SerializeField] private float wallSlidingSpeed;
+    [SerializeField] private Vector2 wallJumpDirection;
+    [SerializeField] private float wallJumpForce;
+
+    private Rigidbody2D rb;
+    private GameObject player;
+    private Moving moveScript;
+
+    private bool IsGrounded;
+    private bool isTouchingFront;
+
+    private float input;
+
+    [HideInInspector] public bool wallSliding;
+    public GameObject playerAxis;
 
     private void Start()
     {
@@ -41,7 +44,7 @@ public class WallJumping : MonoBehaviour
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
 
-        if (isTouchingFront && !IsGrounded && rb.velocity.y < 0 && input != 0)
+        if (isTouchingFront && !IsGrounded && rb.velocity.y < 0)
         {
             wallSliding = true;
             player.GetComponent<Animator>().SetBool("IsSliding", true);
@@ -55,21 +58,25 @@ public class WallJumping : MonoBehaviour
         if (wallSliding)
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+
+
         }
 
-        
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonUp("JumpJoystick")) && wallSliding)
         {
-            Vector2 force = new Vector2(wallJumpForce * wallJumpDirection.x * -input, wallJumpForce * wallJumpDirection.y);
+            if (moveScript.canMove)
+            {
+                float forceX = playerAxis.transform.rotation.y == 0 ? -wallJumpForce * wallJumpDirection.x : wallJumpForce * wallJumpDirection.x;
+                Vector2 force = new Vector2(forceX, wallJumpForce * wallJumpDirection.y);
 
-            rb.velocity = Vector2.zero;
 
-            rb.AddForce(force, ForceMode2D.Impulse);
+                rb.velocity = Vector2.zero;
 
-            StartCoroutine("stopMove");
-           
+                rb.AddForce(force, ForceMode2D.Impulse);
+
+                StartCoroutine("stopMove");
+            }
         }
-
     }
     IEnumerator stopMove()
     {
@@ -77,27 +84,17 @@ public class WallJumping : MonoBehaviour
 
         Quaternion back = player.transform.rotation;
 
-        if(input > 0)
+        if (playerAxis.transform.rotation.y == 0)
         {
-            player.transform.rotation = Quaternion.Euler(0, 180, 0);
+            player.transform.rotation = Quaternion.Euler(0, -180, 0);
         }
-        else if(input < 0)
+        else if (playerAxis.transform.rotation.y == 1 || playerAxis.transform.rotation.y == -1)
         {
             player.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        
-
         yield return new WaitForSeconds(0.3f);
-
-        
 
         moveScript.canMove = true;
     }
-
-    /*void SetWallJumpingToFalse() - Not currently being used
-    {
-        wallJumping = false;
-      
-    }*/
 }

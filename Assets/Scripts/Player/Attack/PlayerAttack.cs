@@ -73,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 Debug.Log("Inimigo tomou dano por ataque pulando.");
 
-                if (enemy.tag == "Enemies")
+                if (enemy.tag == "Enemies" || enemy.tag == "Fly_Enemy")
                 {
 
                     enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
@@ -96,7 +96,7 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in HitEnemies)
             {
                 Debug.Log("Inimigo tomou dano.");
-                if(enemy.tag == "Enemies")
+                if(enemy.tag == "Enemies" || enemy.tag == "Fly_Enemy")
                 {
                     
                     enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);

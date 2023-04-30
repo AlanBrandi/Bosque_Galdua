@@ -18,6 +18,8 @@ public class Jumping : MonoBehaviour
     public bool isJumping = false;
     Slope slope;
     public AudioSource jumpSound;
+    private WallJumping wallJump;
+    private Moving moveScript;
     //public AudioSource LandSound; - Not currently being used
 
 
@@ -28,6 +30,8 @@ public class Jumping : MonoBehaviour
     private void Start()
     {
         //groundLayer = LayerMask.GetMask("Ground");
+        moveScript = GetComponent<Moving>();
+        wallJump = GetComponent<WallJumping>();
         animator = GetComponentInChildren<Animator>();
         feetPos = GameObject.Find("FeetPos").transform;
         slope = GetComponent<Slope>();
@@ -48,7 +52,7 @@ public class Jumping : MonoBehaviour
 
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
 
-        if ((IsGrounded == true && Input.GetKeyDown(thiskey) || IsGrounded == true && Input.GetButtonDown("JumpJoystick")) && slope.slopeDownAngle <= slope.maxSlopeAngle)
+        if ((IsGrounded == true && Input.GetKeyDown(thiskey) || IsGrounded == true && Input.GetButtonDown("JumpJoystick")) && slope.slopeDownAngle <= slope.maxSlopeAngle && !wallJump.wallSliding && moveScript.canMove)
         {
             //MyAni.SetBool("IsJumping", true);
             isJumping = true;

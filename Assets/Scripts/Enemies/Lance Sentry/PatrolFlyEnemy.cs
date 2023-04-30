@@ -39,7 +39,7 @@ public class PatrolFlyEnemy : MonoBehaviour
                 if(cont >= 5)
                 {
                     Stop();
-                    attackScript.RandomState();
+                   // attackScript.RandomState();
                     cont = 0;
                     Invoke("Stop", 1.5f);
                     

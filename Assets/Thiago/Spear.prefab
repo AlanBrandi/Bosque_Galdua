@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5586721402836876244}
   - component: {fileID: -4594774023011598502}
   - component: {fileID: 1244633331084700441}
-  m_Layer: 8
+  - component: {fileID: -3110414023006672175}
+  m_Layer: 12
   m_Name: Spear
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,3 +146,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3110414023006672175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5586721402836876250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190fb354903f79f48a329e347f52a035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  dano: 0
+  currentHealth: 5
+  fxDie: {fileID: 5135255555956319502, guid: 93adf26a939b6634e88297664ab1bbc6, type: 3}
+  fxHit: {fileID: 5135255555956319502, guid: 93adf26a939b6634e88297664ab1bbc6, type: 3}
+  barril: {fileID: 4707257306692207, guid: 2c05e50c7d5ae3e4298b74b9714033bd, type: 3}
+  whereToAddEffect: {fileID: 0}
+  knockbackForce: 0
+  knockbackForceUp: 0
+  knockbacked: 0
+  screenShake: {fileID: 0}
+  flash: {fileID: 0}
