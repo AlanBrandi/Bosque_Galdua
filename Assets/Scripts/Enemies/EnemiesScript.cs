@@ -12,7 +12,7 @@ public class EnemiesScript : MonoBehaviour
     public GameObject barril;
     public Transform whereToAddEffect;
     Transform customWhereToAdd;
-    MyHealthSystem myHealthSystem;
+    PlayerHealth myHealthSystem;
     public float knockbackForce;
     public float knockbackForceUp;
     public bool knockbacked;
@@ -23,16 +23,25 @@ public class EnemiesScript : MonoBehaviour
 
 
     //public GameObject monster;
+    private void Awake()
+    {
+        myHealthSystem = GameObject.FindObjectOfType<PlayerHealth>();
+    }
     void Start()
     {
-        myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         currentHealth = maxHealth;
-        rb = GetComponent<Rigidbody2D>();
-        
+        rb = GetComponent<Rigidbody2D>();  
     }
     private void Update()
     {
-        screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        screenShake.startShake(.5f, 0.7f);
+        if (sceneName == "BossLevel")
+        {
+            screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
+        }
     }
     public void TakeDamage(int damage)
     {
@@ -43,14 +52,12 @@ public class EnemiesScript : MonoBehaviour
             flash.Flash();
             screenShake.startShake(.35f, 0.5f);
         }
-        
         Debug.Log("Damage!");
         if (currentHealth <= 0)
         {
 
             Die();
         }
-
     }
     void Die()
     {
@@ -62,9 +69,6 @@ public class EnemiesScript : MonoBehaviour
         {
             Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
         }
-        
-            
-        
         Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
         Destroy(gameObject);
     }
@@ -73,8 +77,7 @@ public class EnemiesScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && dano > 0)
         {
-            Debug.Log("Inimigo deu dano em player.");
-            myHealthSystem.Dano(dano);
+            myHealthSystem.Hit(dano);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -82,15 +85,14 @@ public class EnemiesScript : MonoBehaviour
         if (collision.CompareTag("Player") && dano > 0)
         {
             Debug.Log("Inimigo deu dano em player.");
-            myHealthSystem.Dano(dano);
+            myHealthSystem.Hit(dano);
         }
     }
     public void knockback()
     {
         Transform attacker = getClosestDamageSource();
         Vector2 knockbackDirection = new Vector2(transform.position.x - attacker.position.x, 0);
-        rb.velocity = new Vector2(knockbackDirection.x, knockbackForceUp) * knockbackForce;
-
+        rb.AddForce(new Vector2(knockbackDirection.x, knockbackForceUp) * knockbackForce) ;
     }
     public Transform getClosestDamageSource()
     {

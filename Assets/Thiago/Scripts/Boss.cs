@@ -31,7 +31,7 @@ public class Boss : MonoBehaviour
     int chooseStatee;
     public int idleNumber;
 
-    public MyHealthSystem PlayerHP;
+    public PlayerHealth PlayerHP;
 
     int shock;
     int slam;
@@ -235,7 +235,7 @@ public class Boss : MonoBehaviour
     {
         if (collision.CompareTag("PlayerManager"))
         {
-            PlayerHP.Dano(2);
+            PlayerHP.Hit(2);
         }
     }
 

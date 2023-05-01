@@ -10,7 +10,7 @@ public class BossScript : MonoBehaviour
     public int BosscurrentHealth;
 
 
-    MyHealthSystem myHealthSystem;
+    PlayerHealth myHealthSystem;
 
     Rigidbody2D rb;
     public Boss boss;
@@ -23,9 +23,12 @@ public class BossScript : MonoBehaviour
     public GameObject endMusic;
     public GameObject postMusic;
     //public GameObject monster;
+    private void Awake()
+    {
+        myHealthSystem = GameObject.FindObjectOfType<PlayerHealth>();
+    }
     void Start()
     {
-        myHealthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
@@ -41,7 +44,7 @@ public class BossScript : MonoBehaviour
         if (collision.collider.CompareTag("Player") && dano > 0 && boss.CanTakeDamage)
         {
             Debug.Log("Inimigo deu dano em player.");
-            myHealthSystem.Dano(dano);
+            myHealthSystem.Hit(dano);
         }
     }
 

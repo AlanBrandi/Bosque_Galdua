@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     #region Singleton
@@ -18,7 +19,8 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    [HideInInspector] public GameData_SO playerLives;
+    #endregion
+
     private void Awake()
     {
         if (!instance)
@@ -29,35 +31,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        playerLives = Resources.Load("PlayerLives") as GameData_SO;
         DontDestroyOnLoad(gameObject);
     }
-    public void SetLife(int i)
-    {
-        UIManager uimanager;
-        uimanager = GameObject.FindObjectOfType<UIManager>();
-        playerLives.lives = i;
-        if (uimanager != null)
-        {
-            uimanager.SetLife(i);
-        }
-    }
-
-    public void IncreaseLife(int i)
-    {
-        UIManager uimanager;
-        uimanager = GameObject.FindObjectOfType<UIManager>();
-        playerLives.lives += i;
-        uimanager.IncreaseLife(i);
-    }
-
-    public void DecreaseLife(int i)
-    {
-        UIManager uimanager;
-        uimanager = GameObject.FindObjectOfType<UIManager>();
-        playerLives.lives -= i;
-        uimanager.DecreaseLife(i);
-    }
-    #endregion
 }

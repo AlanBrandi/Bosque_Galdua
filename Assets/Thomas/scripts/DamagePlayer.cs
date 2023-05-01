@@ -5,14 +5,14 @@ public class DamagePlayer : MonoBehaviour
     private GameObject Player;
     public int dano;
     public GameObject efeito;
-    MyHealthSystem health;
+    PlayerHealth health;
     AudioSource audioSource;
     AudioClip barrelImpact;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        health = MyHealthSystem.FindObjectOfType<MyHealthSystem>();
+        health = MyHealthSystem.FindObjectOfType<PlayerHealth>();
         audioSource = GetComponent<AudioSource>();
         barrelImpact = Resources.Load("barrel_impact") as AudioClip;
        // Destroy(gameObject, 6f);
@@ -23,7 +23,7 @@ public class DamagePlayer : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            health.Dano(dano);
+            health.Hit(dano);
             Instantiate(efeito, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

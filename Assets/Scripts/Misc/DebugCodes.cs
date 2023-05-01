@@ -13,6 +13,7 @@ public class DebugCodes : MonoBehaviour
     public float deltaTime;
     GameObject FPS;
     GameObject player;
+    PlayerHealth playerHelth;
 
     AudioSource audioSource;
 
@@ -20,6 +21,7 @@ public class DebugCodes : MonoBehaviour
     {
         fpsText = GameObject.Find("FPS").GetComponent<TMP_Text>();
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHelth = player.GetComponent<PlayerHealth>();
         audioSource = GetComponent<AudioSource>();
         timeDif = maxTimeDif;
         FPS = GameObject.Find("FPS");
@@ -94,14 +96,14 @@ public class DebugCodes : MonoBehaviour
         {
             Debug.Log("+2 Health");
             audioSource.Play();
-            GameManager.Instance.IncreaseLife(2);
+            playerHelth.AddLives(2);
             buffer = "";
         }
         if (buffer.EndsWith(patterns[1]))
         {
             Debug.Log("-3 Health");
             audioSource.Play();
-            GameManager.Instance.DecreaseLife(3);
+            playerHelth.Hit(3);
             buffer = "";
             
         }

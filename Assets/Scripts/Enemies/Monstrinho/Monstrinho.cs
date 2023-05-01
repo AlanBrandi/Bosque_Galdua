@@ -5,38 +5,26 @@ public class Monstrinho : SpawnerManager
     public int dano = 1;
     public float moveSpeed = 5f;
     private GameObject Player;
-    public MyHealthSystem PlayerHP;
+    public PlayerHealth PlayerHP;
     private Vector2 movement;
     private Rigidbody2D rb;
     EnemiesScript enemy;
     AudioSource enemy3;
-
-    private void Start()
+    private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        
-
         Player = GameObject.FindGameObjectWithTag("Player");
-        
-
-        PlayerHP = MyHealthSystem.FindObjectOfType<MyHealthSystem>();
-        
-
+        PlayerHP = GameObject.FindObjectOfType<PlayerHealth>();
         enemy = GetComponent<EnemiesScript>();
-        
-
         enemy3 = GetComponent<AudioSource>();
-        
-
+    }
+    private void Start()
+    {
         InvokeRepeating("ConstantSound", 0f, 0.3f);
-
-        
-        
     }
 
     private void Update()
     {
-        
         if (Player != null)
         {
             Vector3 direction = Player.transform.position - transform.position;
@@ -51,12 +39,11 @@ public class Monstrinho : SpawnerManager
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerHP.Dano(dano);
+            PlayerHP.Hit(dano);
             enemy.TakeDamage(enemy.maxHealth);
             Destroy(this.gameObject);
         }
     }
-
     void ConstantSound()
     {
         float randomPitch = Random.Range(0.9f, 1f);

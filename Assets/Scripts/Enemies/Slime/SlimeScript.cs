@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class SlimeScript : MonoBehaviour
 {
-    //Rigidbody2D rb;
     public int dano = 5;
     public float speed = 5;
     SpriteRenderer enemySprite;
-    //public BoxCollider2D Boxcollider;
-    //public CircleCollider2D Circlecollider;
     public Transform startPos, pos1;
-    MyHealthSystem healthSystem;
+    PlayerHealth healthSystem;
     AudioSource slimeSounds;
     Vector3 nextPos;
 
     private void Awake()
     {
-        healthSystem = GameObject.FindObjectOfType<MyHealthSystem>();
+        healthSystem = GameObject.FindObjectOfType<PlayerHealth>();
         enemySprite = GetComponent<SpriteRenderer>();
         nextPos = startPos.position;
         slimeSounds = GetComponent<AudioSource>();
@@ -49,15 +46,7 @@ public class SlimeScript : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Debug.Log("Slime deu dano em player.");
-            healthSystem.Dano(dano);
+            healthSystem.Hit(dano);
         }
     }
-   /* public void MudarColi()
-    {
-        Circlecollider.enabled = true;
-    }
-    public void VoltarColi()
-    {
-        Circlecollider.enabled = false;
-    }*/
 }

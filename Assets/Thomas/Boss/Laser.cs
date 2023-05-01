@@ -8,11 +8,12 @@ public class Laser : MonoBehaviour
     public Transform laserFirePoint;
     public LineRenderer m_lineRenderer;
     Transform m_transform;
-    public MyHealthSystem PlayerHP;
+    PlayerHealth PlayerHP;
 
     private void Awake() 
     {
         m_transform = GetComponent<Transform>();
+        PlayerHP = FindObjectOfType<PlayerHealth>();
     }
     private void Update()
     {
@@ -41,7 +42,7 @@ public class Laser : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            PlayerHP.Dano(2);
+            PlayerHP.Hit(2);
         }
     }
 }

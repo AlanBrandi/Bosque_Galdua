@@ -97,7 +97,6 @@ public class HoldAndThrow : MonoBehaviour
                     objectGO.transform.position = boxHolder.transform.position;
                     objectGO.GetComponent<Rigidbody2D>().isKinematic = true;
                     objectGO.GetComponent<PolygonCollider2D>().enabled = false;
-
                     PlayerAni.SetBool("Holding", true);
                     NextattackTime = Time.time + 1f / attackRate;
                 }

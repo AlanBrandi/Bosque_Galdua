@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &863128334
 Transform:
   m_ObjectHideFlags: 0
@@ -624,7 +624,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1029,11 +1029,11 @@ MonoBehaviour:
   m_Script: {fileID: -553817549, guid: a18d607b5ef4c264aab6c335019691c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 0.36
+  Range: 0.48
   Color: {r: 1, g: 1, b: 1, a: 1}
   Intensity: 1.37
   SortingLayer: Default
-  SortingOrder: 6
+  SortingOrder: 12
   filteringSettings:
     useLayerMask: 1
     layerMask:
@@ -1044,7 +1044,7 @@ MonoBehaviour:
     OptimizedRaycasting: 0
     CameraCulling: {fileID: 0}
     ChooseMainCamera: 0
-  position: {x: -18.2089, y: -0.2696939}
+  position: {x: 4.6311, y: -0.23969391}
   TransformIsDirty: 0
   needUpdate: 0
   ContactFilter:
@@ -1108,7 +1108,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 12
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5134318668815822822
 GameObject:
@@ -1203,7 +1203,6 @@ GameObject:
   - component: {fileID: 5134318667658363780}
   - component: {fileID: 5134318668887889136}
   - component: {fileID: 5134318668887889137}
-  - component: {fileID: 5134318668887889150}
   - component: {fileID: 5134318668887889151}
   - component: {fileID: 5134318668887889148}
   - component: {fileID: 5134318668176205927}
@@ -1211,6 +1210,9 @@ GameObject:
   - component: {fileID: 360822803}
   - component: {fileID: 5297405400254710610}
   - component: {fileID: 231244433}
+  - component: {fileID: 1408593837782118473}
+  - component: {fileID: 5339402910131056910}
+  - component: {fileID: 9125598067160778597}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: PlayerManager
@@ -1271,22 +1273,6 @@ MonoBehaviour:
   hor: 0
   speed: 9
   canMove: 1
---- !u!114 &5134318668887889150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134318668887889149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82078c5ac7d635f4db03bd261d3d52eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DefautMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  HitMaterial: {fileID: 2100000, guid: d27362b483b80724bbab89d14acb6c2a, type: 2}
-  Time_frame: 1.5
-  PlayerTomouDano: 0
 --- !u!114 &5134318668887889151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1405,62 @@ MonoBehaviour:
   objectLayer:
     serializedVersion: 2
     m_Bits: 34816
+--- !u!114 &1408593837782118473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318668887889149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320f3d17deffaab46b58eb973dce2330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5339402910131056910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318668887889149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4e8a9879069a4f8bd40bd520fdb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRadius: 0.2
+  IsGrounded: 0
+  isTouchingFront: 0
+  wallSliding: 0
+  wallSlidingSpeed: 2
+  wallJumpDirection: {x: 2.3, y: 4}
+  wallJumpForce: 10
+  input: 0
+--- !u!114 &9125598067160778597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318668887889149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7278c3b392c6b34e9815a90a82659d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _headSprite: {fileID: 5134318668091041029}
+  _rightHandSprite: {fileID: 5134318669164748731}
+  _leftHandSprite: {fileID: 5134318668588918830}
+  _rightFootSprite: {fileID: 5134318668600619956}
+  _leftFootSprite: {fileID: 5134318668150617339}
+  _swordSprite: {fileID: 5134318668139455533}
+  _playerDefaultMaterial: {fileID: 2100000, guid: 1de66e5f4e86e2e4cb564890916f7a9c, type: 2}
+  _playerHitMaterial: {fileID: 2100000, guid: d27362b483b80724bbab89d14acb6c2a, type: 2}
+  _invencibilityTimeFrame: 1
+  _invencibilityTimerRemain: 0
+  _hitBloodFX: {fileID: 5469880127016601221, guid: f7c59d76bff3cea41a3b83b73bdfbd62, type: 3}
+  _hitHUDPanel: {fileID: 0}
 --- !u!1 &5134318668893198737
 GameObject:
   m_ObjectHideFlags: 0

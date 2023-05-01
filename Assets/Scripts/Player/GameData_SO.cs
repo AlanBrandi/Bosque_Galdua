@@ -6,18 +6,16 @@ using UnityEngine;
 
 public class GameData_SO : ScriptableObject, ISerializationCallbackReceiver
 {
-    public int lives = 6;
-
+    
+    public int livesMax { get; set; }
+    public int CurrentLives { get; set; }
+    public int initialLevelLives { get; set; }
 
     public void OnAfterDeserialize()
     {
-        lives = 6;
+        CurrentLives = 6;
     }
-
     public void OnBeforeSerialize()
     {
     }
-    
-
-    
 }
