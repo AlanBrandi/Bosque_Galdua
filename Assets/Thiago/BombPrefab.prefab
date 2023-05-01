@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 84fa4337198a6064da628ddbcb0ff695, type: 3}
-  m_Color: {r: 0.017248094, g: 0.5377358, b: 0.042399578, a: 1}
+  m_Color: {r: 0.1435524, g: 0, b: 0.1509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,12 +147,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.79
+  m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &-8755106334960829829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,4 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d476d7ab6c8ab34782a2e0812c94889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombSpeed: 6.9772415
+  splashRange: 0
+  mole: {fileID: 0}
+  target: {fileID: 0}
+  Speed: 10
+  hasArrived: 0
+  explosionEffect: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845, type: 3}

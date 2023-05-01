@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mole : MonoBehaviour
@@ -7,8 +6,6 @@ public class Mole : MonoBehaviour
     GameObject target;
 
     public Bomb bomb;
-    public float speed;
-    public float dashSpeed;
     public GameObject projectile;
     public Transform ProjectilePos;
     public float attackrate;
@@ -23,51 +20,130 @@ public class Mole : MonoBehaviour
     Rigidbody2D rb;
     Vector2 playerPosition;
 
+    public float bombArcHeight = 2f;
 
 
+
+    public bool isTouchingGround;
+    private bool canSlowDown;
+
+
+    [SerializeField] private float forceMagnitude;
+
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private LayerMask groundCheckLayer;
+
+    [SerializeField] private float desaceleracao = 10f;
+
+    public int groundHits = 0;
+
+    bool hasHitGroundThisFrame = false;
+
+    public PhysicsMaterial2D myMaterial;
+
+    private Collider2D collider;
+
+    public float jumpForce = 10f;
+    public bool combatStarted = false;
+
+    public bool isBombing;
+    public bool isJumping = false;
+
+    private void Awake()
+    {
+        // myMaterial.bounciness = 1f;
+        rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
+        PhysicsMaterial2D material = collider.sharedMaterial;
+        material.bounciness = 1f;
+        collider.sharedMaterial = material;
+    }
     private void Start()
     {
+        
         target = GameObject.FindGameObjectWithTag("Player");
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D>();
+        
+
+        
     }
 
     private void Update()
     {
 
-        Vector2 targett = new Vector2(player.position.x, rb.position.y);
-        Vector2 newPos = Vector2.MoveTowards(rb.position, targett, speed * Time.fixedDeltaTime);
-        rb.MovePosition(newPos);
-
-        if (Time.time > nextAttack)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            contBomb = 0;
-            nextAttack = Time.time + attackrate;
-            RandomState();
+            isJumping = true;
+            DashOnPlayer();
         }
-
-        if (Time.time > nextBomb && randomState == 0 && contBomb < 4)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            contBomb++;
-            nextBomb = Time.time + bombRate;
             Projectile();
         }
-        bomb.bombSpeed = (target.transform.position.x - transform.position.x) - 2;
-        if (bomb.bombSpeed < 0)
-        {
-            
-            bomb.bombSpeed = bomb.bombSpeed * -1;
-        }
-        else if(bomb.bombSpeed > 0)
-        {
-            bomb.bombSpeed = (target.transform.position.x - transform.position.x) + 2;
-        }
 
-            bomb.direction = -transform.right + Vector3.up;
+
+
+
         
-  
+       // bomb.direction = -transform.right + Vector3.up;
+
+
 
         FlipsTowardsPlayer();
+    }
+    void DashOnPlayer()
+    {
+       
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        StartCoroutine(DelayDash());
+        
+    }
+
+    IEnumerator WaitBeforeRebounce()
+    {
+        canSlowDown = false;
+        yield return new WaitForSeconds(0.5f);
+        canSlowDown = true;
+    }
+
+
+    void FixedUpdate()
+    {
+        Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundCheckLayer);
+
+        if (groundCollider != null)
+        {
+            if (!hasHitGroundThisFrame && isJumping)
+            {
+                groundHits++;
+                hasHitGroundThisFrame = true;
+                Invoke("ResetHasHitGroundThisFrame", 0.3f);
+            }
+        }
+
+        if (groundHits > 8)
+        {
+            
+            PhysicsMaterial2D material = collider.sharedMaterial;
+            material.bounciness = 0.4f;
+            collider.sharedMaterial = material;
+            Vector2 forcaDesaceleracao = new Vector2(-Mathf.Sign(rb.velocity.x), 0f).normalized * desaceleracao;           
+            rb.AddForce(forcaDesaceleracao, ForceMode2D.Force);
+           // isJumping = false;
+            StartCoroutine(ResetGroundHit());         
+        }
+
+        if (isTouchingGround)
+        {
+            StartCoroutine(WaitBeforeRebounce());
+        }
+    }
+
+
+    void ResetHasHitGroundThisFrame()
+    {
+        hasHitGroundThisFrame = false;
     }
 
     void Flip()
@@ -103,34 +179,38 @@ public class Mole : MonoBehaviour
 
 
     public void Projectile()
-    {      
+    {
+        isBombing = true;       
         Instantiate(projectile, ProjectilePos.transform.position, Quaternion.identity);
     }
-    
-    
-   
+
+
+
     public void RandomState()
     {
         randomState = Random.Range(0, 2);
-       
-        if(randomState == 0)
+
+        if (randomState == 0)
         {
             Debug.Log("THROW PROJECTILE");
             Projectile();
         }
-        else if (randomState == 1)
-        {
-            Debug.Log("DASH");
-            StartCoroutine(dash());
-        }
     }
 
-    IEnumerator dash()
+    IEnumerator DelayDash()
     {
-        float x = speed;
-        speed = dashSpeed;
+        yield return new WaitForSeconds(.6f);
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        rb.AddForce(direction * forceMagnitude, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(.35f);
-        speed = x;
     }
+
+    IEnumerator ResetGroundHit()
+    {
+        yield return new WaitForSeconds(4f);
+        isJumping = false;
+        groundHits = 0;
+    }
+
 }
+
