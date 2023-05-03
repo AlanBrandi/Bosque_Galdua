@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour, IObserver
      { 
         Application.Quit();
      }
-    public void NotifyPlayerHit(int damage)
+    public void NotifyPlayerHit(int damage, float timeRemain)
     {
 
     }

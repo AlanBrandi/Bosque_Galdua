@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public interface IObserver
 {
-    void NotifyPlayerHit(int currentLives);
+    void NotifyPlayerHit(int currentLives, float flashTime);
 }
 public interface ISubject
 {
     void Attach(IObserver observer);
     void Detach(IObserver observer);
-    void NotifyObservers(int currentLives);
+    void NotifyObservers(int currentLives, float flashTime);
 }
 
 public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
@@ -38,6 +38,9 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     //Functional variables.
     private bool hitPlayer = false;
     private GameObject _playerManager;
+
+    [SerializeField] private float invensibilityTime = 1;
+
     private void Awake()
     {
         if (!instance)
@@ -61,6 +64,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     {
         Debug.Log(hitPlayer);
     }
+
     #region ModifyLives
     public void Hit(int damage)
     {
@@ -75,7 +79,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
             {
                 Die();
             }
-            NotifyObservers(_playerLives.CurrentLives);
+            NotifyObservers(_playerLives.CurrentLives, invensibilityTime);
         }
     }
     public void AddLives(int addAmount)
@@ -131,11 +135,11 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
         _observers.Remove(observer);
     }
 
-    public void NotifyObservers(int damage)
+    public void NotifyObservers(int damage, float flashTime)
     {
         foreach (IObserver observer in _observers)
         {
-            observer.NotifyPlayerHit(damage);
+            observer.NotifyPlayerHit(damage, flashTime);
         }
     }
     #endregion

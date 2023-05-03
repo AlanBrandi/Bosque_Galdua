@@ -259,7 +259,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: efff11c233bdffd45b9f2ef4c59a19ab, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -624,7 +624,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: 9a6563e1ee8e97c43b88fd0312ca5f34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -706,7 +706,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1372fee178bb17941a81428219328c22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -728,7 +728,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 85c46a3b403ab764998ea1e53bff0441, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -788,7 +788,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9a6563e1ee8e97c43b88fd0312ca5f34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -870,7 +870,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9a6563e1ee8e97c43b88fd0312ca5f34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -952,7 +952,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9a6563e1ee8e97c43b88fd0312ca5f34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: -553817549, guid: a18d607b5ef4c264aab6c335019691c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 0.48
+  Range: 0.6
   Color: {r: 1, g: 1, b: 1, a: 1}
   Intensity: 1.37
   SortingLayer: Default
@@ -1364,13 +1364,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkRadius: 0.2
-  IsGrounded: 0
-  isTouchingFront: 0
-  wallSliding: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  frontCheck: {fileID: 0}
+  feetPos: {fileID: 0}
   wallSlidingSpeed: 2
   wallJumpDirection: {x: 2.3, y: 4}
   wallJumpForce: 10
-  input: 0
+  wallSliding: 0
+  playerAxis: {fileID: 0}
 --- !u!114 &5297405400254710610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1417,6 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320f3d17deffaab46b58eb973dce2330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invensibilityTime: 1
 --- !u!114 &5339402910131056910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,13 +1437,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkRadius: 0.2
-  IsGrounded: 0
-  isTouchingFront: 0
-  wallSliding: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  frontCheck: {fileID: 0}
+  feetPos: {fileID: 0}
   wallSlidingSpeed: 2
   wallJumpDirection: {x: 2.3, y: 4}
   wallJumpForce: 10
-  input: 0
+  wallSliding: 0
+  playerAxis: {fileID: 0}
 --- !u!114 &9125598067160778597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,18 +1462,121 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7278c3b392c6b34e9815a90a82659d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _headSprite: {fileID: 5134318668091041029}
-  _rightHandSprite: {fileID: 5134318669164748731}
-  _leftHandSprite: {fileID: 5134318668588918830}
-  _rightFootSprite: {fileID: 5134318668600619956}
-  _leftFootSprite: {fileID: 5134318668150617339}
-  _swordSprite: {fileID: 5134318668139455533}
-  _playerDefaultMaterial: {fileID: 2100000, guid: 1de66e5f4e86e2e4cb564890916f7a9c, type: 2}
-  _playerHitMaterial: {fileID: 2100000, guid: d27362b483b80724bbab89d14acb6c2a, type: 2}
-  _invencibilityTimeFrame: 1
-  _invencibilityTimerRemain: 0
-  _hitBloodFX: {fileID: 5469880127016601221, guid: f7c59d76bff3cea41a3b83b73bdfbd62, type: 3}
-  _hitHUDPanel: {fileID: 0}
+  _flashColor: {r: 1.5157166, g: 1.5157166, b: 1.5157166, a: 0}
+  _flashSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -12.154755
+      outSlope: -12.154755
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.061925612
+      value: 0.24730939
+      inSlope: 0.08897877
+      outSlope: 0.08897877
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.118738964
+      value: 0.9479721
+      inSlope: 2.4854994
+      outSlope: 2.4854994
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.2167468
+      value: 0.22646648
+      inSlope: -3.7971928
+      outSlope: -3.7971928
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.35416386
+      value: 0.19449335
+      inSlope: 4.6914606
+      outSlope: 4.6914606
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4220636
+      value: 0.8473896
+      inSlope: 1.5573342
+      outSlope: 1.5573342
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5323075
+      value: 0.1307022
+      inSlope: -3.4036932
+      outSlope: -3.4036932
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.66973794
+      value: 0.08858499
+      inSlope: 4.2168317
+      outSlope: 4.2168317
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7238244
+      value: 0.5613073
+      inSlope: 1.830498
+      outSlope: 1.830498
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.82671326
+      value: 0.038721323
+      inSlope: -0.97158873
+      outSlope: -0.97158873
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9202187
+      value: 0.33194992
+      inSlope: -0.51239836
+      outSlope: -0.51239836
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.160749
+      outSlope: -4.160749
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5134318668893198737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,7 +1791,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9a6563e1ee8e97c43b88fd0312ca5f34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
