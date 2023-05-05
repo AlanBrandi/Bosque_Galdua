@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3266077675751751971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040431997881419694}
+  - component: {fileID: 4868455765721095385}
+  m_Layer: 12
+  m_Name: HitPlayerCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2040431997881419694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266077675751751971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.35, y: 1.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5586721402836876251}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &4868455765721095385
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3266077675751751971}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.0081077, y: -1.0256085}
+  - {x: -0.26436168, y: -0.103715464}
+  - {x: -0.114729255, y: -0.076580584}
+  - {x: -0.014205977, y: 0.08438415}
+  - {x: 0.27729577, y: 0.2454998}
+  - {x: 0.19086833, y: 0.050923273}
+  - {x: 0.07963043, y: -0.10485218}
+  - {x: -0.036790997, y: -0.15633555}
+  - {x: -0.04798778, y: -0.2806095}
+  - {x: -0.9571308, y: -1.1121762}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &5586721402836876250
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +75,7 @@ GameObject:
   - component: {fileID: -4594774023011598502}
   - component: {fileID: 1244633331084700441}
   - component: {fileID: -3110414023006672175}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Spear
   m_TagString: Enemies
   m_Icon: {fileID: 0}
@@ -28,13 +89,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5586721402836876250}
-  m_LocalRotation: {x: -0, y: -0, z: -0.5531104, w: 0.833108}
+  m_LocalRotation: {x: -0, y: -0, z: -0.39298022, w: 0.9195469}
   m_LocalPosition: {x: 2.98, y: -1.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2040431997881419694}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -67.161}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -46.28}
 --- !u!212 &5586721402836876245
 SpriteRenderer:
   m_ObjectHideFlags: 0

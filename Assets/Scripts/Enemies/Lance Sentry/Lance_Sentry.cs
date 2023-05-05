@@ -15,7 +15,7 @@ public class Lance_Sentry : MonoBehaviour
     [SerializeField] private float forceMagnitude;
     [SerializeField] private float desaceleracao = 10f;
 
-    private float attackDelay = 2f;
+    public float attackDelay = 2f;
 
     private bool isTouchingGround;
     private bool canSlowDown;
@@ -147,18 +147,21 @@ public class Lance_Sentry : MonoBehaviour
             isDashing = true;
             forceMagnitude = 10;
             attackDelay = 2f;
+            nextAttack = attackDelay;
             DashOnPlayer();
         }
         else if (randomState == 1)
         {
             isShooting = true;
             attackDelay = 2f;
+            nextAttack = attackDelay;
             ThrowSpear();
         }
         else if (randomState == 2)
         {
             isDashingLow = true;
             attackDelay = 6f;
+            nextAttack = attackDelay;
             forceMagnitude = 1;
             LowDashing();
         }

@@ -95,7 +95,7 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (Collider2D enemy in HitEnemies)
             {
-                Debug.Log("Inimigo tomou dano.");
+               // Debug.Log("Inimigo tomou dano.");
                 if(enemy.tag == "Enemies" || enemy.tag == "Fly_Enemy")
                 {
                     
@@ -104,6 +104,10 @@ public class PlayerAttack : MonoBehaviour
                 else if(enemy.tag == "Boss")
                 {
                     enemy.GetComponent<BossScript>().takeDamageBySword(10);
+                }
+                else if(enemy.tag == "PoisonCure")
+                {
+                   enemy.GetComponent<LeverPoisonCure>().ActivateEvent();
                 }
                     
                 

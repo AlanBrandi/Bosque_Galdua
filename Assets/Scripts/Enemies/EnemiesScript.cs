@@ -37,7 +37,6 @@ public class EnemiesScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        screenShake.startShake(.5f, 0.7f);
         if (sceneName == "BossLevel")
         {
             screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
@@ -52,7 +51,7 @@ public class EnemiesScript : MonoBehaviour
             flash.Flash();
             screenShake.startShake(.35f, 0.5f);
         }
-        Debug.Log("Damage!");
+        //Debug.Log("Damage!");
         if (currentHealth <= 0)
         {
 
@@ -84,7 +83,7 @@ public class EnemiesScript : MonoBehaviour
     {
         if (collision.CompareTag("Player") && dano > 0)
         {
-            Debug.Log("Inimigo deu dano em player.");
+            //Debug.Log("Inimigo deu dano em player.");
             myHealthSystem.Hit(dano);
         }
     }

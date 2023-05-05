@@ -54,12 +54,13 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
         {
             SetLives(_playerLives.livesMax);
         }
-        Debug.Log("Player vida atual: " + _playerLives.CurrentLives);
+      //  Debug.Log("Player vida atual: " + _playerLives.CurrentLives);
     }
 
     private void Update()
     {
-        Debug.Log(hitPlayer);
+        //Debug.Log(hitPlayer);
+        Debug.Log("Player vida atual: " + _playerLives.CurrentLives);
     }
     #region ModifyLives
     public void Hit(int damage)
@@ -68,7 +69,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
         {
             _playerLives.CurrentLives -= damage;
             _playerLight.Intensity = ReturnLivesIntensity(_playerLives.CurrentLives);
-            Debug.Log("Player vida atual: " + _playerLives.CurrentLives);
+            
             hitPlayer = true;
             Invoke("HitFalse", 1);
             if (_playerLives.CurrentLives <= 0)
