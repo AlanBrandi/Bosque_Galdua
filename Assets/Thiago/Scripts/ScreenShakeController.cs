@@ -13,7 +13,7 @@ public class ScreenShakeController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (UserInput.instance.playerController.InGame.Debug_K.triggered)
         {
             startShake(.5f, 1f);
         }

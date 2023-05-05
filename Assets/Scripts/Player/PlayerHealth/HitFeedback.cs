@@ -5,115 +5,64 @@ using UnityEngine.UI;
 
 public class HitFeedback : MonoBehaviour, IObserver
 {
-    // Player Sprites.
-    [Header("Player sprites")]
-    [SerializeField] private SpriteRenderer _headSprite;
-    [SerializeField] private SpriteRenderer _rightHandSprite;
-    [SerializeField] private SpriteRenderer _leftHandSprite;
-    [SerializeField] private SpriteRenderer _rightFootSprite;
-    [SerializeField] private SpriteRenderer _leftFootSprite;
-    [SerializeField] private SpriteRenderer _swordSprite;
-    //Materials.
-    [Header("Material")]
-    [SerializeField] private Material _playerDefaultMaterial;
-    [SerializeField] private Material _playerHitMaterial;
+    [ColorUsage(true,true)]
+    [SerializeField] private Color _flashColor = Color.white;
+    [SerializeField] private AnimationCurve _flashSpeedCurve;
 
-    [Header("Configuration")]
-    [SerializeField] private float _invencibilityTimeFrame = 1;
-    [SerializeField] private float _invencibilityTimerRemain;
+    private float _flashtime;
+    private SpriteRenderer[] _spriteRenderers;
+    private Material[] _material;
 
-    [Header("Visual/HUD/FX")]
-    [SerializeField] private GameObject _hitBloodFX;
-    [SerializeField] private Image _hitHUDPanel;
+    private Coroutine _damageFlashCoroutine;
 
-    //Function variables.
-    private float timeRemain;
-    private GameObject whereToAddEffect;
-
-    private void Start()
+    private void Awake()
     {
-        timeRemain = _invencibilityTimeFrame;
-        _hitHUDPanel.color = new Color(1, 1, 1, 0);
+        _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        Init();
     }
-    public void NotifyPlayerHit(int currentLives)
+    private void Init()
     {
-        timeRemain = _invencibilityTimeFrame;
-        switch (currentLives)
+        _material = new Material[_spriteRenderers.Length];
+        for (int i = 0; i < _spriteRenderers.Length; i++)
         {
-            case 6:
-                _hitHUDPanel.color = new Color(1, 1, 1, 0);
-                break;
-            case 5:
-                _hitHUDPanel.color = new Color(0, 0, 0, .15f);
-                break;
-            case 4:
-                _hitHUDPanel.color = new Color(1, 1, 1, 0.2f);
-                break;
-            case 3:
-                _hitHUDPanel.color = new Color(1, 1, 1, 0.5f);
-                break;
-            case 2:
-                _hitHUDPanel.color = new Color(1, 1, 1, 0.75f);
-                break;
-            case 1:
-                _hitHUDPanel.color = new Color(1, 1, 1, 1);
-                break;
-        }
-        ChangeAlphaPlayer();
-        BlinkOn();
-    }
-
-    void BlinkOn()
-    {
-        _headSprite.material = _playerHitMaterial;
-        _rightHandSprite.material = _playerHitMaterial;
-        _leftHandSprite.material = _playerHitMaterial;
-        _rightFootSprite.material = _playerHitMaterial;
-        _leftFootSprite.material = _playerHitMaterial;
-        _swordSprite.material = _playerHitMaterial;
-        timeRemain -= .103f;
-        Invoke("BlinkOff", (2 / timeRemain) * Time.fixedDeltaTime);
-    }
-    void BlinkOff()
-    {
-        if (timeRemain > 0)
-        {
-            _headSprite.material = _playerDefaultMaterial;
-            _rightHandSprite.material = _playerDefaultMaterial;
-            _leftHandSprite.material = _playerDefaultMaterial;
-            _rightFootSprite.material = _playerDefaultMaterial;
-            _leftFootSprite.material = _playerDefaultMaterial;
-            _swordSprite.material = _playerDefaultMaterial;
-            timeRemain -= .103f;
-            Invoke("BlinkOn", (2 / timeRemain) * Time.fixedDeltaTime);
-        }
-        else
-        {
-            _headSprite.material = _playerDefaultMaterial;
-            _rightHandSprite.material = _playerDefaultMaterial;
-            _leftHandSprite.material = _playerDefaultMaterial;
-            _rightFootSprite.material = _playerDefaultMaterial;
-            _leftFootSprite.material = _playerDefaultMaterial;
-            _swordSprite.material = _playerDefaultMaterial;
-            ChangeToDefaultAlpha();
+            _material[i] = _spriteRenderers[i].material;
         }
     }
-    void ChangeToDefaultAlpha()
+    public void NotifyPlayerHit(int currentLives, float flashTimeTotal)
     {
-        _headSprite.color = new Color(1, 1, 1, 1);
-        _rightHandSprite.color = new Color(1, 1, 1, 1);
-        _leftHandSprite.color = new Color(1, 1, 1, 1);
-        _rightFootSprite.color = new Color(1, 1, 1, 1);
-        _leftFootSprite.color = new Color(1, 1, 1, 1);
-        _swordSprite.color = new Color(1, 1, 1, 1);
+        _flashtime = flashTimeTotal;
+        CallDamageFlash();
     }
-    void ChangeAlphaPlayer()
+
+    public void CallDamageFlash()
     {
-        _headSprite.color = new Color(1, 1, 1, .7f);
-        _rightHandSprite.color = new Color(1, 1, 1, .7f);
-        _leftHandSprite.color = new Color(1, 1, 1, .7f);
-        _rightFootSprite.color = new Color(1, 1, 1, .7f);
-        _leftFootSprite.color = new Color(1, 1, 1, .7f);
-        _swordSprite.color = new Color(1, 1, 1, .7f); ;
+        _damageFlashCoroutine = StartCoroutine(DamageFlash());
+    }
+    private IEnumerator DamageFlash()
+    {
+        SetFlashColor();
+        float currentFlashAmount = 0f;
+        float elapsedTime = 0f;
+        while(elapsedTime < _flashtime)
+        {
+            elapsedTime += Time.deltaTime;
+            currentFlashAmount = Mathf.Lerp(1f, _flashSpeedCurve.Evaluate(elapsedTime), (elapsedTime / _flashtime));
+            SetFlashAmount(currentFlashAmount);
+            yield return null;
+        }
+    }
+    private void SetFlashColor()
+    {
+        for (int i = 0; i < _material.Length; i++)
+        {
+            _material[i].SetColor("_FlashColor", _flashColor);
+        }
+    }
+    private void SetFlashAmount(float amount)
+    {
+        for (int i = 0; i < _material.Length; i++)
+        {
+            _material[i].SetFloat("_FlashAmount", amount);
+        }
     }
 }

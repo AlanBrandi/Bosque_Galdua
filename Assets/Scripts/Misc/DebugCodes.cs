@@ -36,23 +36,23 @@ public class DebugCodes : MonoBehaviour
             buffer = "";
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (UserInput.instance.playerController.InGame.Debug_Shift.triggered)
         {
             AddToBuffer("Shift");
-            if (Input.GetKeyDown(KeyCode.H))
+            if (UserInput.instance.playerController.InGame.Debug_H.triggered)
             {
                 AddToBuffer("H");
             }
-            if (Input.GetKeyDown(KeyCode.D))
+            if (UserInput.instance.playerController.InGame.Debug_D.triggered)
             {
                 AddToBuffer("D");
             }
-            if (Input.GetKeyDown(KeyCode.K))
+            if (UserInput.instance.playerController.InGame.Debug_K.triggered)
             {
                 AddToBuffer("K");
             }
         }
-        else if (Input.GetKeyDown(KeyCode.F3))
+        else if (UserInput.instance.playerController.InGame.Debug_F3.triggered)
         {
             Debug.Log("F3");
             if (FPS != null && FPS.activeInHierarchy == false)
@@ -64,7 +64,7 @@ public class DebugCodes : MonoBehaviour
                 FPS.SetActive(false);
             }
         }
-        else if (Input.GetMouseButton(2))
+        else if (UserInput.instance.playerController.InGame.Debug_Mouse3.triggered)
         {
             Vector3 v3 = Input.mousePosition;
             v3.z = 10f;

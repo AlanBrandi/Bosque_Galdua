@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Slope : MonoBehaviour
 {
+    /*
     Jumping jump;
     Moving move;
 
@@ -123,4 +124,5 @@ public class Slope : MonoBehaviour
             rb.velocity = new Vector2(move.speed * slopeNormalPerp.x * -move.hor, move.speed * slopeNormalPerp.y * -move.hor);
         }
     }
+    */
 }

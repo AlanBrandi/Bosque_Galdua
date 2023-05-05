@@ -19,7 +19,6 @@ public class WallJumping : MonoBehaviour
     private bool IsGrounded;
     private bool isTouchingFront;
 
-    private float input;
 
     [HideInInspector] public bool wallSliding;
     public GameObject playerAxis;
@@ -37,7 +36,6 @@ public class WallJumping : MonoBehaviour
 
     void Update()
     {
-        input = Input.GetAxisRaw("Horizontal");
 
         isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, wallLayer);
 
@@ -61,7 +59,7 @@ public class WallJumping : MonoBehaviour
 
         }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetButtonUp("JumpJoystick")) && wallSliding)
+        if ((UserInput.instance.playerController.InGame.Jump.triggered) && wallSliding)
         {
             if (moveScript.canMove)
             {

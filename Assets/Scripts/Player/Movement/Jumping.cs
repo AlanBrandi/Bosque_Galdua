@@ -4,43 +4,40 @@ using UnityEngine;
 
 public class Jumping : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public KeyCode thiskey;
-    public KeyCode DownPlatform;
-    public bool IsGrounded;
-    Animator animator;
-    Transform feetPos;
-    public float checkRadius;
-    public LayerMask groundLayer;
-    public float jumpForce;
-    double jumpTimeCounter;
-    public float JumpTime;
-    public bool isJumping = false;
-    Slope slope;
+    [Header("SoundFX")]
     public AudioSource jumpSound;
-    private WallJumping wallJump;
+
+    [HideInInspector] public bool IsGrounded;
+    [HideInInspector] public bool isJumping = false;
+   
     private Moving moveScript;
-    //public AudioSource LandSound; - Not currently being used
+    private WallJumping wallJump;
+    private Transform feetPos;
+    private Rigidbody2D rb;
+    private Animator animator;
+
+    [Header("Set ground layer")]
+    [SerializeField] private LayerMask groundLayer;
+
+    [Header("Jump variables")]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float checkRadius;
+    [SerializeField] private float JumpTime;
 
 
-
-    //=======
-    //>>>>>>> b0b5100dbaec50bf564d7bf86e37196dacd91486
-
-    private void Start()
+    private void Awake()
     {
-        //groundLayer = LayerMask.GetMask("Ground");
         moveScript = GetComponent<Moving>();
         wallJump = GetComponent<WallJumping>();
         animator = GetComponentInChildren<Animator>();
         feetPos = GameObject.Find("FeetPos").transform;
-        slope = GetComponent<Slope>();
         rb = GetComponentInChildren<Rigidbody2D>();
     }
 
     private void Update()
     {  
-        if (IsGrounded == true)
+        IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
+        if (IsGrounded)
         {
             animator.SetBool("IsJumping", false);
             
@@ -49,45 +46,16 @@ public class Jumping : MonoBehaviour
         {
             animator.SetBool("IsJumping", true);
         }
-
-        IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
-
-        if ((IsGrounded == true && Input.GetKeyDown(thiskey) || IsGrounded == true && Input.GetButtonDown("JumpJoystick")) && slope.slopeDownAngle <= slope.maxSlopeAngle && !wallJump.wallSliding && moveScript.canMove)
+        if (IsGrounded == true && UserInput.instance.playerController.InGame.Jump.triggered && !wallJump.wallSliding && moveScript.canMove)
         {
-            //MyAni.SetBool("IsJumping", true);
-            isJumping = true;
-            jumpTimeCounter = JumpTime;
-            rb.AddForce(Vector2.up * jumpForce);
+            Jump();
         }
-        //----------------------------------------------------
-
-       
-       
-        if ((Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && isJumping == true)
-        {
-            jumpSound.Play();
-        }
-        /*
-        if ((Input.GetKeyDown(thiskey) || Input.GetButtonDown("JumpJoystick")) && isJumping == true)
-        {
-            if (jumpTimeCounter > 0)
-            {
-                rb.AddForce(Vector2.up * jumpForce);
-                jumpTimeCounter -= Time.fixedDeltaTime;
-            }
-            else
-            { 
-                isJumping = false;
-            }
-        }
-        */
-        //----------------------------------------------------
-        if (Input.GetKeyUp(thiskey) || Input.GetButtonUp("JumpJoystick"))
-        {
-            isJumping = false;
-        }
-//<<<<<<< HEAD
-        
+    }
+    private void Jump()
+    {
+        isJumping = true;
+        rb.AddForce(Vector2.up * jumpForce);
+        jumpSound.Play();
     }
 
 }

@@ -7,37 +7,34 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour, IObserver
 {
-    [SerializeField]
-    private GameObject _gameOver;
-
-    [SerializeField]
-    private GameObject _winPanel;
-
-    [SerializeField]
     private GameObject _settingsPanel;
-
-    [SerializeField]
+    private GameObject _gameOver;
     private GameObject _pauseMenuUI;
+    private GameObject _lowLife;
 
-    [SerializeField]
-    private GameObject creditosPanel;
+ 
+    [SerializeField] private GameObject _hitPanel;
 
     private static bool GameIsPaused = false;
    
     private void Awake()
     {
         _gameOver = GameObject.Find("GameOver");
-        _settingsPanel = GameObject.Find("SettingsPanel");
-        _pauseMenuUI = GameObject.Find("PauseMenu");
         _gameOver.SetActive(false);
+
+        _settingsPanel = GameObject.Find("SettingsPanel");
         _settingsPanel.SetActive(false);
+
+        _pauseMenuUI = GameObject.Find("PauseMenu");
         _pauseMenuUI.SetActive(false);
+
+        _lowLife = GameObject.Find("LowLifeHud");
+        _lowLife.SetActive(false);
     }
 
     private void Update()
     {
-        //Mudar para o novo inputSystem.
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (UserInput.instance.playerController.InGame.Escape.triggered)
         {
             if (GameIsPaused == true && _settingsPanel.activeInHierarchy == false)
             {
@@ -87,8 +84,15 @@ public class UIManager : MonoBehaviour, IObserver
      { 
         Application.Quit();
      }
-    public void NotifyPlayerHit(int damage)
+    public void NotifyPlayerHit(int currentLives, float timeRemain)
     {
-
+        if(currentLives <= 3)
+        {
+            _lowLife.SetActive(true);
+        }
+        else if(PlayerHealth.Instance.GetLives() > 3)
+        {
+            _lowLife.SetActive(false);
+        }
     }
 }
