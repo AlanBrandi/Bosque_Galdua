@@ -57,12 +57,6 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
         {
             SetLives(_playerLives.livesMax);
         }
-        Debug.Log("Player vida atual: " + _playerLives.CurrentLives);
-    }
-
-    private void Update()
-    {
-        Debug.Log(hitPlayer);
     }
 
     #region ModifyLives

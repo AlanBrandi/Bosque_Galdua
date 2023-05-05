@@ -1201,8 +1201,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5134318667658363780}
-  - component: {fileID: 5134318668887889136}
   - component: {fileID: 5134318668887889137}
+  - component: {fileID: 5134318668887889136}
   - component: {fileID: 5134318668887889151}
   - component: {fileID: 5134318668887889148}
   - component: {fileID: 5134318668176205927}
@@ -1235,29 +1235,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5134318668887889136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5134318668887889149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050707a2582275e48b0bb6ae211e205a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thiskey: 32
-  DownPlatform: 115
-  IsGrounded: 0
-  checkRadius: 0.23
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  jumpForce: 2380
-  JumpTime: 0.1
-  isJumping: 0
-  jumpSound: {fileID: 8810308729834431461}
 --- !u!114 &5134318668887889137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,9 +1247,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d745ac6838796d4791e67b8c85881e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hor: 0
   speed: 9
   canMove: 1
+  isMoving: 0
+--- !u!114 &5134318668887889136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5134318668887889149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050707a2582275e48b0bb6ae211e205a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpSound: {fileID: 8810308729834431461}
+  IsGrounded: 0
+  isJumping: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  jumpForce: 2380
+  checkRadius: 0.23
+  JumpTime: 0.1
 --- !u!114 &5134318668887889151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,7 +1286,6 @@ MonoBehaviour:
   EnemyLayers:
     serializedVersion: 2
     m_Bits: 4096
-  attackButton: 106
   AttackPoint: {fileID: 5134318667390719947}
   JumpingAttackPoint: {fileID: 8810308729900145447}
   AttackRate: 1.6
@@ -1325,13 +1322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6049d5456fffdca46bafa768d89b5d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSlopeAngle: 90
-  slopeCheckDistance: 1
-  checkRadius: 0.25
-  slopeDownAngle: 0
-  isOnSlope: 0
-  noFriction: {fileID: 6200000, guid: efff11c233bdffd45b9f2ef4c59a19ab, type: 2}
-  FullFriction: {fileID: 6200000, guid: b8eceed701f63f844923c7c2ea37fc96, type: 2}
 --- !u!114 &912059393886503143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,7 +1334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922847313dba9d44593054b27fab2bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thiskey: 32
   checkRadius: 1
   isTouchingFront: 0
   glindSpeed: 5

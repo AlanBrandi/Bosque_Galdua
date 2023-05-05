@@ -52,14 +52,14 @@ public class HoldAndThrow : MonoBehaviour
         {
             objectGO = grabCheck.collider.gameObject;
 
-            if ((Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("AttackJoystick")) && Estado != "Segurando")
+            if (UserInput.instance.playerController.InGame.Attack.triggered && Estado != "Segurando")
             {
                 Situação("Segurando");
 ;           }
         }
         if (Time.time >= NextattackTime && Time.time >= NextattackTime)
         {
-            if (Estado == "Segurando" && (Input.GetKeyDown(KeyCode.J) || Input.GetButtonDown("AttackJoystick")))
+            if (Estado == "Segurando" && UserInput.instance.playerController.InGame.Attack.triggered)
             {
                 Jogar();
             }

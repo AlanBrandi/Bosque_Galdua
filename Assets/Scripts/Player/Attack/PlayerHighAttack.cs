@@ -25,12 +25,12 @@ public class PlayerHighAttack : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKey(LookUp) || Input.GetAxisRaw("VerticalJoystick") > 0)
+        if (UserInput.instance.playerController.InGame.Move.ReadValue<Vector2>().y > 0.4)
         {
             playerAttack.enabled = false;
             if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
-                if ((Input.GetKeyDown(attackButton) || Input.GetButtonDown("AttackJoystick")) && holdAndThrow.Estado != "Segurando" && jumping.IsGrounded)
+                if ((UserInput.instance.playerController.InGame.Attack.triggered && holdAndThrow.Estado != "Segurando" && jumping.IsGrounded))
                 {
                     playerAttack.AttackSoundAndDelay();
                     animator.SetTrigger("Highattack");
@@ -39,7 +39,7 @@ public class PlayerHighAttack : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKeyUp(LookUp) || Input.GetAxisRaw("VerticalJoystick") <= 0)
+        else if (UserInput.instance.playerController.InGame.Move.ReadValue<Vector2>().y < 0.4)
         {
             playerAttack.enabled = true;
         }

@@ -37,9 +37,10 @@ public class EnemiesScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        screenShake.startShake(.5f, 0.7f);
+       
         if (sceneName == "BossLevel")
         {
+            screenShake.startShake(.5f, 0.7f);
             screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
         }
     }
