@@ -65,4 +65,9 @@ public class HitFeedback : MonoBehaviour, IObserver
             _material[i].SetFloat("_FlashAmount", amount);
         }
     }
+
+    void IObserver.NotifyPlayerHit(int currentLives)
+    {
+        throw new System.NotImplementedException();
+    }
 }
