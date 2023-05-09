@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HitFeedback : MonoBehaviour, IObserver
 {
-    [ColorUsage(true, true)]
+    [ColorUsage(true,true)]
     [SerializeField] private Color _flashColor = Color.white;
     [SerializeField] private AnimationCurve _flashSpeedCurve;
 
@@ -43,7 +43,7 @@ public class HitFeedback : MonoBehaviour, IObserver
         SetFlashColor();
         float currentFlashAmount = 0f;
         float elapsedTime = 0f;
-        while (elapsedTime < _flashtime)
+        while(elapsedTime < _flashtime)
         {
             elapsedTime += Time.deltaTime;
             currentFlashAmount = Mathf.Lerp(1f, _flashSpeedCurve.Evaluate(elapsedTime), (elapsedTime / _flashtime));
@@ -64,5 +64,10 @@ public class HitFeedback : MonoBehaviour, IObserver
         {
             _material[i].SetFloat("_FlashAmount", amount);
         }
+    }
+
+    void IObserver.NotifyPlayerHit(int currentLives)
+    {
+        throw new System.NotImplementedException();
     }
 }
