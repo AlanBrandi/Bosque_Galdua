@@ -337,11 +337,11 @@ public class Mole : MonoBehaviour
             nextAttack = 0;
             if (poisonCures[0].timer == 0)
             {
-                attackDelay = 10 - poisonCures[1].timer;
+                attackDelay = 11.2f - poisonCures[1].timer;
             }
             else
             {
-                attackDelay = 10 - poisonCures[0].timer;
+                attackDelay = 11.2f - poisonCures[0].timer;
             }
             
             RainRock();
@@ -369,8 +369,17 @@ public class Mole : MonoBehaviour
     }
     IEnumerator DelayExitRainRock()
     {
-        float timer = 4f;
-        enemy.screenShake.startShake(timer, .25f);
+        float timer;
+
+        if (poisonCures[0].timer == 0)
+        {             
+            timer = 12 - poisonCures[1].timer;
+        }
+        else
+        {
+            timer = 12 - poisonCures[0].timer;
+        }
+        enemy.screenShake.startShake(timer, .3f);
         yield return new WaitForSeconds(timer);
         groundHits = 0;
         isRainRock = false;

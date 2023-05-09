@@ -65,7 +65,6 @@ public class Bomb : MonoBehaviour
         
         if (Vector3.Distance(transform.position, playerStartPosition) < 0.1f)
         {
-            Debug.Log("Bomba chegou ao destino!");
             hasArrived = GetComponent<Bomb>().hasArrived = true;
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);

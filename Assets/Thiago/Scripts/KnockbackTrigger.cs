@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class KnockbackTrigger : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other)
+  
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        var player = other.collider.GetComponent<knockbackPlayer>();
-        var enemy = other.collider.GetComponent<EnemiesScript>();
+        var player = collision.GetComponent<knockbackPlayer>();
         if (player != null)
         {
             player.knockback(transform);
         }
-        
-        if(enemy != null)
-        {
-           // enemy.knockback(transform);
-        }
+ 
     }
 }

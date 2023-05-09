@@ -8,14 +8,21 @@ public class knockbackPlayer : MonoBehaviour
     public float knockbackVel;
     public float knockbackTime;
     public bool knockbacked;
+    public Moving move;
     public void knockback(Transform t)
     {
+        move.stopMove();
         var dir = transform.position - t.position;
-        Debug.Log(dir);
+        Debug.DrawRay(transform.position, dir, Color.red, 1f);
+        GetComponent<Rigidbody2D>().AddForce(dir.normalized * knockbackVel, ForceMode2D.Impulse);
+        StartCoroutine(Unknockback());
+        knockbacked = true;
     }
+
     private IEnumerator Unknockback()
     {
         yield return new WaitForSeconds(knockbackTime);
+        move.canMove = true;
         knockbacked = false;
     }
 }
