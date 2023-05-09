@@ -18,7 +18,7 @@ public class RemovePoison : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (UserInput.instance.playerController.InGame.Debug_E.triggered)
         {
             isTrying = true;
             StartCoroutine(backToFalse());

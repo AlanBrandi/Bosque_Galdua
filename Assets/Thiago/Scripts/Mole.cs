@@ -3,65 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Mole : MonoBehaviour
-{
-    GameObject target;
-
-    public Bomb bomb;
-    public GameObject projectile;
-    public Transform ProjectilePos;
-    public float attackrate;
-    int randomState = 0;
-    bool facingRight = true;
-    float playerDirection;
-    float nextBomb = 0;
-    public float bombRate;
-    float contBomb = 0;
-    public Transform player;
-    Rigidbody2D rb;
-    Vector2 playerPosition;
-
-    public float bombArcHeight = 2f;
-
-
-
-    public bool isTouchingGround;
-    private bool canSlowDown;
-
+{    
+    [SerializeField] private PhysicsMaterial2D myMaterial;
+    [SerializeField] private Transform undergroundPos;
+    private Rigidbody2D rb;
+    private Vector2 playerPosition;
+    private Transform player;
+    private Collider2D collider;
     private EnemiesScript enemy;
+    private GameObject target;
 
-
-    [SerializeField] private float forceMagnitude;
-
+    [SerializeField] private Bomb bomb;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private Transform projectilePos;    
+    
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private LayerMask groundCheckLayer;
+    [SerializeField] private LayerMask playerLayer;      
+    
+    [SerializeField] private bool facingRight = true;
+    [HideInInspector] public bool playerIsInPlat;
+    private bool isTouchingGround;
+    private bool canSlowDown;
+    private bool combatStarted = false;
+    private bool hasHitGroundThisFrame = false;
+    private bool isBombing;
+    private bool isJumping = false;
+    private bool isRainRock = false;
+    private bool makeCont = true;
+    private bool doOnce = false;
 
+    private int groundHits = 0;
+    private int randomNumber = 0;
+    private int contPlayerUp;
+    private int cont = 0;
+    private int randomState = 0;
+
+    [SerializeField] private float forceMagnitude;
+    [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float desaceleracao = 10f;
-
-    public int groundHits = 0;
-
-    bool hasHitGroundThisFrame = false;
-
-    public PhysicsMaterial2D myMaterial;
-
-    private Collider2D collider;
-
-    public float jumpForce = 10f;
-    public bool combatStarted = false;
-
-    public bool isBombing;
-    public bool isJumping = false;
-    public bool isRainRock = false;
-    public bool playerIsInPlat;
-
-    public float attackDelay = 2f;
+    private float raycastDistance = 10f;
+    private float minX = -167f;
+    private float maxX = -151f;
+    private float speed = 10f;
+    private float attackDelay = 1f;
     private float nextAttack = 0f;
-
-    public SpawnerRockRain spawner;
+    private float playerDirection;
+    private float nextBomb = 0;
+    private float bombRate;
+    private float contBomb = 0;
+    private float bombArcHeight = 2f;
 
     private LeverPoisonCure[] levers;
-    List<LeverPoisonCure> poisonCures = new List<LeverPoisonCure>();
-    GameObject[] objectsWithTag;
+    private List<LeverPoisonCure> poisonCures = new List<LeverPoisonCure>();
+    private GameObject[] objectsWithTag;
+
+    [SerializeField] private SpawnerRockRain spawner;
 
     private void Awake()
     {
@@ -76,10 +74,6 @@ public class Mole : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         objectsWithTag = GameObject.FindGameObjectsWithTag("PoisonCure");
 
-        // Crie uma lista para armazenar os scripts encontrados
-        
-
-        // Percorra cada objeto encontrado e adicione o componente PoisonCure à lista
         foreach (GameObject obj in objectsWithTag)
         {
             LeverPoisonCure script = obj.GetComponent<LeverPoisonCure>();
@@ -88,60 +82,28 @@ public class Mole : MonoBehaviour
                 poisonCures.Add(script);
             }
         }
-
-        
-
     }
-
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && playerIsInPlat)
+        if (UserInput.instance.playerController.InGame.Debug_E.triggered && playerIsInPlat)
         {
-            // isJumping = true;
-            // DashOnPlayer();
             RainRock();
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (UserInput.instance.playerController.InGame.Debug_E.triggered && !playerIsInPlat)
         {
-           // Projectile();
+            UndergroundAttack();
         }
 
-
-        if (Time.time >= nextAttack)
+        nextAttack += Time.deltaTime;
+        if (nextAttack >= attackDelay)
         {
-            //RandomState();
-           // nextAttack = Time.time + attackDelay;
+            RandomState();
+            nextAttack = 0;
         }
-
-
-
-
-
-
 
         FlipsTowardsPlayer();
-    }
-    void DashOnPlayer()
-    {
-        isJumping = true;
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-        PhysicsMaterial2D material = collider.sharedMaterial;
-        material.bounciness = 1f;
-        material.friction = 0f;
-        collider.sharedMaterial = material;
-        StartCoroutine(DelayDash());
-        
-    }
-
-    IEnumerator WaitBeforeRebounce()
-    {
-        canSlowDown = false;
-        yield return new WaitForSeconds(0.5f);
-        canSlowDown = true;
-    }
-
-    private int cont = 0;
+    }    
     void FixedUpdate()
     {
         Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundCheckLayer);
@@ -163,12 +125,12 @@ public class Mole : MonoBehaviour
                     hasHitGroundThisFrame = true;
                     Invoke("ResetHasHitGroundThisFrame", 0.3f);
                 }
-                
-                
+
+
             }
-            if(isRainRock && groundHits >=2)
+            if (isRainRock && groundHits >= 2)
             {
-               
+
                 if (cont == 0)
                 {
                     if (poisonCures[0].timer == 0)
@@ -183,38 +145,88 @@ public class Mole : MonoBehaviour
                     StartCoroutine(spawner.SpawnRocks());
                     cont++;
                 }
-                enemy.screenShake.startShake(5f,.25f);                
+                isRainRock = false;
                 StartCoroutine(DelayExitRainRock());
             }
         }
 
         if (groundHits > 8)
         {
-            
+
             PhysicsMaterial2D material = collider.sharedMaterial;
             material.bounciness = 0.4f;
             material.friction = 1.0f;
             collider.sharedMaterial = material;
-            Vector2 forcaDesaceleracao = new Vector2(-Mathf.Sign(rb.velocity.x), 0f).normalized * desaceleracao;           
+            Vector2 forcaDesaceleracao = new Vector2(-Mathf.Sign(rb.velocity.x), 0f).normalized * desaceleracao;
             rb.AddForce(forcaDesaceleracao, ForceMode2D.Force);
             isJumping = false;
             groundHits = 0;
-            attackDelay = 7.5f;
-            nextAttack = attackDelay;
+            nextAttack = 0;
+            attackDelay = 1.8f;
+        }
+
+        if (Mathf.Abs(undergroundPos.transform.position.y - transform.position.y) < 0.5f)
+
+        {
+
+            if (makeCont)
+            {
+                randomNumber = Random.Range(1, 5);
+                makeCont = false;
+            }
+
+            rb.velocity = Vector2.zero;
+            rb.gravityScale = 0;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, raycastDistance, playerLayer);
+            Debug.DrawRay(transform.position, Vector2.up * raycastDistance, Color.yellow);
+            if (hit.collider != null)
+            {
+                Debug.Log("Player está diretamente acima do inimigo!");
+                if (!hasHitGroundThisFrame)
+                {
+                    contPlayerUp++;
+                    hasHitGroundThisFrame = true;
+                    Invoke("ResetHasHitGroundThisFrame", .5f);
+                }
+
+            }
+
+
+            if (contPlayerUp <= randomNumber)
+            {
+                float pingPong = Mathf.PingPong(Time.time * speed, maxX - minX);
+                float posX = minX + pingPong;
+                transform.position = new Vector3(posX, transform.position.y, transform.position.z);
+            }
+            else
+            {
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 0.5f;
+                Physics2D.IgnoreLayerCollision(gameObject.layer, 11, false);
+                rb.AddForce(new Vector2(0f, 20f), ForceMode2D.Impulse);
+                contPlayerUp = 0;
+                makeCont = true;
+                nextAttack = 0;
+                attackDelay = 2f;
+            }
+        }
+
+
+        if (playerIsInPlat && !doOnce)
+        {
+            StartCoroutine(resetHits());
         }
 
         if (isTouchingGround)
         {
             StartCoroutine(WaitBeforeRebounce());
         }
-    }
-
-
+    }  
     void ResetHasHitGroundThisFrame()
     {
         hasHitGroundThisFrame = false;
     }
-
     void Flip()
     {
         if (facingRight)
@@ -230,7 +242,6 @@ public class Mole : MonoBehaviour
         }
 
     }
-
     void FlipsTowardsPlayer()
     {
         playerDirection = target.transform.position.x - transform.position.x;
@@ -245,12 +256,21 @@ public class Mole : MonoBehaviour
             Flip();
         }
     }
+    void DashOnPlayer()
+    {
+        isJumping = true;
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        PhysicsMaterial2D material = collider.sharedMaterial;
+        material.bounciness = 1f;
+        material.friction = 0f;
+        collider.sharedMaterial = material;
+        StartCoroutine(DelayDash());
 
-
+    }
     public void Projectile()
     {
-        isBombing = true;       
-        Instantiate(projectile, ProjectilePos.transform.position, Quaternion.identity);
+        isBombing = true;
+        Instantiate(projectile, projectilePos.transform.position, Quaternion.identity);
 
     }
     public void RainRock()
@@ -263,31 +283,70 @@ public class Mole : MonoBehaviour
         collider.sharedMaterial = material;
         StartCoroutine(DelayRainRock());
     }
-
-
-
+    public void UndergroundAttack()
+    {
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        PhysicsMaterial2D material = collider.sharedMaterial;
+        material.bounciness = 0.4f;
+        material.friction = 1f;
+        collider.sharedMaterial = material;
+        StartCoroutine(DelayDashUnderground());
+    }
     public void RandomState()
     {
-        randomState = Random.Range(0, 2);
+        randomState = Random.Range(0, 3);
 
-        if (randomState == 0)
+        if (!playerIsInPlat)
         {
-            isBombing = true;
-            isJumping = false;
-            attackDelay = 1;
-            nextAttack = attackDelay;
-            Projectile();
+            
+            if (randomState == 0)
+            {
+                isBombing = true;
+                isJumping = false;
+                isRainRock = false;
+                nextAttack = 0;
+                attackDelay = 0.8f;
+                Projectile();
+            }
+            else if (randomState == 1)
+            {
+                isJumping = true;
+                isBombing = false;
+                isRainRock = false;
+                nextAttack = 0;
+                attackDelay = 100;
+                doOnce = false;
+                DashOnPlayer();
+            }
+            else if (randomState == 2)
+            {
+                isJumping = false;
+                isBombing = false;
+                isRainRock = false;
+                nextAttack = 0;
+                attackDelay = 100;
+                doOnce = false;
+                UndergroundAttack();
+            }
         }
-        else if(randomState == 1)
+        else
         {
-            isJumping = true;
+            isRainRock = true;
+            isJumping = false;
             isBombing = false;
-            attackDelay = 100;
-            nextAttack = attackDelay;
-            DashOnPlayer();
+            nextAttack = 0;
+            if (poisonCures[0].timer == 0)
+            {
+                attackDelay = 10 - poisonCures[1].timer;
+            }
+            else
+            {
+                attackDelay = 10 - poisonCures[0].timer;
+            }
+            
+            RainRock();
         }
     }
-
     IEnumerator DelayDash()
     {
         yield return new WaitForSeconds(.6f);
@@ -295,19 +354,42 @@ public class Mole : MonoBehaviour
         rb.AddForce(direction * forceMagnitude, ForceMode2D.Impulse);
 
     }
+    IEnumerator DelayDashUnderground()
+    {
+        yield return new WaitForSeconds(.6f);
+        Vector2 direction = (undergroundPos.transform.position - transform.position).normalized;
+        rb.AddForce(direction * forceMagnitude, ForceMode2D.Impulse);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, 11, true);
+    }
     IEnumerator DelayRainRock()
     {
         yield return new WaitForSeconds(.6f);
-        rb.AddForce(new Vector2(0f, -jumpForce * 2f), ForceMode2D.Impulse); 
+        rb.AddForce(new Vector2(0f, -jumpForce * 2f), ForceMode2D.Impulse);
 
     }
     IEnumerator DelayExitRainRock()
     {
-              
-        yield return new WaitForSeconds(5f);
+        float timer = 4f;
+        enemy.screenShake.startShake(timer, .25f);
+        yield return new WaitForSeconds(timer);
         groundHits = 0;
         isRainRock = false;
         cont = 0;
+    }
+    IEnumerator WaitBeforeRebounce()
+    {
+        canSlowDown = false;
+        yield return new WaitForSeconds(0.5f);
+        canSlowDown = true;
+    }
+    IEnumerator resetHits()
+    {
+        doOnce = true;
+        contPlayerUp = 10;
+        groundHits = 10;
+        yield return new WaitForSeconds(0.1f);
+        contPlayerUp = 0;
+        groundHits = 0;
     }
 }
 

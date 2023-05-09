@@ -12,7 +12,7 @@ public class Moving : MonoBehaviour
     [Header("Speed configuration")]
     [SerializeField] private float speed = 1;
 
-    [HideInInspector] public bool canMove = true;
+    public bool canMove = true;
     [HideInInspector] public bool isMoving = false;
 
     private float moveInput;
@@ -31,17 +31,20 @@ public class Moving : MonoBehaviour
     }
     private void Move()
     {
-        moveInput = UserInput.instance.moveInput.x;
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        isMoving = true;
-        if (moveInput > 0)
+        if (canMove)
         {
-            player.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (moveInput < 0)
-        {
-            player.transform.rotation = Quaternion.Euler(0, -180, 0);
-        }
+            moveInput = UserInput.instance.moveInput.x;
+            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+            isMoving = true;
+            if (moveInput > 0)
+            {
+                player.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (moveInput < 0)
+            {
+                player.transform.rotation = Quaternion.Euler(0, -180, 0);
+            }
+        }        
     }
     public void stopMove()
     {

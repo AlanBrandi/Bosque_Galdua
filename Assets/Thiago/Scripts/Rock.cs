@@ -16,7 +16,7 @@ public class Rock : MonoBehaviour
         
         if (collision.collider.CompareTag("Player"))
         {
-            //live.Hit(2);
+            live.Hit(2);
             
         }
         Instantiate(explosionEffect, transform.position, Quaternion.identity);
