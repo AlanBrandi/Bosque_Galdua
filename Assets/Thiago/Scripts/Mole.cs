@@ -85,16 +85,6 @@ public class Mole : MonoBehaviour
     }
     private void Update()
     {
-
-        if (UserInput.instance.playerController.InGame.Debug_E.triggered && playerIsInPlat)
-        {
-            RainRock();
-        }
-        if (UserInput.instance.playerController.InGame.Debug_E.triggered && !playerIsInPlat)
-        {
-            UndergroundAttack();
-        }
-
         nextAttack += Time.deltaTime;
         if (nextAttack >= attackDelay)
         {
