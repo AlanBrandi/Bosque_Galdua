@@ -95,9 +95,4 @@ public class UIManager : MonoBehaviour, IObserver
             _lowLife.SetActive(false);
         }
     }
-
-    void IObserver.NotifyPlayerHit(int currentLives)
-    {
-        throw new System.NotImplementedException();
-    }
 }
