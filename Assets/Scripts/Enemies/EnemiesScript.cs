@@ -78,14 +78,24 @@ public class EnemiesScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && dano > 0)
         {
+            var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+            if (player != null)
+            {
+                player.knockback(transform);
+            }
             myHealthSystem.Hit(dano);
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        
         if (collision.CompareTag("Player") && dano > 0)
         {
-            Debug.Log("Inimigo deu dano em player.");
+            var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+            if (player != null)
+            {
+                player.knockback(transform);
+            }
             myHealthSystem.Hit(dano);
         }
     }
