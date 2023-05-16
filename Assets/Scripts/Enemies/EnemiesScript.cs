@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemiesScript : MonoBehaviour
@@ -21,23 +19,26 @@ public class EnemiesScript : MonoBehaviour
 
     public SimpleFlash flash;
 
+    public bool isEnemyDestroy1Hit;
+
 
     //public GameObject monster;
     private void Awake()
     {
         myHealthSystem = GameObject.FindObjectOfType<PlayerHealth>();
+        screenShake = Camera.main.GetComponentInChildren<ScreenShakeController>(true);
     }
     void Start()
     {
         currentHealth = maxHealth;
-        rb = GetComponent<Rigidbody2D>();  
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-       
+
         if (sceneName == "BossLevel")
         {
             screenShake.startShake(.5f, 0.7f);
@@ -48,7 +49,7 @@ public class EnemiesScript : MonoBehaviour
     {
         currentHealth -= damage;
         Instantiate(fxHit, whereToAddEffect.position, Quaternion.identity);
-        if(flash != null)
+        if (flash != null)
         {
             flash.Flash();
             screenShake.startShake(.35f, 0.5f);
@@ -66,7 +67,7 @@ public class EnemiesScript : MonoBehaviour
         string sceneName = currentScene.name;
 
         screenShake.startShake(.5f, 0.7f);
-        if(sceneName == "BossLevel")
+        if (sceneName == "BossLevel")
         {
             Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
         }
@@ -76,19 +77,40 @@ public class EnemiesScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && dano > 0)
+        if (!isEnemyDestroy1Hit)
         {
-            var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
-            if (player != null)
+            if (collision.collider.CompareTag("Player") && dano > 0)
             {
-                player.knockback(transform);
+                var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+                if (player != null)
+                {
+                    player.knockback(transform);
+                }
+                myHealthSystem.Hit(dano);
             }
-            myHealthSystem.Hit(dano);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isEnemyDestroy1Hit)
+        {
+            if (collision.collider.CompareTag("Player") && dano > 0)
+            {
+                var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+                if (player != null)
+                {
+                    Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
+                    Destroy(gameObject);
+                    player.knockback(transform);
+                    myHealthSystem.Hit(dano);               
+                }                
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        
+
         if (collision.CompareTag("Player") && dano > 0)
         {
             var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
@@ -98,12 +120,13 @@ public class EnemiesScript : MonoBehaviour
             }
             myHealthSystem.Hit(dano);
         }
+
     }
     public void knockback()
     {
         Transform attacker = getClosestDamageSource();
         Vector2 knockbackDirection = new Vector2(transform.position.x - attacker.position.x, 0);
-        rb.AddForce(new Vector2(knockbackDirection.x, knockbackForceUp) * knockbackForce) ;
+        rb.AddForce(new Vector2(knockbackDirection.x, knockbackForceUp) * knockbackForce);
     }
     public Transform getClosestDamageSource()
     {

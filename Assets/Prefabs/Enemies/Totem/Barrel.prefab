@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7171336253084902900}
   - component: {fileID: 7171336253084902903}
   - component: {fileID: 7171336253084902902}
-  - component: {fileID: 1267975018}
   - component: {fileID: 1267975020}
   - component: {fileID: 5213574434054262551}
   - component: {fileID: 133396893123866230}
@@ -125,20 +124,6 @@ CircleCollider2D:
   m_Offset: {x: -0.04748986, y: 0.09625453}
   serializedVersion: 2
   m_Radius: 1.8747007
---- !u!114 &1267975018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7171336253084902905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f29eaff95dae745891786dcbd5420b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dano: 2
-  efeito: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
 --- !u!114 &1267975020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,12 +136,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190fb354903f79f48a329e347f52a035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  dano: 0
+  maxHealth: 1
+  dano: 2
   currentHealth: 3
   fxDie: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   fxHit: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  barril: {fileID: 0}
   whereToAddEffect: {fileID: 7171336253084902901}
+  knockbackForce: 0
+  knockbackForceUp: 0
+  knockbacked: 0
+  screenShake: {fileID: 0}
+  flash: {fileID: 0}
+  isEnemyDestroy1Hit: 1
 --- !u!82 &5213574434054262551
 AudioSource:
   m_ObjectHideFlags: 0

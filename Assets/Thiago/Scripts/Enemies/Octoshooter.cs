@@ -9,7 +9,7 @@ public class Octoshooter : MonoBehaviour
     [SerializeField] private Transform bulletPos;
     [SerializeField] private float attackDelay = 2f;
 
-    [HideInInspector] public bool facingRight = true;
+    public bool facingRight = true;
 
     private AIPlayerDetector detector;
     private float playerDirection;
@@ -25,11 +25,6 @@ public class Octoshooter : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Shoot();
-        }
-
         FlipsTowardsPlayer();
     }
 

@@ -26,6 +26,12 @@ public class DamagePlayer : MonoBehaviour
             health.Hit(dano);
             Instantiate(efeito, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+            if (player != null)
+            {
+                player.knockback(transform);
+            }
+            
         }
         else if (collision.collider.CompareTag("Object"))
         {

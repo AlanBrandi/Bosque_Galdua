@@ -71,8 +71,6 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (Collider2D enemy in HitEnemies)
             {
-                Debug.Log("Inimigo tomou dano por ataque pulando.");
-
                 if (enemy.tag == "Enemies" || enemy.tag == "Fly_Enemy" || enemy.tag == "Octoshooter")
                 {
 
@@ -82,12 +80,19 @@ public class PlayerAttack : MonoBehaviour
                 {
                     enemy.GetComponent<BossScript>().takeDamageBySword(10);
                 }
-
-
+                else if (enemy.tag == "Totem")
+                {
+                    enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                    var transform = enemy.GetComponent<Transform>();
+                    var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+                    if (player != null)
+                    {
+                        player.knockback(transform);
+                    }
+                }
 
                 AttackCooldown();
-            }
-            
+            }           
         }
         else
         {
@@ -95,7 +100,6 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (Collider2D enemy in HitEnemies)
             {
-               // Debug.Log("Inimigo tomou dano.");
                 if(enemy.tag == "Enemies" || enemy.tag == "Fly_Enemy" || enemy.tag == "Octoshooter")
                 {
                     
@@ -109,10 +113,17 @@ public class PlayerAttack : MonoBehaviour
                 {
                    enemy.GetComponent<LeverPoisonCure>().ActivateEvent();
                 }
-                    
-                
-                    
-                
+                else if (enemy.tag == "Totem")
+                {
+                    enemy.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
+                    var transform = enemy.GetComponent<Transform>();
+                    var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+                    if (player != null)
+                    {
+                        player.knockback(transform);
+                    }
+                }
+
                 AttackCooldown();
             }
             
@@ -130,7 +141,6 @@ public class PlayerAttack : MonoBehaviour
     }
     public void AttackSoundAndDelay()
     {
-        //Sound settings
         int i = Random.Range(1, 3);
         float randomPitch = Random.Range(.9f, 1.1f);
         swordSounds.pitch = randomPitch;
