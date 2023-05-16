@@ -6,14 +6,13 @@ public class RemovePoison : MonoBehaviour
 {
     private Poison poison;
     private PlayerHealth live;
-    private Mole mole;
+    [SerializeField] private Mole mole;
     private bool isTrying = false;
     private bool canAddLives = true;
     void Start()
     {
         poison = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<Poison>();
         live = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<PlayerHealth>();
-        mole = GameObject.FindGameObjectWithTag("Enemies").GetComponent<Mole>();
     }
 
     private void Update()
