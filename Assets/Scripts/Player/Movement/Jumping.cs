@@ -20,10 +20,22 @@ public class Jumping : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Jump variables")]
+    [SerializeField] private float fallMultiplier;
+    [SerializeField] private float lowJumpMultiplier;
     [SerializeField] private float jumpForce;
     [SerializeField] private float checkRadius;
     [SerializeField] private float JumpTime;
 
+
+    private bool buttonHeld = false;
+    private float holdTime = 0f;
+    public float requiredHoldTime = 2f;
+
+    private float coyoteTime = .1f;
+    private float coyoteTimeCounter;
+
+    private float jumpBufferTime = .1f;
+    private float jumpBufferCount;
 
     private void Awake()
     {
@@ -35,26 +47,67 @@ public class Jumping : MonoBehaviour
     }
 
     private void Update()
-    {  
+    {
+        if (UserInput.instance.playerController.InGame.Jump.triggered)
+        {
+            jumpBufferCount = jumpBufferTime;
+            buttonHeld = true;
+            holdTime = 0f;
+        }
+        else
+        {
+            jumpBufferCount -= Time.deltaTime;
+        }
+
+        if (UserInput.instance.playerController.InGame.Jump.ReadValue<float>() <= 0)
+        {
+            buttonHeld = false;
+        }
+
+
+        if (buttonHeld)
+        {
+            holdTime += Time.deltaTime;
+
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !buttonHeld)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            coyoteTimeCounter = 0;
+        }
+
+
         IsGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, groundLayer);
         if (IsGrounded)
         {
+            coyoteTimeCounter = coyoteTime;
             animator.SetBool("IsJumping", false);
             
         }
         else
         {
-            animator.SetBool("IsJumping", true);
+            coyoteTimeCounter -= Time.deltaTime;
+            if(coyoteTimeCounter <= 0)
+            {
+                animator.SetBool("IsJumping", true);
+            }
+            
         }
-        if (IsGrounded == true && UserInput.instance.playerController.InGame.Jump.triggered && !wallJump.wallSliding && moveScript.canMove)
+        if (coyoteTimeCounter > 0 == true && jumpBufferCount > 0f && !wallJump.wallSliding && moveScript.canMove)
         {
+            jumpBufferCount = 0f;
             Jump();
         }
     }
     private void Jump()
     {
         isJumping = true;
-        rb.AddForce(Vector2.up * jumpForce);
+        rb.velocity = Vector2.up * jumpForce;
         jumpSound.Play();
     }
 

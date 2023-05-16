@@ -17,6 +17,10 @@ public class Moving : MonoBehaviour
 
     private float moveInput;
 
+    [SerializeField] private float acceleration = 10f; 
+   
+    
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -26,15 +30,27 @@ public class Moving : MonoBehaviour
 
     private void FixedUpdate()
     {
-        animator.SetFloat("Speed", rb.velocity.magnitude);
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         Move();
     }
     private void Move()
     {
         if (canMove)
         {
+            float currentSpeed = rb.velocity.x;
             moveInput = UserInput.instance.moveInput.x;
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+            if (Mathf.Abs(moveInput) > 0.1f) 
+            {
+                currentSpeed = Mathf.MoveTowards(currentSpeed, moveInput * speed, acceleration * Time.deltaTime);
+            }
+            else 
+            {
+                currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, acceleration * Time.deltaTime);
+            }
+
+            rb.velocity = new Vector2(currentSpeed, rb.velocity.y);
+            isMoving = Mathf.Abs(currentSpeed) > 0.1f;
             isMoving = true;
             if (moveInput > 0)
             {
