@@ -68,7 +68,7 @@ public class WallJumping : MonoBehaviour
 
 
                 rb.velocity = Vector2.zero;
-
+                
                 rb.AddForce(force, ForceMode2D.Impulse);
 
                 StartCoroutine("stopMove");
@@ -79,8 +79,6 @@ public class WallJumping : MonoBehaviour
     {
         moveScript.canMove = false;
 
-        Quaternion back = player.transform.rotation;
-
         if (playerAxis.transform.rotation.y == 0)
         {
             player.transform.rotation = Quaternion.Euler(0, -180, 0);
@@ -90,7 +88,7 @@ public class WallJumping : MonoBehaviour
             player.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(.3f);
 
         moveScript.canMove = true;
     }

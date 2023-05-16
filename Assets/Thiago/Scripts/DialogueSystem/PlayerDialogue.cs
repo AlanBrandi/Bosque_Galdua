@@ -26,15 +26,18 @@ public class PlayerDialogue : MonoBehaviour
         }        
     }
 
+    private bool canMoveAgain;
     private void FixedUpdate()
     {
         if (dialogueUi.isOpen)
         {
+            canMoveAgain = true;
             move.stopMove();
         }
-        else
+        else if(!dialogueUi.isOpen && canMoveAgain)
         {
             move.canMove = true;
+            canMoveAgain = false;
         }
     }
 }
