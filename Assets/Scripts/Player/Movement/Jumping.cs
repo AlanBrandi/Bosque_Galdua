@@ -31,10 +31,10 @@ public class Jumping : MonoBehaviour
     private float holdTime = 0f;
     public float requiredHoldTime = 2f;
 
-    private float coyoteTime = .1f;
+    private float coyoteTime = .2f;
     private float coyoteTimeCounter;
 
-    private float jumpBufferTime = .1f;
+    private float jumpBufferTime = .15f;
     private float jumpBufferCount;
 
     private void Awake()
