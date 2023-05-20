@@ -13,6 +13,7 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private GameObject jumpFX;
     [SerializeField] private GameObject landFX;
     public GameObject turnFX;
+    public GameObject slideFX;
     public Transform pos;
 
     private Rigidbody2D rb;

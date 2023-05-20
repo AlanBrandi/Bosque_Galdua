@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -35,6 +36,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _lastDashDir;
     private bool _isDashAttacking;
 
+    private PlayerController playerController;
+
+    private Animator anim;
+    private bool canFX;
+
+    private bool isTurning = false;
+    private Quaternion targetRotation;
+    public float turnSpeed = 5f;
+    // GameObject obj; 
+
     #endregion
 
     #region INPUT PARAMETERS
@@ -58,8 +69,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     #endregion
-
-    private PlayerController playerController;
+  
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -74,9 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private Animator anim;
-    private bool canFX;
     private void Update()
+
     {
 
         _moveInput.x = UserInput.instance.moveInput.x;
@@ -210,10 +219,8 @@ public class PlayerMovement : MonoBehaviour
         #region DASH CHECKS
         if (CanDash() && LastPressedDashTime > 0)
         {
-            //Freeze game for split second. Adds juiciness and a bit of forgiveness over directional input
             Sleep(Data.dashSleepTime);
 
-            //If not direction pressed, dash forward
             if (_moveInput != Vector2.zero)
                 _lastDashDir = _moveInput;
             else
@@ -240,21 +247,17 @@ public class PlayerMovement : MonoBehaviour
         #region GRAVITY
         if (!_isDashAttacking)
         {
-            //Higher gravity if we've released the jump input or are falling
             if (IsSliding)
             {
                 SetGravityScale(0);
             }
             else if (RB.velocity.y < 0 && _moveInput.y < 0)
             {
-                //Much higher gravity if holding down
                 SetGravityScale(Data.gravityScale * Data.fastFallGravityMult);
-                //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
                 RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFastFallSpeed));
             }
             else if (_isJumpCut)
             {
-                //Higher gravity if jump button released
                 SetGravityScale(Data.gravityScale * Data.jumpCutGravityMult);
                 RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
             }
@@ -264,27 +267,50 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (RB.velocity.y < 0)
             {
-                //Higher gravity if falling
-                SetGravityScale(Data.gravityScale * Data.fallGravityMult);
-                //Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
+
+                SetGravityScale(Data.gravityScale * Data.fallGravityMult);                
                 RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
             }
             else
             {
-                //Default gravity if standing on a platform or moving upwards
                 SetGravityScale(Data.gravityScale);
             }
         }
         else
         {
-            //No gravity when dashing (returns to normal once initial dashAttack phase over)
             SetGravityScale(0);
         }
         #endregion
-    }
+    }    
 
     private void FixedUpdate()
     {
+        if (IsSliding)
+        {
+            if (canFxSlide)
+            {
+
+               // obj = Instantiate(AnimHandler.slideFX, AnimHandler.pos.transform.position, Quaternion.Euler(-90, 0, 0));
+              //  canFxSlide = false;
+            }
+        }
+        else
+        {
+           // Destroy(obj);
+           // canFxSlide = true;
+        }
+
+        if (isTurning)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+
+            if (Quaternion.Angle(transform.rotation, targetRotation) < 1f)
+            {
+                isTurning = false;
+            }
+        }
+        Debug.Log(Quaternion.Angle(transform.rotation, targetRotation));
+
         if (!IsDashing)
         {
             if (IsWallJumping)
@@ -338,7 +364,6 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-
     #region RUN METHODS
     private void Run(float lerpAmount)
     {
@@ -364,11 +389,9 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region Conserve Momentum
-        //We won't slow the player down if they are moving in their desired direction but at a greater speed than their maxSpeed
+        
         if (Data.doConserveMomentum && Mathf.Abs(RB.velocity.x) > Mathf.Abs(targetSpeed) && Mathf.Sign(RB.velocity.x) == Mathf.Sign(targetSpeed) && Mathf.Abs(targetSpeed) > 0.01f && LastOnGroundTime < 0)
-        {
-            //Prevent any deceleration from happening, or in other words conserve are current momentum
-            //You could experiment with allowing for the player to slightly increae their speed whilst in this "state"
+        {           
             accelRate = 0;
         }
         #endregion
@@ -381,16 +404,17 @@ public class PlayerMovement : MonoBehaviour
 
 
         RB.AddForce(movement * Vector2.right, ForceMode2D.Force);
-
-        //if(CanJump && )
     }
     private void Turn()
     {
+        if (isTurning) return;
 
+        isTurning = true;
+        IsFacingRight = !IsFacingRight;
 
-        if (this.transform.rotation.y == 1)
+        if (IsFacingRight)
         {
-            this.transform.rotation = new Quaternion(this.transform.rotation.x, 0, this.transform.position.z, 0);
+            targetRotation = Quaternion.Euler(0f, 0f, 0f);
             if (CanJump())
             {
                 GameObject obj = Instantiate(AnimHandler.turnFX, AnimHandler.pos.transform.position, Quaternion.Euler(-25, -90, 90));
@@ -398,9 +422,8 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        else if (this.transform.rotation.y == 0)
-        {
-            this.transform.rotation = new Quaternion(this.transform.rotation.x, 1, this.transform.position.z, 0);
+        else {
+            targetRotation = Quaternion.Euler(0f, 180f, 0f);
             if (CanJump())
             {
                 GameObject obj = Instantiate(AnimHandler.turnFX, AnimHandler.pos.transform.position, Quaternion.Euler(-150, -90, 90));
@@ -408,7 +431,6 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        IsFacingRight = !IsFacingRight;
     }
     #endregion
 
@@ -498,11 +520,13 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region OTHER MOVEMENT METHODS
+    bool canFxSlide;
     private void Slide()
     {
         if (RB.velocity.y > 0)
         {
             RB.AddForce(-RB.velocity.y * Vector2.up, ForceMode2D.Impulse);
+            
         }
 
         float speedDif = Data.slideSpeed - RB.velocity.y;
@@ -510,9 +534,10 @@ public class PlayerMovement : MonoBehaviour
         movement = Mathf.Clamp(movement, -Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime), Mathf.Abs(speedDif) * (1 / Time.fixedDeltaTime));
 
         RB.AddForce(movement * Vector2.up);
+        
+        
     }
     #endregion
-
 
     #region CHECK METHODS
     public void CheckDirectionToFace(bool isMovingRight)
@@ -560,7 +585,6 @@ public class PlayerMovement : MonoBehaviour
             return false;
     }
     #endregion
-
 
     #region EDITOR METHODS
     private void OnDrawGizmosSelected()
