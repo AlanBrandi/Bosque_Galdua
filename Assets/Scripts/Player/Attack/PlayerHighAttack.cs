@@ -15,6 +15,7 @@ public class PlayerHighAttack : MonoBehaviour
     PlayerAttack playerAttack;
     HoldAndThrow holdAndThrow;
     Jumping jumping;
+    private PlayerMovement mov;
     private void Start()
     {
         jumping = GetComponent<Jumping>();
@@ -22,6 +23,7 @@ public class PlayerHighAttack : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         playerAttack = GetComponent<PlayerAttack>();
         EnemyLayers = playerAttack.EnemyLayers;
+        mov = GetComponentInChildren<PlayerMovement>();
     }
     private void Update()
     {
@@ -30,7 +32,7 @@ public class PlayerHighAttack : MonoBehaviour
             playerAttack.enabled = false;
             if (Time.time >= NextAttackTime && Time.time >= playerAttack.NextAttackTime)
             {
-                if ((UserInput.instance.playerController.InGame.Attack.triggered && holdAndThrow.Estado != "Segurando" && jumping.IsGrounded))
+                if ((UserInput.instance.playerController.InGame.Attack.triggered && holdAndThrow.Estado != "Segurando" && mov.CanJump()))
                 {
                     playerAttack.AttackSoundAndDelay();
                     animator.SetTrigger("Highattack");

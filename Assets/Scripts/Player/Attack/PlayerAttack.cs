@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     //Sound
     AudioSource swordSounds;
     AudioClip attackSound;
+    private PlayerMovement mov;
 
     private void Start()
     {
@@ -31,13 +32,15 @@ public class PlayerAttack : MonoBehaviour
         playerHighAttack = GetComponent<PlayerHighAttack>();
         attackSound = Resources.Load("sword_swing_1") as AudioClip;
         animator.SetBool("HasSword", true);
+        mov = GetComponentInChildren<PlayerMovement>();
     }
 
     private void Update()
     {
         if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
         {
-            if (UserInput.instance.playerController.InGame.Attack.triggered && jumping.IsGrounded == false && holdAndThrow.Estado != "Segurando")
+            Debug.Log("SHJKAHJKAHSKJAHSJK");
+            if (UserInput.instance.playerController.InGame.Attack.triggered && mov.CanJump() == false && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();
                 animator.SetTrigger("Attack");
@@ -65,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-        if (jumping.IsGrounded == false)
+        if (!mov.CanJump())
         {
             Collider2D[] HitEnemies = Physics2D.OverlapCircleAll(JumpingAttackPoint.position, JumpingAttackRange, EnemyLayers);
 
