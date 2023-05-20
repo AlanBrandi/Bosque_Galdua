@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
             OnJumpUpInput();
         }
 
-        if (UserInput.instance.playerController.InGame.Debug_E.triggered)
+        if (UserInput.instance.playerController.InGame.Debug_Z.triggered)
         {
             OnDashInput();
         }

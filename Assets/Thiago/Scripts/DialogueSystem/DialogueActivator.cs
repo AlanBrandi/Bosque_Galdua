@@ -3,6 +3,7 @@ using UnityEngine;
 public class DialogueActivator : MonoBehaviour, Interectible
 {
     [SerializeField] private DialogueObject dialogueObject;
+    [SerializeField] private UIAnimation anim;
 
     public void UpdateDialogueObejct(DialogueObject dialogueObject)
     {
@@ -35,6 +36,7 @@ public class DialogueActivator : MonoBehaviour, Interectible
                 break;
             }
         }
+        anim.dialogueOpen();
         player.DialogueUI.ShowDialogue(dialogueObject);
     }
 }

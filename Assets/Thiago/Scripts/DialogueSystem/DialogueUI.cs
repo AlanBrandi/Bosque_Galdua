@@ -33,7 +33,7 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator StepThroughtDialogue(DialogueObject dialogueObject)
     {
-
+        yield return new WaitForSeconds(.5f);
         for(int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
             string dialogue = dialogueObject.Dialogue[i];

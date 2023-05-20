@@ -31,13 +31,13 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (dialogueUi.isOpen)
         {
-            canMoveAgain = true;
-            move.stopMove();
+            //canMoveAgain = true;
+           // move.stopMove();
         }
         else if(!dialogueUi.isOpen && canMoveAgain)
         {
-            move.canMove = true;
-            canMoveAgain = false;
+           // move.canMove = true;
+            //canMoveAgain = false;
         }
     }
 }

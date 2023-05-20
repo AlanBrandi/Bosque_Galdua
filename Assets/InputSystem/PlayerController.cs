@@ -75,6 +75,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Debug_Z"",
+                    ""type"": ""Button"",
+                    ""id"": ""87572223-068f-45e7-805e-75a476f14f25"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Debug_F3"",
                     ""type"": ""Button"",
                     ""id"": ""3f8af632-fe27-4c36-9098-0648ef532208"",
@@ -360,6 +368,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Debug_E"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0dbce2a6-a85d-416a-b552-b120f3f86182"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Debug_Z"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -386,6 +405,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_InGame_Debug_H = m_InGame.FindAction("Debug_H", throwIfNotFound: true);
         m_InGame_Debug_D = m_InGame.FindAction("Debug_D", throwIfNotFound: true);
         m_InGame_Debug_K = m_InGame.FindAction("Debug_K", throwIfNotFound: true);
+        m_InGame_Debug_Z = m_InGame.FindAction("Debug_Z", throwIfNotFound: true);
         m_InGame_Debug_F3 = m_InGame.FindAction("Debug_F3", throwIfNotFound: true);
         m_InGame_Debug_Mouse3 = m_InGame.FindAction("Debug_Mouse3", throwIfNotFound: true);
         m_InGame_Escape = m_InGame.FindAction("Escape", throwIfNotFound: true);
@@ -446,6 +466,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_Debug_H;
     private readonly InputAction m_InGame_Debug_D;
     private readonly InputAction m_InGame_Debug_K;
+    private readonly InputAction m_InGame_Debug_Z;
     private readonly InputAction m_InGame_Debug_F3;
     private readonly InputAction m_InGame_Debug_Mouse3;
     private readonly InputAction m_InGame_Escape;
@@ -461,6 +482,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Debug_H => m_Wrapper.m_InGame_Debug_H;
         public InputAction @Debug_D => m_Wrapper.m_InGame_Debug_D;
         public InputAction @Debug_K => m_Wrapper.m_InGame_Debug_K;
+        public InputAction @Debug_Z => m_Wrapper.m_InGame_Debug_Z;
         public InputAction @Debug_F3 => m_Wrapper.m_InGame_Debug_F3;
         public InputAction @Debug_Mouse3 => m_Wrapper.m_InGame_Debug_Mouse3;
         public InputAction @Escape => m_Wrapper.m_InGame_Escape;
@@ -495,6 +517,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Debug_K.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_K;
                 @Debug_K.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_K;
                 @Debug_K.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_K;
+                @Debug_Z.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_Z;
+                @Debug_Z.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_Z;
+                @Debug_Z.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_Z;
                 @Debug_F3.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_F3;
                 @Debug_F3.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_F3;
                 @Debug_F3.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_F3;
@@ -532,6 +557,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Debug_K.started += instance.OnDebug_K;
                 @Debug_K.performed += instance.OnDebug_K;
                 @Debug_K.canceled += instance.OnDebug_K;
+                @Debug_Z.started += instance.OnDebug_Z;
+                @Debug_Z.performed += instance.OnDebug_Z;
+                @Debug_Z.canceled += instance.OnDebug_Z;
                 @Debug_F3.started += instance.OnDebug_F3;
                 @Debug_F3.performed += instance.OnDebug_F3;
                 @Debug_F3.canceled += instance.OnDebug_F3;
@@ -575,6 +603,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnDebug_H(InputAction.CallbackContext context);
         void OnDebug_D(InputAction.CallbackContext context);
         void OnDebug_K(InputAction.CallbackContext context);
+        void OnDebug_Z(InputAction.CallbackContext context);
         void OnDebug_F3(InputAction.CallbackContext context);
         void OnDebug_Mouse3(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
