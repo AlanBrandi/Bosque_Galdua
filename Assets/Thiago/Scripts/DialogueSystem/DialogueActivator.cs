@@ -36,7 +36,7 @@ public class DialogueActivator : MonoBehaviour, Interectible
                 break;
             }
         }
-        anim.dialogueOpen();
+        
         player.DialogueUI.ShowDialogue(dialogueObject);
     }
 }

@@ -18,12 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public bool IsJumping { get; private set; }
     public bool IsWallJumping { get; private set; }
     public bool IsDashing { get; private set; }
-    public bool IsSliding { get; private set; }
-
+    public bool IsSliding { get; private set; }   
     public float LastOnGroundTime { get; private set; }
     public float LastOnWallTime { get; private set; }
     public float LastOnWallRightTime { get; private set; }
     public float LastOnWallLeftTime { get; private set; }
+
+    public bool canMove;
 
     private bool _isJumpCut;
     private bool _isJumpFalling;
@@ -87,9 +88,18 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
 
     {
+        if (canMove)
+        {
+            _moveInput.x = UserInput.instance.moveInput.x;
+            _moveInput.y = UserInput.instance.moveInput.y;
+        }
+        else
+        {
+            _moveInput.x = 0;
+            _moveInput.y = 0;
 
-        _moveInput.x = UserInput.instance.moveInput.x;
-        _moveInput.y = UserInput.instance.moveInput.y;
+        }
+        
         if (CanJump())
         {
             if (_moveInput.x > 0 && canFX)

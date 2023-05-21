@@ -8,6 +8,7 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] public float typewriterSpeed = 50f;
 
     public bool isRunning { get; private set; }
+    public bool isFaster;
 
     private readonly List<Punctuation> punctuations = new List<Punctuation>()
     {
@@ -19,7 +20,8 @@ public class TypewriterEffect : MonoBehaviour
 
     public void Run(string textToType, TMP_Text textLabel)
     {
-        typewriterSpeed = 18f;
+        isFaster = false;
+        typewriterSpeed = 30f;
         typingCoroutine = StartCoroutine(TypeText(textToType, textLabel));
     }
 
@@ -52,10 +54,13 @@ public class TypewriterEffect : MonoBehaviour
 
                 textLabel.text = textToType.Substring(0, i + 1);
 
-                if (isPunctuation(textToType[i], out float waitTime) && !isLast && !isPunctuation(textToType[i + 1], out _))
+                if (!isFaster)
                 {
-                    yield return new WaitForSeconds(waitTime);
-                }
+                    if (isPunctuation(textToType[i], out float waitTime) && !isLast && !isPunctuation(textToType[i + 1], out _))
+                    {
+                        yield return new WaitForSeconds(waitTime);
+                    }
+                }                
             }
             yield return null;
         }

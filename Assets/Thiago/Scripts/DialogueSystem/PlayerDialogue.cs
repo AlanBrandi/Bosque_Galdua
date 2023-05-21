@@ -8,11 +8,11 @@ public class PlayerDialogue : MonoBehaviour
     public DialogueUI DialogueUI => dialogueUi;
     public Interectible interectible { get; set; }
 
-    private Moving move;
+    private PlayerMovement move;
 
     private void Start()
     {
-        move = GetComponentInParent<Moving>();
+        move = GetComponentInParent<PlayerMovement>();
     }
 
     private void Update()
@@ -31,13 +31,13 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (dialogueUi.isOpen)
         {
-            //canMoveAgain = true;
-           // move.stopMove();
+            canMoveAgain = true;
+            move.canMove = false;
         }
         else if(!dialogueUi.isOpen && canMoveAgain)
         {
-           // move.canMove = true;
-            //canMoveAgain = false;
+            move.canMove = true;
+            canMoveAgain = false;
         }
     }
 }
