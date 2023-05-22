@@ -10,7 +10,7 @@ public class KnockbackTrigger : MonoBehaviour
         var player = collision.GetComponent<knockbackPlayer>();
         if (player != null)
         {
-            player.knockback(transform);
+            player.knockback();
         }
  
     }

@@ -29,7 +29,9 @@ public class DamagePlayer : MonoBehaviour
             var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
             if (player != null)
             {
-                player.knockback(transform);
+                player.forceY = 15f;
+                player.forceX = 100f;
+                player.knockback();                
             }
             
         }

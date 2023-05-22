@@ -90,7 +90,7 @@ public class PlayerAttack : MonoBehaviour
                     var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
                     if (player != null)
                     {
-                        player.knockback(transform);
+                        player.knockback();
                     }
                 }
 
@@ -123,7 +123,9 @@ public class PlayerAttack : MonoBehaviour
                     var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
                     if (player != null)
                     {
-                        player.knockback(transform);
+                        player.forceY = 0.0f;
+                        player.forceX = 200f;
+                        player.knockback();                        
                     }
                 }
 

@@ -5,18 +5,18 @@ using UnityEngine;
 public class OneSidePlatform : MonoBehaviour
 {
     public List<PlatformEffector2D> Platforms;
-    Jumping groundCheck;
+    PlayerMovement groundCheck;
     public KeyCode downKey;
     //bool onPlatform = false; - Not currently being used
     GameObject Player;
     private void Start()
     {
-        groundCheck = FindObjectOfType<Jumping>();
+        groundCheck = FindObjectOfType<PlayerMovement>();
     }
    
     private void Update()
     {
-        if(groundCheck.IsGrounded == true && UserInput.instance.playerController.InGame.Move.ReadValue<Vector2>().y < 0)
+        if(groundCheck.CanJump() == true && UserInput.instance.playerController.InGame.Move.ReadValue<Vector2>().y < 0)
         {
             foreach (PlatformEffector2D plats in Platforms)
             {

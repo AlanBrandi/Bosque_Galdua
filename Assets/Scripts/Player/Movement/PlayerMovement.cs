@@ -198,52 +198,55 @@ public class PlayerMovement : MonoBehaviour
 
             _isJumpFalling = false;
         }
-
-        if (!IsDashing)
+        if (canMove)
         {
-            if (CanJump() && LastPressedJumpTime > 0)
+            if (!IsDashing)
             {
-                IsJumping = true;
+
+                if (CanJump() && LastPressedJumpTime > 0)
+                {
+                    IsJumping = true;
+                    IsWallJumping = false;
+                    _isJumpCut = false;
+                    _isJumpFalling = false;
+                    Jump();
+
+                    AnimHandler.startedJumping = true;
+                }
+                else if (CanWallJump() && LastPressedJumpTime > 0)
+                {
+                    IsWallJumping = true;
+                    IsJumping = false;
+                    _isJumpCut = false;
+                    _isJumpFalling = false;
+
+                    _wallJumpStartTime = Time.time;
+                    _lastWallJumpDir = (LastOnWallRightTime > 0) ? -1 : 1;
+
+                    WallJump(_lastWallJumpDir);
+                }
+            }
+            #endregion
+
+            #region DASH CHECKS
+            if (CanDash() && LastPressedDashTime > 0)
+            {
+                Sleep(Data.dashSleepTime);
+
+                if (_moveInput != Vector2.zero)
+                    _lastDashDir = _moveInput;
+                else
+                    _lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
+
+
+
+                IsDashing = true;
+                IsJumping = false;
                 IsWallJumping = false;
                 _isJumpCut = false;
-                _isJumpFalling = false;
-                Jump();
 
-                AnimHandler.startedJumping = true;
+                StartCoroutine(nameof(StartDash), _lastDashDir);
             }
-            else if (CanWallJump() && LastPressedJumpTime > 0)
-            {
-                IsWallJumping = true;
-                IsJumping = false;
-                _isJumpCut = false;
-                _isJumpFalling = false;
-
-                _wallJumpStartTime = Time.time;
-                _lastWallJumpDir = (LastOnWallRightTime > 0) ? -1 : 1;
-
-                WallJump(_lastWallJumpDir);
-            }
-        }
-        #endregion
-
-        #region DASH CHECKS
-        if (CanDash() && LastPressedDashTime > 0)
-        {
-            Sleep(Data.dashSleepTime);
-
-            if (_moveInput != Vector2.zero)
-                _lastDashDir = _moveInput;
-            else
-                _lastDashDir = IsFacingRight ? Vector2.right : Vector2.left;
-
-
-
-            IsDashing = true;
-            IsJumping = false;
-            IsWallJumping = false;
-            _isJumpCut = false;
-
-            StartCoroutine(nameof(StartDash), _lastDashDir);
         }
         #endregion
 
@@ -319,7 +322,6 @@ public class PlayerMovement : MonoBehaviour
                 isTurning = false;
             }
         }
-        Debug.Log(Quaternion.Angle(transform.rotation, targetRotation));
 
         if (!IsDashing)
         {

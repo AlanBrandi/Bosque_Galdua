@@ -67,6 +67,11 @@ public class EnemiesScript : MonoBehaviour
         string sceneName = currentScene.name;
 
         screenShake.startShake(.5f, 0.7f);
+
+        if(screenShake != null)
+        {
+
+        }
         if (sceneName == "BossLevel")
         {
             Instantiate(barril, whereToAddEffect.position, Quaternion.identity);
@@ -84,7 +89,7 @@ public class EnemiesScript : MonoBehaviour
                 var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
                 if (player != null)
                 {
-                    player.knockback(transform);
+                    player.knockback();
                 }
                 myHealthSystem.Hit(dano);
             }
@@ -102,7 +107,9 @@ public class EnemiesScript : MonoBehaviour
                 {
                     Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
                     Destroy(gameObject);
-                    player.knockback(transform);
+                    player.forceY = 15f;
+                    player.forceX = 100f;
+                    player.knockback();                    
                     myHealthSystem.Hit(dano);               
                 }                
             }
@@ -116,7 +123,7 @@ public class EnemiesScript : MonoBehaviour
             var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
             if (player != null)
             {
-                player.knockback(transform);
+                player.knockback();
             }
             myHealthSystem.Hit(dano);
         }
