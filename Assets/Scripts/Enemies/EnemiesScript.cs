@@ -1,5 +1,5 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemiesScript : MonoBehaviour
 {
@@ -25,7 +25,6 @@ public class EnemiesScript : MonoBehaviour
     private CinemachineVirtualCamera activeVirtualCamera;
 
 
-    //public GameObject monster;
     private void Awake()
     {
         myHealthSystem = GameObject.FindObjectOfType<PlayerHealth>();
@@ -35,9 +34,12 @@ public class EnemiesScript : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
+        
+
     }
     private void Update()
     {
+
         CinemachineVirtualCamera newActiveCamera = CheckCameraActivation();
         if (newActiveCamera != activeVirtualCamera)
         {
@@ -45,13 +47,13 @@ public class EnemiesScript : MonoBehaviour
 
             screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
         }
+
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-
         if (sceneName == "BossLevel")
         {
-            screenShake.startShake(.5f, 0.7f);
             screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
         }
     }
@@ -89,9 +91,9 @@ public class EnemiesScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        
 
-        if(screenShake != null)
+
+        if (screenShake != null)
         {
             screenShake.startShake(.5f, 0.7f);
         }
@@ -133,7 +135,7 @@ public class EnemiesScript : MonoBehaviour
                     player.forceX = 100f;
                     player.knockback();
                     myHealthSystem.Hit(dano);
-                    
+
 
                 }
             }

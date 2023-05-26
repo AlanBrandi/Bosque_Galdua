@@ -43,7 +43,13 @@ public class BossScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && dano > 0 && boss.CanTakeDamage)
         {
-            Debug.Log("Inimigo deu dano em player.");
+            var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+            if (player != null)
+            {
+                player.forceY = 15f;
+                player.forceX = 100f;
+                player.knockback();
+            }
             myHealthSystem.Hit(dano);
         }
     }

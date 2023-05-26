@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 0}
   SpawnRate: 2
-  dano: 2
+  dano: 0
   moveSpeed: 5
   PlayerHP: {fileID: 0}
 --- !u!114 &3509156615733673167
@@ -385,6 +385,8 @@ MonoBehaviour:
   knockbackForceUp: 0
   knockbacked: 0
   screenShake: {fileID: 3501593155638034682, guid: 7a9cf78c1d7076b498140eff4ae4e84e, type: 3}
+  flash: {fileID: 0}
+  isEnemyDestroy1Hit: 1
 --- !u!82 &-2546340485845920353
 AudioSource:
   m_ObjectHideFlags: 0
