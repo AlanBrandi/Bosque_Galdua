@@ -34,16 +34,6 @@ public class Monstrinho : SpawnerManager
             rb.velocity = direction * moveSpeed;
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            PlayerHP.Hit(dano);
-            enemy.TakeDamage(enemy.maxHealth);
-            Destroy(this.gameObject);
-        }
-    }
     void ConstantSound()
     {
         float randomPitch = Random.Range(0.9f, 1f);

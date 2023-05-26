@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1267975020}
   - component: {fileID: 5213574434054262551}
   - component: {fileID: 133396893123866230}
+  - component: {fileID: 7189532459808227913}
   m_Layer: 12
   m_Name: Barrel
   m_TagString: Enemies
@@ -341,3 +342,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7189532459808227913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171336253084902905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc7339ff1c70604e9f377a1da55fabe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToSelfDestroy: 9
+  fxDie: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cinemachine;
 using UnityEngine.SceneManagement;
 public class EnemiesScript : MonoBehaviour
 {
@@ -21,20 +22,29 @@ public class EnemiesScript : MonoBehaviour
 
     public bool isEnemyDestroy1Hit;
 
+    private CinemachineVirtualCamera activeVirtualCamera;
+
 
     //public GameObject monster;
     private void Awake()
     {
         myHealthSystem = GameObject.FindObjectOfType<PlayerHealth>();
-        screenShake = Camera.main.GetComponentInChildren<ScreenShakeController>(true);
     }
     void Start()
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
+        screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
     }
     private void Update()
     {
+        CinemachineVirtualCamera newActiveCamera = CheckCameraActivation();
+        if (newActiveCamera != activeVirtualCamera)
+        {
+            activeVirtualCamera = newActiveCamera;
+
+            screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
+        }
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
@@ -44,6 +54,19 @@ public class EnemiesScript : MonoBehaviour
             screenShake.startShake(.5f, 0.7f);
             screenShake = GameObject.FindGameObjectWithTag("BossCam").GetComponent<ScreenShakeController>();
         }
+    }
+    private CinemachineVirtualCamera CheckCameraActivation()
+    {
+        // Verificar o estado de ativação de todas as câmeras na cena
+        CinemachineVirtualCamera[] allVirtualCameras = FindObjectsOfType<CinemachineVirtualCamera>();
+        foreach (CinemachineVirtualCamera virtualCamera in allVirtualCameras)
+        {
+            if (virtualCamera.enabled)
+            {
+                return virtualCamera;
+            }
+        }
+        return null;
     }
     public void TakeDamage(int damage)
     {
@@ -66,11 +89,11 @@ public class EnemiesScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        screenShake.startShake(.5f, 0.7f);
+        
 
         if(screenShake != null)
         {
-
+            screenShake.startShake(.5f, 0.7f);
         }
         if (sceneName == "BossLevel")
         {
@@ -82,50 +105,76 @@ public class EnemiesScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!isEnemyDestroy1Hit)
+        if (collision.collider.CompareTag("Player") && dano > 0)
         {
-            if (collision.collider.CompareTag("Player") && dano > 0)
+            if (!isEnemyDestroy1Hit)
             {
+
                 var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
                 if (player != null)
                 {
+                    player.forceY = 15f;
+                    player.forceX = 100f;
                     player.knockback();
                 }
                 myHealthSystem.Hit(dano);
-            }
-        }
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (isEnemyDestroy1Hit)
-        {
-            if (collision.collider.CompareTag("Player") && dano > 0)
+
+            }
+            else
             {
                 var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
                 if (player != null)
                 {
+                    screenShake.startShake(.5f, 0.4f);
                     Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
                     Destroy(gameObject);
                     player.forceY = 15f;
                     player.forceX = 100f;
-                    player.knockback();                    
-                    myHealthSystem.Hit(dano);               
-                }                
+                    player.knockback();
+                    myHealthSystem.Hit(dano);
+                    
+
+                }
             }
         }
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Player") && dano > 0)
         {
-            var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
-            if (player != null)
+            if (!isEnemyDestroy1Hit)
             {
-                player.knockback();
+
+                var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+                if (player != null)
+                {
+                    player.forceY = 15f;
+                    player.forceX = 100f;
+                    player.knockback();
+                }
+                myHealthSystem.Hit(dano);
+
+
             }
-            myHealthSystem.Hit(dano);
+            else
+            {
+                var player = GameObject.FindGameObjectWithTag("PlayerManager").GetComponentInChildren<knockbackPlayer>();
+                if (player != null)
+                {
+                    screenShake.startShake(.5f, 0.4f);
+                    Instantiate(fxDie, whereToAddEffect.position, Quaternion.identity);
+                    Destroy(gameObject);
+                    player.forceY = 15f;
+                    player.forceX = 100f;
+                    player.knockback();
+                    myHealthSystem.Hit(dano);
+
+
+                }
+            }
         }
 
     }

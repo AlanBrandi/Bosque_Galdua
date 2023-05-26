@@ -28,7 +28,7 @@ public class PointPatrol : MonoBehaviour
     private void OnEnable()
     {
         InvokeRepeating("ChangePoint", 0, repeatRate);
-        enemyGFX.Flip('p');
+       // enemyGFX.Flip('p');
     }
     private void OnDisable()
     {

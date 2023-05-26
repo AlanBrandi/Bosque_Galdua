@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
-    public GameObject panel, lines, icon, lifeBar, objective, npcName;
+    public GameObject panel, lines, icon, lifeBar, objective, npcName, arrows, arrowActivator, talk;
 
     public void dialogueOpen()
     {
         panel.GetComponent<CanvasGroup>().alpha = 0f;
         lines.GetComponent<CanvasGroup>().alpha = 0f;
         icon.GetComponent<CanvasGroup>().alpha = 0f;
+        arrows.GetComponent<CanvasGroup>().alpha = 0f;        
         npcName.GetComponent<CanvasGroup>().alpha = 0f;
         lifeBar.GetComponent<CanvasGroup>().alpha = 1f;
         objective.GetComponent<CanvasGroup>().alpha = 1f;
@@ -40,6 +41,7 @@ public class UIAnimation : MonoBehaviour
         LeanTween.alphaCanvas(panel.GetComponent<CanvasGroup>(), 0f, 1f).setEaseInQuad();        
         LeanTween.alphaCanvas(lines.GetComponent<CanvasGroup>(), 0f, .7f).setEaseInQuad();
         LeanTween.alphaCanvas(icon.GetComponent<CanvasGroup>(), 0f, .2f).setEaseInQuad();
+        LeanTween.alphaCanvas(arrows.GetComponent<CanvasGroup>(), 0f, .2f).setEaseInQuad();
         LeanTween.alphaCanvas(npcName.GetComponent<CanvasGroup>(), 0f, 1f).setEaseInQuad();
 
         LeanTween.alphaCanvas(lifeBar.GetComponent<CanvasGroup>(), 1f, .2f).setEaseInQuad().setDelay(1f);
