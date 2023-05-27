@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -215,6 +216,8 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else if (CanWallJump() && LastPressedJumpTime > 0)
                 {
+                   //AnimHandler.anim.SetBool("WallJump", true);
+                    
                     IsWallJumping = true;
                     IsJumping = false;
                     _isJumpCut = false;
@@ -222,6 +225,7 @@ public class PlayerMovement : MonoBehaviour
 
                     _wallJumpStartTime = Time.time;
                     _lastWallJumpDir = (LastOnWallRightTime > 0) ? -1 : 1;
+                    
 
                     WallJump(_lastWallJumpDir);
                 }
@@ -464,7 +468,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump(int dir)
     {
-
+        if(dir > 0)
+        {
+            GameObject obj = Instantiate(AnimHandler.WallJumpFX, AnimHandler.posWall.transform.position, Quaternion.Euler(-35, 90, 90));
+            Destroy(obj, 1);
+        }
+        else
+        {
+            GameObject obj = Instantiate(AnimHandler.WallJumpFX, AnimHandler.posWall.transform.position, Quaternion.Euler(-135, 90, 90));
+            Destroy(obj, 1);
+        }
         LastPressedJumpTime = 0;
         LastOnGroundTime = 0;
         LastOnWallRightTime = 0;
@@ -563,7 +576,7 @@ public class PlayerMovement : MonoBehaviour
         return LastOnGroundTime > 0 && !IsJumping;
     }
 
-    private bool CanWallJump()
+    public bool CanWallJump()
     {
         return LastPressedJumpTime > 0 && LastOnWallTime > 0 && LastOnGroundTime <= 0 && (!IsWallJumping ||
              (LastOnWallRightTime > 0 && _lastWallJumpDir == 1) || (LastOnWallLeftTime > 0 && _lastWallJumpDir == -1));

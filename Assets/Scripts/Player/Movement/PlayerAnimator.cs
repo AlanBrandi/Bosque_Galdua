@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     private PlayerMovement mov;
-    private Animator anim;
+    public Animator anim;
    // private SpriteRenderer spriteRend;
 
 
@@ -13,8 +13,10 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private GameObject jumpFX;
     [SerializeField] private GameObject landFX;
     public GameObject turnFX;
+    public GameObject WallJumpFX;
     public GameObject slideFX;
     public Transform pos;
+    public Transform posWall;
 
     private Rigidbody2D rb;
 
@@ -51,6 +53,17 @@ public class PlayerAnimator : MonoBehaviour
         {
             anim.SetBool("IsSliding", false);
         }
+
+        if (mov.CanWallJump())
+        {
+           // anim.SetBool("IsJumping", false);
+        }
+
+        if(mov.CanWallJump() && mov.LastPressedJumpTime > 0)
+        {
+            GameObject obj = Instantiate(jumpFX, pos.transform.position, Quaternion.Euler(-90, -180, 90));
+            Destroy(obj, 1);
+        }
     }
 
     private void LateUpdate()
@@ -75,5 +88,9 @@ public class PlayerAnimator : MonoBehaviour
             justLanded = false;
             return;
         }
+    }
+    public void deativateWallJumpAnim()
+    {
+        anim.SetBool("WallJump", false);
     }
 }
