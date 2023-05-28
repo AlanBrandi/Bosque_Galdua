@@ -17,6 +17,8 @@ public class IsPlayerInside : MonoBehaviour
 
     private Collider2D colliderComponent;
 
+    public GameObject monstrinho;
+
 
     private void Start()
     {
@@ -31,6 +33,11 @@ public class IsPlayerInside : MonoBehaviour
         {
             if (collision.CompareTag("Player") && UserInput.instance.playerController.InGame.Debug_E.triggered)
             {
+                if(monstrinho != null)
+                {
+                    EventManager.Instance.ActivateMonstrinhoTrap(monstrinho);
+                }
+                
                 print("player entrou");
                 Instantiate(spawnGO, spawnLocation.position, Quaternion.identity);
                 lever.SetBool("IsLeverOn", true);

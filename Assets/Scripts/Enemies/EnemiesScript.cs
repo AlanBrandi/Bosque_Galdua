@@ -24,6 +24,8 @@ public class EnemiesScript : MonoBehaviour
 
     private CinemachineVirtualCamera activeVirtualCamera;
 
+    public GameObject monstrinhoTrap;
+
 
     private void Awake()
     {
@@ -33,7 +35,7 @@ public class EnemiesScript : MonoBehaviour
     {
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
-        screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
+        //screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
         
 
     }
@@ -88,10 +90,14 @@ public class EnemiesScript : MonoBehaviour
     }
     void Die()
     {
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-
+        if(monstrinhoTrap != null)
+        {
+            EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap);
+        }
 
         if (screenShake != null)
         {

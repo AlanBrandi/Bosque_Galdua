@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     #region STATE PARAMETERS
     public bool IsFacingRight;
     public bool IsJumping { get; private set; }
-    public bool IsWallJumping { get; private set; }
+    public bool IsWallJumping;
     public bool IsDashing { get; private set; }
     public bool IsSliding { get; private set; }   
     public float LastOnGroundTime { get; private set; }
@@ -136,8 +136,12 @@ public class PlayerMovement : MonoBehaviour
 
         #region INPUT HANDLER
 
-        if (_moveInput.x != 0)
-            CheckDirectionToFace(_moveInput.x > 0);
+        if (!IsWallJumping)
+        {
+            if (_moveInput.x != 0)
+                CheckDirectionToFace(_moveInput.x > 0);
+        }
+        
 
         if (UserInput.instance.playerController.InGame.Jump.triggered)
         {
@@ -166,6 +170,10 @@ public class PlayerMovement : MonoBehaviour
                     AnimHandler.justLanded = true;
                 }
                 LastOnGroundTime = Data.coyoteTime;
+            }
+            else
+            {
+                AnimHandler.anim.SetBool("IsJumping", true);
             }
 
             if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
@@ -254,11 +262,21 @@ public class PlayerMovement : MonoBehaviour
         }
         #endregion
 
+
         #region SLIDE CHECKS
         if (CanSlide() && ((LastOnWallLeftTime > 0 && _moveInput.x < 0) || (LastOnWallRightTime > 0 && _moveInput.x > 0)))
-            IsSliding = true;
+        {
+            if (!IsSliding)
+            {
+                IsSliding = true;
+                StartCoroutine(StartSlidingCoroutine());
+            }
+        }
         else
+        {
             IsSliding = false;
+        }
+
         #endregion
 
         #region GRAVITY
@@ -298,10 +316,92 @@ public class PlayerMovement : MonoBehaviour
             SetGravityScale(0);
         }
         #endregion
-    }    
+    }
+    public float particleInterval = 0.1f;
+    private IEnumerator StartSlidingCoroutine()
+    {
+        float timer = 0f;
 
+        while (IsSliding)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= particleInterval)
+            {
+                GameObject obj = Instantiate(AnimHandler.slideFX, AnimHandler.slidePos.transform.position, Quaternion.Euler(-90, 0, 0));
+                Destroy(obj, 1);
+                timer = 0f;
+            }
+
+            yield return null;
+        }
+    }
+    private IEnumerator StartPushingCoroutine()
+    {
+        float timer = 0f;
+        float randomMargin = Random.Range(0.3f, 0.7f);
+
+        while (isPushing)
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= randomMargin)
+            {
+                if (IsFacingRight)
+                {
+                    GameObject obj = Instantiate(AnimHandler.boxFX, AnimHandler.boxPos.transform.position, Quaternion.Euler(-180, 90, 80));
+                    Destroy(obj, 1);
+                }
+                else
+                {
+                    GameObject obj = Instantiate(AnimHandler.boxFX, AnimHandler.boxPos.transform.position, Quaternion.Euler(-180, -90, 80));
+                    Destroy(obj, 1);
+                }
+
+                timer = 0f;
+                randomMargin = Random.Range(0.2f, 0.5f);
+            }
+
+            yield return null;
+        }
+    }
+    bool isPushing;
     private void FixedUpdate()
     {
+        if (AnimHandler.anim.GetBool("IsPushing") && Mathf.Abs(RB.velocity.x) > 0.4)
+        {
+            if (!isPushing)
+            {
+                isPushing = true;
+                StartCoroutine(StartPushingCoroutine());
+            }
+        }
+        else
+        {
+            isPushing = false;
+        }
+
+
+        if (Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer))
+        {
+            if (Physics2D.OverlapBox(_groundCheckPoint.position, _wallCheckSize, 0, _groundLayer))
+            {
+                AnimHandler.anim.SetBool("IsSliding", false);
+
+            }
+            else
+            {
+                AnimHandler.anim.SetBool("IsSliding", true);
+            }
+            
+        }
+        else
+        {
+            AnimHandler.anim.SetBool("IsSliding", false);
+        }
+
+        
+
         if (IsSliding)
         {
             if (canFxSlide)
@@ -424,8 +524,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Turn()
     {
+        
         if (isTurning) return;
-
+        
         isTurning = true;
         IsFacingRight = !IsFacingRight;
 
@@ -489,14 +590,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void WallJump(int dir)
     {
+        AnimHandler.anim.SetBool("WallJump", true);
         if(dir > 0)
         {
-            GameObject obj = Instantiate(AnimHandler.WallJumpFX, AnimHandler.posWall.transform.position, Quaternion.Euler(-35, 90, 90));
+            GameObject obj = Instantiate(AnimHandler.WallJumpFX, AnimHandler.pos.transform.position, Quaternion.Euler(-35, 90, 90));
             Destroy(obj, 1);
         }
         else
         {
-            GameObject obj = Instantiate(AnimHandler.WallJumpFX, AnimHandler.posWall.transform.position, Quaternion.Euler(-135, 90, 90));
+            GameObject obj = Instantiate(AnimHandler.WallJumpFX, AnimHandler.pos.transform.position, Quaternion.Euler(-135, 90, 90));
             Destroy(obj, 1);
         }
         LastPressedJumpTime = 0;
@@ -516,7 +618,14 @@ public class PlayerMovement : MonoBehaviour
 
         RB.AddForce(force, ForceMode2D.Impulse);
         TurnWallJump();
+        StartCoroutine(wallJumpFalse());
         #endregion
+    }
+
+    IEnumerator wallJumpFalse()
+    {
+        yield return new WaitForSeconds(1f);
+        AnimHandler.anim.SetBool("WallJump", false);
     }
     #endregion
 
@@ -588,6 +697,7 @@ public class PlayerMovement : MonoBehaviour
     #region CHECK METHODS
     public void CheckDirectionToFace(bool isMovingRight)
     {
+        
         if (isMovingRight != IsFacingRight)
             Turn();
     }

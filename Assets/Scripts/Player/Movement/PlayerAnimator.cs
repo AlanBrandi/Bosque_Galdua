@@ -15,8 +15,10 @@ public class PlayerAnimator : MonoBehaviour
     public GameObject turnFX;
     public GameObject WallJumpFX;
     public GameObject slideFX;
+    public GameObject boxFX;
     public Transform pos;
-    public Transform posWall;
+    public Transform boxPos;
+    public Transform slidePos;
 
     private Rigidbody2D rb;
 
@@ -39,19 +41,20 @@ public class PlayerAnimator : MonoBehaviour
         if (mov.CanJump())
         {
             anim.SetBool("IsJumping", false);
+            anim.SetBool("IsSliding", false);
         }
         else if (!mov.CanJump() && !mov.IsSliding)
         {
             anim.SetBool("IsJumping", true);
         }
 
-        if (mov.IsSliding)
+        if (mov.IsSliding && !mov.CanJump())
         {
-            anim.SetBool("IsSliding", true);
+           // anim.SetBool("IsSliding", true);
         }
-        else
+        else if(!mov.IsSliding || mov.CanJump())
         {
-            anim.SetBool("IsSliding", false);
+            
         }
 
         if (mov.CanWallJump())
