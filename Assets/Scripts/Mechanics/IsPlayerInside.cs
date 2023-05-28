@@ -15,17 +15,21 @@ public class IsPlayerInside : MonoBehaviour
     public TMP_Text TopText;
     public TMP_Text DownText;
 
+    private Collider2D colliderComponent;
+
+
     private void Start()
     {
         lever = GetComponent<Animator>();
         MyTransform = GetComponent<Transform>();
+        colliderComponent = GetComponent<Collider2D>();
 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (actionExec == false)
         {
-            if (collision.CompareTag("Player"))
+            if (collision.CompareTag("Player") && UserInput.instance.playerController.InGame.Debug_E.triggered)
             {
                 print("player entrou");
                 Instantiate(spawnGO, spawnLocation.position, Quaternion.identity);
@@ -33,7 +37,9 @@ public class IsPlayerInside : MonoBehaviour
                 TopText.text = "Procure a outra Alavanca";
                 DownText.text = "Use o tronco para subir";
                 actionExec = true;
+                Destroy(colliderComponent);
             }
         }
+       
     }
 }

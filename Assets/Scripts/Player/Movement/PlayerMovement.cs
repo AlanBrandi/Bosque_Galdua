@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region STATE PARAMETERS
-    public bool IsFacingRight { get; private set; }
+    public bool IsFacingRight;
     public bool IsJumping { get; private set; }
     public bool IsWallJumping { get; private set; }
     public bool IsDashing { get; private set; }
@@ -341,6 +341,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsSliding)
             Slide();
+
     }
 
     #region INPUT CALLBACKS
@@ -438,7 +439,8 @@ public class PlayerMovement : MonoBehaviour
             }
 
         }
-        else {
+        else
+        {
             targetRotation = Quaternion.Euler(0f, 180f, 0f);
             if (CanJump())
             {
@@ -446,6 +448,25 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(obj, 1);
             }
 
+        }
+    }
+    private void TurnWallJump()
+    {
+        if (isTurning) return;
+
+        isTurning = true;
+        
+
+        if (Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
+        {
+            
+            targetRotation = Quaternion.Euler(0f, 0f, 0f);
+            IsFacingRight = !IsFacingRight;
+        }
+        else if (Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)
+        {
+            targetRotation = Quaternion.Euler(0f, 180f, 0f);
+            IsFacingRight = !IsFacingRight;
         }
     }
     #endregion
@@ -494,7 +515,7 @@ public class PlayerMovement : MonoBehaviour
             force.y -= RB.velocity.y;
 
         RB.AddForce(force, ForceMode2D.Impulse);
-        Turn();
+        TurnWallJump();
         #endregion
     }
     #endregion
