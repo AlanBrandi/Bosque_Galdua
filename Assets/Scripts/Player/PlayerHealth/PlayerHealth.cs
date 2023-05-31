@@ -71,7 +71,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
             Invoke("HitFalse", 1);
             if (_playerLives.CurrentLives <= 0)
             {
-                Die();
+                Invoke(nameof(Die), 0.5f);
             }
             NotifyObservers(_playerLives.CurrentLives, invensibilityTime);
         }
@@ -90,7 +90,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     }
     public int GetLives()
     {
-        return _playerLives.livesMax;
+        return _playerLives.CurrentLives;
     }
     private float ReturnLivesIntensity(int currentLives)
     {

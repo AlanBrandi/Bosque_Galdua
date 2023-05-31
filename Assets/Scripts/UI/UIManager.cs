@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour, IObserver
     private GameObject _gameOver;
     private GameObject _pauseMenuUI;
     private GameObject _lowLife;
+    private GameObject _healthUi;
 
  
     [SerializeField] private GameObject _hitPanel;
@@ -19,15 +20,18 @@ public class UIManager : MonoBehaviour, IObserver
    
     private void Awake()
     {
-        _gameOver = GameObject.Find("GameOver");
+        _gameOver = GameObject.Find("GameOverUI");
         _gameOver.SetActive(false);
 
         _settingsPanel = GameObject.Find("SettingsPanel");
         _settingsPanel.SetActive(false);
 
-        _pauseMenuUI = GameObject.Find("PauseMenu");
+        _pauseMenuUI = GameObject.Find("PauseUi");
         _pauseMenuUI.SetActive(false);
 
+        _healthUi = GameObject.Find("HealthUi");
+        _healthUi.SetActive(true);
+        
         _lowLife = GameObject.Find("LowLifeHud");
         _lowLife.SetActive(false);
     }
@@ -48,6 +52,11 @@ public class UIManager : MonoBehaviour, IObserver
             {
                 Pause();
             }
+        }
+        if (PlayerHealth.Instance.GetLives() <= 0)
+        {
+            CloseAllTabs();
+            _gameOver.SetActive(true);
         }
     }
     private void Pause()
@@ -74,6 +83,15 @@ public class UIManager : MonoBehaviour, IObserver
         {
             _settingsPanel.SetActive(false);
         }
+    }
+
+    private void CloseAllTabs()
+    {
+        _gameOver.SetActive(false);
+        _settingsPanel.SetActive(false);
+        _pauseMenuUI.SetActive(false);
+        _lowLife.SetActive(false);
+        _healthUi.SetActive(false);
     }
     public void LoadMenu()
     {
