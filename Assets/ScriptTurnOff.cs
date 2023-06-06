@@ -10,8 +10,6 @@ public class ScriptTurnOff : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player.GetComponent<Moving>().enabled = false;
-            player.GetComponent<Jumping>().enabled = false;
             player.GetComponent<PlayerAttack>().enabled = false;
             player.GetComponent<PlayerHighAttack>().enabled = false;
         }
