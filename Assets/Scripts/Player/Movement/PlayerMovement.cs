@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         SetGravityScale(Data.gravityScale);
-        IsFacingRight = true;
+       // IsFacingRight = true;
 
     }
 

@@ -278,6 +278,7 @@ Transform:
   - {fileID: 6052550057395682695}
   - {fileID: 3788617019581847873}
   - {fileID: 8131392795377971986}
+  - {fileID: 3377688397594269400}
   m_Father: {fileID: 5134318667658363780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -619,7 +620,9 @@ MonoBehaviour:
   turnFX: {fileID: 3234584074981126610, guid: 4452725096a1277418cf90ac2093f6d4, type: 3}
   WallJumpFX: {fileID: 0}
   slideFX: {fileID: 3234584074981126610, guid: 9474acfc71967a149bde2fd08f8fb88c, type: 3}
+  boxFX: {fileID: 0}
   pos: {fileID: 5134318667970271628}
+  boxPos: {fileID: 0}
   slidePos: {fileID: 0}
   currentVelY: 0
 --- !u!1 &5134318667742419739
@@ -1971,6 +1974,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5134318668555645573}
   m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8354194606385325425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3377688397594269400}
+  m_Layer: 7
+  m_Name: BoxFXPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3377688397594269400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354194606385325425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5, y: -6.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5134318668555645573}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8810308728915510211
 GameObject:
