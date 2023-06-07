@@ -23,56 +23,57 @@ public class InvisibleWalls : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StopAllCoroutines();
-            StartCoroutine(IncreaseAlpha());
+            foreach (SpriteRenderer sr in SR)
+            {
+                StartCoroutine(IncreaseAlpha(sr));
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
+        {   
             StopAllCoroutines();
-            StartCoroutine(LowerAlpha());
-        }
-    }
-
-    IEnumerator LowerAlpha()
-    {
-        foreach (SpriteRenderer sr in SR)
-        {
-            while (sr.color.a > colorAlpha)
+            foreach (SpriteRenderer sr in SR)
             {
-                if (isBackground && sr.color.a > colorAlpha)
-                {
-                    sr.color = new Color(1f, 1f, 1f, (sr.color.a - .01f));
-                }
-                else if (sr.color.a > colorAlpha)
-                {
-                    sr.color = new Color(0f, 0f, 0f, (sr.color.a - .01f));
-                }
-                yield return new WaitForSeconds(.005f);
+                StartCoroutine(LowerAlpha(sr));
             }
         }
     }
 
-    IEnumerator IncreaseAlpha()
+    IEnumerator LowerAlpha(SpriteRenderer sr)
     {
-        foreach (SpriteRenderer sr in SR)
+        //Maybe change both Coroutines for WaitForSecondsRealTime?
+        while (sr.color.a > colorAlpha)
         {
-            for (int i = 0; i < SR.Length; i++)
+            if (isBackground && sr.color.a > colorAlpha)
             {
-                while (sr.color.a < originalAlpha[i])
+                sr.color = new Color(1f, 1f, 1f, (sr.color.a - .01f));
+            }
+            else if (sr.color.a > colorAlpha)
+            {
+                sr.color = new Color(0f, 0f, 0f, (sr.color.a - .01f));
+            }
+            yield return new WaitForSeconds(.005f);
+        }
+    }
+
+    IEnumerator IncreaseAlpha(SpriteRenderer sr)
+    {
+        for (int i = 0; i < SR.Length; i++)
+        {
+            while (sr.color.a < originalAlpha[i])
+            {
+                if (isBackground && sr.color.a < originalAlpha[i])
                 {
-                    if (isBackground && sr.color.a < originalAlpha[i])
-                    {
-                        sr.color = new Color(1f, 1f, 1f, (sr.color.a + .01f));
-                    }
-                    else if (sr.color.a < originalAlpha[i])
-                    {
-                        sr.color = new Color(0f, 0f, 0f, (sr.color.a + .01f));
-                    }
-                    yield return new WaitForSeconds(.005f);
+                    sr.color = new Color(1f, 1f, 1f, (sr.color.a + .01f));
                 }
+                else if (sr.color.a < originalAlpha[i])
+                {
+                    sr.color = new Color(0f, 0f, 0f, (sr.color.a + .01f));
+                }
+                yield return new WaitForSeconds(.005f);
             }
         }
     }

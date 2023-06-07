@@ -5,12 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Starter : MonoBehaviour
 {
-    SettingsPanel settingsPanel;
+    [SerializeField] SettingsPanel settingsPanel;
     Scene sceneName;
     readonly string tutorial = "Tutorial";
     void Awake()
     {
-        settingsPanel = GameObject.FindObjectOfType<SettingsPanel>();
         sceneName = SceneManager.GetActiveScene();
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
         Application.targetFrameRate = 0;

@@ -7,33 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour, IObserver
 {
-    private GameObject _settingsPanel;
-    private GameObject _gameOver;
-    private GameObject _pauseMenuUI;
-    private GameObject _lowLife;
-    private GameObject _healthUi;
+    [Header("UI")]
+    [SerializeField] private GameObject _settingsPanel;
+    [SerializeField] private GameObject _gameOver, _pauseMenuUI, _lowLife, _healthUI;
 
- 
+    [Header("Feedback")]
     [SerializeField] private GameObject _hitPanel;
 
     private static bool GameIsPaused = false;
-   
-    private void Awake()
+
+    private void Start()
     {
-        _gameOver = GameObject.Find("GameOverUI");
-        _gameOver.SetActive(false);
-
-        _settingsPanel = GameObject.Find("SettingsPanel");
-        _settingsPanel.SetActive(false);
-
-        _pauseMenuUI = GameObject.Find("PauseUi");
-        _pauseMenuUI.SetActive(false);
-
-        _healthUi = GameObject.Find("HealthUi");
-        _healthUi.SetActive(true);
-        
-        _lowLife = GameObject.Find("LowLifeHud");
-        _lowLife.SetActive(false);
+        PlayerHealth.Instance.SetLives(6);
     }
 
     private void Update()
@@ -91,7 +76,7 @@ public class UIManager : MonoBehaviour, IObserver
         _settingsPanel.SetActive(false);
         _pauseMenuUI.SetActive(false);
         _lowLife.SetActive(false);
-        _healthUi.SetActive(false);
+        _healthUI.SetActive(false);
     }
     public void LoadMenu()
     {
