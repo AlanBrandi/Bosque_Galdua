@@ -29,6 +29,7 @@ public class UserInput : MonoBehaviour
 
     private void OnDisable()
     {
-        playerController.Disable();
+        //Pausa o jogo após recomeçar a cena da morte.
+        //playerController.Disable();
     }
 }

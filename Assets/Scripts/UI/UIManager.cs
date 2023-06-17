@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour, IObserver
 {
     [Header("UI")]
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private GameObject _gameOver, _pauseMenuUI, _lowLife, _healthUI;
+    [SerializeField] private LevelChanger _levelChanger;
 
     [Header("Feedback")]
     [SerializeField] private GameObject _hitPanel;
@@ -18,31 +14,39 @@ public class UIManager : MonoBehaviour, IObserver
 
     private void Start()
     {
-        PlayerHealth.Instance.SetLives(6);
+        if (PlayerHealth.Instance != null)
+        {
+            PlayerHealth.Instance.SetLives(6);
+        }
     }
 
     private void Update()
     {
-        if (UserInput.instance.playerController.InGame.Escape.triggered)
+        //if (UserInput.instance != null)
         {
-            if (GameIsPaused == true && _settingsPanel.activeInHierarchy == false)
+            if (UserInput.instance != null && UserInput.instance.playerController.InGame.Escape.triggered)
             {
-                Resume();
+                if (GameIsPaused == true && _settingsPanel.activeInHierarchy == false)
+                {
+                    Resume();
+                }
+                else if (GameIsPaused == true && _settingsPanel.activeInHierarchy == true)
+                {
+                    ToggleSettings();
+                }
+                else
+                {
+                    Pause();
+                }
             }
-            else if (GameIsPaused == true && _settingsPanel.activeInHierarchy == true)
+            //Colocar isso fora do update. Fazer um CheckLives() toda vez que o jogador levar dano.
+            if (PlayerHealth.Instance != null && PlayerHealth.Instance.GetLives() <= 0)
             {
-                ToggleSettings();
-            }
-            else
-            {
-                Pause();
+                CloseAllTabs();
+                _gameOver.SetActive(true);
             }
         }
-        if (PlayerHealth.Instance.GetLives() <= 0)
-        {
-            CloseAllTabs();
-            _gameOver.SetActive(true);
-        }
+
     }
     private void Pause()
     {
@@ -54,22 +58,14 @@ public class UIManager : MonoBehaviour, IObserver
     public void Resume()
     {
         _pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1;
         AudioListener.pause = false;
         GameIsPaused = false;
     }
     public void ToggleSettings()
     {
-        if (_settingsPanel.activeInHierarchy == false)
-        {
-            _settingsPanel.SetActive(true);
-        }
-        else
-        {
-            _settingsPanel.SetActive(false);
-        }
+        _settingsPanel.SetActive(!_settingsPanel.activeInHierarchy);
     }
-
     private void CloseAllTabs()
     {
         _gameOver.SetActive(false);
@@ -80,20 +76,19 @@ public class UIManager : MonoBehaviour, IObserver
     }
     public void LoadMenu()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene("Menu");
+        _levelChanger.FadeToLevel("Menu");
     }
     public void Sair()
-     { 
+    {
         Application.Quit();
-     }
+    }
     public void NotifyPlayerHit(int currentLives, float timeRemain)
     {
-        if(currentLives <= 3)
+        if (currentLives <= 3)
         {
             _lowLife.SetActive(true);
         }
-        else if(PlayerHealth.Instance.GetLives() > 3)
+        else if (PlayerHealth.Instance.GetLives() > 3)
         {
             _lowLife.SetActive(false);
         }

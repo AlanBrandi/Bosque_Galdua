@@ -5,9 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour
 {
+    public static LevelChanger Instance { get; private set; }
+
     Animator animator;
     string levelToLoad;
-    Scene currentScene;
+    [SerializeField] private float timer;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -16,19 +31,23 @@ public class LevelChanger : MonoBehaviour
 
     public void FadeToLevel(string levelName)
     {
+        Debug.Log("Jogma");
         levelToLoad = levelName;
         animator.SetTrigger("FadeOut");
     }
 
     public void RestartFade()
     {
-        currentScene = SceneManager.GetActiveScene();
         PlayerHealth.Instance.SetLives(PlayerHealth.Instance.GetLives());
-        levelToLoad = currentScene.name;
+        levelToLoad = SceneManager.GetActiveScene().name;
         animator.SetTrigger("FadeOut");
     }
 
     public void OnFadeComplete()
+    {
+        Invoke(nameof(StartFadeComplete), timer);
+    }
+    private void StartFadeComplete()
     {
         SceneManager.LoadScene(levelToLoad);
     }

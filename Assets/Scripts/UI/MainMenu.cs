@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            settingsPanel.SetActive(false);
+            settingsPanel.GetComponent<Animator>().SetTrigger("ExitSettings");
         }
     }
 

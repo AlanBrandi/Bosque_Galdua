@@ -8,24 +8,28 @@ public class DebugCodes : MonoBehaviour
     float maxTimeDif = 1;
     float timeDif;
     List<string> patterns = new List<string> { "ShiftH", "ShiftD", "ShiftK" };
-
-    TMP_Text fpsText;
     public float deltaTime;
-    GameObject FPS;
-    GameObject player;
-    PlayerHealth playerHelth;
 
+    [SerializeField] TMP_Text fpsText;
+    [SerializeField] GameObject FPS;
+    GameObject player;
+    PlayerHealth playerHealth;
     AudioSource audioSource;
 
     private void Awake()
     {
-        fpsText = GameObject.Find("FPS").GetComponent<TMP_Text>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerHelth = player.GetComponent<PlayerHealth>();
-        audioSource = GetComponent<AudioSource>();
-        timeDif = maxTimeDif;
-        FPS = GameObject.Find("FPS");
-        FPS.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("PlayerManager");
+        if (player == null)
+        {
+            Debug.LogWarning("PlayerManager not found. Turning DebugCodes off.");
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+            audioSource = GetComponent<AudioSource>();
+            timeDif = maxTimeDif;
+        }
     }
 
     private void Update()
@@ -39,18 +43,18 @@ public class DebugCodes : MonoBehaviour
         if (UserInput.instance.playerController.InGame.Debug_Shift.triggered)
         {
             AddToBuffer("Shift");
-            if (UserInput.instance.playerController.InGame.Debug_H.triggered)
-            {
-                AddToBuffer("H");
-            }
-            if (UserInput.instance.playerController.InGame.Debug_D.triggered)
-            {
-                AddToBuffer("D");
-            }
-            if (UserInput.instance.playerController.InGame.Debug_K.triggered)
-            {
-                AddToBuffer("K");
-            }
+        }
+        if (UserInput.instance.playerController.InGame.Debug_H.triggered)
+        {
+            AddToBuffer("H");
+        }
+        if (UserInput.instance.playerController.InGame.Debug_D.triggered)
+        {
+            AddToBuffer("D");
+        }
+        if (UserInput.instance.playerController.InGame.Debug_K.triggered)
+        {
+            AddToBuffer("K");
         }
         else if (UserInput.instance.playerController.InGame.Debug_F3.triggered)
         {
@@ -75,7 +79,7 @@ public class DebugCodes : MonoBehaviour
             pz.z = 0;
             player.transform.position = pz;*/
         }
-        if (FPS != null && FPS.activeInHierarchy == true)
+        if (FPS != null && FPS.activeInHierarchy && Time.timeScale > 0f)
         {
             deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
             float fps = 1.0f / deltaTime;
@@ -96,22 +100,22 @@ public class DebugCodes : MonoBehaviour
         {
             Debug.Log("+2 Health");
             audioSource.Play();
-            playerHelth.AddLives(2);
+            playerHealth.AddLives(2);
             buffer = "";
         }
         if (buffer.EndsWith(patterns[1]))
         {
             Debug.Log("-3 Health");
             audioSource.Play();
-            playerHelth.Hit(3);
+            playerHealth.Hit(3);
             buffer = "";
-            
+
         }
         if (buffer.EndsWith(patterns[2]))
         {
             Debug.Log("Killing all enemies");
             audioSource.Play();
-            List<EnemiesScript> tmpEnemies= new List<EnemiesScript>();
+            List<EnemiesScript> tmpEnemies = new List<EnemiesScript>();
             tmpEnemies.AddRange(GameObject.FindObjectsOfType<EnemiesScript>());
             foreach (EnemiesScript enemies in tmpEnemies)
             {

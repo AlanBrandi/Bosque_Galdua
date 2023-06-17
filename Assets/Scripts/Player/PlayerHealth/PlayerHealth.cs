@@ -90,7 +90,6 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     }
     public int GetLives()
     {
-        Debug.Log(_playerLives.CurrentLives);
         return _playerLives.CurrentLives;
     }
     private float ReturnLivesIntensity(int currentLives)
