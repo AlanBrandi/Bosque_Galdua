@@ -10,7 +10,7 @@ public class TransformParent : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerManager = GameObject.FindObjectOfType<MyHealthSystem>().transform;
+        playerManager = GameObject.FindGameObjectWithTag("PlayerManager").transform;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

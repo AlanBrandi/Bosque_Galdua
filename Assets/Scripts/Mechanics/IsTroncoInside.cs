@@ -6,14 +6,12 @@ using UnityEngine.UI;
 
 public class IsTroncoInside : MonoBehaviour
 {
-    GameObject WrongSide;
+    [SerializeField] private GameObject WrongSide;
     Animator WSAnim;
 
     private void Start()
     {
-        WrongSide = GameObject.Find("WrongSide");
         WSAnim = WrongSide.GetComponent<Animator>();
-        WrongSide.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
