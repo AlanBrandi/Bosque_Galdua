@@ -10,6 +10,7 @@ public class SpawnBarrel : MonoBehaviour
     private float NextSpawn;
     private Transform where;
     AudioSource barrelLand;
+    public int selfDestroyTimer;
 
     private void Awake()
     {
@@ -26,7 +27,8 @@ public class SpawnBarrel : MonoBehaviour
         {
             NextSpawn = Time.time + SpawnRate;
             WhereToSpawn = new Vector2((where.position.x), (where.position.y));
-            Instantiate(Enemy, WhereToSpawn, Quaternion.identity);
+            GameObject enem = Instantiate(Enemy, WhereToSpawn, Quaternion.identity);
+            Destroy(enem, selfDestroyTimer);
         }
     }
 }

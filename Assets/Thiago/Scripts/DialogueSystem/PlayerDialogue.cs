@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,20 @@ public class PlayerDialogue : MonoBehaviour
                 interectible.Interect(this);
             }
         }        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Interact"))
+        {
+            Debug.Log("AAAAAAAAAA");
+            dialogueUi = other.GetComponentInChildren<DialogueUI>();
+        }
     }
 
     private bool canMoveAgain;

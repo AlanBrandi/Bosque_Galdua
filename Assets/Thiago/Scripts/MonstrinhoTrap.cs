@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MonstrinhoTrap : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class MonstrinhoTrap : MonoBehaviour
     public GameObject light2;
     private Animator anim;
     private Monstrinho monst;
+    private Collider2D col;
 
     private void OnEnable()
     {
@@ -21,7 +23,9 @@ public class MonstrinhoTrap : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        col = GetComponent<Collider2D>();
         monst = GetComponent<Monstrinho>();
+        col.enabled = false;
     }
 
     private void Update()
@@ -37,13 +41,12 @@ public class MonstrinhoTrap : MonoBehaviour
         eyeCloser.SetActive(false);
         light1.SetActive(true);
         light2.SetActive(true);
-        anim.enabled = true;
-        monst.enabled = true;
+        StartCoroutine(monstrinhoAttack());
     }
 
     private void OnMonstrinhoActivated(GameObject obj, bool activate)
     {
-        // Verifique se o MonstrinhoTrap é o Monstrinho específico relacionado ao inimigo ou à alavanca
+        // Verifique se o MonstrinhoTrap ï¿½ o Monstrinho especï¿½fico relacionado ao inimigo ou ï¿½ alavanca
         if (gameObject == obj)
         {
             if (activate)
@@ -52,7 +55,6 @@ public class MonstrinhoTrap : MonoBehaviour
             }
             else
             {
-                // Desativar o MonstrinhoTrap
                 eyeCloser.SetActive(true);
                 light1.SetActive(false);
                 light2.SetActive(false);
@@ -61,4 +63,15 @@ public class MonstrinhoTrap : MonoBehaviour
             }
         }
     }
+
+    IEnumerator monstrinhoAttack()
+    {
+        yield return new WaitForSeconds(.5f);
+        col.enabled = true;
+        anim.enabled = true;
+        monst.enabled = true;
+        
+        
+    }
+    
 }

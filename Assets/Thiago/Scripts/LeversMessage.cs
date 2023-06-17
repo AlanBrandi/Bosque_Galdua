@@ -6,6 +6,7 @@ public class LeversMessage : MonoBehaviour
 {
     public GameObject talk;
     public GameObject arrowActivator;
+    public bool canShowAgain = true;
     private void Start()
     {
         tween = LeanTween.moveLocalY(arrowActivator, 14f, 1f).setEaseInQuad().setLoopPingPong();
@@ -15,7 +16,7 @@ public class LeversMessage : MonoBehaviour
     LTDescr tweenalpha2;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canShowAgain)
         {
             if (arrowActivator && tweenalpha1 != null)
             {
@@ -48,7 +49,7 @@ public class LeversMessage : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && canShowAgain)
         {
 
 
@@ -62,7 +63,7 @@ public class LeversMessage : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && canShowAgain)
         {
             if (UserInput.instance.playerController.InGame.Debug_E.triggered)
             {                
@@ -74,6 +75,7 @@ public class LeversMessage : MonoBehaviour
 
                 tweenalpha1 = LeanTween.alphaCanvas(arrowActivator.GetComponent<CanvasGroup>(), 0f, .7f).setEaseInQuad();
                 tweenalpha2 = LeanTween.alphaCanvas(talk.GetComponent<CanvasGroup>(), 0f, .7f).setEaseInQuad();
+                canShowAgain = false;
             }
 
         }

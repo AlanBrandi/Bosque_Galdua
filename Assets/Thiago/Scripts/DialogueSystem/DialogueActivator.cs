@@ -90,7 +90,8 @@ public class DialogueActivator : MonoBehaviour, Interectible
                 break;
             }
         }
-        
+       // tweenalpha1 = LeanTween.alphaCanvas(anim.arrowActivator.GetComponent<CanvasGroup>(), 0f, .7f).setEaseInQuad();
+       // tweenalpha2 = LeanTween.alphaCanvas(anim.talk.GetComponent<CanvasGroup>(), 0f, .7f).setEaseInQuad();
         player.DialogueUI.ShowDialogue(dialogueObject);
     }
 }
