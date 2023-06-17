@@ -9,9 +9,11 @@ public class LevelChanger : MonoBehaviour
     string levelToLoad;
     Scene currentScene;
 
+    [SerializeField] private float timer;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        
     }
 
     public void FadeToLevel(string levelName)
@@ -29,6 +31,11 @@ public class LevelChanger : MonoBehaviour
     }
 
     public void OnFadeComplete()
+    {
+    Invoke(nameof(StartFadeComplete), timer);
+    }
+
+    private void StartFadeComplete()
     {
         SceneManager.LoadScene(levelToLoad);
     }
