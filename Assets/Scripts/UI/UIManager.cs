@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour, IObserver
 {
@@ -7,9 +10,20 @@ public class UIManager : MonoBehaviour, IObserver
     [SerializeField] private GameObject _gameOver, _pauseMenuUI, _lowLife, _healthUI;
     [SerializeField] private LevelChanger _levelChanger;
 
+    
+    [Header("AudioMixer")]
+    [SerializeField] private AudioMixerSnapshot OpenMenu;
+    [SerializeField] private AudioMixerSnapshot ClosedMenu;
+    
     [Header("Feedback")]
     [SerializeField] private GameObject _hitPanel;
 
+    [Header("EventSystem")] 
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private GameObject go1;
+    [SerializeField] private GameObject go2;
+
+    [Header("EventSystem")]
     private static bool GameIsPaused = false;
 
     private void Start()
@@ -50,21 +64,24 @@ public class UIManager : MonoBehaviour, IObserver
     }
     private void Pause()
     {
+        OpenMenu.TransitionTo(0f);
         _pauseMenuUI.SetActive(true);
+        eventSystem.SetSelectedGameObject(go1);
         Time.timeScale = 0;
-        AudioListener.pause = true;
         GameIsPaused = true;
     }
     public void Resume()
     {
+        ClosedMenu.TransitionTo(0f);
         _pauseMenuUI.SetActive(false);
+        eventSystem.SetSelectedGameObject(null);
         Time.timeScale = 1;
-        AudioListener.pause = false;
         GameIsPaused = false;
     }
     public void ToggleSettings()
     {
         _settingsPanel.SetActive(!_settingsPanel.activeInHierarchy);
+        eventSystem.SetSelectedGameObject(go2);
     }
     private void CloseAllTabs()
     {
