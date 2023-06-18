@@ -81,7 +81,14 @@ public class UIManager : MonoBehaviour, IObserver
     public void ToggleSettings()
     {
         _settingsPanel.SetActive(!_settingsPanel.activeInHierarchy);
-        eventSystem.SetSelectedGameObject(go2);
+        if (_settingsPanel.activeInHierarchy)
+        {
+            eventSystem.SetSelectedGameObject(go1);
+        }
+        else
+        {
+            eventSystem.SetSelectedGameObject(go2);
+        }
     }
     private void CloseAllTabs()
     {
