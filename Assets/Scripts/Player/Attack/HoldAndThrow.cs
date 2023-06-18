@@ -94,6 +94,8 @@ public class HoldAndThrow : MonoBehaviour
                 {
                     FixedGO = objectGO;
                     objectGO.transform.SetParent(boxHolder.transform);
+                    objectGO.transform.rotation = new Quaternion(objectGO.transform.rotation.x, 0,
+                        objectGO.transform.rotation.z, 0);
                     objectGO.transform.position = boxHolder.transform.position;
                     objectGO.GetComponent<Rigidbody2D>().isKinematic = true;
                     objectGO.GetComponent<PolygonCollider2D>().enabled = false;
@@ -109,6 +111,8 @@ public class HoldAndThrow : MonoBehaviour
         Debug.Log("Entrou em jogar");
         FixedGO.GetComponent<PolygonCollider2D>().enabled = true;
         FixedGO.transform.parent = null;
+        FixedGO.transform.rotation = new Quaternion(objectGO.transform.rotation.x, 0,
+            objectGO.transform.rotation.z, 0);
         FixedGO.GetComponent<Rigidbody2D>().isKinematic = false;
         FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.right * force);
         FixedGO.GetComponent<Rigidbody2D>().AddForce(boxHolder.transform.up * 1000);
