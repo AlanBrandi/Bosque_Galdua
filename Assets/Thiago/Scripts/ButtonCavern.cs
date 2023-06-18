@@ -11,6 +11,8 @@ public class ButtonCavern : MonoBehaviour
     public GameObject monstrinho2;
     public GameObject mole;
     public PlayerMovement player;
+
+    public GameObject elevatorPressed;
     
 
     private void Start()
@@ -39,6 +41,11 @@ public class ButtonCavern : MonoBehaviour
             if (door != null)
             {
                 Destroy(door.gameObject);
+            }
+
+            if (elevatorPressed != null)
+            {
+                elevatorPressed.SetActive(true);
             }
             
             Destroy(GetComponent<ButtonCavern>());
