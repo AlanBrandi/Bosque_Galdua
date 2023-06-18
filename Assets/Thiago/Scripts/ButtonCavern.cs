@@ -10,6 +10,7 @@ public class ButtonCavern : MonoBehaviour
     public GameObject monstrinho1;
     public GameObject monstrinho2;
     public GameObject mole;
+    public PlayerMovement player;
     
 
     private void Start()
@@ -17,9 +18,14 @@ public class ButtonCavern : MonoBehaviour
         audio = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        Debug.Log(player.IsJumping);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && player.isFLoating)
         {
             if(monstrinho1 != null)
             {

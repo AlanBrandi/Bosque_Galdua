@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
        // IsFacingRight = true;
 
     }
-
+    public bool isFLoating;
     private void Update()
 
     {
@@ -160,6 +160,8 @@ public class PlayerMovement : MonoBehaviour
         #endregion
 
         #region COLLISION CHECKS
+        
+            
         if (!IsDashing && !IsJumping)
         {
 
@@ -170,9 +172,11 @@ public class PlayerMovement : MonoBehaviour
                     AnimHandler.justLanded = true;
                 }
                 LastOnGroundTime = Data.coyoteTime;
+                isFLoating = false;
             }
             else
             {
+                isFLoating = true;
                 AnimHandler.anim.SetBool("IsJumping", true);
             }
 
