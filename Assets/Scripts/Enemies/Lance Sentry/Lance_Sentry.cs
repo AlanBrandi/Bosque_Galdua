@@ -31,6 +31,8 @@ public class Lance_Sentry : MonoBehaviour
     private AIPlayerDetector detector;
     private PatrolFlyEnemy patrol;
 
+    public Animator anim;
+    
     private bool IsDashing { get { return isDashing; } }
     private bool IsShooting { get { return isShooting; } }
     private bool IsDashingLow { get { return isDashingLow; } }
@@ -63,7 +65,7 @@ public class Lance_Sentry : MonoBehaviour
         if (canSlowDown && transform.position.y > targetY && !isFlying)
         {
             enemyRb.AddForce(-enemyRb.velocity.normalized * desaceleracao, ForceMode2D.Force);
-            float tolerance = 0.1f; // tolerância de 10% da velocidade atual
+            float tolerance = 0.1f; // tolerï¿½ncia de 10% da velocidade atual
             if (Mathf.Abs(enemyRb.velocity.y) <= Mathf.Abs(enemyRb.velocity.magnitude * tolerance))
             {
                 canSlowDown = false;
@@ -114,6 +116,18 @@ public class Lance_Sentry : MonoBehaviour
     }
     public void ThrowSpear()
     {
+        
+    }
+
+    void Spit()
+    {
+        anim.SetTrigger("Spit");
+        StartCoroutine(spitAction());
+    }
+
+    IEnumerator spitAction()
+    {
+        yield return new WaitForSeconds(1f);
         playerDirection = player.transform.position.x - transform.position.x;
 
         if (playerDirection > 0)
@@ -132,6 +146,19 @@ public class Lance_Sentry : MonoBehaviour
         Vector2 direction = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(direction * forceMagnitude, ForceMode2D.Impulse);
         isDashing = false;
+        if (stopAnim)
+        {
+            anim.SetTrigger("Swoop");
+            stopAnim = false;
+        }
+        
+        StartCoroutine(dashAnimDelay());
+    }
+
+    IEnumerator dashAnimDelay()
+    {
+        yield return new WaitForSeconds(.5f);
+        
     }
     public void LowDash()
     {
@@ -141,13 +168,14 @@ public class Lance_Sentry : MonoBehaviour
     {
         int randomState = Random.Range(0, 3);
 
-
+        stopAnim = true;
         if (randomState == 0)
         {
             isDashing = true;
             forceMagnitude = 10;
             attackDelay = 2f;
             nextAttack = attackDelay;
+            
             DashOnPlayer();
         }
         else if (randomState == 1)
@@ -155,7 +183,7 @@ public class Lance_Sentry : MonoBehaviour
             isShooting = true;
             attackDelay = 2f;
             nextAttack = attackDelay;
-            ThrowSpear();
+            Spit();
         }
         else if (randomState == 2)
         {
@@ -163,13 +191,21 @@ public class Lance_Sentry : MonoBehaviour
             attackDelay = 6f;
             nextAttack = attackDelay;
             forceMagnitude = 1;
+            
             LowDashing();
         }
     }
+
+    private bool stopAnim = true;
     IEnumerator LowDashing()
     {
         yield return new WaitForSeconds(2f);
-
+        if (stopAnim)
+        {
+            anim.SetTrigger("Dash");
+            stopAnim = false;
+        }
+        
         Vector2 direction = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(direction * forceMagnitude, ForceMode2D.Impulse);
         isDashingLow = false;
@@ -181,6 +217,7 @@ public class Lance_Sentry : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+      
         enemyRb.velocity = Vector2.zero;
         float newY = Mathf.MoveTowards(transform.position.y, targetY, dashEnemySpeed * Time.deltaTime);
         transform.position = new Vector2(transform.position.x, newY);
@@ -189,6 +226,7 @@ public class Lance_Sentry : MonoBehaviour
     {
         canSlowDown = false;
         yield return new WaitForSeconds(0.5f);
+        
         canSlowDown = true;
     }
 }

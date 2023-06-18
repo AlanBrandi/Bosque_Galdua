@@ -19,6 +19,10 @@ public class EnemiesScript : MonoBehaviour
     public ScreenShakeController screenShake;
 
     public SimpleFlash flash;
+    public SimpleFlash flash2;
+    public SimpleFlash flash3;
+    public SimpleFlash flash4;
+    public SimpleFlash flash5;
 
     public bool isEnemyDestroy1Hit;
 
@@ -84,6 +88,22 @@ public class EnemiesScript : MonoBehaviour
         {
             flash.Flash();
             screenShake.startShake(.35f, 0.5f);
+        }
+        if (flash2 != null)
+        {
+            flash2.Flash();
+        }
+        if (flash3 != null)
+        {
+            flash3.Flash();
+        }
+        if (flash4 != null)
+        {
+            flash4.Flash();
+        }
+        if (flash5 != null)
+        {
+            flash5.Flash();
         }
         Debug.Log("Damage!");
         if (currentHealth <= 0)
