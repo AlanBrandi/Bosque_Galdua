@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Starter : MonoBehaviour
 {
     [SerializeField] SettingsPanel settingsPanel;
-    Scene sceneName;
-    readonly string tutorial = "Tutorial";
+    //Scene sceneName;
+    //readonly string tutorial = "Tutorial";
     void Awake()
     {
-        sceneName = SceneManager.GetActiveScene();
+        //sceneName = SceneManager.GetActiveScene();
         QualitySettings.vSyncCount = 0;  // VSync must be disabled
         Application.targetFrameRate = 0;
     }

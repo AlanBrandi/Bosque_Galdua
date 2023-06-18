@@ -134,6 +134,16 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8131893120838664268, guid: 76355acb31cde584b9b96dc73daa6978, type: 3}
   m_PrefabInstance: {fileID: 3677588435327007418}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4887287984897646441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8131893120034661843, guid: 76355acb31cde584b9b96dc73daa6978, type: 3}
+  m_PrefabInstance: {fileID: 3677588435327007418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4887287985021145306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8131893119914895968, guid: 76355acb31cde584b9b96dc73daa6978, type: 3}
+  m_PrefabInstance: {fileID: 3677588435327007418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4887287985914980965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,13 +151,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4887287985238978123}
     m_Modifications:
+    - target: {fileID: 159431297218981945, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_TagString
+      value: Interact
+      objectReference: {fileID: 0}
     - target: {fileID: 1546938530025363637, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
       propertyPath: anim
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1546938530025363637, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: dialogueObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dd94839aaa95074ba344542202521cb, type: 2}
     - target: {fileID: 1546938530025363639, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
       propertyPath: m_Name
       value: Amigo mole Amigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1546938530025363639, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_TagString
+      value: Interact
       objectReference: {fileID: 0}
     - target: {fileID: 1546938530025365322, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
       propertyPath: m_RootOrder
@@ -193,9 +215,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2375492489676225812, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: talk
+      value: 
+      objectReference: {fileID: 4887287985021145306}
+    - target: {fileID: 2375492489676225812, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: arrowActivator
+      value: 
+      objectReference: {fileID: 4887287984897646441}
     - target: {fileID: 3310451120660880406, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686747372835016081, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686747372835016081, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686747372835016081, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796305356500082039, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796305356500082039, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796305356500082039, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -374
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 588d9afc13fcfe247926fb1c2aa8506f, type: 3}

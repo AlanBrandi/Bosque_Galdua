@@ -4531,6 +4531,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 301551726, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4576,6 +4580,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247042, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360406238044247042, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: settingsPanel
       value: 
       objectReference: {fileID: 8909922707728928353}
@@ -4583,31 +4591,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Starter
       objectReference: {fileID: 0}
+    - target: {fileID: 3360406238044247043, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
---- !u!1 &1977809673 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3360406238044247043, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
-  m_PrefabInstance: {fileID: 1977809672}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1977809674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1977809673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3889f8a826a14c4aa46616b0d6a8b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listGame:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1993769410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6747,9 +6736,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7094320412149454843}
+  - {fileID: 317296770997345587}
+  - {fileID: 8820324435291202308}
 --- !u!224 &8913273977279164570
 RectTransform:
   m_ObjectHideFlags: 0

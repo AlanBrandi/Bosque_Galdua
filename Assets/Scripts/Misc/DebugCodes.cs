@@ -22,7 +22,7 @@ public class DebugCodes : MonoBehaviour
         if (player == null)
         {
             Debug.LogWarning("PlayerManager not found. Turning DebugCodes off.");
-            gameObject.SetActive(false);
+            gameObject.GetComponent<DebugCodes>().enabled = false;
         }
         else
         {
