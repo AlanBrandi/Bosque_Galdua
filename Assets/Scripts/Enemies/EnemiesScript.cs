@@ -25,6 +25,10 @@ public class EnemiesScript : MonoBehaviour
     private CinemachineVirtualCamera activeVirtualCamera;
 
     public GameObject monstrinhoTrap;
+    public GameObject monstrinhoTrap2;
+    public GameObject monstrinhoTrap3;
+    public GameObject monstrinhoTrap4;
+    public GameObject monstrinhoTrap5;
 
 
     private void Awake()
@@ -61,7 +65,7 @@ public class EnemiesScript : MonoBehaviour
     }
     private CinemachineVirtualCamera CheckCameraActivation()
     {
-        // Verificar o estado de ativação de todas as câmeras na cena
+        // Verificar o estado de ativaï¿½ï¿½o de todas as cï¿½meras na cena
         CinemachineVirtualCamera[] allVirtualCameras = FindObjectsOfType<CinemachineVirtualCamera>();
         foreach (CinemachineVirtualCamera virtualCamera in allVirtualCameras)
         {
@@ -97,6 +101,22 @@ public class EnemiesScript : MonoBehaviour
         if(monstrinhoTrap != null)
         {
             EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap);
+        }
+        if(monstrinhoTrap2 != null)
+        {
+            EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap2);
+        }
+        if(monstrinhoTrap3 != null)
+        {
+            EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap3);
+        }
+        if(monstrinhoTrap4 != null)
+        {
+            EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap4);
+        }
+        if(monstrinhoTrap5 != null)
+        {
+            EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap5);
         }
 
         if (screenShake != null)

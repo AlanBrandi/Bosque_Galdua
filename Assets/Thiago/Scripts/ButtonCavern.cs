@@ -13,6 +13,7 @@ public class ButtonCavern : MonoBehaviour
     public PlayerMovement player;
 
     public GameObject elevatorPressed;
+    public GameObject totem;
     
 
     private void Start()
@@ -46,6 +47,11 @@ public class ButtonCavern : MonoBehaviour
             if (elevatorPressed != null)
             {
                 elevatorPressed.SetActive(true);
+            }
+
+            if (totem != null)
+            {
+                totem.SetActive(true);
             }
             
             Destroy(GetComponent<ButtonCavern>());
