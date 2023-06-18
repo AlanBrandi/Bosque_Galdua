@@ -18,11 +18,6 @@ public class ButtonCavern : MonoBehaviour
         audio = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        Debug.Log(player.IsJumping);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && player.isFLoating)
@@ -36,8 +31,16 @@ public class ButtonCavern : MonoBehaviour
                 EventManager.Instance.ActivateMonstrinhoTrap(monstrinho2);
             }
             audio.Play();
-            Destroy(mole);
-            Destroy(door.gameObject);
+            if (mole != null)
+            {
+                Destroy(mole);
+            }
+
+            if (door != null)
+            {
+                Destroy(door.gameObject);
+            }
+            
             Destroy(GetComponent<ButtonCavern>());
         }
     }
