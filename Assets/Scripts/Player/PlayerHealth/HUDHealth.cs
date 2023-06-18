@@ -1,38 +1,33 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HUDHealth : MonoBehaviour
 {
-    [SerializeField] private GameObject[] healthBar;
+    public GameObject[] healthBars;
+    private int currentHealth;
 
-    private void Update()
+    void Start()
     {
-        switch (PlayerHealth.Instance.GetLives())
+        currentHealth = PlayerHealth.Instance.GetLives();
+        UpdateHealthBars();
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        currentHealth -= damageAmount;
+        UpdateHealthBars();
+    }
+
+    public void Heal(int healAmount)
+    {
+        currentHealth += healAmount;
+        UpdateHealthBars();
+    }
+
+    private void UpdateHealthBars()
+    {
+        for (int i = 0; i < healthBars.Length; i++)
         {
-            case 0:
-                healthBar[0].SetActive(false);
-                healthBar[1].SetActive(false);
-                healthBar[2].SetActive(false);
-                break;
-            case 2:
-                healthBar[0].SetActive(true);
-                healthBar[1].SetActive(false);
-                healthBar[2].SetActive(false);
-                break;
-            case 4:
-                healthBar[0].SetActive(true);
-                healthBar[1].SetActive(true);
-                healthBar[2].SetActive(false);
-                break;
-            case 6:
-                healthBar[0].SetActive(true);
-                healthBar[1].SetActive(true);
-                healthBar[2].SetActive(true);
-                break;
-                
+            healthBars[i].SetActive(i < currentHealth);
         }
     }
 }
-    

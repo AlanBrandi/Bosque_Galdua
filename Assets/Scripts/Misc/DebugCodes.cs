@@ -40,35 +40,30 @@ public class DebugCodes : MonoBehaviour
             buffer = "";
         }
 
-        if (UserInput.instance.playerController.InGame.Debug_Shift.triggered)
+        PlayerController.InGameActions input = UserInput.instance.playerController.InGame;
+        switch (true)
         {
-            AddToBuffer("Shift");
+            case bool _ when input.Debug_Shift.triggered:
+                AddToBuffer("Shift");
+                break;
+            case bool _ when input.Debug_H.triggered:
+                AddToBuffer("H");
+                break;
+            case bool _ when input.Debug_D.triggered:
+                AddToBuffer("D");
+                break;
+            case bool _ when input.Debug_K.triggered:
+                AddToBuffer("K");
+                break;
+            case bool _ when input.Debug_F3.triggered:
+                Debug.Log("F3");
+                if (FPS != null)
+                {
+                    FPS.SetActive(!FPS.activeInHierarchy);
+                }
+                break;
         }
-        if (UserInput.instance.playerController.InGame.Debug_H.triggered)
-        {
-            AddToBuffer("H");
-        }
-        if (UserInput.instance.playerController.InGame.Debug_D.triggered)
-        {
-            AddToBuffer("D");
-        }
-        if (UserInput.instance.playerController.InGame.Debug_K.triggered)
-        {
-            AddToBuffer("K");
-        }
-        else if (UserInput.instance.playerController.InGame.Debug_F3.triggered)
-        {
-            Debug.Log("F3");
-            if (FPS != null && FPS.activeInHierarchy == false)
-            {
-                FPS.SetActive(true);
-            }
-            else if (FPS != null)
-            {
-                FPS.SetActive(false);
-            }
-        }
-        else if (UserInput.instance.playerController.InGame.Debug_Mouse3.triggered)
+        if (UserInput.instance.playerController.InGame.Debug_Mouse3.triggered)
         {
             Vector3 v3 = Input.mousePosition;
             v3.z = 10f;

@@ -64,6 +64,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     {
         if (hitPlayer == false)
         {
+            GameObject.FindObjectOfType<UIManager>().GetComponent<HUDHealth>().TakeDamage(damage);
             _playerLives.CurrentLives -= damage;
             _playerLight.Intensity = ReturnLivesIntensity(_playerLives.CurrentLives);
             Debug.Log("Player vida atual: " + _playerLives.CurrentLives);
@@ -79,6 +80,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     public void AddLives(int addAmount)
     {
         _playerLives.CurrentLives += addAmount;
+        GameObject.FindObjectOfType<UIManager>().GetComponent<HUDHealth>().Heal(addAmount);
     }
     public void SetLives(int liveNewValue)
     {
