@@ -39,7 +39,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= NextAttackTime && Time.time >= playerHighAttack.NextAttackTime)
         {
-            Debug.Log("SHJKAHJKAHSKJAHSJK");
             if (UserInput.instance.playerController.InGame.Attack.triggered && mov.CanJump() == false && holdAndThrow.Estado != "Segurando")
             {
                 AttackSoundAndDelay();

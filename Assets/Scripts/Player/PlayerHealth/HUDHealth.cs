@@ -7,8 +7,11 @@ public class HUDHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = PlayerHealth.Instance.GetLives();
-        UpdateHealthBars();
+        if (PlayerHealth.Instance.GetLives() > 0)
+        {
+            currentHealth = PlayerHealth.Instance.GetLives();
+            UpdateHealthBars();
+        }
     }
 
     public void TakeDamage(int damageAmount)
