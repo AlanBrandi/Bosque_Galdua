@@ -1,25 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject creditsPanel;
-    public GameObject settingsPanel;
-    Animator animator;
-    private void Start()
+    [Header("SettingsPanel")]
+    [SerializeField] private GameObject settingsPanel;
+    
+    [Header("FirstSelected")]
+    [SerializeField] private GameObject go1;
+    [SerializeField] private GameObject go2;
+    
+    [Header("InputSystem")]
+    [SerializeField] private InputSystemUIInputModule inputModule;
+    
+    private void Update()
     {
-        animator = GetComponent<Animator>();
-    }
-    public void Credits()
-    {
-        if (creditsPanel.activeInHierarchy == false)
+        if (settingsPanel.activeInHierarchy)
         {
-            animator.SetBool("CreditsOn", true);
-        }
-        else
-        {
-            animator.SetBool("CreditsOn", false);
+            if (inputModule.cancel.action.triggered)
+            {
+                ToggleSettings();
+            }
         }
     }
 
@@ -28,22 +34,12 @@ public class MainMenu : MonoBehaviour
         if (settingsPanel.activeInHierarchy == false)
         {
             settingsPanel.SetActive(true);
+            inputModule.gameObject.GetComponent<EventSystem>().SetSelectedGameObject(go2);
         }
         else
         {
             settingsPanel.GetComponent<Animator>().SetTrigger("ExitSettings");
-        }
-    }
-
-    public void CreditsMenu()
-    {
-        if (creditsPanel.activeInHierarchy == false)
-        {
-            creditsPanel.SetActive(true);
-        }
-        else
-        {
-            creditsPanel.SetActive(false);
+            inputModule.gameObject.GetComponent<EventSystem>().SetSelectedGameObject(go1);
         }
     }
 }

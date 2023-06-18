@@ -99,17 +99,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Escape"",
+                    ""name"": ""Debug_E"",
                     ""type"": ""Button"",
-                    ""id"": ""b66717f0-fcc3-41dd-9388-789dbe1df0c2"",
+                    ""id"": ""605ac094-50e4-4620-a548-d6009a8fbea9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Debug_E"",
+                    ""name"": ""Escape"",
                     ""type"": ""Button"",
-                    ""id"": ""605ac094-50e4-4620-a548-d6009a8fbea9"",
+                    ""id"": ""b66717f0-fcc3-41dd-9388-789dbe1df0c2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -360,23 +360,23 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""48767330-08cf-4293-b432-885f60f31a36"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Debug_E"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0dbce2a6-a85d-416a-b552-b120f3f86182"",
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Debug_Z"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48767330-08cf-4293-b432-885f60f31a36"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug_E"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -408,8 +408,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_InGame_Debug_Z = m_InGame.FindAction("Debug_Z", throwIfNotFound: true);
         m_InGame_Debug_F3 = m_InGame.FindAction("Debug_F3", throwIfNotFound: true);
         m_InGame_Debug_Mouse3 = m_InGame.FindAction("Debug_Mouse3", throwIfNotFound: true);
-        m_InGame_Escape = m_InGame.FindAction("Escape", throwIfNotFound: true);
         m_InGame_Debug_E = m_InGame.FindAction("Debug_E", throwIfNotFound: true);
+        m_InGame_Escape = m_InGame.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -469,8 +469,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_Debug_Z;
     private readonly InputAction m_InGame_Debug_F3;
     private readonly InputAction m_InGame_Debug_Mouse3;
-    private readonly InputAction m_InGame_Escape;
     private readonly InputAction m_InGame_Debug_E;
+    private readonly InputAction m_InGame_Escape;
     public struct InGameActions
     {
         private @PlayerController m_Wrapper;
@@ -485,8 +485,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Debug_Z => m_Wrapper.m_InGame_Debug_Z;
         public InputAction @Debug_F3 => m_Wrapper.m_InGame_Debug_F3;
         public InputAction @Debug_Mouse3 => m_Wrapper.m_InGame_Debug_Mouse3;
-        public InputAction @Escape => m_Wrapper.m_InGame_Escape;
         public InputAction @Debug_E => m_Wrapper.m_InGame_Debug_E;
+        public InputAction @Escape => m_Wrapper.m_InGame_Escape;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -526,12 +526,12 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Debug_Mouse3.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_Mouse3;
                 @Debug_Mouse3.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_Mouse3;
                 @Debug_Mouse3.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_Mouse3;
-                @Escape.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
-                @Escape.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
-                @Escape.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
                 @Debug_E.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_E;
                 @Debug_E.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_E;
                 @Debug_E.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_E;
+                @Escape.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -566,12 +566,12 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Debug_Mouse3.started += instance.OnDebug_Mouse3;
                 @Debug_Mouse3.performed += instance.OnDebug_Mouse3;
                 @Debug_Mouse3.canceled += instance.OnDebug_Mouse3;
-                @Escape.started += instance.OnEscape;
-                @Escape.performed += instance.OnEscape;
-                @Escape.canceled += instance.OnEscape;
                 @Debug_E.started += instance.OnDebug_E;
                 @Debug_E.performed += instance.OnDebug_E;
                 @Debug_E.canceled += instance.OnDebug_E;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -606,7 +606,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnDebug_Z(InputAction.CallbackContext context);
         void OnDebug_F3(InputAction.CallbackContext context);
         void OnDebug_Mouse3(InputAction.CallbackContext context);
-        void OnEscape(InputAction.CallbackContext context);
         void OnDebug_E(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

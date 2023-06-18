@@ -36,7 +36,6 @@ public class PlayerDialogue : MonoBehaviour
     {
         if (other.CompareTag("Interact"))
         {
-            Debug.Log("AAAAAAAAAA");
             dialogueUi = other.GetComponentInChildren<DialogueUI>();
         }
     }
