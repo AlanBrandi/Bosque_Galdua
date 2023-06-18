@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!245 &-7905597935624638380
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MenuOpen
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 559be1735e5dd574bb8a4b3f73376fe3
+  m_FloatValues:
+    51848530057266b41a73b96283e60bc7: 236
+    49bb95404ac209e45b00bba850102c98: 1.27
+    4d1eb8a07f376b746b52b3f3bdbd3d68: 0.271
+    2f1fb9e2c8b614b4cbf1cefcb9719d71: 0
+    1642484321557fb43a9acba2b0001cd3: 1
+    eb180293cc0206a4da2f4063be50bce6: 12614
+    bb6311b38b4e3574cb9a664cab45de6e: 1290
+    d30052f36eb25fa498ea12858e281965: 0.01
+    9a155bd537d9e9840a6fa59f11e8f387: 0
+    a58620d6c7354154ca8da3ccb763abe0: 0.05
+    83714807bcd970042bb033e93c6b408e: 5
+    8ab90218ef2f5364eb13b5a364786fa6: 531
+    966c7fd8b69debb4198f4019cea4aa23: 6
+    843733097527dd048a5ec6d4f50af4f8: 1
+    fd7180b9a22cd0b4e9f53d34fa8f40de: 8.36
+    79c6d02a95a28d240947265eb16743cb: 20
+    baa2d19a791e974468e7bd07d3accac5: 22000
+    b5d61e5ce49bf32448abcafe906deefb: 501
+    ecf40fcc272ad254eb623bd21bade99e: 0
+    4c2c994e95565b04ebf799ab436df97a: 0.05
+  m_TransitionOverrides: {}
+--- !u!245 &-7772057227333808090
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MenuClosed
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 97baf4830fe926e49a75384449f64881
+  m_FloatValues:
+    51848530057266b41a73b96283e60bc7: 236
+    49bb95404ac209e45b00bba850102c98: 1.27
+    4d1eb8a07f376b746b52b3f3bdbd3d68: 0.271
+    2f1fb9e2c8b614b4cbf1cefcb9719d71: 0
+    1642484321557fb43a9acba2b0001cd3: 1
+    eb180293cc0206a4da2f4063be50bce6: 12614
+    bb6311b38b4e3574cb9a664cab45de6e: 1290
+    d30052f36eb25fa498ea12858e281965: 0.01
+    9a155bd537d9e9840a6fa59f11e8f387: 0
+    a58620d6c7354154ca8da3ccb763abe0: 0.05
+    83714807bcd970042bb033e93c6b408e: 5
+    8ab90218ef2f5364eb13b5a364786fa6: 22000
+    966c7fd8b69debb4198f4019cea4aa23: 6
+    843733097527dd048a5ec6d4f50af4f8: 1
+    fd7180b9a22cd0b4e9f53d34fa8f40de: 8.36
+    79c6d02a95a28d240947265eb16743cb: 20
+    baa2d19a791e974468e7bd07d3accac5: 22000
+    b5d61e5ce49bf32448abcafe906deefb: 501
+    ecf40fcc272ad254eb623bd21bade99e: 0
+    4c2c994e95565b04ebf799ab436df97a: 0.05
+  m_TransitionOverrides: {}
 --- !u!243 &-6197156777985310276
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -15,10 +77,27 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 6703898945179047878}
+  - {fileID: -3639495181858147794}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-3639495181858147794
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: d7debde5a40f13e4aa69e835610e633c
+  m_EffectName: Lowpass Simple
+  m_MixLevel: 50d42c203f9ed134abbc13b20e532245
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 8ab90218ef2f5364eb13b5a364786fa6
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-1972130974104542429
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -71,8 +150,9 @@ AudioMixerController:
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
-  - {fileID: 24500006}
-  m_StartSnapshot: {fileID: 24500006}
+  - {fileID: -7772057227333808090}
+  - {fileID: -7905597935624638380}
+  m_StartSnapshot: {fileID: -7772057227333808090}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
@@ -81,6 +161,8 @@ AudioMixerController:
     name: MasterVol
   - guid: ecf40fcc272ad254eb623bd21bade99e
     name: MusicVol
+  - guid: 8ab90218ef2f5364eb13b5a364786fa6
+    name: MyExposedParam
   - guid: 4fe1e6168c624934ba42a140af1831ac
     name: SFXVol
   m_AudioMixerGroupViews:
@@ -90,7 +172,7 @@ AudioMixerController:
     - c60bd89fa51218d44b03fcb8e8c19fe4
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: -7905597935624638380}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
