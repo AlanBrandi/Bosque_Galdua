@@ -67,12 +67,12 @@ public class Octoshooter : MonoBehaviour
     {
         playerDirection = player.transform.position.x - transform.position.x;
 
-        if (playerDirection < 0 && facingRight)
+        if (playerDirection < 0 && !facingRight)
         {
 
             Flip();
         }
-        else if (playerDirection > 0 && !facingRight)
+        else if (playerDirection > 0 && facingRight)
         {
             Flip();
         }
@@ -84,15 +84,20 @@ public class Octoshooter : MonoBehaviour
 
         playerDirection = player.transform.position.x - transform.position.x;
 
-        if (playerDirection > 0)
+        if (playerDirection < 0)
         {
-            Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 0, 0));
+            GameObject bulletObject = Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 0, 0));
+            OctoshooterBullet bulletComponent = bulletObject.GetComponent<OctoshooterBullet>();
+            bulletComponent.Initialize(this);
         }
-        else if (playerDirection < 0)
+        else if (playerDirection > 0)
         {
-            Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 180, 0));
+            GameObject bulletObject = Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 180, 0));
+            OctoshooterBullet bulletComponent = bulletObject.GetComponent<OctoshooterBullet>();
+            bulletComponent.Initialize(this);
         }
     }
+    
 
     IEnumerator ShootDelay()
     {

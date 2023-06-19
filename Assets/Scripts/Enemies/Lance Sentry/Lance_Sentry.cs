@@ -32,6 +32,12 @@ public class Lance_Sentry : MonoBehaviour
     private PatrolFlyEnemy patrol;
 
     public Animator anim;
+
+    public AudioSource audioSource;
+
+    public AudioClip dash;
+    public AudioClip spit;
+    public AudioClip swoop;
     
     private bool IsDashing { get { return isDashing; } }
     private bool IsShooting { get { return isShooting; } }
@@ -149,10 +155,26 @@ public class Lance_Sentry : MonoBehaviour
         if (stopAnim)
         {
             anim.SetTrigger("Swoop");
+            StartCoroutine(swoopDelaySound());
             stopAnim = false;
         }
         
         StartCoroutine(dashAnimDelay());
+    }
+
+    private IEnumerator dashDelaySound()
+    {
+        yield return new WaitForSeconds(.25f);
+       // audioSource.clip = dash;
+       // audioSource.Play();
+        
+    }
+    private IEnumerator swoopDelaySound()
+    {
+        yield return new WaitForSeconds(.3f);
+        audioSource.clip = swoop;
+        audioSource.Play();
+        
     }
 
     IEnumerator dashAnimDelay()
@@ -203,6 +225,7 @@ public class Lance_Sentry : MonoBehaviour
         if (stopAnim)
         {
             anim.SetTrigger("Dash");
+            StartCoroutine(dashDelaySound());
             stopAnim = false;
         }
         

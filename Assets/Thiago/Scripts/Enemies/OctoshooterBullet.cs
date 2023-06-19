@@ -6,13 +6,15 @@ public class OctoshooterBullet : MonoBehaviour
     private Rigidbody2D bulletRb;
     private Octoshooter octo;
 
-    private void Start()
+    public void Initialize(Octoshooter octoshooter)
     {
-        octo = GameObject.FindGameObjectWithTag("Octoshooter").GetComponent<Octoshooter>();
+        octo = octoshooter;
         bulletRb = GetComponent<Rigidbody2D>();
+
         int direction = octo.facingRight ? 1 : -1;
         Vector2 moveDir = new Vector2(direction * speed, 0);
-        if (octo.facingRight)
+
+        if (!octo.facingRight)
         {
             bulletRb.velocity = new Vector2(Mathf.Abs(moveDir.x), moveDir.y);
         }
