@@ -113,6 +113,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""7f818d98-db78-4352-9c1a-47bd6dee37a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -379,6 +387,28 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Debug_E"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6dbe23cd-ce62-4083-8152-0bf596e7614e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be5f1c4f-5feb-43e5-8005-15ecb688d9a2"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -410,6 +440,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_InGame_Debug_Mouse3 = m_InGame.FindAction("Debug_Mouse3", throwIfNotFound: true);
         m_InGame_Debug_E = m_InGame.FindAction("Debug_E", throwIfNotFound: true);
         m_InGame_Escape = m_InGame.FindAction("Escape", throwIfNotFound: true);
+        m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -471,6 +502,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_Debug_Mouse3;
     private readonly InputAction m_InGame_Debug_E;
     private readonly InputAction m_InGame_Escape;
+    private readonly InputAction m_InGame_Interact;
     public struct InGameActions
     {
         private @PlayerController m_Wrapper;
@@ -487,6 +519,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Debug_Mouse3 => m_Wrapper.m_InGame_Debug_Mouse3;
         public InputAction @Debug_E => m_Wrapper.m_InGame_Debug_E;
         public InputAction @Escape => m_Wrapper.m_InGame_Escape;
+        public InputAction @Interact => m_Wrapper.m_InGame_Interact;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -532,6 +565,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Escape.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
                 @Escape.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnEscape;
+                @Interact.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -572,6 +608,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Escape.started += instance.OnEscape;
                 @Escape.performed += instance.OnEscape;
                 @Escape.canceled += instance.OnEscape;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -608,5 +647,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnDebug_Mouse3(InputAction.CallbackContext context);
         void OnDebug_E(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

@@ -65,7 +65,7 @@ public class LeversMessage : MonoBehaviour
     {
         if (collision.CompareTag("Player") && canShowAgain)
         {
-            if (UserInput.instance.playerController.InGame.Debug_E.triggered)
+            if (UserInput.instance.playerController.InGame.Interact.triggered)
             {                
                 arrowActivator.GetComponent<CanvasGroup>().alpha = 1f;
                 talk.GetComponent<CanvasGroup>().alpha = 1f;

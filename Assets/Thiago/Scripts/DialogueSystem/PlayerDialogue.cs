@@ -18,7 +18,7 @@ public class PlayerDialogue : MonoBehaviour
 
     private void Update()
     {
-        if (UserInput.instance.playerController.InGame.Debug_E.triggered)
+        if (UserInput.instance.playerController.InGame.Interact.triggered)
         {
             if (interectible != null && !dialogueUi.isOpen)
             {
