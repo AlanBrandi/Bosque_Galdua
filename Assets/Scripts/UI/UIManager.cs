@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour, IObserver
 {
@@ -10,15 +9,14 @@ public class UIManager : MonoBehaviour, IObserver
     [SerializeField] private GameObject _gameOver, _pauseMenuUI, _lowLife, _healthUI;
     [SerializeField] private LevelChanger _levelChanger;
 
-    
     [Header("AudioMixer")]
     [SerializeField] private AudioMixerSnapshot OpenMenu;
     [SerializeField] private AudioMixerSnapshot ClosedMenu;
-    
+
     [Header("Feedback")]
     [SerializeField] private GameObject _hitPanel;
 
-    [Header("EventSystem")] 
+    [Header("EventSystem")]
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private GameObject go1;
     [SerializeField] private GameObject go2;
@@ -60,8 +58,8 @@ public class UIManager : MonoBehaviour, IObserver
                 _gameOver.SetActive(true);
             }
         }
-
     }
+
     private void Pause()
     {
         OpenMenu.TransitionTo(0f);
@@ -70,6 +68,7 @@ public class UIManager : MonoBehaviour, IObserver
         Time.timeScale = 0;
         GameIsPaused = true;
     }
+
     public void Resume()
     {
         ClosedMenu.TransitionTo(0f);
@@ -78,6 +77,7 @@ public class UIManager : MonoBehaviour, IObserver
         Time.timeScale = 1;
         GameIsPaused = false;
     }
+
     public void ToggleSettings()
     {
         _settingsPanel.SetActive(!_settingsPanel.activeInHierarchy);
@@ -90,6 +90,7 @@ public class UIManager : MonoBehaviour, IObserver
             eventSystem.SetSelectedGameObject(go2);
         }
     }
+
     private void CloseAllTabs()
     {
         _gameOver.SetActive(false);
@@ -98,14 +99,17 @@ public class UIManager : MonoBehaviour, IObserver
         _lowLife.SetActive(false);
         _healthUI.SetActive(false);
     }
+
     public void LoadMenu()
     {
         _levelChanger.FadeToLevel("Menu");
     }
+
     public void Sair()
     {
         Application.Quit();
     }
+
     public void NotifyPlayerHit(int currentLives, float timeRemain)
     {
         if (currentLives <= 3)
