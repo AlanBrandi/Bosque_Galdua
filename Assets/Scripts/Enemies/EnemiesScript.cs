@@ -33,6 +33,8 @@ public class EnemiesScript : MonoBehaviour
     public GameObject monstrinhoTrap3;
     public GameObject monstrinhoTrap4;
     public GameObject monstrinhoTrap5;
+    
+    public GameObject leverSpawn;
 
 
     private void Awake()
@@ -108,11 +110,19 @@ public class EnemiesScript : MonoBehaviour
         Debug.Log("Damage!");
         if (currentHealth <= 0)
         {
-
-            Die();
+            if (leverSpawn != null)
+            {
+                leverSpawn.SetActive(true);
+                Die();
+                
+            }
+            else
+            {
+                Die();
+            }
         }
     }
-    void Die()
+    public void Die()
     {
 
         Scene currentScene = SceneManager.GetActiveScene();
