@@ -15,7 +15,7 @@ public class ButtonCavern : MonoBehaviour
 
     public GameObject elevatorPressed;
     public GameObject totem;
-    
+    [SerializeField] private Sprite newsprite;
 
     private void Start()
     {
@@ -59,7 +59,8 @@ public class ButtonCavern : MonoBehaviour
             {
                 totem.SetActive(true);
             }
-            
+
+            GetComponent<SpriteRenderer>().sprite = newsprite;
             Destroy(GetComponent<ButtonCavern>());
         }
     }
