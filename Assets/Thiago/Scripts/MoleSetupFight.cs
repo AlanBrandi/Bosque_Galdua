@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MoleSetupFight : MonoBehaviour
 {
@@ -13,13 +14,22 @@ public class MoleSetupFight : MonoBehaviour
 
     public GameObject mole;
 
+    bool  musicStart = false;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource2;
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             blackGround.SetActive(true);
             blackGround2.SetActive(true);
-            
+            if (!musicStart)
+            {
+                audioSource.Stop();
+                audioSource2.Play();
+                musicStart = true;
+            }
             oneSidePlatform.SetActive(false);
             StartCoroutine(spawnMole());
 
@@ -37,6 +47,17 @@ public class MoleSetupFight : MonoBehaviour
         Mole molee = mole.GetComponent<Mole>();
         molee.enabled = true;
     }
-    
-    
+
+    private void Update()
+    {
+        Mole molee = mole.GetComponent<Mole>();
+        if (molee.enabled)
+        {
+            if (mole.GetComponent<EnemiesScript>().currentHealth <= 0)
+            {
+                audioSource2.Stop();
+                audioSource.Play();
+            } 
+        }
+    }
 }
