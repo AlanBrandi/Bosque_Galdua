@@ -31,7 +31,7 @@ public class DebugCodes : MonoBehaviour
     {
         PopulateDropdown();
         SetDropdownValueBasedOnActiveScene();
-        SetToggleBasedOnInvincibility();
+        //SetToggleBasedOnInvincibility();
         player = GameObject.FindGameObjectWithTag("PlayerManager");
         if (player == null)
         {
@@ -53,6 +53,7 @@ public class DebugCodes : MonoBehaviour
         UserInput.instance.playerController.InGame.Debug_D.performed += OnDebugDPerformed;
         UserInput.instance.playerController.InGame.Debug_K.performed += OnDebugKPerformed;
         UserInput.instance.playerController.InGame.Debug_F3.performed += OnDebugF3Performed;
+        UserInput.instance.playerController.InGame.Debug_F9.performed += OnDebugF9Performed;
         UserInput.instance.playerController.InGame.Debug_Mouse3.performed += OnDebugMouse3Performed;
     }
 
@@ -63,7 +64,9 @@ public class DebugCodes : MonoBehaviour
         UserInput.instance.playerController.InGame.Debug_D.performed -= OnDebugDPerformed;
         UserInput.instance.playerController.InGame.Debug_K.performed -= OnDebugKPerformed;
         UserInput.instance.playerController.InGame.Debug_F3.performed -= OnDebugF3Performed;
+        UserInput.instance.playerController.InGame.Debug_F9.performed += OnDebugF9Performed;
         UserInput.instance.playerController.InGame.Debug_Mouse3.performed -= OnDebugMouse3Performed;
+
     }
     #endregion
     #region Bindings
@@ -92,6 +95,10 @@ public class DebugCodes : MonoBehaviour
         Debug.Log("F3");
         if (FPS != null)
             FPS.SetActive(!FPS.activeSelf);
+    }
+    private void OnDebugF9Performed(InputAction.CallbackContext context)
+    {
+        ToggleDebug();
     }
 
     private void OnDebugMouse3Performed(InputAction.CallbackContext context)
@@ -194,7 +201,14 @@ public class DebugCodes : MonoBehaviour
     }
     public void ToggleInvincibility()
     {
-        PlayerHealth.Instance.invincible = !PlayerHealth.Instance.invincible;
+        if (toggle.isOn)
+        {
+            PlayerHealth.Instance.invincible = true;
+        }
+        else
+        {
+            PlayerHealth.Instance.invincible = false;
+        }
     }
 
     public void SetSpeedBasedOnCurrentInt(string value)

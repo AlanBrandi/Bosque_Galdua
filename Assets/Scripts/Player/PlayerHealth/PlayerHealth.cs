@@ -38,12 +38,13 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     //Functional variables.
     private bool hitPlayer = false;
     private GameObject _playerManager;
-    public bool invincible; //Debug variable.
+    [HideInInspector] public bool invincible = false; //Debug variable.
 
     [SerializeField] private float invensibilityTime = 1;
 
     private void Awake()
     {
+        invincible = true;
         if (!instance)
         {
             instance = this;

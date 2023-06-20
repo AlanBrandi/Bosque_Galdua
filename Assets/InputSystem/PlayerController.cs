@@ -121,6 +121,14 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Debug_F9"",
+                    ""type"": ""Button"",
+                    ""id"": ""f1f07882-b7fd-4241-8390-7e4580960e0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -409,6 +417,17 @@ public class @PlayerController : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9cc05b95-165b-4004-b755-7b545c9efd2f"",
+                    ""path"": ""<Keyboard>/f9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Debug_F9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -441,6 +460,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         m_InGame_Debug_E = m_InGame.FindAction("Debug_E", throwIfNotFound: true);
         m_InGame_Escape = m_InGame.FindAction("Escape", throwIfNotFound: true);
         m_InGame_Interact = m_InGame.FindAction("Interact", throwIfNotFound: true);
+        m_InGame_Debug_F9 = m_InGame.FindAction("Debug_F9", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -503,6 +523,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
     private readonly InputAction m_InGame_Debug_E;
     private readonly InputAction m_InGame_Escape;
     private readonly InputAction m_InGame_Interact;
+    private readonly InputAction m_InGame_Debug_F9;
     public struct InGameActions
     {
         private @PlayerController m_Wrapper;
@@ -520,6 +541,7 @@ public class @PlayerController : IInputActionCollection, IDisposable
         public InputAction @Debug_E => m_Wrapper.m_InGame_Debug_E;
         public InputAction @Escape => m_Wrapper.m_InGame_Escape;
         public InputAction @Interact => m_Wrapper.m_InGame_Interact;
+        public InputAction @Debug_F9 => m_Wrapper.m_InGame_Debug_F9;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -568,6 +590,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnInteract;
+                @Debug_F9.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_F9;
+                @Debug_F9.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_F9;
+                @Debug_F9.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnDebug_F9;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
@@ -611,6 +636,9 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Debug_F9.started += instance.OnDebug_F9;
+                @Debug_F9.performed += instance.OnDebug_F9;
+                @Debug_F9.canceled += instance.OnDebug_F9;
             }
         }
     }
@@ -648,5 +676,6 @@ public class @PlayerController : IInputActionCollection, IDisposable
         void OnDebug_E(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnDebug_F9(InputAction.CallbackContext context);
     }
 }
