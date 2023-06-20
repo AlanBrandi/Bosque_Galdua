@@ -144,6 +144,8 @@ public class Lance_Sentry : MonoBehaviour
         {
             Instantiate(bullet, bulletPos.transform.position, Quaternion.Euler(180, 180, 0));
         }
+        audioSource.clip = spit;
+        audioSource.Play();
         isShooting = false;
     }
     void DashOnPlayer()
@@ -164,9 +166,9 @@ public class Lance_Sentry : MonoBehaviour
 
     private IEnumerator dashDelaySound()
     {
-        yield return new WaitForSeconds(.25f);
-       // audioSource.clip = dash;
-       // audioSource.Play();
+        yield return new WaitForSeconds(.1f);
+        audioSource.clip = dash;
+        audioSource.Play();
         
     }
     private IEnumerator swoopDelaySound()
