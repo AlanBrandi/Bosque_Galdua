@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
 
     {
-        if (canMove)
+        if (canMove && Time.deltaTime > 0)
         {
             _moveInput.x = UserInput.instance.moveInput.x;
             _moveInput.y = UserInput.instance.moveInput.y;
@@ -143,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        if (UserInput.instance.playerController.InGame.Jump.triggered)
+        if (UserInput.instance.playerController.InGame.Jump.triggered && Time.deltaTime > 0)
         {
             OnJumpInput();
         }

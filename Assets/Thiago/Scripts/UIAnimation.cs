@@ -1,16 +1,15 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
     public GameObject panel, lines, icon, lifeBar, objective, npcName, arrows, arrowActivator, talk;
-    
+
 
 
     private void Start()
     {
-       // dialogue = GetComponentInParent<DialogueActivator>();
+        // dialogue = GetComponentInParent<DialogueActivator>();
     }
 
     public void dialogueOpen()
@@ -25,11 +24,11 @@ public class UIAnimation : MonoBehaviour
         panel.GetComponent<RectTransform>().localScale = new Vector3(.7f, .7f, .7f);
         lines.GetComponent<RectTransform>().localScale = new Vector3(.3f, lines.GetComponent<RectTransform>().localScale.y, lines.GetComponent<RectTransform>().localScale.z);
 
-        
+
 
         LeanTween.alphaCanvas(panel.GetComponent<CanvasGroup>(), 0.9f, 1f).setEaseInQuad();
         LeanTween.alphaCanvas(lines.GetComponent<CanvasGroup>(), 1f, .7f).setEaseInQuad();
-        
+
 
 
 
@@ -44,18 +43,18 @@ public class UIAnimation : MonoBehaviour
             LeanTween.alphaCanvas(npcName.GetComponent<CanvasGroup>(), 1f, 3f).setEaseInQuad().setDelay(.7f);
             LeanTween.scale(npcName, new Vector3(1f, 1f, 1f), 2f).setEaseOutCubic().setDelay(.7f);
             StartCoroutine(removeNpcName());
-            
+
         }
-        
-        
+
+
         LeanTween.scale(lines, new Vector3(1f, lines.GetComponent<RectTransform>().localScale.y, lines.GetComponent<RectTransform>().localScale.z), .3f).setEaseOutCubic();
 
-        
+
     }
 
     public void dialogueClose()
     {
-        LeanTween.alphaCanvas(panel.GetComponent<CanvasGroup>(), 0f, 1f).setEaseInQuad();        
+        LeanTween.alphaCanvas(panel.GetComponent<CanvasGroup>(), 0f, 1f).setEaseInQuad();
         LeanTween.alphaCanvas(lines.GetComponent<CanvasGroup>(), 0f, .7f).setEaseInQuad();
         LeanTween.alphaCanvas(icon.GetComponent<CanvasGroup>(), 0f, .2f).setEaseInQuad();
         LeanTween.alphaCanvas(arrows.GetComponent<CanvasGroup>(), 0f, .2f).setEaseInQuad();
@@ -63,7 +62,7 @@ public class UIAnimation : MonoBehaviour
         {
             LeanTween.alphaCanvas(npcName.GetComponent<CanvasGroup>(), 0f, 1f).setEaseInQuad();
         }
-        
+
 
         LeanTween.alphaCanvas(lifeBar.GetComponent<CanvasGroup>(), 1f, .2f).setEaseInQuad().setDelay(1f);
         LeanTween.alphaCanvas(objective.GetComponent<CanvasGroup>(), 1f, .2f).setEaseInQuad().setDelay(1f);
