@@ -149,8 +149,16 @@ MonoBehaviour:
   knockbacked: 0
   screenShake: {fileID: 0}
   flash: {fileID: 0}
+  flash2: {fileID: 0}
+  flash3: {fileID: 0}
+  flash4: {fileID: 0}
+  flash5: {fileID: 0}
   isEnemyDestroy1Hit: 1
-  isMonstrinhoOrBarrel: 1
+  monstrinhoTrap: {fileID: 0}
+  monstrinhoTrap2: {fileID: 0}
+  monstrinhoTrap3: {fileID: 0}
+  monstrinhoTrap4: {fileID: 0}
+  monstrinhoTrap5: {fileID: 0}
 --- !u!82 &5213574434054262551
 AudioSource:
   m_ObjectHideFlags: 0
@@ -172,9 +180,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 4.1
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -268,9 +276,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 25
+  MaxDistance: 3.94
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
