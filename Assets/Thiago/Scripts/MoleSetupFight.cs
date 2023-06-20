@@ -13,11 +13,11 @@ public class MoleSetupFight : MonoBehaviour
     public GameObject blackGround2;
 
     public GameObject mole;
+    private Mole molee;
 
     bool  musicStart = false;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioSource audioSource2;
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -27,7 +27,6 @@ public class MoleSetupFight : MonoBehaviour
             if (!musicStart)
             {
                 audioSource.Stop();
-                audioSource2.Play();
                 musicStart = true;
             }
             oneSidePlatform.SetActive(false);
@@ -44,20 +43,7 @@ public class MoleSetupFight : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         col.isTrigger = false;
         yield return new WaitForSeconds(2f);
-        Mole molee = mole.GetComponent<Mole>();
+        molee = mole.GetComponent<Mole>();
         molee.enabled = true;
-    }
-
-    private void Update()
-    {
-        Mole molee = mole.GetComponent<Mole>();
-        if (molee.enabled)
-        {
-            if (mole.GetComponent<EnemiesScript>().currentHealth <= 0)
-            {
-                audioSource2.Stop();
-                audioSource.Play();
-            } 
-        }
     }
 }
