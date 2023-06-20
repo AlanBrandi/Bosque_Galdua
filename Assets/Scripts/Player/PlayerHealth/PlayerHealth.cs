@@ -32,12 +32,13 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     //DataLives.
     private GameData_SO _playerLives;
 
-    //Player light 
+    //Player light .
     private HardLight2D _playerLight;
 
     //Functional variables.
     private bool hitPlayer = false;
     private GameObject _playerManager;
+    public bool invincible; //Debug variable.
 
     [SerializeField] private float invensibilityTime = 1;
 
@@ -62,7 +63,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     #region ModifyLives
     public void Hit(int damage)
     {
-        if (hitPlayer == false)
+        if (hitPlayer == false && invincible == false)
         {
             GameObject.FindObjectOfType<UIManager>().GetComponent<HUDHealth>().TakeDamage(damage);
             _playerLives.CurrentLives -= damage;
@@ -89,7 +90,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     private void Die()
     {
         _playerManager.SetActive(false);
-        GameObject.Find("Fade").GetComponent<LevelChanger>().FadeToLevel("BossLevel");
+        LevelChanger.Instance.RestartFade();
     }
     public int GetLives()
     {
