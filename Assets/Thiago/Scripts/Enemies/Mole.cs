@@ -61,6 +61,8 @@ public class Mole : MonoBehaviour
 
     [SerializeField] private SpawnerRockRain spawner;
 
+
+    public GameObject lightPurpleUnderground;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -158,7 +160,7 @@ public class Mole : MonoBehaviour
         if (Mathf.Abs(undergroundPos.transform.position.y - transform.position.y) < 0.5f)
 
         {
-
+lightPurpleUnderground.SetActive(true);
             if (makeCont)
             {
                 randomNumber = Random.Range(1, 5);
@@ -191,6 +193,7 @@ public class Mole : MonoBehaviour
             }
             else
             {
+                lightPurpleUnderground.SetActive(false);
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0.5f;
                 Physics2D.IgnoreLayerCollision(gameObject.layer, 11, false);
