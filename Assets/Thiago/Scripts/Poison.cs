@@ -22,7 +22,7 @@ public class Poison : MonoBehaviour
             delayTimer -= Time.deltaTime;
             if (delayTimer <= 0)
             {
-                health.Hit(0);
+                health.Hit(1);
                 delayTimer = delayHit;
             }
             

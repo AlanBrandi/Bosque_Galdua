@@ -10,6 +10,7 @@ public class ButtonCavern : MonoBehaviour
     public GameObject monstrinho1;
     public GameObject monstrinho2;
     public GameObject mole;
+    public GameObject mole2;
     public PlayerMovement player;
 
     public GameObject elevatorPressed;
@@ -37,6 +38,11 @@ public class ButtonCavern : MonoBehaviour
             if (mole != null)
             {
                 Destroy(mole);
+            }
+
+            if (mole2! != null)
+            {
+                Destroy(mole2);
             }
 
             if (door != null)

@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerData Data;
 
+    public bool canWallJump;
+
     #region COMPONENTS
     public Rigidbody2D RB { get; private set; }
 
@@ -226,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
 
                     AnimHandler.startedJumping = true;
                 }
-                else if (CanWallJump() && LastPressedJumpTime > 0)
+                else if (CanWallJump() && LastPressedJumpTime > 0 && canWallJump)
                 {
                    //AnimHandler.anim.SetBool("WallJump", true);
                     

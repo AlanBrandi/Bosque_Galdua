@@ -59,10 +59,15 @@ public class Mole : MonoBehaviour
     private List<LeverPoisonCure> poisonCures = new List<LeverPoisonCure>();
     private GameObject[] objectsWithTag;
 
+    private EnemiesScript mole;
+
+    public GameObject leverSpawn;
     [SerializeField] private SpawnerRockRain spawner;
 
 
     public GameObject lightPurpleUnderground;
+
+    public Collider2D blackScreen;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -75,6 +80,7 @@ public class Mole : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         objectsWithTag = GameObject.FindGameObjectsWithTag("PoisonCure");
+        mole = GetComponent<EnemiesScript>();
 
         PhysicsMaterial2D material = collider.sharedMaterial;
         material.bounciness = 0.4f;
@@ -91,10 +97,12 @@ public class Mole : MonoBehaviour
     }
     private void Update()
     {
+
         nextAttack += Time.deltaTime;
         if (nextAttack >= attackDelay)
         {
             RandomState();
+            nextAttack = 0;
             nextAttack = 0;
         }
 
@@ -206,6 +214,8 @@ lightPurpleUnderground.SetActive(true);
                 makeCont = true;
                 nextAttack = 0;
                 attackDelay = 2f;
+                blackScreen.isTrigger = true;
+                StartCoroutine(backToCollider());
             }
         }
 
@@ -346,6 +356,20 @@ lightPurpleUnderground.SetActive(true);
             
             RainRock();
         }
+    }
+
+    IEnumerator backToCollider()
+    {
+        yield return new WaitForSeconds(.3f);
+        blackScreen.isTrigger = false;
+    }
+    IEnumerator SpawnLever()
+    {
+        
+        yield return new WaitForSeconds(2f);
+        leverSpawn.SetActive(true);
+        Destroy(this.gameObject);
+
     }
     IEnumerator DelayDash()
     {
