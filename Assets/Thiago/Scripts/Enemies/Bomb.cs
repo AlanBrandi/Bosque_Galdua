@@ -32,7 +32,7 @@ public class Bomb : MonoBehaviour
     private Poison poison;
     private void Start()
     {
-        mole = GameObject.FindGameObjectWithTag("Enemies");
+        mole = GameObject.FindGameObjectWithTag("Mole");
         target = GameObject.FindGameObjectWithTag("Player");
         poison = GameObject.FindGameObjectWithTag("PlayerManager").GetComponent<Poison>();
         playerStartPosition = target.transform.position;

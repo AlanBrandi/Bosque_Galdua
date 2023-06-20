@@ -9,6 +9,8 @@ public class MoleSetupFight : MonoBehaviour
 
     public GameObject blackGround;
 
+    public GameObject blackGround2;
+
     public GameObject mole;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -16,6 +18,8 @@ public class MoleSetupFight : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             blackGround.SetActive(true);
+            blackGround2.SetActive(true);
+            
             oneSidePlatform.SetActive(false);
             StartCoroutine(spawnMole());
 

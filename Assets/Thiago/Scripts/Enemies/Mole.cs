@@ -76,6 +76,10 @@ public class Mole : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         objectsWithTag = GameObject.FindGameObjectsWithTag("PoisonCure");
 
+        PhysicsMaterial2D material = collider.sharedMaterial;
+        material.bounciness = 0.4f;
+        material.friction = 0.0f;
+        
         foreach (GameObject obj in objectsWithTag)
         {
             LeverPoisonCure script = obj.GetComponent<LeverPoisonCure>();
@@ -235,17 +239,20 @@ lightPurpleUnderground.SetActive(true);
         }
 
     }
+
+    public bool isFacingRight;
     void FlipsTowardsPlayer()
     {
         playerDirection = target.transform.position.x - transform.position.x;
 
         if (playerDirection < 0 && facingRight)
         {
-
+            isFacingRight = false;
             Flip();
         }
         else if (playerDirection > 0 && !facingRight)
         {
+            isFacingRight = true;
             Flip();
         }
     }
