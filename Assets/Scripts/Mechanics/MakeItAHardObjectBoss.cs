@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,15 @@ public class MakeItAHardObjectBoss : MonoBehaviour
         MyGOB.layer = 14;
         MyGOB.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Extrapolate;
     }
+
+    private void Update()
+    {
+        transform.rotation = new Quaternion(transform.transform.rotation.x, 0,
+            transform.transform.rotation.z, 0);
+        transform.localScale = new Vector3(0.05f, 0.05f, 1);
+
+    }
+
     #endregion
     #region Collision
     private void OnTriggerEnter2D(Collider2D collision)

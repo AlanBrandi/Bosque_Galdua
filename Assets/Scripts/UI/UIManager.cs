@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour, IObserver
             if (PlayerHealth.Instance != null && PlayerHealth.Instance.GetLives() <= 0)
             {
                 CloseAllTabs();
-                _gameOver.SetActive(true);
+              //  _gameOver.SetActive(true);
             }
         }
     }

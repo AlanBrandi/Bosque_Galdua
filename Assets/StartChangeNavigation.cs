@@ -10,7 +10,7 @@ public class StartChangeNavigation : MonoBehaviour
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private GameObject go1;
 
-    private void OnEnable()
+    private void Start()
     {
         eventSystem.firstSelectedGameObject = go1;
         eventSystem.SetSelectedGameObject(go1);

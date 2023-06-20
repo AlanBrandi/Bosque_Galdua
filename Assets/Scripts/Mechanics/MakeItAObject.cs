@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,14 @@ public class MakeItAObject : MonoBehaviour
         MyGOB.layer = 14;
         MyGOB.GetComponent<Rigidbody2D>().interpolation = RigidbodyInterpolation2D.Extrapolate;
     }
+
+    private void Update()
+    {
+        transform.rotation = new Quaternion(transform.transform.rotation.x, 0,
+            transform.transform.rotation.z, 0);
+        transform.localScale = new Vector3(0.05f, 0.05f, 1);
+    }
+
     #endregion
 
     #region Collision
@@ -65,7 +74,7 @@ public class MakeItAObject : MonoBehaviour
     }
     #endregion
 
-    #region Métodos
+    #region Mï¿½todos
     void Destruir()
     {
         Instantiate(ExplodeFx, MyGOB.transform.position, Quaternion.identity);

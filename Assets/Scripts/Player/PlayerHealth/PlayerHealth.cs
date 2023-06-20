@@ -89,6 +89,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     private void Die()
     {
         _playerManager.SetActive(false);
+        GameObject.Find("Fade").GetComponent<LevelChanger>().FadeToLevel("BossLevel");
     }
     public int GetLives()
     {
