@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3278945401493102758}
-  m_Layer: 0
+  - component: {fileID: 805001443}
+  m_Layer: 12
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -30,6 +31,32 @@ Transform:
   m_Father: {fileID: 5644273321167473687}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &805001443
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918958254803714140}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.2641058, y: 0.791801}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 13.140581, y: 14.724599}
+  m_EdgeRadius: 0
 --- !u!1 &5644273321167473685
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,9 +72,9 @@ GameObject:
   - component: {fileID: 5644273321167473686}
   - component: {fileID: 8717919578767607672}
   - component: {fileID: 1911039543732513025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Amigo Mole ;(
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +114,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 14273aaa496b233408cec354d079e306, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -131,28 +158,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9919aa87207304ebc5c0b00545a8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myMaterial: {fileID: 6200000, guid: bc91b1b866b72754e8690ea282327f17, type: 2}
+  undergroundPos: {fileID: 0}
   bomb: {fileID: -8755106334960829829, guid: d2526a18990bc5147927de849fe64c91, type: 3}
   projectile: {fileID: 4730612502163547742, guid: d2526a18990bc5147927de849fe64c91, type: 3}
-  ProjectilePos: {fileID: 5644273321495289546}
-  attackrate: 2
-  bombRate: 0
-  player: {fileID: 0}
-  bombArcHeight: 2
-  isTouchingGround: 0
-  forceMagnitude: 0
-  groundCheck: {fileID: 0}
-  groundCheckRadius: 0
+  projectilePos: {fileID: 5644273321495289546}
+  groundCheck: {fileID: 3278945401493102758}
+  groundCheckRadius: 0.8
   groundCheckLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  facingRight: 1
+  playerIsInPlat: 0
+  forceMagnitude: 10
+  jumpForce: 14
   desaceleracao: 10
-  groundHits: 0
-  myMaterial: {fileID: 0}
-  jumpForce: 10
-  combatStarted: 0
-  isBombing: 0
-  isJumping: 0
-  attackDelay: 2
+  spawner: {fileID: 0}
 --- !u!70 &5644273321167473689
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -162,7 +186,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 5644273321167473685}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bc91b1b866b72754e8690ea282327f17, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -184,8 +208,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_GravityScale: 0.5
+  m_Material: {fileID: 6200000, guid: bc91b1b866b72754e8690ea282327f17, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -203,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  dano: 0
+  dano: 1
   currentHealth: 0
   fxDie: {fileID: 5135255555956319502, guid: 93adf26a939b6634e88297664ab1bbc6, type: 3}
   fxHit: {fileID: 5135255555956319502, guid: 93adf26a939b6634e88297664ab1bbc6, type: 3}
@@ -213,7 +237,17 @@ MonoBehaviour:
   knockbackForceUp: 0
   knockbacked: 0
   screenShake: {fileID: 0}
-  flash: {fileID: 0}
+  flash: {fileID: 1911039543732513025}
+  flash2: {fileID: 0}
+  flash3: {fileID: 0}
+  flash4: {fileID: 0}
+  flash5: {fileID: 0}
+  isEnemyDestroy1Hit: 0
+  monstrinhoTrap: {fileID: 0}
+  monstrinhoTrap2: {fileID: 0}
+  monstrinhoTrap3: {fileID: 0}
+  monstrinhoTrap4: {fileID: 0}
+  monstrinhoTrap5: {fileID: 0}
 --- !u!114 &1911039543732513025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +271,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5644273321495289546}
-  m_Layer: 0
+  - component: {fileID: 439514346}
+  m_Layer: 12
   m_Name: BombPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,3 +293,29 @@ Transform:
   m_Father: {fileID: 5644273321167473687}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &439514346
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644273321495289547}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.93295956, y: 0.11659503}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.462149, y: 11.960245}
+  m_EdgeRadius: 0

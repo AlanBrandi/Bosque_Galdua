@@ -44,8 +44,8 @@ public class Mole : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float desaceleracao = 10f;
     private float raycastDistance = 10f;
-    private float minX = -167f;
-    private float maxX = -151f;
+    private float minX = -33.81f;
+    private float maxX = -16.41f;
     private float speed = 10f;
     private float attackDelay = 1f;
     private float nextAttack = 0f;
@@ -172,7 +172,7 @@ public class Mole : MonoBehaviour
             Debug.DrawRay(transform.position, Vector2.up * raycastDistance, Color.yellow);
             if (hit.collider != null)
             {
-                Debug.Log("Player está diretamente acima do inimigo!");
+                Debug.Log("Player estï¿½ diretamente acima do inimigo!");
                 if (!hasHitGroundThisFrame)
                 {
                     contPlayerUp++;
