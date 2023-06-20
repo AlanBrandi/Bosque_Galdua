@@ -68,6 +68,12 @@ public class Mole : MonoBehaviour
     public GameObject lightPurpleUnderground;
 
     public Collider2D blackScreen;
+
+    public AudioSource audioJump;
+    public AudioSource audioDash;
+    public AudioSource audioDashUp;
+    public AudioSource audioBigStomp;
+    public AudioSource audioHitWall;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -118,6 +124,7 @@ public class Mole : MonoBehaviour
             {
                 if (isJumping)
                 {
+                    audioHitWall.Play();
                     enemy.screenShake.startShake(.35f, 0.5f);
                     groundHits++;
                     hasHitGroundThisFrame = true;
@@ -205,6 +212,7 @@ lightPurpleUnderground.SetActive(true);
             }
             else
             {
+                audioDashUp.Play();
                 lightPurpleUnderground.SetActive(false);
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 0.5f;
@@ -268,6 +276,8 @@ lightPurpleUnderground.SetActive(true);
     }
     void DashOnPlayer()
     {
+        audioJump.Play();
+        
         isJumping = true;
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         PhysicsMaterial2D material = collider.sharedMaterial;
@@ -295,6 +305,7 @@ lightPurpleUnderground.SetActive(true);
     }
     public void UndergroundAttack()
     {
+        audioJump.Play();
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         PhysicsMaterial2D material = collider.sharedMaterial;
         material.bounciness = 0.4f;
@@ -374,6 +385,7 @@ lightPurpleUnderground.SetActive(true);
     IEnumerator DelayDash()
     {
         yield return new WaitForSeconds(.6f);
+        audioDash.Play();
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.AddForce(direction * forceMagnitude, ForceMode2D.Impulse);
 
@@ -388,6 +400,7 @@ lightPurpleUnderground.SetActive(true);
     IEnumerator DelayRainRock()
     {
         yield return new WaitForSeconds(.6f);
+        audioBigStomp.Play();
         rb.AddForce(new Vector2(0f, -jumpForce * 2f), ForceMode2D.Impulse);
 
     }
