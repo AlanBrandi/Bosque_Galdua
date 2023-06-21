@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
 
     private void Awake()
     {
-        invincible = true;
+        invincible = PlayerPrefs.GetInt("Invincible") == 1;
         if (!instance)
         {
             instance = this;

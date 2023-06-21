@@ -33,7 +33,7 @@ public class EnemiesScript : MonoBehaviour
     public GameObject monstrinhoTrap3;
     public GameObject monstrinhoTrap4;
     public GameObject monstrinhoTrap5;
-    
+
     public GameObject leverSpawn;
 
 
@@ -46,7 +46,7 @@ public class EnemiesScript : MonoBehaviour
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         //screenShake = activeVirtualCamera.gameObject.GetComponent<ScreenShakeController>();
-        
+
 
     }
     private void Update()
@@ -89,7 +89,10 @@ public class EnemiesScript : MonoBehaviour
         if (flash != null)
         {
             flash.Flash();
-            screenShake.startShake(.35f, 0.5f);
+            if (screenShake != null)
+            {
+                screenShake.startShake(.35f, 0.5f);
+            }
         }
         if (flash2 != null)
         {
@@ -114,7 +117,7 @@ public class EnemiesScript : MonoBehaviour
             {
                 leverSpawn.SetActive(true);
                 Die();
-                
+
             }
             else
             {
@@ -128,23 +131,23 @@ public class EnemiesScript : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if(monstrinhoTrap != null)
+        if (monstrinhoTrap != null)
         {
             EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap);
         }
-        if(monstrinhoTrap2 != null)
+        if (monstrinhoTrap2 != null)
         {
             EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap2);
         }
-        if(monstrinhoTrap3 != null)
+        if (monstrinhoTrap3 != null)
         {
             EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap3);
         }
-        if(monstrinhoTrap4 != null)
+        if (monstrinhoTrap4 != null)
         {
             EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap4);
         }
-        if(monstrinhoTrap5 != null)
+        if (monstrinhoTrap5 != null)
         {
             EventManager.Instance.ActivateMonstrinhoTrap(monstrinhoTrap5);
         }

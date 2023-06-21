@@ -58,7 +58,7 @@ public class MakeItAObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemies" && holdAndThrow.Estado != "Segurando")
+        if (collision.tag == "Enemies" && holdAndThrow.Estado != "Segurando" || collision.tag == "Octoshooter" && holdAndThrow.Estado != "Segurando")
         {
             collision.GetComponent<EnemiesScript>().TakeDamage(AttackDamage);
         }

@@ -31,6 +31,7 @@ public class DebugCodes : MonoBehaviour
     {
         PopulateDropdown();
         SetDropdownValueBasedOnActiveScene();
+        SetToggleBasedOnInvincibility();
         //SetToggleBasedOnInvincibility();
         player = GameObject.FindGameObjectWithTag("PlayerManager");
         if (player == null)
@@ -197,7 +198,7 @@ public class DebugCodes : MonoBehaviour
 
     public void SetToggleBasedOnInvincibility()
     {
-        toggle.isOn = (PlayerHealth.Instance.invincible);
+        toggle.SetIsOnWithoutNotify(PlayerHealth.Instance.invincible);
     }
     public void ToggleInvincibility()
     {
@@ -209,6 +210,7 @@ public class DebugCodes : MonoBehaviour
         {
             PlayerHealth.Instance.invincible = false;
         }
+        PlayerPrefs.SetInt("Invincible", PlayerHealth.Instance.invincible ? 1 : 0);
     }
 
     public void SetSpeedBasedOnCurrentInt(string value)
