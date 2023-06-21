@@ -409,8 +409,8 @@ public class @PlayerController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""be5f1c4f-5feb-43e5-8005-15ecb688d9a2"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""id"": ""3bb37629-56ff-4870-b9c3-05a44bee3f47"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

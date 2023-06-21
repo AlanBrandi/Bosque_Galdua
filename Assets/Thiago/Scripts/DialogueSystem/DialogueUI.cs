@@ -109,7 +109,7 @@ public class DialogueUI : MonoBehaviour
             }
 
             yield return new WaitForSeconds(.5f);
-            yield return new WaitUntil(() => UserInput.instance.playerController.InGame.Debug_E.triggered);
+            yield return new WaitUntil(() => UserInput.instance.playerController.InGame.Interact.triggered);
         }
 
         if (dialogueObject.HasResponses)
@@ -134,7 +134,7 @@ public class DialogueUI : MonoBehaviour
         {
             yield return null;
 
-            if (UserInput.instance.playerController.InGame.Debug_E.triggered)
+            if (UserInput.instance.playerController.InGame.Interact.triggered)
             {
                 typewriterEffect.typewriterSpeed = 100f;
                 typewriterEffect.isFaster = true;
