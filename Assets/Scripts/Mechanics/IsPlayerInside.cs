@@ -31,7 +31,7 @@ public class IsPlayerInside : MonoBehaviour
     {
         if (actionExec == false)
         {
-            if (collision.CompareTag("Player") && UserInput.instance.playerController.InGame.Debug_E.triggered)
+            if (collision.CompareTag("Player") && UserInput.instance.playerController.InGame.Interact.triggered)
             {
                 if(monstrinho != null)
                 {
