@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
-using static UnityEditor.PlayerSettings;
+//susing static UnityEditor.PlayerSettings;
 
 public class PlayerMovement : MonoBehaviour
 {

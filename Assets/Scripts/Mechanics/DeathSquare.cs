@@ -9,7 +9,7 @@ public class DeathSquare : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponentInParent<PlayerHealth>().Hit(2000000);
+            collision.GetComponentInParent<PlayerHealth>().Die();
         }
     }
 }

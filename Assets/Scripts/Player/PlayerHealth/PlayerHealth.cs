@@ -88,7 +88,7 @@ public class PlayerHealth : MonoBehaviour, IDataPersistence, ISubject
     {
         _playerLives.CurrentLives = liveNewValue;
     }
-    private void Die()
+    public void Die()
     {
         _playerManager.SetActive(false);
         LevelChanger.Instance.RestartFade();
