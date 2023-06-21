@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossScript : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class BossScript : MonoBehaviour
     public GameObject fxHit;
     public GameObject endMusic;
     public GameObject postMusic;
+    
+    public Image healthBarFill;
     //public GameObject monster;
     private void Awake()
     {
@@ -58,6 +61,7 @@ public class BossScript : MonoBehaviour
     public void TakeDamageByItem(int damage)
     {
         boss.shake1();
+        healthBarFill.fillAmount -= 0.15f;
         BosscurrentHealth -= damage;
         flash.Flash();
         flash2.Flash();
@@ -94,6 +98,7 @@ public class BossScript : MonoBehaviour
         if (boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam") || boss.anim.GetCurrentAnimatorStateInfo(0).IsName("AttackSlam2"))
         {
             boss.shake1();
+            healthBarFill.fillAmount -= 0.10f;
             BosscurrentHealth -= damage;
             flash.Flash();
             flash2.Flash();

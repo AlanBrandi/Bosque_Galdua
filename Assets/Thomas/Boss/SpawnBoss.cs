@@ -8,6 +8,8 @@ public class SpawnBoss : MonoBehaviour
     public GameObject bossGo;
     public GameObject Musicboss;
     public GameObject preBossMusic;
+
+    public GameObject healthBar;
     public bool canTakeDamageInicial;
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -15,6 +17,7 @@ public class SpawnBoss : MonoBehaviour
         {
             
             
+            healthBar.SetActive(true);
                 boss.canStart = true;
                 Musicboss.SetActive(true);
             preBossMusic.SetActive(false);

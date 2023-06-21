@@ -33,7 +33,7 @@ public class LeverCaverns : MonoBehaviour
     {
             if (collision.CompareTag("Player"))
             {
-                if (UserInput.instance.playerController.InGame.Debug_E.triggered)
+                if (UserInput.instance.playerController.InGame.Interact.triggered)
                 {
                     if(monstrinho != null)
                     {

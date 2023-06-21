@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="fcd4673b-e1f8-4e58-99e6-e142fc34690f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bosque_Galdua/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bosque_Galdua/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/InputSystem/PlayerController.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/InputSystem/PlayerController.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game/Forest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game/Forest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Mechanics/IsPlayerInside.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Mechanics/IsPlayerInside.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Thiago/Scripts/DialogueSystem/DialogueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thiago/Scripts/DialogueSystem/DialogueUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game/BossLevel.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game/BossLevel.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/BossScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/BossScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Thiago/Scripts/Enemies/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thiago/Scripts/Enemies/Boss.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Thiago/Scripts/LeverCaverns.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thiago/Scripts/LeverCaverns.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Thomas/Boss/SpawnBoss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Thomas/Boss/SpawnBoss.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Alan/Scripts/Test/DisableGameObjectByEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Alan/Scripts/Test/DontDestroyOnSceneLoad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Alan/Scripts/Test/InvokeFade.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/HealthBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Thiago/Scripts/MoleSetupFight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -51,9 +52,9 @@
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\Pichau\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Pichau\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Pichau\\AppData\\Local\\Symbols\\src"
+      "C:\\Users\\thiag\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\thiag\\AppData\\Roaming\\JetBrains\\Rider2023.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\thiag\\AppData\\Local\\Symbols\\src"
     ]
   }
 }]]></component>
@@ -67,7 +68,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\2020.3.7f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.7f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath D:\Unity-projects\BOSQUE\Bosque_Galdua -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Unity-projects\BOSQUE\Bosque_Galdua" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -75,7 +76,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\2020.3.7f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2020.3.7f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath D:\Unity-projects\BOSQUE\Bosque_Galdua -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Unity-projects\BOSQUE\Bosque_Galdua" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -124,6 +125,7 @@
       <workItem from="1687244998592" duration="16665000" />
       <workItem from="1687299083152" duration="923000" />
       <workItem from="1687310117689" duration="998000" />
+      <workItem from="1687337791021" duration="2614000" />
     </task>
     <servers />
   </component>

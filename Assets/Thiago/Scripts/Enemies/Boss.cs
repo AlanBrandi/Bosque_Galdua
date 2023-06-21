@@ -40,7 +40,7 @@ public class Boss : MonoBehaviour
     public DetectPlayer playerDetection;
     private void Start()
     {
-        healthBar.gameObject.SetActive(false);
+       // healthBar.gameObject.SetActive(false);
         anim = this.GetComponent<Animator>();
         idleNumber = Animator.StringToHash("BossIdle");
     }
@@ -65,7 +65,7 @@ public class Boss : MonoBehaviour
 
     public void spawnHealthBar()
     {
-        healthBar.gameObject.SetActive(true);
+//        healthBar.gameObject.SetActive(true);
     }
 
     public void summonAnim()
