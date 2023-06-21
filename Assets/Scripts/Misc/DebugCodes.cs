@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class DebugCodes : MonoBehaviour
 {
@@ -233,5 +232,10 @@ public class DebugCodes : MonoBehaviour
     public void ToggleDebug()
     {
         debugUI.SetActive(!debugUI.activeInHierarchy);
+    }
+
+    public void TeleportToMole()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().canWallJump = true;
     }
 }

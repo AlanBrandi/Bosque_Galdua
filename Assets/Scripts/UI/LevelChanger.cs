@@ -31,14 +31,13 @@ public class LevelChanger : MonoBehaviour
 
     public void FadeToLevel(string levelName)
     {
-        Debug.Log("Jogma");
         levelToLoad = levelName;
         animator.SetTrigger("FadeOut");
     }
 
     public void RestartFade()
     {
-        PlayerHealth.Instance.SetLives(PlayerHealth.Instance.GetLives());
+        PlayerHealth.Instance.SetLives(6);
         levelToLoad = SceneManager.GetActiveScene().name;
         animator.SetTrigger("FadeOut");
     }

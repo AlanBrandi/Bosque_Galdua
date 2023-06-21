@@ -5878,7 +5878,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 967e53c9b0298204f8b00b3d7f62928b, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -7411,7 +7411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mole Boss
+  m_text: Walljump On
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d18016394a1c0eb48ab2696b7d677a7f, type: 2}
   m_sharedMaterial: {fileID: 8675962733973013225, guid: d18016394a1c0eb48ab2696b7d677a7f, type: 2}
@@ -8078,7 +8078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5431572346550632227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9291,9 +9291,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4714297433309072342}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: RestartFade
+      - m_Target: {fileID: 882678993387960950}
+        m_TargetAssemblyTypeName: DebugCodes, Assembly-CSharp
+        m_MethodName: TeleportToMole
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10010,8 +10010,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.167688
+      value: -19.167683
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10027,15 +10039,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3360406238044247041, guid: a02eeb57d8b28f14cbbee2d4e618fcf5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
