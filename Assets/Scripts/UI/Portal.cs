@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Activating portal.");
-            if (isAutomatic || UserInput.instance.playerController.InGame.Debug_E.triggered)
+            if (isAutomatic || UserInput.instance.playerController.InGame.Interact.triggered)
             {
                 LevelChanger.Instance.FadeToLevel(levelName);
                 gameObject.SetActive(false);
